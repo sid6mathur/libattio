@@ -253,7 +253,7 @@ import (
 
 func main() {
 	meetingId := "cb59ab17-ad15-460c-a126-0715617c0853" // string | 
-	v2MeetingsMeetingIdCallRecordingsPostRequest := *libattio.NewV2MeetingsMeetingIdCallRecordingsPostRequest("https://example.com/recording.mp4") // V2MeetingsMeetingIdCallRecordingsPostRequest | 
+	v2MeetingsMeetingIdCallRecordingsPostRequest := *libattio.NewV2MeetingsMeetingIdCallRecordingsPostRequest(*libattio.NewV2MeetingsMeetingIdCallRecordingsPostRequestData("https://example.com/recording.mp4")) // V2MeetingsMeetingIdCallRecordingsPostRequest | 
 
 	configuration := libattio.NewConfiguration()
 	apiClient := libattio.NewAPIClient(configuration)

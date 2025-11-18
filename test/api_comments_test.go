@@ -11,10 +11,10 @@ package libattio
 
 import (
 	"context"
+	libattio "github.com/fastah/libattio"
 	"github.com/stretchr/testify/assert"
 	"github.com/stretchr/testify/require"
 	"testing"
-	libattio "github.com/fastah/libattio"
 )
 
 func Test_libattio_CommentsAPIService(t *testing.T) {
@@ -24,7 +24,7 @@ func Test_libattio_CommentsAPIService(t *testing.T) {
 
 	t.Run("Test CommentsAPIService V2CommentsCommentIdDelete", func(t *testing.T) {
 
-		t.Skip("skip test")  // remove to run test
+		t.Skip("skip test") // remove to run test
 
 		var commentId string
 
@@ -38,7 +38,7 @@ func Test_libattio_CommentsAPIService(t *testing.T) {
 
 	t.Run("Test CommentsAPIService V2CommentsCommentIdGet", func(t *testing.T) {
 
-		t.Skip("skip test")  // remove to run test
+		t.Skip("skip test") // remove to run test
 
 		var commentId string
 
@@ -52,7 +52,7 @@ func Test_libattio_CommentsAPIService(t *testing.T) {
 
 	t.Run("Test CommentsAPIService V2CommentsPost", func(t *testing.T) {
 
-		t.Skip("skip test")  // remove to run test
+		t.Skip("skip test") // remove to run test
 
 		resp, httpRes, err := apiClient.CommentsAPI.V2CommentsPost(context.Background()).Execute()
 

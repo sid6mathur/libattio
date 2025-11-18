@@ -11,10 +11,10 @@ package libattio
 
 import (
 	"context"
+	libattio "github.com/fastah/libattio"
 	"github.com/stretchr/testify/assert"
 	"github.com/stretchr/testify/require"
 	"testing"
-	libattio "github.com/fastah/libattio"
 )
 
 func Test_libattio_RecordsAPIService(t *testing.T) {
@@ -24,7 +24,7 @@ func Test_libattio_RecordsAPIService(t *testing.T) {
 
 	t.Run("Test RecordsAPIService V2ObjectsObjectRecordsPost", func(t *testing.T) {
 
-		t.Skip("skip test")  // remove to run test
+		t.Skip("skip test") // remove to run test
 
 		var object string
 
@@ -38,7 +38,7 @@ func Test_libattio_RecordsAPIService(t *testing.T) {
 
 	t.Run("Test RecordsAPIService V2ObjectsObjectRecordsPut", func(t *testing.T) {
 
-		t.Skip("skip test")  // remove to run test
+		t.Skip("skip test") // remove to run test
 
 		var object string
 
@@ -52,7 +52,7 @@ func Test_libattio_RecordsAPIService(t *testing.T) {
 
 	t.Run("Test RecordsAPIService V2ObjectsObjectRecordsQueryPost", func(t *testing.T) {
 
-		t.Skip("skip test")  // remove to run test
+		t.Skip("skip test") // remove to run test
 
 		var object string
 
@@ -66,7 +66,7 @@ func Test_libattio_RecordsAPIService(t *testing.T) {
 
 	t.Run("Test RecordsAPIService V2ObjectsObjectRecordsRecordIdAttributesAttributeValuesGet", func(t *testing.T) {
 
-		t.Skip("skip test")  // remove to run test
+		t.Skip("skip test") // remove to run test
 
 		var object string
 		var recordId string
@@ -82,7 +82,7 @@ func Test_libattio_RecordsAPIService(t *testing.T) {
 
 	t.Run("Test RecordsAPIService V2ObjectsObjectRecordsRecordIdDelete", func(t *testing.T) {
 
-		t.Skip("skip test")  // remove to run test
+		t.Skip("skip test") // remove to run test
 
 		var object string
 		var recordId string
@@ -97,7 +97,7 @@ func Test_libattio_RecordsAPIService(t *testing.T) {
 
 	t.Run("Test RecordsAPIService V2ObjectsObjectRecordsRecordIdEntriesGet", func(t *testing.T) {
 
-		t.Skip("skip test")  // remove to run test
+		t.Skip("skip test") // remove to run test
 
 		var object string
 		var recordId string
@@ -112,7 +112,7 @@ func Test_libattio_RecordsAPIService(t *testing.T) {
 
 	t.Run("Test RecordsAPIService V2ObjectsObjectRecordsRecordIdGet", func(t *testing.T) {
 
-		t.Skip("skip test")  // remove to run test
+		t.Skip("skip test") // remove to run test
 
 		var object string
 		var recordId string
@@ -127,7 +127,7 @@ func Test_libattio_RecordsAPIService(t *testing.T) {
 
 	t.Run("Test RecordsAPIService V2ObjectsObjectRecordsRecordIdPatch", func(t *testing.T) {
 
-		t.Skip("skip test")  // remove to run test
+		t.Skip("skip test") // remove to run test
 
 		var object string
 		var recordId string
@@ -142,12 +142,24 @@ func Test_libattio_RecordsAPIService(t *testing.T) {
 
 	t.Run("Test RecordsAPIService V2ObjectsObjectRecordsRecordIdPut", func(t *testing.T) {
 
-		t.Skip("skip test")  // remove to run test
+		t.Skip("skip test") // remove to run test
 
 		var object string
 		var recordId string
 
 		resp, httpRes, err := apiClient.RecordsAPI.V2ObjectsObjectRecordsRecordIdPut(context.Background(), object, recordId).Execute()
+
+		require.Nil(t, err)
+		require.NotNil(t, resp)
+		assert.Equal(t, 200, httpRes.StatusCode)
+
+	})
+
+	t.Run("Test RecordsAPIService V2ObjectsRecordsSearchPost", func(t *testing.T) {
+
+		t.Skip("skip test") // remove to run test
+
+		resp, httpRes, err := apiClient.RecordsAPI.V2ObjectsRecordsSearchPost(context.Background()).Execute()
 
 		require.Nil(t, err)
 		require.NotNil(t, resp)

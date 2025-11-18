@@ -24,7 +24,7 @@ type V2TargetIdentifierAttributesPostRequestData struct {
 	// The name of the attribute. The title will be visible across Attio's UI.
 	Title string `json:"title"`
 	// A text description for the attribute.
-	Description string `json:"description"`
+	Description NullableString `json:"description"`
 	// A unique, human-readable slug to access the attribute through URLs and API calls. Formatted in snake case.
 	ApiSlug string `json:"api_slug"`
 	// The type of the attribute. This value affects the possible `config` values. Attributes of type \"status\" are not supported on objects.
@@ -34,9 +34,9 @@ type V2TargetIdentifierAttributesPostRequestData struct {
 	// Whether or not new values for this attribute must be unique. Uniqueness restrictions are only applied to new data and do not apply retroactively to previously created data.
 	IsUnique bool `json:"is_unique"`
 	// Whether or not this attribute can have multiple values. Multiselect is only available on some value types.
-	IsMultiselect bool `json:"is_multiselect"`
-	DefaultValue *V2TargetIdentifierAttributesPostRequestDataDefaultValue `json:"default_value,omitempty"`
-	Config V2TargetIdentifierAttributesPostRequestDataConfig `json:"config"`
+	IsMultiselect        bool                                                            `json:"is_multiselect"`
+	DefaultValue         NullableV2TargetIdentifierAttributesPostRequestDataDefaultValue `json:"default_value,omitempty"`
+	Config               V2TargetIdentifierAttributesPostRequestDataConfig               `json:"config"`
 	AdditionalProperties map[string]interface{}
 }
 
@@ -46,7 +46,7 @@ type _V2TargetIdentifierAttributesPostRequestData V2TargetIdentifierAttributesPo
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewV2TargetIdentifierAttributesPostRequestData(title string, description string, apiSlug string, type_ string, isRequired bool, isUnique bool, isMultiselect bool, config V2TargetIdentifierAttributesPostRequestDataConfig) *V2TargetIdentifierAttributesPostRequestData {
+func NewV2TargetIdentifierAttributesPostRequestData(title string, description NullableString, apiSlug string, type_ string, isRequired bool, isUnique bool, isMultiselect bool, config V2TargetIdentifierAttributesPostRequestDataConfig) *V2TargetIdentifierAttributesPostRequestData {
 	this := V2TargetIdentifierAttributesPostRequestData{}
 	this.Title = title
 	this.Description = description
@@ -91,31 +91,31 @@ func (o *V2TargetIdentifierAttributesPostRequestData) SetTitle(v string) {
 	o.Title = v
 }
 
-
 // GetDescription returns the Description field value
+// If the value is explicit nil, the zero value for string will be returned
 func (o *V2TargetIdentifierAttributesPostRequestData) GetDescription() string {
-	if o == nil {
+	if o == nil || o.Description.Get() == nil {
 		var ret string
 		return ret
 	}
 
-	return o.Description
+	return *o.Description.Get()
 }
 
 // GetDescriptionOk returns a tuple with the Description field value
 // and a boolean to check if the value has been set.
+// NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *V2TargetIdentifierAttributesPostRequestData) GetDescriptionOk() (*string, bool) {
 	if o == nil {
 		return nil, false
 	}
-	return &o.Description, true
+	return o.Description.Get(), o.Description.IsSet()
 }
 
 // SetDescription sets field value
 func (o *V2TargetIdentifierAttributesPostRequestData) SetDescription(v string) {
-	o.Description = v
+	o.Description.Set(&v)
 }
-
 
 // GetApiSlug returns the ApiSlug field value
 func (o *V2TargetIdentifierAttributesPostRequestData) GetApiSlug() string {
@@ -141,7 +141,6 @@ func (o *V2TargetIdentifierAttributesPostRequestData) SetApiSlug(v string) {
 	o.ApiSlug = v
 }
 
-
 // GetType returns the Type field value
 func (o *V2TargetIdentifierAttributesPostRequestData) GetType() string {
 	if o == nil {
@@ -165,7 +164,6 @@ func (o *V2TargetIdentifierAttributesPostRequestData) GetTypeOk() (*string, bool
 func (o *V2TargetIdentifierAttributesPostRequestData) SetType(v string) {
 	o.Type = v
 }
-
 
 // GetIsRequired returns the IsRequired field value
 func (o *V2TargetIdentifierAttributesPostRequestData) GetIsRequired() bool {
@@ -191,7 +189,6 @@ func (o *V2TargetIdentifierAttributesPostRequestData) SetIsRequired(v bool) {
 	o.IsRequired = v
 }
 
-
 // GetIsUnique returns the IsUnique field value
 func (o *V2TargetIdentifierAttributesPostRequestData) GetIsUnique() bool {
 	if o == nil {
@@ -215,7 +212,6 @@ func (o *V2TargetIdentifierAttributesPostRequestData) GetIsUniqueOk() (*bool, bo
 func (o *V2TargetIdentifierAttributesPostRequestData) SetIsUnique(v bool) {
 	o.IsUnique = v
 }
-
 
 // GetIsMultiselect returns the IsMultiselect field value
 func (o *V2TargetIdentifierAttributesPostRequestData) GetIsMultiselect() bool {
@@ -241,37 +237,47 @@ func (o *V2TargetIdentifierAttributesPostRequestData) SetIsMultiselect(v bool) {
 	o.IsMultiselect = v
 }
 
-
-// GetDefaultValue returns the DefaultValue field value if set, zero value otherwise.
+// GetDefaultValue returns the DefaultValue field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *V2TargetIdentifierAttributesPostRequestData) GetDefaultValue() V2TargetIdentifierAttributesPostRequestDataDefaultValue {
-	if o == nil || IsNil(o.DefaultValue) {
+	if o == nil || IsNil(o.DefaultValue.Get()) {
 		var ret V2TargetIdentifierAttributesPostRequestDataDefaultValue
 		return ret
 	}
-	return *o.DefaultValue
+	return *o.DefaultValue.Get()
 }
 
 // GetDefaultValueOk returns a tuple with the DefaultValue field value if set, nil otherwise
 // and a boolean to check if the value has been set.
+// NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *V2TargetIdentifierAttributesPostRequestData) GetDefaultValueOk() (*V2TargetIdentifierAttributesPostRequestDataDefaultValue, bool) {
-	if o == nil || IsNil(o.DefaultValue) {
+	if o == nil {
 		return nil, false
 	}
-	return o.DefaultValue, true
+	return o.DefaultValue.Get(), o.DefaultValue.IsSet()
 }
 
 // HasDefaultValue returns a boolean if a field has been set.
 func (o *V2TargetIdentifierAttributesPostRequestData) HasDefaultValue() bool {
-	if o != nil && !IsNil(o.DefaultValue) {
+	if o != nil && o.DefaultValue.IsSet() {
 		return true
 	}
 
 	return false
 }
 
-// SetDefaultValue gets a reference to the given V2TargetIdentifierAttributesPostRequestDataDefaultValue and assigns it to the DefaultValue field.
+// SetDefaultValue gets a reference to the given NullableV2TargetIdentifierAttributesPostRequestDataDefaultValue and assigns it to the DefaultValue field.
 func (o *V2TargetIdentifierAttributesPostRequestData) SetDefaultValue(v V2TargetIdentifierAttributesPostRequestDataDefaultValue) {
-	o.DefaultValue = &v
+	o.DefaultValue.Set(&v)
+}
+
+// SetDefaultValueNil sets the value for DefaultValue to be an explicit nil
+func (o *V2TargetIdentifierAttributesPostRequestData) SetDefaultValueNil() {
+	o.DefaultValue.Set(nil)
+}
+
+// UnsetDefaultValue ensures that no value is present for DefaultValue, not even an explicit nil
+func (o *V2TargetIdentifierAttributesPostRequestData) UnsetDefaultValue() {
+	o.DefaultValue.Unset()
 }
 
 // GetConfig returns the Config field value
@@ -298,9 +304,8 @@ func (o *V2TargetIdentifierAttributesPostRequestData) SetConfig(v V2TargetIdenti
 	o.Config = v
 }
 
-
 func (o V2TargetIdentifierAttributesPostRequestData) MarshalJSON() ([]byte, error) {
-	toSerialize,err := o.ToMap()
+	toSerialize, err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
 	}
@@ -310,14 +315,14 @@ func (o V2TargetIdentifierAttributesPostRequestData) MarshalJSON() ([]byte, erro
 func (o V2TargetIdentifierAttributesPostRequestData) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
 	toSerialize["title"] = o.Title
-	toSerialize["description"] = o.Description
+	toSerialize["description"] = o.Description.Get()
 	toSerialize["api_slug"] = o.ApiSlug
 	toSerialize["type"] = o.Type
 	toSerialize["is_required"] = o.IsRequired
 	toSerialize["is_unique"] = o.IsUnique
 	toSerialize["is_multiselect"] = o.IsMultiselect
-	if !IsNil(o.DefaultValue) {
-		toSerialize["default_value"] = o.DefaultValue
+	if o.DefaultValue.IsSet() {
+		toSerialize["default_value"] = o.DefaultValue.Get()
 	}
 	toSerialize["config"] = o.Config
 
@@ -345,32 +350,31 @@ func (o *V2TargetIdentifierAttributesPostRequestData) UnmarshalJSON(data []byte)
 
 	// defaultValueFuncMap captures the default values for required properties.
 	// These values are used when required properties are missing from the payload.
-	defaultValueFuncMap := map[string]func() interface{} {
-	}
+	defaultValueFuncMap := map[string]func() interface{}{}
 	var defaultValueApplied bool
 	allProperties := make(map[string]interface{})
 
 	err = json.Unmarshal(data, &allProperties)
 
 	if err != nil {
-		return err;
+		return err
 	}
 
-	for _, requiredProperty := range(requiredProperties) {
+	for _, requiredProperty := range requiredProperties {
 		if value, exists := allProperties[requiredProperty]; !exists || value == "" {
 			if _, ok := defaultValueFuncMap[requiredProperty]; ok {
 				allProperties[requiredProperty] = defaultValueFuncMap[requiredProperty]()
 				defaultValueApplied = true
 			}
 		}
-		if value, exists := allProperties[requiredProperty]; !exists || value == ""{
+		if value, exists := allProperties[requiredProperty]; !exists || value == "" {
 			return fmt.Errorf("no value given for required property %v", requiredProperty)
 		}
 	}
 
 	if defaultValueApplied {
 		data, err = json.Marshal(allProperties)
-		if err != nil{
+		if err != nil {
 			return err
 		}
 	}
@@ -437,5 +441,3 @@ func (v *NullableV2TargetIdentifierAttributesPostRequestData) UnmarshalJSON(src 
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
-
-

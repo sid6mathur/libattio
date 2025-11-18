@@ -11,10 +11,10 @@ package libattio
 
 import (
 	"context"
+	libattio "github.com/fastah/libattio"
 	"github.com/stretchr/testify/assert"
 	"github.com/stretchr/testify/require"
 	"testing"
-	libattio "github.com/fastah/libattio"
 )
 
 func Test_libattio_AttributesAPIService(t *testing.T) {
@@ -24,7 +24,7 @@ func Test_libattio_AttributesAPIService(t *testing.T) {
 
 	t.Run("Test AttributesAPIService V2TargetIdentifierAttributesAttributeGet", func(t *testing.T) {
 
-		t.Skip("skip test")  // remove to run test
+		t.Skip("skip test") // remove to run test
 
 		var target string
 		var identifier string
@@ -40,7 +40,7 @@ func Test_libattio_AttributesAPIService(t *testing.T) {
 
 	t.Run("Test AttributesAPIService V2TargetIdentifierAttributesAttributeOptionsGet", func(t *testing.T) {
 
-		t.Skip("skip test")  // remove to run test
+		t.Skip("skip test") // remove to run test
 
 		var target string
 		var identifier string
@@ -56,7 +56,7 @@ func Test_libattio_AttributesAPIService(t *testing.T) {
 
 	t.Run("Test AttributesAPIService V2TargetIdentifierAttributesAttributeOptionsOptionPatch", func(t *testing.T) {
 
-		t.Skip("skip test")  // remove to run test
+		t.Skip("skip test") // remove to run test
 
 		var target string
 		var identifier string
@@ -73,7 +73,7 @@ func Test_libattio_AttributesAPIService(t *testing.T) {
 
 	t.Run("Test AttributesAPIService V2TargetIdentifierAttributesAttributeOptionsPost", func(t *testing.T) {
 
-		t.Skip("skip test")  // remove to run test
+		t.Skip("skip test") // remove to run test
 
 		var target string
 		var identifier string
@@ -89,7 +89,7 @@ func Test_libattio_AttributesAPIService(t *testing.T) {
 
 	t.Run("Test AttributesAPIService V2TargetIdentifierAttributesAttributePatch", func(t *testing.T) {
 
-		t.Skip("skip test")  // remove to run test
+		t.Skip("skip test") // remove to run test
 
 		var target string
 		var identifier string
@@ -105,7 +105,7 @@ func Test_libattio_AttributesAPIService(t *testing.T) {
 
 	t.Run("Test AttributesAPIService V2TargetIdentifierAttributesAttributeStatusesGet", func(t *testing.T) {
 
-		t.Skip("skip test")  // remove to run test
+		t.Skip("skip test") // remove to run test
 
 		var target string
 		var identifier string
@@ -121,7 +121,7 @@ func Test_libattio_AttributesAPIService(t *testing.T) {
 
 	t.Run("Test AttributesAPIService V2TargetIdentifierAttributesAttributeStatusesPost", func(t *testing.T) {
 
-		t.Skip("skip test")  // remove to run test
+		t.Skip("skip test") // remove to run test
 
 		var target string
 		var identifier string
@@ -137,7 +137,7 @@ func Test_libattio_AttributesAPIService(t *testing.T) {
 
 	t.Run("Test AttributesAPIService V2TargetIdentifierAttributesAttributeStatusesStatusPatch", func(t *testing.T) {
 
-		t.Skip("skip test")  // remove to run test
+		t.Skip("skip test") // remove to run test
 
 		var target string
 		var identifier string
@@ -154,7 +154,7 @@ func Test_libattio_AttributesAPIService(t *testing.T) {
 
 	t.Run("Test AttributesAPIService V2TargetIdentifierAttributesGet", func(t *testing.T) {
 
-		t.Skip("skip test")  // remove to run test
+		t.Skip("skip test") // remove to run test
 
 		var target string
 		var identifier string
@@ -169,7 +169,7 @@ func Test_libattio_AttributesAPIService(t *testing.T) {
 
 	t.Run("Test AttributesAPIService V2TargetIdentifierAttributesPost", func(t *testing.T) {
 
-		t.Skip("skip test")  // remove to run test
+		t.Skip("skip test") // remove to run test
 
 		var target string
 		var identifier string

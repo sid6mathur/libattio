@@ -20,14 +20,13 @@ import (
 	"strings"
 )
 
-
 // CommentsAPIService CommentsAPI service
 type CommentsAPIService service
 
 type ApiV2CommentsCommentIdDeleteRequest struct {
-	ctx context.Context
+	ctx        context.Context
 	ApiService *CommentsAPIService
-	commentId string
+	commentId  string
 }
 
 func (r ApiV2CommentsCommentIdDeleteRequest) Execute() (map[string]interface{}, *http.Response, error) {
@@ -41,26 +40,27 @@ Deletes a comment by ID. If deleting a comment at the head of a thread, all mess
 
 Required scopes: `comment:read-write`.
 
- @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @param commentId
- @return ApiV2CommentsCommentIdDeleteRequest
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@param commentId
+	@return ApiV2CommentsCommentIdDeleteRequest
 */
 func (a *CommentsAPIService) V2CommentsCommentIdDelete(ctx context.Context, commentId string) ApiV2CommentsCommentIdDeleteRequest {
 	return ApiV2CommentsCommentIdDeleteRequest{
 		ApiService: a,
-		ctx: ctx,
-		commentId: commentId,
+		ctx:        ctx,
+		commentId:  commentId,
 	}
 }
 
 // Execute executes the request
-//  @return map[string]interface{}
+//
+//	@return map[string]interface{}
 func (a *CommentsAPIService) V2CommentsCommentIdDeleteExecute(r ApiV2CommentsCommentIdDeleteRequest) (map[string]interface{}, *http.Response, error) {
 	var (
-		localVarHTTPMethod   = http.MethodDelete
-		localVarPostBody     interface{}
-		formFiles            []formFile
-		localVarReturnValue  map[string]interface{}
+		localVarHTTPMethod  = http.MethodDelete
+		localVarPostBody    interface{}
+		formFiles           []formFile
+		localVarReturnValue map[string]interface{}
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "CommentsAPIService.V2CommentsCommentIdDelete")
@@ -121,8 +121,8 @@ func (a *CommentsAPIService) V2CommentsCommentIdDeleteExecute(r ApiV2CommentsCom
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 		}
 		return localVarReturnValue, localVarHTTPResponse, newErr
 	}
@@ -140,9 +140,9 @@ func (a *CommentsAPIService) V2CommentsCommentIdDeleteExecute(r ApiV2CommentsCom
 }
 
 type ApiV2CommentsCommentIdGetRequest struct {
-	ctx context.Context
+	ctx        context.Context
 	ApiService *CommentsAPIService
-	commentId string
+	commentId  string
 }
 
 func (r ApiV2CommentsCommentIdGetRequest) Execute() (*V2CommentsPost200Response, *http.Response, error) {
@@ -160,26 +160,27 @@ To view comments on list entries, you will need the `list_configuration:read` an
 
 Required scopes: `comment:read`.
 
- @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @param commentId
- @return ApiV2CommentsCommentIdGetRequest
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@param commentId
+	@return ApiV2CommentsCommentIdGetRequest
 */
 func (a *CommentsAPIService) V2CommentsCommentIdGet(ctx context.Context, commentId string) ApiV2CommentsCommentIdGetRequest {
 	return ApiV2CommentsCommentIdGetRequest{
 		ApiService: a,
-		ctx: ctx,
-		commentId: commentId,
+		ctx:        ctx,
+		commentId:  commentId,
 	}
 }
 
 // Execute executes the request
-//  @return V2CommentsPost200Response
+//
+//	@return V2CommentsPost200Response
 func (a *CommentsAPIService) V2CommentsCommentIdGetExecute(r ApiV2CommentsCommentIdGetRequest) (*V2CommentsPost200Response, *http.Response, error) {
 	var (
-		localVarHTTPMethod   = http.MethodGet
-		localVarPostBody     interface{}
-		formFiles            []formFile
-		localVarReturnValue  *V2CommentsPost200Response
+		localVarHTTPMethod  = http.MethodGet
+		localVarPostBody    interface{}
+		formFiles           []formFile
+		localVarReturnValue *V2CommentsPost200Response
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "CommentsAPIService.V2CommentsCommentIdGet")
@@ -240,8 +241,8 @@ func (a *CommentsAPIService) V2CommentsCommentIdGetExecute(r ApiV2CommentsCommen
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 		}
 		return localVarReturnValue, localVarHTTPResponse, newErr
 	}
@@ -259,8 +260,8 @@ func (a *CommentsAPIService) V2CommentsCommentIdGetExecute(r ApiV2CommentsCommen
 }
 
 type ApiV2CommentsPostRequest struct {
-	ctx context.Context
-	ApiService *CommentsAPIService
+	ctx                   context.Context
+	ApiService            *CommentsAPIService
 	v2CommentsPostRequest *V2CommentsPostRequest
 }
 
@@ -284,24 +285,25 @@ To create comments on list entries, you will need the `list_configuration:read` 
 
 Required scopes: `comment:read-write`.
 
- @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @return ApiV2CommentsPostRequest
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@return ApiV2CommentsPostRequest
 */
 func (a *CommentsAPIService) V2CommentsPost(ctx context.Context) ApiV2CommentsPostRequest {
 	return ApiV2CommentsPostRequest{
 		ApiService: a,
-		ctx: ctx,
+		ctx:        ctx,
 	}
 }
 
 // Execute executes the request
-//  @return V2CommentsPost200Response
+//
+//	@return V2CommentsPost200Response
 func (a *CommentsAPIService) V2CommentsPostExecute(r ApiV2CommentsPostRequest) (*V2CommentsPost200Response, *http.Response, error) {
 	var (
-		localVarHTTPMethod   = http.MethodPost
-		localVarPostBody     interface{}
-		formFiles            []formFile
-		localVarReturnValue  *V2CommentsPost200Response
+		localVarHTTPMethod  = http.MethodPost
+		localVarPostBody    interface{}
+		formFiles           []formFile
+		localVarReturnValue *V2CommentsPost200Response
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "CommentsAPIService.V2CommentsPost")
@@ -366,8 +368,8 @@ func (a *CommentsAPIService) V2CommentsPostExecute(r ApiV2CommentsPostRequest) (
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 		}
 		return localVarReturnValue, localVarHTTPResponse, newErr
 	}

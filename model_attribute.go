@@ -12,8 +12,8 @@ Contact: support@attio.com
 package libattio
 
 import (
-	"encoding/json"
 	"bytes"
+	"encoding/json"
 	"fmt"
 )
 
@@ -44,12 +44,12 @@ type Attribute struct {
 	// Whether this attribute has a default value enabled. Must be `true` when `is_required` is `true`.
 	IsDefaultValueEnabled bool `json:"is_default_value_enabled"`
 	// Whether this attribute has been archived. Archived attributes are hidden from most UI, but can be restored either over the API or in workspace settings. See the [guide on archiving and deleting](/docs/archiving-vs-deleting)for more information.
-	IsArchived bool `json:"is_archived"`
+	IsArchived   bool                          `json:"is_archived"`
 	DefaultValue NullableAttributeDefaultValue `json:"default_value"`
-	Relationship AttributeRelationship `json:"relationship"`
+	Relationship AttributeRelationship         `json:"relationship"`
 	// When this attribute was created.
-	CreatedAt string `json:"created_at"`
-	Config AttributeConfig `json:"config"`
+	CreatedAt string          `json:"created_at"`
+	Config    AttributeConfig `json:"config"`
 }
 
 type _Attribute Attribute
@@ -111,7 +111,6 @@ func (o *Attribute) SetId(v AttributeId) {
 	o.Id = v
 }
 
-
 // GetTitle returns the Title field value
 func (o *Attribute) GetTitle() string {
 	if o == nil {
@@ -135,7 +134,6 @@ func (o *Attribute) GetTitleOk() (*string, bool) {
 func (o *Attribute) SetTitle(v string) {
 	o.Title = v
 }
-
 
 // GetDescription returns the Description field value
 // If the value is explicit nil, the zero value for string will be returned
@@ -163,7 +161,6 @@ func (o *Attribute) SetDescription(v string) {
 	o.Description.Set(&v)
 }
 
-
 // GetApiSlug returns the ApiSlug field value
 func (o *Attribute) GetApiSlug() string {
 	if o == nil {
@@ -187,7 +184,6 @@ func (o *Attribute) GetApiSlugOk() (*string, bool) {
 func (o *Attribute) SetApiSlug(v string) {
 	o.ApiSlug = v
 }
-
 
 // GetType returns the Type field value
 func (o *Attribute) GetType() string {
@@ -213,7 +209,6 @@ func (o *Attribute) SetType(v string) {
 	o.Type = v
 }
 
-
 // GetIsSystemAttribute returns the IsSystemAttribute field value
 func (o *Attribute) GetIsSystemAttribute() bool {
 	if o == nil {
@@ -237,7 +232,6 @@ func (o *Attribute) GetIsSystemAttributeOk() (*bool, bool) {
 func (o *Attribute) SetIsSystemAttribute(v bool) {
 	o.IsSystemAttribute = v
 }
-
 
 // GetIsWritable returns the IsWritable field value
 func (o *Attribute) GetIsWritable() bool {
@@ -263,7 +257,6 @@ func (o *Attribute) SetIsWritable(v bool) {
 	o.IsWritable = v
 }
 
-
 // GetIsRequired returns the IsRequired field value
 func (o *Attribute) GetIsRequired() bool {
 	if o == nil {
@@ -287,7 +280,6 @@ func (o *Attribute) GetIsRequiredOk() (*bool, bool) {
 func (o *Attribute) SetIsRequired(v bool) {
 	o.IsRequired = v
 }
-
 
 // GetIsUnique returns the IsUnique field value
 func (o *Attribute) GetIsUnique() bool {
@@ -313,7 +305,6 @@ func (o *Attribute) SetIsUnique(v bool) {
 	o.IsUnique = v
 }
 
-
 // GetIsMultiselect returns the IsMultiselect field value
 func (o *Attribute) GetIsMultiselect() bool {
 	if o == nil {
@@ -337,7 +328,6 @@ func (o *Attribute) GetIsMultiselectOk() (*bool, bool) {
 func (o *Attribute) SetIsMultiselect(v bool) {
 	o.IsMultiselect = v
 }
-
 
 // GetIsDefaultValueEnabled returns the IsDefaultValueEnabled field value
 func (o *Attribute) GetIsDefaultValueEnabled() bool {
@@ -363,7 +353,6 @@ func (o *Attribute) SetIsDefaultValueEnabled(v bool) {
 	o.IsDefaultValueEnabled = v
 }
 
-
 // GetIsArchived returns the IsArchived field value
 func (o *Attribute) GetIsArchived() bool {
 	if o == nil {
@@ -387,7 +376,6 @@ func (o *Attribute) GetIsArchivedOk() (*bool, bool) {
 func (o *Attribute) SetIsArchived(v bool) {
 	o.IsArchived = v
 }
-
 
 // GetDefaultValue returns the DefaultValue field value
 // If the value is explicit nil, the zero value for AttributeDefaultValue will be returned
@@ -415,7 +403,6 @@ func (o *Attribute) SetDefaultValue(v AttributeDefaultValue) {
 	o.DefaultValue.Set(&v)
 }
 
-
 // GetRelationship returns the Relationship field value
 func (o *Attribute) GetRelationship() AttributeRelationship {
 	if o == nil {
@@ -439,7 +426,6 @@ func (o *Attribute) GetRelationshipOk() (*AttributeRelationship, bool) {
 func (o *Attribute) SetRelationship(v AttributeRelationship) {
 	o.Relationship = v
 }
-
 
 // GetCreatedAt returns the CreatedAt field value
 func (o *Attribute) GetCreatedAt() string {
@@ -465,7 +451,6 @@ func (o *Attribute) SetCreatedAt(v string) {
 	o.CreatedAt = v
 }
 
-
 // GetConfig returns the Config field value
 func (o *Attribute) GetConfig() AttributeConfig {
 	if o == nil {
@@ -490,9 +475,8 @@ func (o *Attribute) SetConfig(v AttributeConfig) {
 	o.Config = v
 }
 
-
 func (o Attribute) MarshalJSON() ([]byte, error) {
-	toSerialize,err := o.ToMap()
+	toSerialize, err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
 	}
@@ -545,32 +529,31 @@ func (o *Attribute) UnmarshalJSON(data []byte) (err error) {
 
 	// defaultValueFuncMap captures the default values for required properties.
 	// These values are used when required properties are missing from the payload.
-	defaultValueFuncMap := map[string]func() interface{} {
-	}
+	defaultValueFuncMap := map[string]func() interface{}{}
 	var defaultValueApplied bool
 	allProperties := make(map[string]interface{})
 
 	err = json.Unmarshal(data, &allProperties)
 
 	if err != nil {
-		return err;
+		return err
 	}
 
-	for _, requiredProperty := range(requiredProperties) {
+	for _, requiredProperty := range requiredProperties {
 		if value, exists := allProperties[requiredProperty]; !exists || value == "" {
 			if _, ok := defaultValueFuncMap[requiredProperty]; ok {
 				allProperties[requiredProperty] = defaultValueFuncMap[requiredProperty]()
 				defaultValueApplied = true
 			}
 		}
-		if value, exists := allProperties[requiredProperty]; !exists || value == ""{
+		if value, exists := allProperties[requiredProperty]; !exists || value == "" {
 			return fmt.Errorf("no value given for required property %v", requiredProperty)
 		}
 	}
 
 	if defaultValueApplied {
 		data, err = json.Marshal(allProperties)
-		if err != nil{
+		if err != nil {
 			return err
 		}
 	}
@@ -624,5 +607,3 @@ func (v *NullableAttribute) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
-
-

@@ -11,10 +11,10 @@ package libattio
 
 import (
 	"context"
+	libattio "github.com/fastah/libattio"
 	"github.com/stretchr/testify/assert"
 	"github.com/stretchr/testify/require"
 	"testing"
-	libattio "github.com/fastah/libattio"
 )
 
 func Test_libattio_WebhooksAPIService(t *testing.T) {
@@ -24,7 +24,7 @@ func Test_libattio_WebhooksAPIService(t *testing.T) {
 
 	t.Run("Test WebhooksAPIService V2WebhooksGet", func(t *testing.T) {
 
-		t.Skip("skip test")  // remove to run test
+		t.Skip("skip test") // remove to run test
 
 		resp, httpRes, err := apiClient.WebhooksAPI.V2WebhooksGet(context.Background()).Execute()
 
@@ -36,7 +36,7 @@ func Test_libattio_WebhooksAPIService(t *testing.T) {
 
 	t.Run("Test WebhooksAPIService V2WebhooksPost", func(t *testing.T) {
 
-		t.Skip("skip test")  // remove to run test
+		t.Skip("skip test") // remove to run test
 
 		resp, httpRes, err := apiClient.WebhooksAPI.V2WebhooksPost(context.Background()).Execute()
 
@@ -48,7 +48,7 @@ func Test_libattio_WebhooksAPIService(t *testing.T) {
 
 	t.Run("Test WebhooksAPIService V2WebhooksWebhookIdDelete", func(t *testing.T) {
 
-		t.Skip("skip test")  // remove to run test
+		t.Skip("skip test") // remove to run test
 
 		var webhookId string
 
@@ -62,7 +62,7 @@ func Test_libattio_WebhooksAPIService(t *testing.T) {
 
 	t.Run("Test WebhooksAPIService V2WebhooksWebhookIdGet", func(t *testing.T) {
 
-		t.Skip("skip test")  // remove to run test
+		t.Skip("skip test") // remove to run test
 
 		var webhookId string
 
@@ -76,7 +76,7 @@ func Test_libattio_WebhooksAPIService(t *testing.T) {
 
 	t.Run("Test WebhooksAPIService V2WebhooksWebhookIdPatch", func(t *testing.T) {
 
-		t.Skip("skip test")  // remove to run test
+		t.Skip("skip test") // remove to run test
 
 		var webhookId string
 

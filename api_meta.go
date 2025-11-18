@@ -19,12 +19,11 @@ import (
 	"net/url"
 )
 
-
 // MetaAPIService MetaAPI service
 type MetaAPIService service
 
 type ApiV2SelfGetRequest struct {
-	ctx context.Context
+	ctx        context.Context
 	ApiService *MetaAPIService
 }
 
@@ -37,24 +36,25 @@ V2SelfGet Identify
 
 Identify the current access token, the workspace it is linked to, and any permissions it has.
 
- @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @return ApiV2SelfGetRequest
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@return ApiV2SelfGetRequest
 */
 func (a *MetaAPIService) V2SelfGet(ctx context.Context) ApiV2SelfGetRequest {
 	return ApiV2SelfGetRequest{
 		ApiService: a,
-		ctx: ctx,
+		ctx:        ctx,
 	}
 }
 
 // Execute executes the request
-//  @return V2SelfGet200Response
+//
+//	@return V2SelfGet200Response
 func (a *MetaAPIService) V2SelfGetExecute(r ApiV2SelfGetRequest) (*V2SelfGet200Response, *http.Response, error) {
 	var (
-		localVarHTTPMethod   = http.MethodGet
-		localVarPostBody     interface{}
-		formFiles            []formFile
-		localVarReturnValue  *V2SelfGet200Response
+		localVarHTTPMethod  = http.MethodGet
+		localVarPostBody    interface{}
+		formFiles           []formFile
+		localVarReturnValue *V2SelfGet200Response
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "MetaAPIService.V2SelfGet")

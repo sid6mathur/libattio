@@ -16,10 +16,9 @@ import (
 	"fmt"
 )
 
-
 // V2TasksPostRequestDataAssigneesInner struct for V2TasksPostRequestDataAssigneesInner
 type V2TasksPostRequestDataAssigneesInner struct {
-	V2TasksPostRequestDataAssigneesInnerAnyOf *V2TasksPostRequestDataAssigneesInnerAnyOf
+	V2TasksPostRequestDataAssigneesInnerAnyOf  *V2TasksPostRequestDataAssigneesInnerAnyOf
 	V2TasksPostRequestDataAssigneesInnerAnyOf1 *V2TasksPostRequestDataAssigneesInnerAnyOf1
 }
 
@@ -27,7 +26,7 @@ type V2TasksPostRequestDataAssigneesInner struct {
 func (dst *V2TasksPostRequestDataAssigneesInner) UnmarshalJSON(data []byte) error {
 	var err error
 	// try to unmarshal JSON data into V2TasksPostRequestDataAssigneesInnerAnyOf
-	err = json.Unmarshal(data, &dst.V2TasksPostRequestDataAssigneesInnerAnyOf);
+	err = json.Unmarshal(data, &dst.V2TasksPostRequestDataAssigneesInnerAnyOf)
 	if err == nil {
 		jsonV2TasksPostRequestDataAssigneesInnerAnyOf, _ := json.Marshal(dst.V2TasksPostRequestDataAssigneesInnerAnyOf)
 		if string(jsonV2TasksPostRequestDataAssigneesInnerAnyOf) == "{}" { // empty struct
@@ -40,7 +39,7 @@ func (dst *V2TasksPostRequestDataAssigneesInner) UnmarshalJSON(data []byte) erro
 	}
 
 	// try to unmarshal JSON data into V2TasksPostRequestDataAssigneesInnerAnyOf1
-	err = json.Unmarshal(data, &dst.V2TasksPostRequestDataAssigneesInnerAnyOf1);
+	err = json.Unmarshal(data, &dst.V2TasksPostRequestDataAssigneesInnerAnyOf1)
 	if err == nil {
 		jsonV2TasksPostRequestDataAssigneesInnerAnyOf1, _ := json.Marshal(dst.V2TasksPostRequestDataAssigneesInnerAnyOf1)
 		if string(jsonV2TasksPostRequestDataAssigneesInnerAnyOf1) == "{}" { // empty struct
@@ -67,7 +66,6 @@ func (src V2TasksPostRequestDataAssigneesInner) MarshalJSON() ([]byte, error) {
 
 	return nil, nil // no data in anyOf schemas
 }
-
 
 type NullableV2TasksPostRequestDataAssigneesInner struct {
 	value *V2TasksPostRequestDataAssigneesInner
@@ -104,5 +102,3 @@ func (v *NullableV2TasksPostRequestDataAssigneesInner) UnmarshalJSON(src []byte)
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
-
-

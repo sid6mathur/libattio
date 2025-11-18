@@ -11,10 +11,10 @@ package libattio
 
 import (
 	"context"
+	libattio "github.com/fastah/libattio"
 	"github.com/stretchr/testify/assert"
 	"github.com/stretchr/testify/require"
 	"testing"
-	libattio "github.com/fastah/libattio"
 )
 
 func Test_libattio_EntriesAPIService(t *testing.T) {
@@ -24,7 +24,7 @@ func Test_libattio_EntriesAPIService(t *testing.T) {
 
 	t.Run("Test EntriesAPIService V2ListsListEntriesEntryIdAttributesAttributeValuesGet", func(t *testing.T) {
 
-		t.Skip("skip test")  // remove to run test
+		t.Skip("skip test") // remove to run test
 
 		var list string
 		var entryId string
@@ -40,7 +40,7 @@ func Test_libattio_EntriesAPIService(t *testing.T) {
 
 	t.Run("Test EntriesAPIService V2ListsListEntriesEntryIdDelete", func(t *testing.T) {
 
-		t.Skip("skip test")  // remove to run test
+		t.Skip("skip test") // remove to run test
 
 		var list string
 		var entryId string
@@ -55,7 +55,7 @@ func Test_libattio_EntriesAPIService(t *testing.T) {
 
 	t.Run("Test EntriesAPIService V2ListsListEntriesEntryIdGet", func(t *testing.T) {
 
-		t.Skip("skip test")  // remove to run test
+		t.Skip("skip test") // remove to run test
 
 		var list string
 		var entryId string
@@ -70,7 +70,7 @@ func Test_libattio_EntriesAPIService(t *testing.T) {
 
 	t.Run("Test EntriesAPIService V2ListsListEntriesEntryIdPatch", func(t *testing.T) {
 
-		t.Skip("skip test")  // remove to run test
+		t.Skip("skip test") // remove to run test
 
 		var list string
 		var entryId string
@@ -85,7 +85,7 @@ func Test_libattio_EntriesAPIService(t *testing.T) {
 
 	t.Run("Test EntriesAPIService V2ListsListEntriesEntryIdPut", func(t *testing.T) {
 
-		t.Skip("skip test")  // remove to run test
+		t.Skip("skip test") // remove to run test
 
 		var list string
 		var entryId string
@@ -100,7 +100,7 @@ func Test_libattio_EntriesAPIService(t *testing.T) {
 
 	t.Run("Test EntriesAPIService V2ListsListEntriesPost", func(t *testing.T) {
 
-		t.Skip("skip test")  // remove to run test
+		t.Skip("skip test") // remove to run test
 
 		var list string
 
@@ -114,7 +114,7 @@ func Test_libattio_EntriesAPIService(t *testing.T) {
 
 	t.Run("Test EntriesAPIService V2ListsListEntriesPut", func(t *testing.T) {
 
-		t.Skip("skip test")  // remove to run test
+		t.Skip("skip test") // remove to run test
 
 		var list string
 
@@ -128,7 +128,7 @@ func Test_libattio_EntriesAPIService(t *testing.T) {
 
 	t.Run("Test EntriesAPIService V2ListsListEntriesQueryPost", func(t *testing.T) {
 
-		t.Skip("skip test")  // remove to run test
+		t.Skip("skip test") // remove to run test
 
 		var list string
 

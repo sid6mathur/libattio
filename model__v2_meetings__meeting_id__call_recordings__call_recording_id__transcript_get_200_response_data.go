@@ -12,8 +12,8 @@ Contact: support@attio.com
 package libattio
 
 import (
-	"encoding/json"
 	"bytes"
+	"encoding/json"
 	"fmt"
 )
 
@@ -25,6 +25,10 @@ type V2MeetingsMeetingIdCallRecordingsCallRecordingIdTranscriptGet200ResponseDat
 	Id V2MeetingsMeetingIdCallRecordingsCallRecordingIdTranscriptGet200ResponseDataId `json:"id"`
 	// The transcript segments with speech, timing, and speaker information.
 	Transcript []V2MeetingsMeetingIdCallRecordingsCallRecordingIdTranscriptGet200ResponseDataTranscriptInner `json:"transcript"`
+	// The raw transcript of the call recording.
+	RawTranscript string `json:"raw_transcript"`
+	// A URL that links directly to the call recording transcript in the Attio web application.
+	WebUrl string `json:"web_url"`
 }
 
 type _V2MeetingsMeetingIdCallRecordingsCallRecordingIdTranscriptGet200ResponseData V2MeetingsMeetingIdCallRecordingsCallRecordingIdTranscriptGet200ResponseData
@@ -33,10 +37,12 @@ type _V2MeetingsMeetingIdCallRecordingsCallRecordingIdTranscriptGet200ResponseDa
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewV2MeetingsMeetingIdCallRecordingsCallRecordingIdTranscriptGet200ResponseData(id V2MeetingsMeetingIdCallRecordingsCallRecordingIdTranscriptGet200ResponseDataId, transcript []V2MeetingsMeetingIdCallRecordingsCallRecordingIdTranscriptGet200ResponseDataTranscriptInner) *V2MeetingsMeetingIdCallRecordingsCallRecordingIdTranscriptGet200ResponseData {
+func NewV2MeetingsMeetingIdCallRecordingsCallRecordingIdTranscriptGet200ResponseData(id V2MeetingsMeetingIdCallRecordingsCallRecordingIdTranscriptGet200ResponseDataId, transcript []V2MeetingsMeetingIdCallRecordingsCallRecordingIdTranscriptGet200ResponseDataTranscriptInner, rawTranscript string, webUrl string) *V2MeetingsMeetingIdCallRecordingsCallRecordingIdTranscriptGet200ResponseData {
 	this := V2MeetingsMeetingIdCallRecordingsCallRecordingIdTranscriptGet200ResponseData{}
 	this.Id = id
 	this.Transcript = transcript
+	this.RawTranscript = rawTranscript
+	this.WebUrl = webUrl
 	return &this
 }
 
@@ -72,7 +78,6 @@ func (o *V2MeetingsMeetingIdCallRecordingsCallRecordingIdTranscriptGet200Respons
 	o.Id = v
 }
 
-
 // GetTranscript returns the Transcript field value
 func (o *V2MeetingsMeetingIdCallRecordingsCallRecordingIdTranscriptGet200ResponseData) GetTranscript() []V2MeetingsMeetingIdCallRecordingsCallRecordingIdTranscriptGet200ResponseDataTranscriptInner {
 	if o == nil {
@@ -97,9 +102,56 @@ func (o *V2MeetingsMeetingIdCallRecordingsCallRecordingIdTranscriptGet200Respons
 	o.Transcript = v
 }
 
+// GetRawTranscript returns the RawTranscript field value
+func (o *V2MeetingsMeetingIdCallRecordingsCallRecordingIdTranscriptGet200ResponseData) GetRawTranscript() string {
+	if o == nil {
+		var ret string
+		return ret
+	}
+
+	return o.RawTranscript
+}
+
+// GetRawTranscriptOk returns a tuple with the RawTranscript field value
+// and a boolean to check if the value has been set.
+func (o *V2MeetingsMeetingIdCallRecordingsCallRecordingIdTranscriptGet200ResponseData) GetRawTranscriptOk() (*string, bool) {
+	if o == nil {
+		return nil, false
+	}
+	return &o.RawTranscript, true
+}
+
+// SetRawTranscript sets field value
+func (o *V2MeetingsMeetingIdCallRecordingsCallRecordingIdTranscriptGet200ResponseData) SetRawTranscript(v string) {
+	o.RawTranscript = v
+}
+
+// GetWebUrl returns the WebUrl field value
+func (o *V2MeetingsMeetingIdCallRecordingsCallRecordingIdTranscriptGet200ResponseData) GetWebUrl() string {
+	if o == nil {
+		var ret string
+		return ret
+	}
+
+	return o.WebUrl
+}
+
+// GetWebUrlOk returns a tuple with the WebUrl field value
+// and a boolean to check if the value has been set.
+func (o *V2MeetingsMeetingIdCallRecordingsCallRecordingIdTranscriptGet200ResponseData) GetWebUrlOk() (*string, bool) {
+	if o == nil {
+		return nil, false
+	}
+	return &o.WebUrl, true
+}
+
+// SetWebUrl sets field value
+func (o *V2MeetingsMeetingIdCallRecordingsCallRecordingIdTranscriptGet200ResponseData) SetWebUrl(v string) {
+	o.WebUrl = v
+}
 
 func (o V2MeetingsMeetingIdCallRecordingsCallRecordingIdTranscriptGet200ResponseData) MarshalJSON() ([]byte, error) {
-	toSerialize,err := o.ToMap()
+	toSerialize, err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
 	}
@@ -110,6 +162,8 @@ func (o V2MeetingsMeetingIdCallRecordingsCallRecordingIdTranscriptGet200Response
 	toSerialize := map[string]interface{}{}
 	toSerialize["id"] = o.Id
 	toSerialize["transcript"] = o.Transcript
+	toSerialize["raw_transcript"] = o.RawTranscript
+	toSerialize["web_url"] = o.WebUrl
 	return toSerialize, nil
 }
 
@@ -120,36 +174,37 @@ func (o *V2MeetingsMeetingIdCallRecordingsCallRecordingIdTranscriptGet200Respons
 	requiredProperties := []string{
 		"id",
 		"transcript",
+		"raw_transcript",
+		"web_url",
 	}
 
 	// defaultValueFuncMap captures the default values for required properties.
 	// These values are used when required properties are missing from the payload.
-	defaultValueFuncMap := map[string]func() interface{} {
-	}
+	defaultValueFuncMap := map[string]func() interface{}{}
 	var defaultValueApplied bool
 	allProperties := make(map[string]interface{})
 
 	err = json.Unmarshal(data, &allProperties)
 
 	if err != nil {
-		return err;
+		return err
 	}
 
-	for _, requiredProperty := range(requiredProperties) {
+	for _, requiredProperty := range requiredProperties {
 		if value, exists := allProperties[requiredProperty]; !exists || value == "" {
 			if _, ok := defaultValueFuncMap[requiredProperty]; ok {
 				allProperties[requiredProperty] = defaultValueFuncMap[requiredProperty]()
 				defaultValueApplied = true
 			}
 		}
-		if value, exists := allProperties[requiredProperty]; !exists || value == ""{
+		if value, exists := allProperties[requiredProperty]; !exists || value == "" {
 			return fmt.Errorf("no value given for required property %v", requiredProperty)
 		}
 	}
 
 	if defaultValueApplied {
 		data, err = json.Marshal(allProperties)
-		if err != nil{
+		if err != nil {
 			return err
 		}
 	}
@@ -203,5 +258,3 @@ func (v *NullableV2MeetingsMeetingIdCallRecordingsCallRecordingIdTranscriptGet20
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
-
-

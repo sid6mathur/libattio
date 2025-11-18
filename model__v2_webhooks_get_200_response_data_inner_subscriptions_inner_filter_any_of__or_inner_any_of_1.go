@@ -12,8 +12,8 @@ Contact: support@attio.com
 package libattio
 
 import (
-	"encoding/json"
 	"bytes"
+	"encoding/json"
 	"fmt"
 )
 
@@ -22,9 +22,9 @@ var _ MappedNullable = &V2WebhooksGet200ResponseDataInnerSubscriptionsInnerFilte
 
 // V2WebhooksGet200ResponseDataInnerSubscriptionsInnerFilterAnyOfOrInnerAnyOf1 struct for V2WebhooksGet200ResponseDataInnerSubscriptionsInnerFilterAnyOfOrInnerAnyOf1
 type V2WebhooksGet200ResponseDataInnerSubscriptionsInnerFilterAnyOfOrInnerAnyOf1 struct {
-	Field string `json:"field"`
+	Field    string `json:"field"`
 	Operator string `json:"operator"`
-	Value string `json:"value"`
+	Value    string `json:"value"`
 }
 
 type _V2WebhooksGet200ResponseDataInnerSubscriptionsInnerFilterAnyOfOrInnerAnyOf1 V2WebhooksGet200ResponseDataInnerSubscriptionsInnerFilterAnyOfOrInnerAnyOf1
@@ -73,7 +73,6 @@ func (o *V2WebhooksGet200ResponseDataInnerSubscriptionsInnerFilterAnyOfOrInnerAn
 	o.Field = v
 }
 
-
 // GetOperator returns the Operator field value
 func (o *V2WebhooksGet200ResponseDataInnerSubscriptionsInnerFilterAnyOfOrInnerAnyOf1) GetOperator() string {
 	if o == nil {
@@ -97,7 +96,6 @@ func (o *V2WebhooksGet200ResponseDataInnerSubscriptionsInnerFilterAnyOfOrInnerAn
 func (o *V2WebhooksGet200ResponseDataInnerSubscriptionsInnerFilterAnyOfOrInnerAnyOf1) SetOperator(v string) {
 	o.Operator = v
 }
-
 
 // GetValue returns the Value field value
 func (o *V2WebhooksGet200ResponseDataInnerSubscriptionsInnerFilterAnyOfOrInnerAnyOf1) GetValue() string {
@@ -123,9 +121,8 @@ func (o *V2WebhooksGet200ResponseDataInnerSubscriptionsInnerFilterAnyOfOrInnerAn
 	o.Value = v
 }
 
-
 func (o V2WebhooksGet200ResponseDataInnerSubscriptionsInnerFilterAnyOfOrInnerAnyOf1) MarshalJSON() ([]byte, error) {
-	toSerialize,err := o.ToMap()
+	toSerialize, err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
 	}
@@ -152,32 +149,31 @@ func (o *V2WebhooksGet200ResponseDataInnerSubscriptionsInnerFilterAnyOfOrInnerAn
 
 	// defaultValueFuncMap captures the default values for required properties.
 	// These values are used when required properties are missing from the payload.
-	defaultValueFuncMap := map[string]func() interface{} {
-	}
+	defaultValueFuncMap := map[string]func() interface{}{}
 	var defaultValueApplied bool
 	allProperties := make(map[string]interface{})
 
 	err = json.Unmarshal(data, &allProperties)
 
 	if err != nil {
-		return err;
+		return err
 	}
 
-	for _, requiredProperty := range(requiredProperties) {
+	for _, requiredProperty := range requiredProperties {
 		if value, exists := allProperties[requiredProperty]; !exists || value == "" {
 			if _, ok := defaultValueFuncMap[requiredProperty]; ok {
 				allProperties[requiredProperty] = defaultValueFuncMap[requiredProperty]()
 				defaultValueApplied = true
 			}
 		}
-		if value, exists := allProperties[requiredProperty]; !exists || value == ""{
+		if value, exists := allProperties[requiredProperty]; !exists || value == "" {
 			return fmt.Errorf("no value given for required property %v", requiredProperty)
 		}
 	}
 
 	if defaultValueApplied {
 		data, err = json.Marshal(allProperties)
-		if err != nil{
+		if err != nil {
 			return err
 		}
 	}
@@ -231,5 +227,3 @@ func (v *NullableV2WebhooksGet200ResponseDataInnerSubscriptionsInnerFilterAnyOfO
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
-
-

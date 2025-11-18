@@ -142,7 +142,7 @@ func (o *V2ObjectsObjectPatchRequestData) SetPluralNoun(v string) {
 }
 
 func (o V2ObjectsObjectPatchRequestData) MarshalJSON() ([]byte, error) {
-	toSerialize,err := o.ToMap()
+	toSerialize, err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
 	}
@@ -198,5 +198,3 @@ func (v *NullableV2ObjectsObjectPatchRequestData) UnmarshalJSON(src []byte) erro
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
-
-

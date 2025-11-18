@@ -12,8 +12,8 @@ Contact: support@attio.com
 package libattio
 
 import (
-	"encoding/json"
 	"bytes"
+	"encoding/json"
 	"fmt"
 )
 
@@ -22,7 +22,7 @@ var _ MappedNullable = &V2TasksPostRequestData{}
 
 // V2TasksPostRequestData struct for V2TasksPostRequestData
 type V2TasksPostRequestData struct {
-	// The text content of the task, in the format specified by the `format` property.
+	// The text content of the task, in the format specified by the `format` property. A max length of 2000 characters is enforced.
 	Content string `json:"content"`
 	// The format of the task content to be created. Rich text formatting, links and @references are not supported.
 	Format string `json:"format"`
@@ -85,7 +85,6 @@ func (o *V2TasksPostRequestData) SetContent(v string) {
 	o.Content = v
 }
 
-
 // GetFormat returns the Format field value
 func (o *V2TasksPostRequestData) GetFormat() string {
 	if o == nil {
@@ -109,7 +108,6 @@ func (o *V2TasksPostRequestData) GetFormatOk() (*string, bool) {
 func (o *V2TasksPostRequestData) SetFormat(v string) {
 	o.Format = v
 }
-
 
 // GetDeadlineAt returns the DeadlineAt field value
 // If the value is explicit nil, the zero value for string will be returned
@@ -137,7 +135,6 @@ func (o *V2TasksPostRequestData) SetDeadlineAt(v string) {
 	o.DeadlineAt.Set(&v)
 }
 
-
 // GetIsCompleted returns the IsCompleted field value
 func (o *V2TasksPostRequestData) GetIsCompleted() bool {
 	if o == nil {
@@ -161,7 +158,6 @@ func (o *V2TasksPostRequestData) GetIsCompletedOk() (*bool, bool) {
 func (o *V2TasksPostRequestData) SetIsCompleted(v bool) {
 	o.IsCompleted = v
 }
-
 
 // GetLinkedRecords returns the LinkedRecords field value
 func (o *V2TasksPostRequestData) GetLinkedRecords() []V2TasksPostRequestDataLinkedRecordsInner {
@@ -187,7 +183,6 @@ func (o *V2TasksPostRequestData) SetLinkedRecords(v []V2TasksPostRequestDataLink
 	o.LinkedRecords = v
 }
 
-
 // GetAssignees returns the Assignees field value
 func (o *V2TasksPostRequestData) GetAssignees() []V2TasksPostRequestDataAssigneesInner {
 	if o == nil {
@@ -212,9 +207,8 @@ func (o *V2TasksPostRequestData) SetAssignees(v []V2TasksPostRequestDataAssignee
 	o.Assignees = v
 }
 
-
 func (o V2TasksPostRequestData) MarshalJSON() ([]byte, error) {
-	toSerialize,err := o.ToMap()
+	toSerialize, err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
 	}
@@ -247,32 +241,31 @@ func (o *V2TasksPostRequestData) UnmarshalJSON(data []byte) (err error) {
 
 	// defaultValueFuncMap captures the default values for required properties.
 	// These values are used when required properties are missing from the payload.
-	defaultValueFuncMap := map[string]func() interface{} {
-	}
+	defaultValueFuncMap := map[string]func() interface{}{}
 	var defaultValueApplied bool
 	allProperties := make(map[string]interface{})
 
 	err = json.Unmarshal(data, &allProperties)
 
 	if err != nil {
-		return err;
+		return err
 	}
 
-	for _, requiredProperty := range(requiredProperties) {
+	for _, requiredProperty := range requiredProperties {
 		if value, exists := allProperties[requiredProperty]; !exists || value == "" {
 			if _, ok := defaultValueFuncMap[requiredProperty]; ok {
 				allProperties[requiredProperty] = defaultValueFuncMap[requiredProperty]()
 				defaultValueApplied = true
 			}
 		}
-		if value, exists := allProperties[requiredProperty]; !exists || value == ""{
+		if value, exists := allProperties[requiredProperty]; !exists || value == "" {
 			return fmt.Errorf("no value given for required property %v", requiredProperty)
 		}
 	}
 
 	if defaultValueApplied {
 		data, err = json.Marshal(allProperties)
-		if err != nil{
+		if err != nil {
 			return err
 		}
 	}
@@ -326,5 +319,3 @@ func (v *NullableV2TasksPostRequestData) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
-
-

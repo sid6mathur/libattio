@@ -13,7 +13,7 @@ Name | Type | Description | Notes
 **Sub** | **string** | Since Bearer tokens grant Workspace-level permissions, this property contains the workspace_id. | 
 **Aud** | **string** | The intended audience for this token, for Bearer tokens this is the same as the client_id. | 
 **Iss** | **string** | The issuer of the token. Always attio.com | 
-**AuthorizedByWorkspaceMemberId** | **string** | The ID of the workspace member who authorised this token initially, if known | 
+**AuthorizedByWorkspaceMemberId** | **string** | The ID of the workspace member who authorised this token initially. | 
 **WorkspaceId** | **string** | The ID of the workspace the token is scoped to. | 
 **WorkspaceName** | **string** | The name of the workspace the token is scoped to. | 
 **WorkspaceSlug** | **string** | The slug of the workspace the token is scoped to. | 

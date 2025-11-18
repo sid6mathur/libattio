@@ -20,14 +20,13 @@ import (
 	"strings"
 )
 
-
 // RecordsAPIService RecordsAPI service
 type RecordsAPIService service
 
 type ApiV2ObjectsObjectRecordsPostRequest struct {
-	ctx context.Context
-	ApiService *RecordsAPIService
-	object string
+	ctx                               context.Context
+	ApiService                        *RecordsAPIService
+	object                            string
 	v2ObjectsObjectRecordsPostRequest *V2ObjectsObjectRecordsPostRequest
 }
 
@@ -36,7 +35,7 @@ func (r ApiV2ObjectsObjectRecordsPostRequest) V2ObjectsObjectRecordsPostRequest(
 	return r
 }
 
-func (r ApiV2ObjectsObjectRecordsPostRequest) Execute() (*V2ObjectsObjectRecordsPost200Response, *http.Response, error) {
+func (r ApiV2ObjectsObjectRecordsPostRequest) Execute() (*V2ObjectsObjectRecordsPut200Response, *http.Response, error) {
 	return r.ApiService.V2ObjectsObjectRecordsPostExecute(r)
 }
 
@@ -47,26 +46,27 @@ Creates a new person, company or other record. This endpoint will throw on confl
 
 Required scopes: `record_permission:read-write`, `object_configuration:read`.
 
- @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @param object
- @return ApiV2ObjectsObjectRecordsPostRequest
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@param object
+	@return ApiV2ObjectsObjectRecordsPostRequest
 */
 func (a *RecordsAPIService) V2ObjectsObjectRecordsPost(ctx context.Context, object string) ApiV2ObjectsObjectRecordsPostRequest {
 	return ApiV2ObjectsObjectRecordsPostRequest{
 		ApiService: a,
-		ctx: ctx,
-		object: object,
+		ctx:        ctx,
+		object:     object,
 	}
 }
 
 // Execute executes the request
-//  @return V2ObjectsObjectRecordsPost200Response
-func (a *RecordsAPIService) V2ObjectsObjectRecordsPostExecute(r ApiV2ObjectsObjectRecordsPostRequest) (*V2ObjectsObjectRecordsPost200Response, *http.Response, error) {
+//
+//	@return V2ObjectsObjectRecordsPut200Response
+func (a *RecordsAPIService) V2ObjectsObjectRecordsPostExecute(r ApiV2ObjectsObjectRecordsPostRequest) (*V2ObjectsObjectRecordsPut200Response, *http.Response, error) {
 	var (
-		localVarHTTPMethod   = http.MethodPost
-		localVarPostBody     interface{}
-		formFiles            []formFile
-		localVarReturnValue  *V2ObjectsObjectRecordsPost200Response
+		localVarHTTPMethod  = http.MethodPost
+		localVarPostBody    interface{}
+		formFiles           []formFile
+		localVarReturnValue *V2ObjectsObjectRecordsPut200Response
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "RecordsAPIService.V2ObjectsObjectRecordsPost")
@@ -132,8 +132,8 @@ func (a *RecordsAPIService) V2ObjectsObjectRecordsPostExecute(r ApiV2ObjectsObje
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 404 {
@@ -143,8 +143,8 @@ func (a *RecordsAPIService) V2ObjectsObjectRecordsPostExecute(r ApiV2ObjectsObje
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 		}
 		return localVarReturnValue, localVarHTTPResponse, newErr
 	}
@@ -162,10 +162,10 @@ func (a *RecordsAPIService) V2ObjectsObjectRecordsPostExecute(r ApiV2ObjectsObje
 }
 
 type ApiV2ObjectsObjectRecordsPutRequest struct {
-	ctx context.Context
-	ApiService *RecordsAPIService
-	object string
-	matchingAttribute *string
+	ctx                              context.Context
+	ApiService                       *RecordsAPIService
+	object                           string
+	matchingAttribute                *string
 	v2ObjectsObjectRecordsPutRequest *V2ObjectsObjectRecordsPutRequest
 }
 
@@ -192,26 +192,27 @@ If the matching attribute is a multiselect attribute, new values will be added a
 
 Required scopes: `record_permission:read-write`, `object_configuration:read`.
 
- @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @param object
- @return ApiV2ObjectsObjectRecordsPutRequest
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@param object
+	@return ApiV2ObjectsObjectRecordsPutRequest
 */
 func (a *RecordsAPIService) V2ObjectsObjectRecordsPut(ctx context.Context, object string) ApiV2ObjectsObjectRecordsPutRequest {
 	return ApiV2ObjectsObjectRecordsPutRequest{
 		ApiService: a,
-		ctx: ctx,
-		object: object,
+		ctx:        ctx,
+		object:     object,
 	}
 }
 
 // Execute executes the request
-//  @return V2ObjectsObjectRecordsPut200Response
+//
+//	@return V2ObjectsObjectRecordsPut200Response
 func (a *RecordsAPIService) V2ObjectsObjectRecordsPutExecute(r ApiV2ObjectsObjectRecordsPutRequest) (*V2ObjectsObjectRecordsPut200Response, *http.Response, error) {
 	var (
-		localVarHTTPMethod   = http.MethodPut
-		localVarPostBody     interface{}
-		formFiles            []formFile
-		localVarReturnValue  *V2ObjectsObjectRecordsPut200Response
+		localVarHTTPMethod  = http.MethodPut
+		localVarPostBody    interface{}
+		formFiles           []formFile
+		localVarReturnValue *V2ObjectsObjectRecordsPut200Response
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "RecordsAPIService.V2ObjectsObjectRecordsPut")
@@ -281,8 +282,8 @@ func (a *RecordsAPIService) V2ObjectsObjectRecordsPutExecute(r ApiV2ObjectsObjec
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 404 {
@@ -292,8 +293,8 @@ func (a *RecordsAPIService) V2ObjectsObjectRecordsPutExecute(r ApiV2ObjectsObjec
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 		}
 		return localVarReturnValue, localVarHTTPResponse, newErr
 	}
@@ -311,9 +312,9 @@ func (a *RecordsAPIService) V2ObjectsObjectRecordsPutExecute(r ApiV2ObjectsObjec
 }
 
 type ApiV2ObjectsObjectRecordsQueryPostRequest struct {
-	ctx context.Context
-	ApiService *RecordsAPIService
-	object string
+	ctx                                    context.Context
+	ApiService                             *RecordsAPIService
+	object                                 string
 	v2ObjectsObjectRecordsQueryPostRequest *V2ObjectsObjectRecordsQueryPostRequest
 }
 
@@ -333,26 +334,27 @@ Lists people, company or other records, with the option to filter and sort resul
 
 Required scopes: `record_permission:read`, `object_configuration:read`.
 
- @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @param object
- @return ApiV2ObjectsObjectRecordsQueryPostRequest
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@param object
+	@return ApiV2ObjectsObjectRecordsQueryPostRequest
 */
 func (a *RecordsAPIService) V2ObjectsObjectRecordsQueryPost(ctx context.Context, object string) ApiV2ObjectsObjectRecordsQueryPostRequest {
 	return ApiV2ObjectsObjectRecordsQueryPostRequest{
 		ApiService: a,
-		ctx: ctx,
-		object: object,
+		ctx:        ctx,
+		object:     object,
 	}
 }
 
 // Execute executes the request
-//  @return V2ObjectsObjectRecordsQueryPost200Response
+//
+//	@return V2ObjectsObjectRecordsQueryPost200Response
 func (a *RecordsAPIService) V2ObjectsObjectRecordsQueryPostExecute(r ApiV2ObjectsObjectRecordsQueryPostRequest) (*V2ObjectsObjectRecordsQueryPost200Response, *http.Response, error) {
 	var (
-		localVarHTTPMethod   = http.MethodPost
-		localVarPostBody     interface{}
-		formFiles            []formFile
-		localVarReturnValue  *V2ObjectsObjectRecordsQueryPost200Response
+		localVarHTTPMethod  = http.MethodPost
+		localVarPostBody    interface{}
+		formFiles           []formFile
+		localVarReturnValue *V2ObjectsObjectRecordsQueryPost200Response
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "RecordsAPIService.V2ObjectsObjectRecordsQueryPost")
@@ -418,8 +420,8 @@ func (a *RecordsAPIService) V2ObjectsObjectRecordsQueryPostExecute(r ApiV2Object
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 404 {
@@ -429,8 +431,8 @@ func (a *RecordsAPIService) V2ObjectsObjectRecordsQueryPostExecute(r ApiV2Object
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 		}
 		return localVarReturnValue, localVarHTTPResponse, newErr
 	}
@@ -448,14 +450,14 @@ func (a *RecordsAPIService) V2ObjectsObjectRecordsQueryPostExecute(r ApiV2Object
 }
 
 type ApiV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesGetRequest struct {
-	ctx context.Context
-	ApiService *RecordsAPIService
-	object string
-	recordId string
-	attribute string
+	ctx          context.Context
+	ApiService   *RecordsAPIService
+	object       string
+	recordId     string
+	attribute    string
 	showHistoric *bool
-	limit *int32
-	offset *int32
+	limit        *int32
+	offset       *int32
 }
 
 func (r ApiV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesGetRequest) ShowHistoric(showHistoric bool) ApiV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesGetRequest {
@@ -484,30 +486,31 @@ Gets all values for a given attribute on a record. Historic values can be querie
 
 Required scopes: `record_permission:read`, `object_configuration:read`.
 
- @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @param object
- @param recordId
- @param attribute
- @return ApiV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesGetRequest
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@param object
+	@param recordId
+	@param attribute
+	@return ApiV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesGetRequest
 */
 func (a *RecordsAPIService) V2ObjectsObjectRecordsRecordIdAttributesAttributeValuesGet(ctx context.Context, object string, recordId string, attribute string) ApiV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesGetRequest {
 	return ApiV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesGetRequest{
 		ApiService: a,
-		ctx: ctx,
-		object: object,
-		recordId: recordId,
-		attribute: attribute,
+		ctx:        ctx,
+		object:     object,
+		recordId:   recordId,
+		attribute:  attribute,
 	}
 }
 
 // Execute executes the request
-//  @return V2ObjectsObjectRecordsRecordIdAttributesAttributeValuesGet200Response
+//
+//	@return V2ObjectsObjectRecordsRecordIdAttributesAttributeValuesGet200Response
 func (a *RecordsAPIService) V2ObjectsObjectRecordsRecordIdAttributesAttributeValuesGetExecute(r ApiV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesGetRequest) (*V2ObjectsObjectRecordsRecordIdAttributesAttributeValuesGet200Response, *http.Response, error) {
 	var (
-		localVarHTTPMethod   = http.MethodGet
-		localVarPostBody     interface{}
-		formFiles            []formFile
-		localVarReturnValue  *V2ObjectsObjectRecordsRecordIdAttributesAttributeValuesGet200Response
+		localVarHTTPMethod  = http.MethodGet
+		localVarPostBody    interface{}
+		formFiles           []formFile
+		localVarReturnValue *V2ObjectsObjectRecordsRecordIdAttributesAttributeValuesGet200Response
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "RecordsAPIService.V2ObjectsObjectRecordsRecordIdAttributesAttributeValuesGet")
@@ -528,6 +531,7 @@ func (a *RecordsAPIService) V2ObjectsObjectRecordsRecordIdAttributesAttributeVal
 		parameterAddToHeaderOrQuery(localVarQueryParams, "show_historic", r.showHistoric, "form", "")
 	} else {
 		var defaultValue bool = false
+		parameterAddToHeaderOrQuery(localVarQueryParams, "show_historic", defaultValue, "form", "")
 		r.showHistoric = &defaultValue
 	}
 	if r.limit != nil {
@@ -582,8 +586,8 @@ func (a *RecordsAPIService) V2ObjectsObjectRecordsRecordIdAttributesAttributeVal
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 404 {
@@ -593,8 +597,8 @@ func (a *RecordsAPIService) V2ObjectsObjectRecordsRecordIdAttributesAttributeVal
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 		}
 		return localVarReturnValue, localVarHTTPResponse, newErr
 	}
@@ -612,10 +616,10 @@ func (a *RecordsAPIService) V2ObjectsObjectRecordsRecordIdAttributesAttributeVal
 }
 
 type ApiV2ObjectsObjectRecordsRecordIdDeleteRequest struct {
-	ctx context.Context
+	ctx        context.Context
 	ApiService *RecordsAPIService
-	object string
-	recordId string
+	object     string
+	recordId   string
 }
 
 func (r ApiV2ObjectsObjectRecordsRecordIdDeleteRequest) Execute() (map[string]interface{}, *http.Response, error) {
@@ -629,28 +633,29 @@ Deletes a single record (e.g. a company or person) by ID.
 
 Required scopes: `object_configuration:read`, `record_permission:read-write`.
 
- @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @param object
- @param recordId
- @return ApiV2ObjectsObjectRecordsRecordIdDeleteRequest
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@param object
+	@param recordId
+	@return ApiV2ObjectsObjectRecordsRecordIdDeleteRequest
 */
 func (a *RecordsAPIService) V2ObjectsObjectRecordsRecordIdDelete(ctx context.Context, object string, recordId string) ApiV2ObjectsObjectRecordsRecordIdDeleteRequest {
 	return ApiV2ObjectsObjectRecordsRecordIdDeleteRequest{
 		ApiService: a,
-		ctx: ctx,
-		object: object,
-		recordId: recordId,
+		ctx:        ctx,
+		object:     object,
+		recordId:   recordId,
 	}
 }
 
 // Execute executes the request
-//  @return map[string]interface{}
+//
+//	@return map[string]interface{}
 func (a *RecordsAPIService) V2ObjectsObjectRecordsRecordIdDeleteExecute(r ApiV2ObjectsObjectRecordsRecordIdDeleteRequest) (map[string]interface{}, *http.Response, error) {
 	var (
-		localVarHTTPMethod   = http.MethodDelete
-		localVarPostBody     interface{}
-		formFiles            []formFile
-		localVarReturnValue  map[string]interface{}
+		localVarHTTPMethod  = http.MethodDelete
+		localVarPostBody    interface{}
+		formFiles           []formFile
+		localVarReturnValue map[string]interface{}
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "RecordsAPIService.V2ObjectsObjectRecordsRecordIdDelete")
@@ -712,8 +717,8 @@ func (a *RecordsAPIService) V2ObjectsObjectRecordsRecordIdDeleteExecute(r ApiV2O
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 		}
 		return localVarReturnValue, localVarHTTPResponse, newErr
 	}
@@ -731,12 +736,12 @@ func (a *RecordsAPIService) V2ObjectsObjectRecordsRecordIdDeleteExecute(r ApiV2O
 }
 
 type ApiV2ObjectsObjectRecordsRecordIdEntriesGetRequest struct {
-	ctx context.Context
+	ctx        context.Context
 	ApiService *RecordsAPIService
-	object string
-	recordId string
-	limit *int32
-	offset *int32
+	object     string
+	recordId   string
+	limit      *int32
+	offset     *int32
 }
 
 func (r ApiV2ObjectsObjectRecordsRecordIdEntriesGetRequest) Limit(limit int32) ApiV2ObjectsObjectRecordsRecordIdEntriesGetRequest {
@@ -760,28 +765,29 @@ List all entries, across all lists, for which this record is the parent.
 
 Required scopes: `record_permission:read`, `object_configuration:read`, `list_entry:read`.
 
- @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @param object
- @param recordId
- @return ApiV2ObjectsObjectRecordsRecordIdEntriesGetRequest
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@param object
+	@param recordId
+	@return ApiV2ObjectsObjectRecordsRecordIdEntriesGetRequest
 */
 func (a *RecordsAPIService) V2ObjectsObjectRecordsRecordIdEntriesGet(ctx context.Context, object string, recordId string) ApiV2ObjectsObjectRecordsRecordIdEntriesGetRequest {
 	return ApiV2ObjectsObjectRecordsRecordIdEntriesGetRequest{
 		ApiService: a,
-		ctx: ctx,
-		object: object,
-		recordId: recordId,
+		ctx:        ctx,
+		object:     object,
+		recordId:   recordId,
 	}
 }
 
 // Execute executes the request
-//  @return V2ObjectsObjectRecordsRecordIdEntriesGet200Response
+//
+//	@return V2ObjectsObjectRecordsRecordIdEntriesGet200Response
 func (a *RecordsAPIService) V2ObjectsObjectRecordsRecordIdEntriesGetExecute(r ApiV2ObjectsObjectRecordsRecordIdEntriesGetRequest) (*V2ObjectsObjectRecordsRecordIdEntriesGet200Response, *http.Response, error) {
 	var (
-		localVarHTTPMethod   = http.MethodGet
-		localVarPostBody     interface{}
-		formFiles            []formFile
-		localVarReturnValue  *V2ObjectsObjectRecordsRecordIdEntriesGet200Response
+		localVarHTTPMethod  = http.MethodGet
+		localVarPostBody    interface{}
+		formFiles           []formFile
+		localVarReturnValue *V2ObjectsObjectRecordsRecordIdEntriesGet200Response
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "RecordsAPIService.V2ObjectsObjectRecordsRecordIdEntriesGet")
@@ -858,10 +864,10 @@ func (a *RecordsAPIService) V2ObjectsObjectRecordsRecordIdEntriesGetExecute(r Ap
 }
 
 type ApiV2ObjectsObjectRecordsRecordIdGetRequest struct {
-	ctx context.Context
+	ctx        context.Context
 	ApiService *RecordsAPIService
-	object string
-	recordId string
+	object     string
+	recordId   string
 }
 
 func (r ApiV2ObjectsObjectRecordsRecordIdGetRequest) Execute() (*V2ObjectsObjectRecordsPut200Response, *http.Response, error) {
@@ -875,28 +881,29 @@ Gets a single person, company or other record by its `record_id`.
 
 Required scopes: `record_permission:read`, `object_configuration:read`.
 
- @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @param object
- @param recordId
- @return ApiV2ObjectsObjectRecordsRecordIdGetRequest
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@param object
+	@param recordId
+	@return ApiV2ObjectsObjectRecordsRecordIdGetRequest
 */
 func (a *RecordsAPIService) V2ObjectsObjectRecordsRecordIdGet(ctx context.Context, object string, recordId string) ApiV2ObjectsObjectRecordsRecordIdGetRequest {
 	return ApiV2ObjectsObjectRecordsRecordIdGetRequest{
 		ApiService: a,
-		ctx: ctx,
-		object: object,
-		recordId: recordId,
+		ctx:        ctx,
+		object:     object,
+		recordId:   recordId,
 	}
 }
 
 // Execute executes the request
-//  @return V2ObjectsObjectRecordsPut200Response
+//
+//	@return V2ObjectsObjectRecordsPut200Response
 func (a *RecordsAPIService) V2ObjectsObjectRecordsRecordIdGetExecute(r ApiV2ObjectsObjectRecordsRecordIdGetRequest) (*V2ObjectsObjectRecordsPut200Response, *http.Response, error) {
 	var (
-		localVarHTTPMethod   = http.MethodGet
-		localVarPostBody     interface{}
-		formFiles            []formFile
-		localVarReturnValue  *V2ObjectsObjectRecordsPut200Response
+		localVarHTTPMethod  = http.MethodGet
+		localVarPostBody    interface{}
+		formFiles           []formFile
+		localVarReturnValue *V2ObjectsObjectRecordsPut200Response
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "RecordsAPIService.V2ObjectsObjectRecordsRecordIdGet")
@@ -958,8 +965,8 @@ func (a *RecordsAPIService) V2ObjectsObjectRecordsRecordIdGetExecute(r ApiV2Obje
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 		}
 		return localVarReturnValue, localVarHTTPResponse, newErr
 	}
@@ -977,10 +984,10 @@ func (a *RecordsAPIService) V2ObjectsObjectRecordsRecordIdGetExecute(r ApiV2Obje
 }
 
 type ApiV2ObjectsObjectRecordsRecordIdPatchRequest struct {
-	ctx context.Context
-	ApiService *RecordsAPIService
-	object string
-	recordId string
+	ctx                                        context.Context
+	ApiService                                 *RecordsAPIService
+	object                                     string
+	recordId                                   string
 	v2ObjectsObjectRecordsRecordIdPatchRequest *V2ObjectsObjectRecordsRecordIdPatchRequest
 }
 
@@ -1000,28 +1007,29 @@ Use this endpoint to update people, companies, and other records by `record_id`.
 
 Required scopes: `record_permission:read-write`, `object_configuration:read`.
 
- @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @param object
- @param recordId
- @return ApiV2ObjectsObjectRecordsRecordIdPatchRequest
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@param object
+	@param recordId
+	@return ApiV2ObjectsObjectRecordsRecordIdPatchRequest
 */
 func (a *RecordsAPIService) V2ObjectsObjectRecordsRecordIdPatch(ctx context.Context, object string, recordId string) ApiV2ObjectsObjectRecordsRecordIdPatchRequest {
 	return ApiV2ObjectsObjectRecordsRecordIdPatchRequest{
 		ApiService: a,
-		ctx: ctx,
-		object: object,
-		recordId: recordId,
+		ctx:        ctx,
+		object:     object,
+		recordId:   recordId,
 	}
 }
 
 // Execute executes the request
-//  @return V2ObjectsObjectRecordsPut200Response
+//
+//	@return V2ObjectsObjectRecordsPut200Response
 func (a *RecordsAPIService) V2ObjectsObjectRecordsRecordIdPatchExecute(r ApiV2ObjectsObjectRecordsRecordIdPatchRequest) (*V2ObjectsObjectRecordsPut200Response, *http.Response, error) {
 	var (
-		localVarHTTPMethod   = http.MethodPatch
-		localVarPostBody     interface{}
-		formFiles            []formFile
-		localVarReturnValue  *V2ObjectsObjectRecordsPut200Response
+		localVarHTTPMethod  = http.MethodPatch
+		localVarPostBody    interface{}
+		formFiles           []formFile
+		localVarReturnValue *V2ObjectsObjectRecordsPut200Response
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "RecordsAPIService.V2ObjectsObjectRecordsRecordIdPatch")
@@ -1088,8 +1096,8 @@ func (a *RecordsAPIService) V2ObjectsObjectRecordsRecordIdPatchExecute(r ApiV2Ob
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 404 {
@@ -1099,8 +1107,8 @@ func (a *RecordsAPIService) V2ObjectsObjectRecordsRecordIdPatchExecute(r ApiV2Ob
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 		}
 		return localVarReturnValue, localVarHTTPResponse, newErr
 	}
@@ -1118,10 +1126,10 @@ func (a *RecordsAPIService) V2ObjectsObjectRecordsRecordIdPatchExecute(r ApiV2Ob
 }
 
 type ApiV2ObjectsObjectRecordsRecordIdPutRequest struct {
-	ctx context.Context
-	ApiService *RecordsAPIService
-	object string
-	recordId string
+	ctx                              context.Context
+	ApiService                       *RecordsAPIService
+	object                           string
+	recordId                         string
 	v2ObjectsObjectRecordsPutRequest *V2ObjectsObjectRecordsPutRequest
 }
 
@@ -1141,28 +1149,29 @@ Use this endpoint to update people, companies, and other records by `record_id`.
 
 Required scopes: `record_permission:read-write`, `object_configuration:read`.
 
- @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @param object
- @param recordId
- @return ApiV2ObjectsObjectRecordsRecordIdPutRequest
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@param object
+	@param recordId
+	@return ApiV2ObjectsObjectRecordsRecordIdPutRequest
 */
 func (a *RecordsAPIService) V2ObjectsObjectRecordsRecordIdPut(ctx context.Context, object string, recordId string) ApiV2ObjectsObjectRecordsRecordIdPutRequest {
 	return ApiV2ObjectsObjectRecordsRecordIdPutRequest{
 		ApiService: a,
-		ctx: ctx,
-		object: object,
-		recordId: recordId,
+		ctx:        ctx,
+		object:     object,
+		recordId:   recordId,
 	}
 }
 
 // Execute executes the request
-//  @return V2ObjectsObjectRecordsPut200Response
+//
+//	@return V2ObjectsObjectRecordsPut200Response
 func (a *RecordsAPIService) V2ObjectsObjectRecordsRecordIdPutExecute(r ApiV2ObjectsObjectRecordsRecordIdPutRequest) (*V2ObjectsObjectRecordsPut200Response, *http.Response, error) {
 	var (
-		localVarHTTPMethod   = http.MethodPut
-		localVarPostBody     interface{}
-		formFiles            []formFile
-		localVarReturnValue  *V2ObjectsObjectRecordsPut200Response
+		localVarHTTPMethod  = http.MethodPut
+		localVarPostBody    interface{}
+		formFiles           []formFile
+		localVarReturnValue *V2ObjectsObjectRecordsPut200Response
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "RecordsAPIService.V2ObjectsObjectRecordsRecordIdPut")
@@ -1229,8 +1238,8 @@ func (a *RecordsAPIService) V2ObjectsObjectRecordsRecordIdPutExecute(r ApiV2Obje
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 404 {
@@ -1240,8 +1249,135 @@ func (a *RecordsAPIService) V2ObjectsObjectRecordsRecordIdPutExecute(r ApiV2Obje
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
+		}
+		return localVarReturnValue, localVarHTTPResponse, newErr
+	}
+
+	err = a.client.decode(&localVarReturnValue, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+	if err != nil {
+		newErr := &GenericOpenAPIError{
+			body:  localVarBody,
+			error: err.Error(),
+		}
+		return localVarReturnValue, localVarHTTPResponse, newErr
+	}
+
+	return localVarReturnValue, localVarHTTPResponse, nil
+}
+
+type ApiV2ObjectsRecordsSearchPostRequest struct {
+	ctx                               context.Context
+	ApiService                        *RecordsAPIService
+	v2ObjectsRecordsSearchPostRequest *V2ObjectsRecordsSearchPostRequest
+}
+
+func (r ApiV2ObjectsRecordsSearchPostRequest) V2ObjectsRecordsSearchPostRequest(v2ObjectsRecordsSearchPostRequest V2ObjectsRecordsSearchPostRequest) ApiV2ObjectsRecordsSearchPostRequest {
+	r.v2ObjectsRecordsSearchPostRequest = &v2ObjectsRecordsSearchPostRequest
+	return r
+}
+
+func (r ApiV2ObjectsRecordsSearchPostRequest) Execute() (*V2ObjectsRecordsSearchPost200Response, *http.Response, error) {
+	return r.ApiService.V2ObjectsRecordsSearchPostExecute(r)
+}
+
+/*
+V2ObjectsRecordsSearchPost Search records
+
+The search records endpoint provides a convenient way to fuzzy search for records across one or more objects.
+The matching strategy employed in this endpoint follows the in-product strategy and will match names, domains, emails, phone numbers and social handles on people and companies, and labels on all other objects.
+Please note, results returned from this endpoint are eventually consistent. For results which are guaranteed to be up to date, please use the record query endpoint instead.
+
+This endpoint is in beta. We will aim to avoid breaking changes, but small updates may be made as we roll out to more users.
+
+Required scopes: `record_permission:read`, `object_configuration:read`.
+
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@return ApiV2ObjectsRecordsSearchPostRequest
+*/
+func (a *RecordsAPIService) V2ObjectsRecordsSearchPost(ctx context.Context) ApiV2ObjectsRecordsSearchPostRequest {
+	return ApiV2ObjectsRecordsSearchPostRequest{
+		ApiService: a,
+		ctx:        ctx,
+	}
+}
+
+// Execute executes the request
+//
+//	@return V2ObjectsRecordsSearchPost200Response
+func (a *RecordsAPIService) V2ObjectsRecordsSearchPostExecute(r ApiV2ObjectsRecordsSearchPostRequest) (*V2ObjectsRecordsSearchPost200Response, *http.Response, error) {
+	var (
+		localVarHTTPMethod  = http.MethodPost
+		localVarPostBody    interface{}
+		formFiles           []formFile
+		localVarReturnValue *V2ObjectsRecordsSearchPost200Response
+	)
+
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "RecordsAPIService.V2ObjectsRecordsSearchPost")
+	if err != nil {
+		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
+	}
+
+	localVarPath := localBasePath + "/v2/objects/records/search"
+
+	localVarHeaderParams := make(map[string]string)
+	localVarQueryParams := url.Values{}
+	localVarFormParams := url.Values{}
+	if r.v2ObjectsRecordsSearchPostRequest == nil {
+		return localVarReturnValue, nil, reportError("v2ObjectsRecordsSearchPostRequest is required and must be specified")
+	}
+
+	// to determine the Content-Type header
+	localVarHTTPContentTypes := []string{"application/json"}
+
+	// set Content-Type header
+	localVarHTTPContentType := selectHeaderContentType(localVarHTTPContentTypes)
+	if localVarHTTPContentType != "" {
+		localVarHeaderParams["Content-Type"] = localVarHTTPContentType
+	}
+
+	// to determine the Accept header
+	localVarHTTPHeaderAccepts := []string{"application/json"}
+
+	// set Accept header
+	localVarHTTPHeaderAccept := selectHeaderAccept(localVarHTTPHeaderAccepts)
+	if localVarHTTPHeaderAccept != "" {
+		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
+	}
+	// body params
+	localVarPostBody = r.v2ObjectsRecordsSearchPostRequest
+	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
+	if err != nil {
+		return localVarReturnValue, nil, err
+	}
+
+	localVarHTTPResponse, err := a.client.callAPI(req)
+	if err != nil || localVarHTTPResponse == nil {
+		return localVarReturnValue, localVarHTTPResponse, err
+	}
+
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
+	localVarHTTPResponse.Body.Close()
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
+	if err != nil {
+		return localVarReturnValue, localVarHTTPResponse, err
+	}
+
+	if localVarHTTPResponse.StatusCode >= 300 {
+		newErr := &GenericOpenAPIError{
+			body:  localVarBody,
+			error: localVarHTTPResponse.Status,
+		}
+		if localVarHTTPResponse.StatusCode == 400 {
+			var v V2ObjectsRecordsSearchPost400Response
+			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+			if err != nil {
+				newErr.error = err.Error()
+				return localVarReturnValue, localVarHTTPResponse, newErr
+			}
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 		}
 		return localVarReturnValue, localVarHTTPResponse, newErr
 	}

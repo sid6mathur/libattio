@@ -12,8 +12,8 @@ Contact: support@attio.com
 package libattio
 
 import (
-	"encoding/json"
 	"bytes"
+	"encoding/json"
 	"fmt"
 )
 
@@ -23,9 +23,9 @@ var _ MappedNullable = &V2MeetingsMeetingIdCallRecordingsPost400Response{}
 // V2MeetingsMeetingIdCallRecordingsPost400Response Bad Request
 type V2MeetingsMeetingIdCallRecordingsPost400Response struct {
 	StatusCode float32 `json:"status_code"`
-	Type string `json:"type"`
-	Code string `json:"code"`
-	Message string `json:"message"`
+	Type       string  `json:"type"`
+	Code       string  `json:"code"`
+	Message    string  `json:"message"`
 }
 
 type _V2MeetingsMeetingIdCallRecordingsPost400Response V2MeetingsMeetingIdCallRecordingsPost400Response
@@ -75,7 +75,6 @@ func (o *V2MeetingsMeetingIdCallRecordingsPost400Response) SetStatusCode(v float
 	o.StatusCode = v
 }
 
-
 // GetType returns the Type field value
 func (o *V2MeetingsMeetingIdCallRecordingsPost400Response) GetType() string {
 	if o == nil {
@@ -99,7 +98,6 @@ func (o *V2MeetingsMeetingIdCallRecordingsPost400Response) GetTypeOk() (*string,
 func (o *V2MeetingsMeetingIdCallRecordingsPost400Response) SetType(v string) {
 	o.Type = v
 }
-
 
 // GetCode returns the Code field value
 func (o *V2MeetingsMeetingIdCallRecordingsPost400Response) GetCode() string {
@@ -125,7 +123,6 @@ func (o *V2MeetingsMeetingIdCallRecordingsPost400Response) SetCode(v string) {
 	o.Code = v
 }
 
-
 // GetMessage returns the Message field value
 func (o *V2MeetingsMeetingIdCallRecordingsPost400Response) GetMessage() string {
 	if o == nil {
@@ -150,9 +147,8 @@ func (o *V2MeetingsMeetingIdCallRecordingsPost400Response) SetMessage(v string) 
 	o.Message = v
 }
 
-
 func (o V2MeetingsMeetingIdCallRecordingsPost400Response) MarshalJSON() ([]byte, error) {
-	toSerialize,err := o.ToMap()
+	toSerialize, err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
 	}
@@ -181,32 +177,31 @@ func (o *V2MeetingsMeetingIdCallRecordingsPost400Response) UnmarshalJSON(data []
 
 	// defaultValueFuncMap captures the default values for required properties.
 	// These values are used when required properties are missing from the payload.
-	defaultValueFuncMap := map[string]func() interface{} {
-	}
+	defaultValueFuncMap := map[string]func() interface{}{}
 	var defaultValueApplied bool
 	allProperties := make(map[string]interface{})
 
 	err = json.Unmarshal(data, &allProperties)
 
 	if err != nil {
-		return err;
+		return err
 	}
 
-	for _, requiredProperty := range(requiredProperties) {
+	for _, requiredProperty := range requiredProperties {
 		if value, exists := allProperties[requiredProperty]; !exists || value == "" {
 			if _, ok := defaultValueFuncMap[requiredProperty]; ok {
 				allProperties[requiredProperty] = defaultValueFuncMap[requiredProperty]()
 				defaultValueApplied = true
 			}
 		}
-		if value, exists := allProperties[requiredProperty]; !exists || value == ""{
+		if value, exists := allProperties[requiredProperty]; !exists || value == "" {
 			return fmt.Errorf("no value given for required property %v", requiredProperty)
 		}
 	}
 
 	if defaultValueApplied {
 		data, err = json.Marshal(allProperties)
-		if err != nil{
+		if err != nil {
 			return err
 		}
 	}
@@ -260,5 +255,3 @@ func (v *NullableV2MeetingsMeetingIdCallRecordingsPost400Response) UnmarshalJSON
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
-
-

@@ -6,6 +6,7 @@ Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **Id** | [**V2MeetingsMeetingIdCallRecordingsGet200ResponseDataInnerId**](V2MeetingsMeetingIdCallRecordingsGet200ResponseDataInnerId.md) |  | 
 **Status** | **string** | The status of the call recording. When a call recording is first created, it will have a status of &#x60;PROCESSING&#x60;. Once the recording is ready, it will transition to &#x60;COMPLETED&#x60;. If the recording fails for any reason, the status will be &#x60;FAILED&#x60;. | 
+**WebUrl** | **string** | A URL that links directly to the call recording in the Attio web application. | 
 **CreatedByActor** | [**V2MeetingsMeetingIdCallRecordingsGet200ResponseDataInnerCreatedByActor**](V2MeetingsMeetingIdCallRecordingsGet200ResponseDataInnerCreatedByActor.md) |  | 
 **CreatedAt** | **string** | The timestamp of when the call recording was created. | 
 
@@ -13,7 +14,7 @@ Name | Type | Description | Notes
 
 ### NewV2MeetingsMeetingIdCallRecordingsGet200ResponseDataInner
 
-`func NewV2MeetingsMeetingIdCallRecordingsGet200ResponseDataInner(id V2MeetingsMeetingIdCallRecordingsGet200ResponseDataInnerId, status string, createdByActor V2MeetingsMeetingIdCallRecordingsGet200ResponseDataInnerCreatedByActor, createdAt string, ) *V2MeetingsMeetingIdCallRecordingsGet200ResponseDataInner`
+`func NewV2MeetingsMeetingIdCallRecordingsGet200ResponseDataInner(id V2MeetingsMeetingIdCallRecordingsGet200ResponseDataInnerId, status string, webUrl string, createdByActor V2MeetingsMeetingIdCallRecordingsGet200ResponseDataInnerCreatedByActor, createdAt string, ) *V2MeetingsMeetingIdCallRecordingsGet200ResponseDataInner`
 
 NewV2MeetingsMeetingIdCallRecordingsGet200ResponseDataInner instantiates a new V2MeetingsMeetingIdCallRecordingsGet200ResponseDataInner object
 This constructor will assign default values to properties that have it defined,
@@ -66,6 +67,26 @@ and a boolean to check if the value has been set.
 `func (o *V2MeetingsMeetingIdCallRecordingsGet200ResponseDataInner) SetStatus(v string)`
 
 SetStatus sets Status field to given value.
+
+
+### GetWebUrl
+
+`func (o *V2MeetingsMeetingIdCallRecordingsGet200ResponseDataInner) GetWebUrl() string`
+
+GetWebUrl returns the WebUrl field if non-nil, zero value otherwise.
+
+### GetWebUrlOk
+
+`func (o *V2MeetingsMeetingIdCallRecordingsGet200ResponseDataInner) GetWebUrlOk() (*string, bool)`
+
+GetWebUrlOk returns a tuple with the WebUrl field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetWebUrl
+
+`func (o *V2MeetingsMeetingIdCallRecordingsGet200ResponseDataInner) SetWebUrl(v string)`
+
+SetWebUrl sets WebUrl field to given value.
 
 
 ### GetCreatedByActor

@@ -11,10 +11,10 @@ package libattio
 
 import (
 	"context"
+	libattio "github.com/fastah/libattio"
 	"github.com/stretchr/testify/assert"
 	"github.com/stretchr/testify/require"
 	"testing"
-	libattio "github.com/fastah/libattio"
 )
 
 func Test_libattio_TranscriptsAPIService(t *testing.T) {
@@ -22,44 +22,14 @@ func Test_libattio_TranscriptsAPIService(t *testing.T) {
 	configuration := libattio.NewConfiguration()
 	apiClient := libattio.NewAPIClient(configuration)
 
-	t.Run("Test TranscriptsAPIService V2MeetingsMeetingIdCallRecordingsCallRecordingIdTranscriptDelete", func(t *testing.T) {
-
-		t.Skip("skip test")  // remove to run test
-
-		var meetingId string
-		var callRecordingId string
-
-		resp, httpRes, err := apiClient.TranscriptsAPI.V2MeetingsMeetingIdCallRecordingsCallRecordingIdTranscriptDelete(context.Background(), meetingId, callRecordingId).Execute()
-
-		require.Nil(t, err)
-		require.NotNil(t, resp)
-		assert.Equal(t, 200, httpRes.StatusCode)
-
-	})
-
 	t.Run("Test TranscriptsAPIService V2MeetingsMeetingIdCallRecordingsCallRecordingIdTranscriptGet", func(t *testing.T) {
 
-		t.Skip("skip test")  // remove to run test
+		t.Skip("skip test") // remove to run test
 
 		var meetingId string
 		var callRecordingId string
 
 		resp, httpRes, err := apiClient.TranscriptsAPI.V2MeetingsMeetingIdCallRecordingsCallRecordingIdTranscriptGet(context.Background(), meetingId, callRecordingId).Execute()
-
-		require.Nil(t, err)
-		require.NotNil(t, resp)
-		assert.Equal(t, 200, httpRes.StatusCode)
-
-	})
-
-	t.Run("Test TranscriptsAPIService V2MeetingsMeetingIdCallRecordingsCallRecordingIdTranscriptPost", func(t *testing.T) {
-
-		t.Skip("skip test")  // remove to run test
-
-		var meetingId string
-		var callRecordingId string
-
-		resp, httpRes, err := apiClient.TranscriptsAPI.V2MeetingsMeetingIdCallRecordingsCallRecordingIdTranscriptPost(context.Background(), meetingId, callRecordingId).Execute()
 
 		require.Nil(t, err)
 		require.NotNil(t, resp)

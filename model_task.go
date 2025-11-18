@@ -12,8 +12,8 @@ Contact: support@attio.com
 package libattio
 
 import (
-	"encoding/json"
 	"bytes"
+	"encoding/json"
 	"fmt"
 )
 
@@ -32,8 +32,8 @@ type Task struct {
 	// Records linked to the task. Creating record links within task content text is not possible via the API at present.
 	LinkedRecords []TaskLinkedRecordsInner `json:"linked_records"`
 	// Workspace members assigned to this task.
-	Assignees []TaskAssigneesInner `json:"assignees"`
-	CreatedByActor TaskCreatedByActor `json:"created_by_actor"`
+	Assignees      []TaskAssigneesInner `json:"assignees"`
+	CreatedByActor TaskCreatedByActor   `json:"created_by_actor"`
 	// When the task was created.
 	CreatedAt string `json:"created_at"`
 }
@@ -89,7 +89,6 @@ func (o *Task) SetId(v TaskId) {
 	o.Id = v
 }
 
-
 // GetContentPlaintext returns the ContentPlaintext field value
 func (o *Task) GetContentPlaintext() string {
 	if o == nil {
@@ -113,7 +112,6 @@ func (o *Task) GetContentPlaintextOk() (*string, bool) {
 func (o *Task) SetContentPlaintext(v string) {
 	o.ContentPlaintext = v
 }
-
 
 // GetDeadlineAt returns the DeadlineAt field value
 // If the value is explicit nil, the zero value for string will be returned
@@ -141,7 +139,6 @@ func (o *Task) SetDeadlineAt(v string) {
 	o.DeadlineAt.Set(&v)
 }
 
-
 // GetIsCompleted returns the IsCompleted field value
 func (o *Task) GetIsCompleted() bool {
 	if o == nil {
@@ -165,7 +162,6 @@ func (o *Task) GetIsCompletedOk() (*bool, bool) {
 func (o *Task) SetIsCompleted(v bool) {
 	o.IsCompleted = v
 }
-
 
 // GetLinkedRecords returns the LinkedRecords field value
 func (o *Task) GetLinkedRecords() []TaskLinkedRecordsInner {
@@ -191,7 +187,6 @@ func (o *Task) SetLinkedRecords(v []TaskLinkedRecordsInner) {
 	o.LinkedRecords = v
 }
 
-
 // GetAssignees returns the Assignees field value
 func (o *Task) GetAssignees() []TaskAssigneesInner {
 	if o == nil {
@@ -215,7 +210,6 @@ func (o *Task) GetAssigneesOk() ([]TaskAssigneesInner, bool) {
 func (o *Task) SetAssignees(v []TaskAssigneesInner) {
 	o.Assignees = v
 }
-
 
 // GetCreatedByActor returns the CreatedByActor field value
 func (o *Task) GetCreatedByActor() TaskCreatedByActor {
@@ -241,7 +235,6 @@ func (o *Task) SetCreatedByActor(v TaskCreatedByActor) {
 	o.CreatedByActor = v
 }
 
-
 // GetCreatedAt returns the CreatedAt field value
 func (o *Task) GetCreatedAt() string {
 	if o == nil {
@@ -266,9 +259,8 @@ func (o *Task) SetCreatedAt(v string) {
 	o.CreatedAt = v
 }
 
-
 func (o Task) MarshalJSON() ([]byte, error) {
-	toSerialize,err := o.ToMap()
+	toSerialize, err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
 	}
@@ -305,32 +297,31 @@ func (o *Task) UnmarshalJSON(data []byte) (err error) {
 
 	// defaultValueFuncMap captures the default values for required properties.
 	// These values are used when required properties are missing from the payload.
-	defaultValueFuncMap := map[string]func() interface{} {
-	}
+	defaultValueFuncMap := map[string]func() interface{}{}
 	var defaultValueApplied bool
 	allProperties := make(map[string]interface{})
 
 	err = json.Unmarshal(data, &allProperties)
 
 	if err != nil {
-		return err;
+		return err
 	}
 
-	for _, requiredProperty := range(requiredProperties) {
+	for _, requiredProperty := range requiredProperties {
 		if value, exists := allProperties[requiredProperty]; !exists || value == "" {
 			if _, ok := defaultValueFuncMap[requiredProperty]; ok {
 				allProperties[requiredProperty] = defaultValueFuncMap[requiredProperty]()
 				defaultValueApplied = true
 			}
 		}
-		if value, exists := allProperties[requiredProperty]; !exists || value == ""{
+		if value, exists := allProperties[requiredProperty]; !exists || value == "" {
 			return fmt.Errorf("no value given for required property %v", requiredProperty)
 		}
 	}
 
 	if defaultValueApplied {
 		data, err = json.Marshal(allProperties)
-		if err != nil{
+		if err != nil {
 			return err
 		}
 	}
@@ -384,5 +375,3 @@ func (v *NullableTask) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
-
-

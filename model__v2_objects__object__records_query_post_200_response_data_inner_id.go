@@ -12,8 +12,8 @@ Contact: support@attio.com
 package libattio
 
 import (
-	"encoding/json"
 	"bytes"
+	"encoding/json"
 	"fmt"
 )
 
@@ -76,7 +76,6 @@ func (o *V2ObjectsObjectRecordsQueryPost200ResponseDataInnerId) SetWorkspaceId(v
 	o.WorkspaceId = v
 }
 
-
 // GetObjectId returns the ObjectId field value
 func (o *V2ObjectsObjectRecordsQueryPost200ResponseDataInnerId) GetObjectId() string {
 	if o == nil {
@@ -100,7 +99,6 @@ func (o *V2ObjectsObjectRecordsQueryPost200ResponseDataInnerId) GetObjectIdOk() 
 func (o *V2ObjectsObjectRecordsQueryPost200ResponseDataInnerId) SetObjectId(v string) {
 	o.ObjectId = v
 }
-
 
 // GetRecordId returns the RecordId field value
 func (o *V2ObjectsObjectRecordsQueryPost200ResponseDataInnerId) GetRecordId() string {
@@ -126,9 +124,8 @@ func (o *V2ObjectsObjectRecordsQueryPost200ResponseDataInnerId) SetRecordId(v st
 	o.RecordId = v
 }
 
-
 func (o V2ObjectsObjectRecordsQueryPost200ResponseDataInnerId) MarshalJSON() ([]byte, error) {
-	toSerialize,err := o.ToMap()
+	toSerialize, err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
 	}
@@ -155,32 +152,31 @@ func (o *V2ObjectsObjectRecordsQueryPost200ResponseDataInnerId) UnmarshalJSON(da
 
 	// defaultValueFuncMap captures the default values for required properties.
 	// These values are used when required properties are missing from the payload.
-	defaultValueFuncMap := map[string]func() interface{} {
-	}
+	defaultValueFuncMap := map[string]func() interface{}{}
 	var defaultValueApplied bool
 	allProperties := make(map[string]interface{})
 
 	err = json.Unmarshal(data, &allProperties)
 
 	if err != nil {
-		return err;
+		return err
 	}
 
-	for _, requiredProperty := range(requiredProperties) {
+	for _, requiredProperty := range requiredProperties {
 		if value, exists := allProperties[requiredProperty]; !exists || value == "" {
 			if _, ok := defaultValueFuncMap[requiredProperty]; ok {
 				allProperties[requiredProperty] = defaultValueFuncMap[requiredProperty]()
 				defaultValueApplied = true
 			}
 		}
-		if value, exists := allProperties[requiredProperty]; !exists || value == ""{
+		if value, exists := allProperties[requiredProperty]; !exists || value == "" {
 			return fmt.Errorf("no value given for required property %v", requiredProperty)
 		}
 	}
 
 	if defaultValueApplied {
 		data, err = json.Marshal(allProperties)
-		if err != nil{
+		if err != nil {
 			return err
 		}
 	}
@@ -234,5 +230,3 @@ func (v *NullableV2ObjectsObjectRecordsQueryPost200ResponseDataInnerId) Unmarsha
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
-
-

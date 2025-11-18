@@ -11,10 +11,10 @@ package libattio
 
 import (
 	"context"
+	libattio "github.com/fastah/libattio"
 	"github.com/stretchr/testify/assert"
 	"github.com/stretchr/testify/require"
 	"testing"
-	libattio "github.com/fastah/libattio"
 )
 
 func Test_libattio_ListsAPIService(t *testing.T) {
@@ -24,7 +24,7 @@ func Test_libattio_ListsAPIService(t *testing.T) {
 
 	t.Run("Test ListsAPIService V2ListsGet", func(t *testing.T) {
 
-		t.Skip("skip test")  // remove to run test
+		t.Skip("skip test") // remove to run test
 
 		resp, httpRes, err := apiClient.ListsAPI.V2ListsGet(context.Background()).Execute()
 
@@ -36,7 +36,7 @@ func Test_libattio_ListsAPIService(t *testing.T) {
 
 	t.Run("Test ListsAPIService V2ListsListGet", func(t *testing.T) {
 
-		t.Skip("skip test")  // remove to run test
+		t.Skip("skip test") // remove to run test
 
 		var list string
 
@@ -50,7 +50,7 @@ func Test_libattio_ListsAPIService(t *testing.T) {
 
 	t.Run("Test ListsAPIService V2ListsListPatch", func(t *testing.T) {
 
-		t.Skip("skip test")  // remove to run test
+		t.Skip("skip test") // remove to run test
 
 		var list string
 
@@ -64,7 +64,7 @@ func Test_libattio_ListsAPIService(t *testing.T) {
 
 	t.Run("Test ListsAPIService V2ListsPost", func(t *testing.T) {
 
-		t.Skip("skip test")  // remove to run test
+		t.Skip("skip test") // remove to run test
 
 		resp, httpRes, err := apiClient.ListsAPI.V2ListsPost(context.Background()).Execute()
 

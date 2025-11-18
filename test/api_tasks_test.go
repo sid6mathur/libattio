@@ -11,10 +11,10 @@ package libattio
 
 import (
 	"context"
+	libattio "github.com/fastah/libattio"
 	"github.com/stretchr/testify/assert"
 	"github.com/stretchr/testify/require"
 	"testing"
-	libattio "github.com/fastah/libattio"
 )
 
 func Test_libattio_TasksAPIService(t *testing.T) {
@@ -24,7 +24,7 @@ func Test_libattio_TasksAPIService(t *testing.T) {
 
 	t.Run("Test TasksAPIService V2TasksGet", func(t *testing.T) {
 
-		t.Skip("skip test")  // remove to run test
+		t.Skip("skip test") // remove to run test
 
 		resp, httpRes, err := apiClient.TasksAPI.V2TasksGet(context.Background()).Execute()
 
@@ -36,7 +36,7 @@ func Test_libattio_TasksAPIService(t *testing.T) {
 
 	t.Run("Test TasksAPIService V2TasksPost", func(t *testing.T) {
 
-		t.Skip("skip test")  // remove to run test
+		t.Skip("skip test") // remove to run test
 
 		resp, httpRes, err := apiClient.TasksAPI.V2TasksPost(context.Background()).Execute()
 
@@ -48,7 +48,7 @@ func Test_libattio_TasksAPIService(t *testing.T) {
 
 	t.Run("Test TasksAPIService V2TasksTaskIdDelete", func(t *testing.T) {
 
-		t.Skip("skip test")  // remove to run test
+		t.Skip("skip test") // remove to run test
 
 		var taskId string
 
@@ -62,7 +62,7 @@ func Test_libattio_TasksAPIService(t *testing.T) {
 
 	t.Run("Test TasksAPIService V2TasksTaskIdGet", func(t *testing.T) {
 
-		t.Skip("skip test")  // remove to run test
+		t.Skip("skip test") // remove to run test
 
 		var taskId string
 
@@ -76,7 +76,7 @@ func Test_libattio_TasksAPIService(t *testing.T) {
 
 	t.Run("Test TasksAPIService V2TasksTaskIdPatch", func(t *testing.T) {
 
-		t.Skip("skip test")  // remove to run test
+		t.Skip("skip test") // remove to run test
 
 		var taskId string
 

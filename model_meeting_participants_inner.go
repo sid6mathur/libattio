@@ -12,8 +12,8 @@ Contact: support@attio.com
 package libattio
 
 import (
-	"encoding/json"
 	"bytes"
+	"encoding/json"
 	"fmt"
 )
 
@@ -76,7 +76,6 @@ func (o *MeetingParticipantsInner) SetStatus(v string) {
 	o.Status = v
 }
 
-
 // GetIsOrganizer returns the IsOrganizer field value
 func (o *MeetingParticipantsInner) GetIsOrganizer() bool {
 	if o == nil {
@@ -100,7 +99,6 @@ func (o *MeetingParticipantsInner) GetIsOrganizerOk() (*bool, bool) {
 func (o *MeetingParticipantsInner) SetIsOrganizer(v bool) {
 	o.IsOrganizer = v
 }
-
 
 // GetEmailAddress returns the EmailAddress field value
 // If the value is explicit nil, the zero value for string will be returned
@@ -128,9 +126,8 @@ func (o *MeetingParticipantsInner) SetEmailAddress(v string) {
 	o.EmailAddress.Set(&v)
 }
 
-
 func (o MeetingParticipantsInner) MarshalJSON() ([]byte, error) {
-	toSerialize,err := o.ToMap()
+	toSerialize, err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
 	}
@@ -157,32 +154,31 @@ func (o *MeetingParticipantsInner) UnmarshalJSON(data []byte) (err error) {
 
 	// defaultValueFuncMap captures the default values for required properties.
 	// These values are used when required properties are missing from the payload.
-	defaultValueFuncMap := map[string]func() interface{} {
-	}
+	defaultValueFuncMap := map[string]func() interface{}{}
 	var defaultValueApplied bool
 	allProperties := make(map[string]interface{})
 
 	err = json.Unmarshal(data, &allProperties)
 
 	if err != nil {
-		return err;
+		return err
 	}
 
-	for _, requiredProperty := range(requiredProperties) {
+	for _, requiredProperty := range requiredProperties {
 		if value, exists := allProperties[requiredProperty]; !exists || value == "" {
 			if _, ok := defaultValueFuncMap[requiredProperty]; ok {
 				allProperties[requiredProperty] = defaultValueFuncMap[requiredProperty]()
 				defaultValueApplied = true
 			}
 		}
-		if value, exists := allProperties[requiredProperty]; !exists || value == ""{
+		if value, exists := allProperties[requiredProperty]; !exists || value == "" {
 			return fmt.Errorf("no value given for required property %v", requiredProperty)
 		}
 	}
 
 	if defaultValueApplied {
 		data, err = json.Marshal(allProperties)
-		if err != nil{
+		if err != nil {
 			return err
 		}
 	}
@@ -236,5 +232,3 @@ func (v *NullableMeetingParticipantsInner) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
-
-

@@ -254,7 +254,7 @@ paths:
         required: false
         schema:
           description: "The maximum number of results to return. See the [full guide\
-            \ to pagination here](/rest-api/how-to/pagination)."
+            \ to pagination here](/rest-api/guides/pagination)."
           example: 10
           type: integer
         style: form
@@ -264,7 +264,7 @@ paths:
         required: false
         schema:
           description: "The number of results to skip over before returning. See the\
-            \ [full guide to pagination here](/rest-api/how-to/pagination)."
+            \ [full guide to pagination here](/rest-api/guides/pagination)."
           example: 5
           type: integer
         style: form
@@ -1022,7 +1022,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: "#/components/schemas/_v2_objects__object__records_post_200_response"
+                $ref: "#/components/schemas/_v2_objects__object__records_put_200_response"
           description: Success
         "400":
           content:
@@ -1363,7 +1363,7 @@ paths:
         required: false
         schema:
           description: "The maximum number of results to return. See the [full guide\
-            \ to pagination here](/rest-api/how-to/pagination)."
+            \ to pagination here](/rest-api/guides/pagination)."
           example: 10
           type: integer
         style: form
@@ -1373,7 +1373,7 @@ paths:
         required: false
         schema:
           description: "The number of results to skip over before returning. See the\
-            \ [full guide to pagination here](/rest-api/how-to/pagination)."
+            \ [full guide to pagination here](/rest-api/guides/pagination)."
           example: 5
           type: integer
         style: form
@@ -1436,7 +1436,7 @@ paths:
         required: false
         schema:
           description: "The maximum number of results to return. The default is `100`\
-            \ and the maximum is `1000`. See the [full guide to pagination here](/rest-api/how-to/pagination)."
+            \ and the maximum is `1000`. See the [full guide to pagination here](/rest-api/guides/pagination)."
           example: 10
           type: integer
         style: form
@@ -1446,7 +1446,7 @@ paths:
         required: false
         schema:
           description: "The number of results to skip over before returning. The default\
-            \ is `0`. See the [full guide to pagination here](/rest-api/how-to/pagination)."
+            \ is `0`. See the [full guide to pagination here](/rest-api/guides/pagination)."
           example: 5
           type: integer
         style: form
@@ -1465,6 +1465,45 @@ paths:
       summary: List record entries
       tags:
       - Records
+  /v2/objects/records/search:
+    post:
+      description: |-
+        The search records endpoint provides a convenient way to fuzzy search for records across one or more objects.
+        The matching strategy employed in this endpoint follows the in-product strategy and will match names, domains, emails, phone numbers and social handles on people and companies, and labels on all other objects.
+        Please note, results returned from this endpoint are eventually consistent. For results which are guaranteed to be up to date, please use the record query endpoint instead.
+
+        This endpoint is in beta. We will aim to avoid breaking changes, but small updates may be made as we roll out to more users.
+
+        Required scopes: `record_permission:read`, `object_configuration:read`.
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/_v2_objects_records_search_post_request"
+        required: true
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/_v2_objects_records_search_post_200_response"
+          description: Success
+        "400":
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/_v2_objects_records_search_post_400_response"
+          description: Bad Request
+      security:
+      - oauth2:
+        - record_permission:read
+        - object_configuration:read
+      summary: Search records
+      tags:
+      - Records
+      x-mint:
+        metadata:
+          tag: BETA
   /v2/lists:
     get:
       description: |-
@@ -2019,7 +2058,7 @@ paths:
         required: false
         schema:
           description: "The maximum number of results to return. See the [full guide\
-            \ to pagination here](/rest-api/how-to/pagination)."
+            \ to pagination here](/rest-api/guides/pagination)."
           example: 10
           type: integer
         style: form
@@ -2029,7 +2068,7 @@ paths:
         required: false
         schema:
           description: "The number of results to skip over before returning. See the\
-            \ [full guide to pagination here](/rest-api/how-to/pagination)."
+            \ [full guide to pagination here](/rest-api/guides/pagination)."
           example: 5
           type: integer
         style: form
@@ -2121,7 +2160,7 @@ paths:
         required: false
         schema:
           description: "The maximum number of results to return. The default is `10`\
-            \ and the maximum is `50`. See the [full guide to pagination here](/rest-api/how-to/pagination)."
+            \ and the maximum is `50`. See the [full guide to pagination here](/rest-api/guides/pagination)."
           example: 10
           type: integer
         style: form
@@ -2131,7 +2170,7 @@ paths:
         required: false
         schema:
           description: "The number of results to skip over before returning. The default\
-            \ is `0`. See the [full guide to pagination here](/rest-api/how-to/pagination)."
+            \ is `0`. See the [full guide to pagination here](/rest-api/guides/pagination)."
           example: 5
           type: integer
         style: form
@@ -2295,7 +2334,7 @@ paths:
         required: false
         schema:
           description: "The maximum number of results to return. Defaults to 500.\
-            \ See the [full guide to pagination here](/rest-api/how-to/pagination)."
+            \ See the [full guide to pagination here](/rest-api/guides/pagination)."
           example: 10
           type: integer
         style: form
@@ -2305,7 +2344,7 @@ paths:
         required: false
         schema:
           description: "The number of results to skip over before returning. Defaults\
-            \ to 0. See the [full guide to pagination here](/rest-api/how-to/pagination)."
+            \ to 0. See the [full guide to pagination here](/rest-api/guides/pagination)."
           example: 5
           type: integer
         style: form
@@ -2615,7 +2654,7 @@ paths:
         required: false
         schema:
           description: "The maximum number of results to return. The default is `10`\
-            \ and the maximum is `50`. See the [full guide to pagination here](/rest-api/how-to/pagination)."
+            \ and the maximum is `50`. See the [full guide to pagination here](/rest-api/guides/pagination)."
           example: 10
           type: integer
         style: form
@@ -2625,7 +2664,7 @@ paths:
         required: false
         schema:
           description: "The number of results to skip over before returning. The default\
-            \ is `0`. See the [full guide to pagination here](/rest-api/how-to/pagination)."
+            \ is `0`. See the [full guide to pagination here](/rest-api/guides/pagination)."
           example: 5
           type: integer
         style: form
@@ -2799,6 +2838,8 @@ paths:
       description: |-
         Lists all meetings in the workspace using a deterministic sort order.
 
+        This endpoint is in beta. We will aim to avoid breaking changes, but small updates may be made as we roll out to more users.
+
         Required scopes: `meeting:read`, `record_permission:read`.
       parameters:
       - explode: true
@@ -2920,11 +2961,52 @@ paths:
       summary: List meetings
       tags:
       - Meetings
+      x-mint:
+        metadata:
+          tag: BETA
+    post:
+      description: |-
+        Finds an existing meeting or creates a new one if it doesn't yet exist. [Please see here](/rest-api/guides/syncing-meetings) for a full guide on syncing meetings to Attio.
+
+        This endpoint is in alpha and may be subject to breaking changes as we gather feedback.
+
+        Required scopes: `meeting:read-write`, `record_permission:read`.
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/_v2_meetings_post_request"
+        required: true
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/_v2_meetings_post_200_response"
+          description: Success
+        "400":
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/_v2_meetings_post_400_response"
+          description: Bad Request
+      security:
+      - oauth2:
+        - meeting:read-write
+        - record_permission:read
+      summary: Find or create a meeting
+      tags:
+      - Meetings
       x-hidden: true
+      x-mint:
+        metadata:
+          tag: ALPHA
   /v2/meetings/{meeting_id}:
     get:
       description: |-
         Get a single meeting by ID.
+
+        This endpoint is in beta. We will aim to avoid breaking changes, but small updates may be made as we roll out to more users.
 
         Required scopes: `meeting:read`, `record_permission:read`.
       parameters:
@@ -2943,7 +3025,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: "#/components/schemas/_v2_meetings__meeting_id__get_200_response"
+                $ref: "#/components/schemas/_v2_meetings_post_200_response"
           description: Success
         "404":
           content:
@@ -2958,11 +3040,15 @@ paths:
       summary: Get a meeting
       tags:
       - Meetings
-      x-hidden: true
+      x-mint:
+        metadata:
+          tag: BETA
   /v2/meetings/{meeting_id}/call_recordings:
     get:
       description: |-
         List all call recordings for a meeting.
+
+        This endpoint is in beta. We will aim to avoid breaking changes, but small updates may be made as we roll out to more users.
 
         Required scopes: `meeting:read`, `call_recording:read`.
       parameters:
@@ -3011,10 +3097,14 @@ paths:
       summary: List call recordings
       tags:
       - Call recordings
-      x-hidden: true
+      x-mint:
+        metadata:
+          tag: BETA
     post:
       description: |-
         Create a call recording for a meeting. This endpoint is rate limited to 1 request per second.
+
+        This endpoint is in alpha and may be subject to breaking changes as we gather feedback.
 
         Required scopes: `meeting:read`, `call_recording:read-write`.
       parameters:
@@ -3067,10 +3157,15 @@ paths:
       tags:
       - Call recordings
       x-hidden: true
+      x-mint:
+        metadata:
+          tag: ALPHA
   /v2/meetings/{meeting_id}/call_recordings/{call_recording_id}:
     delete:
       description: |-
         Deletes the specified call recording. This will remove the call recording and all associated data.
+
+        This endpoint is in alpha and may be subject to breaking changes as we gather feedback.
 
         Required scopes: `meeting:read`, `call_recording:read-write`.
       parameters:
@@ -3117,9 +3212,14 @@ paths:
       tags:
       - Call recordings
       x-hidden: true
+      x-mint:
+        metadata:
+          tag: ALPHA
     get:
       description: |-
         Get a single call recording by ID.
+
+        This endpoint is in beta. We will aim to avoid breaking changes, but small updates may be made as we roll out to more users.
 
         Required scopes: `meeting:read`, `call_recording:read`.
       parameters:
@@ -3163,60 +3263,15 @@ paths:
       summary: Get call recording
       tags:
       - Call recordings
-      x-hidden: true
+      x-mint:
+        metadata:
+          tag: BETA
   /v2/meetings/{meeting_id}/call_recordings/{call_recording_id}/transcript:
-    delete:
-      description: |-
-        Deletes the transcript for the specified call recording.
-
-        Required scopes: `meeting:read`, `call_recording:read-write`.
-      parameters:
-      - explode: false
-        in: path
-        name: meeting_id
-        required: true
-        schema:
-          description: The ID of the meeting this transcript belongs to.
-          example: cb59ab17-ad15-460c-a126-0715617c0853
-          format: uuid
-          type: string
-        style: simple
-      - explode: false
-        in: path
-        name: call_recording_id
-        required: true
-        schema:
-          description: The ID of the call recording this transcript belongs to.
-          example: e8f2a3b7-9b4d-4c5e-8a1f-3d7b2c5e8f9a
-          format: uuid
-          type: string
-        style: simple
-      responses:
-        "200":
-          content:
-            application/json:
-              schema:
-                description: Success
-                properties: {}
-                type: object
-          description: Success
-        "404":
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/_v2_meetings__meeting_id__call_recordings__call_recording_id__delete_404_response"
-          description: Call recording not found
-      security:
-      - oauth2:
-        - meeting:read
-        - call_recording:read-write
-      summary: Delete call recording transcript
-      tags:
-      - Transcripts
-      x-hidden: true
     get:
       description: |-
         Get the transcript for a call recording.
+
+        This endpoint is in beta. We will aim to avoid breaking changes, but small updates may be made as we roll out to more users.
 
         Required scopes: `meeting:read`, `call_recording:read`.
       parameters:
@@ -3265,66 +3320,9 @@ paths:
       summary: Get call transcript
       tags:
       - Transcripts
-      x-hidden: true
-    post:
-      description: |-
-        Creates a transcript for the specified call recording. Each call recording can have only one associated transcript. Once created, transcripts are immutable and cannot be modified. To update a transcript, you must first delete the existing one and then create a new transcript.
-
-        Required scopes: `meeting:read`, `call_recording:read-write`.
-      parameters:
-      - explode: false
-        in: path
-        name: meeting_id
-        required: true
-        schema:
-          description: The ID of the meeting this transcript belongs to.
-          example: cb59ab17-ad15-460c-a126-0715617c0853
-          format: uuid
-          type: string
-        style: simple
-      - explode: false
-        in: path
-        name: call_recording_id
-        required: true
-        schema:
-          description: The ID of the call recording this transcript belongs to.
-          example: e8f2a3b7-9b4d-4c5e-8a1f-3d7b2c5e8f9a
-          format: uuid
-          type: string
-        style: simple
-      requestBody:
-        content:
-          application/json:
-            schema:
-              $ref: "#/components/schemas/_v2_meetings__meeting_id__call_recordings__call_recording_id__transcript_post_request"
-        required: true
-      responses:
-        "200":
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/_v2_meetings__meeting_id__call_recordings__call_recording_id__transcript_post_200_response"
-          description: Success
-        "400":
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/_v2_meetings__meeting_id__call_recordings__call_recording_id__transcript_post_400_response"
-          description: Bad Request
-        "404":
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/_v2_meetings__meeting_id__call_recordings__call_recording_id__transcript_post_404_response"
-          description: Not Found
-      security:
-      - oauth2:
-        - meeting:read
-        - call_recording:read-write
-      summary: Create transcript
-      tags:
-      - Transcripts
-      x-hidden: true
+      x-mint:
+        metadata:
+          tag: BETA
   /v2/webhooks:
     get:
       description: |-
@@ -3338,7 +3336,7 @@ paths:
         required: false
         schema:
           description: "The maximum number of results to return, between 10 and 100,\
-            \ defaults to 10. See the [full guide to pagination here](/rest-api/how-to/pagination)."
+            \ defaults to 10. See the [full guide to pagination here](/rest-api/guides/pagination)."
           example: 10
           type: integer
         style: form
@@ -3348,7 +3346,7 @@ paths:
         required: false
         schema:
           description: "The number of results to skip over before returning, defaults\
-            \ to 0. See the [full guide to pagination here](/rest-api/how-to/pagination)."
+            \ to 0. See the [full guide to pagination here](/rest-api/guides/pagination)."
           example: 5
           type: integer
         style: form
@@ -4608,20 +4606,24 @@ components:
         enum:
         - current-user
         example: current-user
+        type: string
       - description: "Timestamp attributes may use an ISO 8601 duration as a dynamic\
           \ value. For example, `\"P1M\"` would set the value to the current time\
           \ plus one month."
         example: P1M
+        type: string
       - description: "Date attributes may use an ISO 8601 duration as a dynamic value.\
           \ For example, `\"P1M\"` would set the value to the current time plus one\
           \ month."
         example: P1M
+        type: string
     _v2__target___identifier__attributes_post_request_data_default_value_oneOf:
       properties:
         type:
           enum:
           - dynamic
           example: dynamic
+          type: string
         template:
           $ref: "#/components/schemas/_v2__target___identifier__attributes_post_request_data_default_value_oneOf_template"
       required:
@@ -4633,11 +4635,13 @@ components:
           enum:
           - static
           example: static
+          type: string
         template:
           example:
           - value: 5
           items:
             $ref: "#/components/schemas/input-value"
+          type: array
       required:
       - template
       - type
@@ -4652,10 +4656,10 @@ components:
         type: static
         template:
         - value: 5
+      nullable: true
       oneOf:
       - $ref: "#/components/schemas/_v2__target___identifier__attributes_post_request_data_default_value_oneOf"
       - $ref: "#/components/schemas/_v2__target___identifier__attributes_post_request_data_default_value_oneOf_1"
-      - nullable: true
     _v2__target___identifier__attributes_post_request_data_config_currency:
       description: Configuration available for attributes of type "currency".
       properties:
@@ -4666,7 +4670,7 @@ components:
           - ARS
           - AUD
           - BRL
-          - BEL
+          - BGN
           - CAD
           - CLP
           - CNY
@@ -4701,6 +4705,7 @@ components:
           - UYU
           - USD
           example: USD
+          type: string
         display_type:
           description: "How the currency should be displayed across the app. \"code\"\
             \ will display the ISO currency code e.g. \"USD\", \"name\" will display\
@@ -4713,6 +4718,7 @@ components:
           - narrowSymbol
           - symbol
           example: symbol
+          type: string
       required:
       - default_currency_code
       - display_type
@@ -4725,7 +4731,9 @@ components:
             types.
           items:
             example: people
+            type: string
           minItems: 1
+          type: array
       required:
       - allowed_objects
     _v2__target___identifier__attributes_post_request_data_config:
@@ -4741,13 +4749,17 @@ components:
           description: The name of the attribute. The title will be visible across
             Attio's UI.
           example: Your Attribute
+          type: string
         description:
           description: A text description for the attribute.
           example: Lorem ipsum
+          nullable: true
+          type: string
         api_slug:
           description: "A unique, human-readable slug to access the attribute through\
             \ URLs and API calls. Formatted in snake case."
           example: my-attribute
+          type: string
         type:
           description: The type of the attribute. This value affects the possible
             `config` values. Attributes of type "status" are not supported on objects.
@@ -4768,21 +4780,25 @@ components:
           - email-address
           - phone-number
           example: text
+          type: string
         is_required:
           description: "When `is_required` is `true`, new records/entries must have\
             \ a value for this attribute. If `false`, values may be `null`. This value\
             \ does not affect existing data and you do not need to backfill `null`\
             \ values if changing `is_required` from `false` to `true`."
           example: true
+          type: boolean
         is_unique:
           description: Whether or not new values for this attribute must be unique.
             Uniqueness restrictions are only applied to new data and do not apply
             retroactively to previously created data.
           example: true
+          type: boolean
         is_multiselect:
           description: Whether or not this attribute can have multiple values. Multiselect
             is only available on some value types.
           example: true
+          type: boolean
         default_value:
           $ref: "#/components/schemas/_v2__target___identifier__attributes_post_request_data_default_value"
         config:
@@ -4963,24 +4979,30 @@ components:
           description: The name of the attribute. The title will be visible across
             Attio's UI.
           example: Your Attribute
+          type: string
         description:
           description: A text description for the attribute.
           example: Lorem ipsum
+          nullable: true
+          type: string
         api_slug:
           description: "A unique, human-readable slug to access the attribute through\
             \ URLs and API calls. Formatted in snake case."
           example: my-attribute
+          type: string
         is_required:
           description: "When `is_required` is `true`, new records/entries must have\
             \ a value for this attribute. If `false`, values may be `null`. This value\
             \ does not affect existing data and you do not need to backfill `null`\
             \ values if changing `is_required` from `false` to `true`."
           example: true
+          type: boolean
         is_unique:
           description: Whether or not new values for this attribute must be unique.
             Uniqueness restrictions are only applied to new data and do not apply
             retroactively to previously created data.
           example: true
+          type: boolean
         default_value:
           $ref: "#/components/schemas/_v2__target___identifier__attributes_post_request_data_default_value"
         config:
@@ -4989,6 +5011,7 @@ components:
           description: "Whether the attribute has been archived or not. See our [archiving\
             \ guide](/docs/archiving-vs-deleting) for more information on archiving."
           example: false
+          type: boolean
     _v2__target___identifier__attributes__attribute__patch_request:
       properties:
         data:
@@ -5438,12 +5461,12 @@ components:
         filter:
           additionalProperties: {}
           description: "An object used to filter results to a subset of results. See\
-            \ the [full guide to filtering and sorting here](/rest-api/how-to/filtering-and-sorting)."
+            \ the [full guide to filtering and sorting here](/rest-api/guides/filtering-and-sorting)."
           example:
             name: Ada Lovelace
         sorts:
           description: "An object used to sort results. See the [full guide to filtering\
-            \ and sorting here](/rest-api/how-to/filtering-and-sorting)."
+            \ and sorting here](/rest-api/guides/filtering-and-sorting)."
           example:
           - direction: asc
             attribute: name
@@ -5453,12 +5476,12 @@ components:
           type: array
         limit:
           description: "The maximum number of results to return. Defaults to 500.\
-            \ See the [full guide to pagination here](/rest-api/how-to/pagination)."
+            \ See the [full guide to pagination here](/rest-api/guides/pagination)."
           example: 500
           type: number
         offset:
           description: "The number of results to skip over before returning. Defaults\
-            \ to 0. See the [full guide to pagination here](/rest-api/how-to/pagination)."
+            \ to 0. See the [full guide to pagination here](/rest-api/guides/pagination)."
           example: 0
           type: number
     _v2_objects__object__records_query_post_200_response_data_inner_id:
@@ -5494,6 +5517,7 @@ components:
       properties:
         id:
           description: An ID to identify the actor.
+          type: string
           nullable: true
         type:
           description: "The type of actor. [Read more information on actor types here](/docs/actors)."
@@ -5502,6 +5526,7 @@ components:
           - workspace-member
           - system
           - app
+          type: string
           nullable: true
     _v2_objects__object__records_query_post_200_response_data_inner_values_value_inner_oneOf:
       additionalProperties: {}
@@ -5520,11 +5545,14 @@ components:
             can be considered roughly analogous to `created_at`.
           example: 2023-01-01T15:00:00.000000000Z
           format: date-time
+          type: string
         active_until:
           description: "The point in time at which this value was deactivated. If\
             \ `null`, the value is active."
           example: 2023-01-01T15:00:00.000000000Z
           format: date-time
+          nullable: true
+          type: string
         created_by_actor:
           $ref: "#/components/schemas/_v2_objects__object__records_query_post_200_response_data_inner_values_value_inner_oneOf_created_by_actor"
         referenced_actor_type:
@@ -5556,25 +5584,6 @@ components:
       - created_by_actor
       - referenced_actor_id
       - referenced_actor_type
-    _v2_objects__object__records_query_post_200_response_data_inner_values_value_inner_oneOf_1_created_by_actor:
-      description: The actor that created this value.
-      example:
-        type: workspace-member
-        id: 50cf242c-7fa3-4cad-87d0-75b1af71c57b
-      properties:
-        id:
-          description: An ID to identify the actor.
-          type: string
-          nullable: true
-        type:
-          description: "The type of actor. [Read more information on actor types here](/docs/actors)."
-          enum:
-          - api-token
-          - workspace-member
-          - system
-          - app
-          type: string
-          nullable: true
     _v2_objects__object__records_query_post_200_response_data_inner_values_value_inner_oneOf_1:
       additionalProperties: {}
       properties:
@@ -5592,7 +5601,7 @@ components:
           nullable: true
           type: string
         created_by_actor:
-          $ref: "#/components/schemas/_v2_objects__object__records_query_post_200_response_data_inner_values_value_inner_oneOf_1_created_by_actor"
+          $ref: "#/components/schemas/_v2_objects__object__records_query_post_200_response_data_inner_values_value_inner_oneOf_created_by_actor"
         value:
           description: A boolean representing whether the checkbox is checked or not.
             The string values 'true' and 'false' are also accepted.
@@ -5627,7 +5636,7 @@ components:
           nullable: true
           type: string
         created_by_actor:
-          $ref: "#/components/schemas/_v2_objects__object__records_query_post_200_response_data_inner_values_value_inner_oneOf_1_created_by_actor"
+          $ref: "#/components/schemas/_v2_objects__object__records_query_post_200_response_data_inner_values_value_inner_oneOf_created_by_actor"
         currency_value:
           description: A numerical representation of the currency value. A decimal
             with a max of 4 decimal places.
@@ -5640,7 +5649,7 @@ components:
           - ARS
           - AUD
           - BRL
-          - BEL
+          - BGN
           - CAD
           - CLP
           - CNY
@@ -5706,7 +5715,7 @@ components:
           nullable: true
           type: string
         created_by_actor:
-          $ref: "#/components/schemas/_v2_objects__object__records_query_post_200_response_data_inner_values_value_inner_oneOf_1_created_by_actor"
+          $ref: "#/components/schemas/_v2_objects__object__records_query_post_200_response_data_inner_values_value_inner_oneOf_created_by_actor"
         attribute_type:
           description: The attribute type of the value.
           enum:
@@ -5749,7 +5758,7 @@ components:
           nullable: true
           type: string
         created_by_actor:
-          $ref: "#/components/schemas/_v2_objects__object__records_query_post_200_response_data_inner_values_value_inner_oneOf_1_created_by_actor"
+          $ref: "#/components/schemas/_v2_objects__object__records_query_post_200_response_data_inner_values_value_inner_oneOf_created_by_actor"
         domain:
           example: app.attio.com
           type: string
@@ -5785,7 +5794,7 @@ components:
           nullable: true
           type: string
         created_by_actor:
-          $ref: "#/components/schemas/_v2_objects__object__records_query_post_200_response_data_inner_values_value_inner_oneOf_1_created_by_actor"
+          $ref: "#/components/schemas/_v2_objects__object__records_query_post_200_response_data_inner_values_value_inner_oneOf_created_by_actor"
         original_email_address:
           example: alice@app.attio.com
           type: string
@@ -5834,7 +5843,7 @@ components:
           nullable: true
           type: string
         created_by_actor:
-          $ref: "#/components/schemas/_v2_objects__object__records_query_post_200_response_data_inner_values_value_inner_oneOf_1_created_by_actor"
+          $ref: "#/components/schemas/_v2_objects__object__records_query_post_200_response_data_inner_values_value_inner_oneOf_created_by_actor"
         target_object:
           description: A slug identifying the object that the referenced record belongs
             to.
@@ -5875,7 +5884,7 @@ components:
           nullable: true
           type: string
         created_by_actor:
-          $ref: "#/components/schemas/_v2_objects__object__records_query_post_200_response_data_inner_values_value_inner_oneOf_1_created_by_actor"
+          $ref: "#/components/schemas/_v2_objects__object__records_query_post_200_response_data_inner_values_value_inner_oneOf_created_by_actor"
         interaction_type:
           description: The type of interaction e.g. calendar or email.
           enum:
@@ -5893,7 +5902,7 @@ components:
           format: date-time
           type: string
         owner_actor:
-          $ref: "#/components/schemas/_v2_objects__object__records_query_post_200_response_data_inner_values_value_inner_oneOf_1_created_by_actor"
+          $ref: "#/components/schemas/_v2_objects__object__records_query_post_200_response_data_inner_values_value_inner_oneOf_created_by_actor"
         attribute_type:
           description: The attribute type of the value.
           enum:
@@ -5925,7 +5934,7 @@ components:
           nullable: true
           type: string
         created_by_actor:
-          $ref: "#/components/schemas/_v2_objects__object__records_query_post_200_response_data_inner_values_value_inner_oneOf_1_created_by_actor"
+          $ref: "#/components/schemas/_v2_objects__object__records_query_post_200_response_data_inner_values_value_inner_oneOf_created_by_actor"
         line_1:
           description: The first line of the address. Note that this value is not
             currently represented in the UI but will be persisted and readable through
@@ -6288,7 +6297,7 @@ components:
           nullable: true
           type: string
         created_by_actor:
-          $ref: "#/components/schemas/_v2_objects__object__records_query_post_200_response_data_inner_values_value_inner_oneOf_1_created_by_actor"
+          $ref: "#/components/schemas/_v2_objects__object__records_query_post_200_response_data_inner_values_value_inner_oneOf_created_by_actor"
         value:
           description: Numbers are persisted as 64 bit floats.
           example: 42
@@ -6322,7 +6331,7 @@ components:
           nullable: true
           type: string
         created_by_actor:
-          $ref: "#/components/schemas/_v2_objects__object__records_query_post_200_response_data_inner_values_value_inner_oneOf_1_created_by_actor"
+          $ref: "#/components/schemas/_v2_objects__object__records_query_post_200_response_data_inner_values_value_inner_oneOf_created_by_actor"
         first_name:
           description: The first name.
           example: Ada
@@ -6365,7 +6374,7 @@ components:
           nullable: true
           type: string
         created_by_actor:
-          $ref: "#/components/schemas/_v2_objects__object__records_query_post_200_response_data_inner_values_value_inner_oneOf_1_created_by_actor"
+          $ref: "#/components/schemas/_v2_objects__object__records_query_post_200_response_data_inner_values_value_inner_oneOf_created_by_actor"
         original_phone_number:
           description: "The raw, original phone number, as inputted."
           example: "5558675309"
@@ -6662,7 +6671,7 @@ components:
           nullable: true
           type: string
         created_by_actor:
-          $ref: "#/components/schemas/_v2_objects__object__records_query_post_200_response_data_inner_values_value_inner_oneOf_1_created_by_actor"
+          $ref: "#/components/schemas/_v2_objects__object__records_query_post_200_response_data_inner_values_value_inner_oneOf_created_by_actor"
         status:
           $ref: "#/components/schemas/status"
         attribute_type:
@@ -6694,7 +6703,7 @@ components:
           nullable: true
           type: string
         created_by_actor:
-          $ref: "#/components/schemas/_v2_objects__object__records_query_post_200_response_data_inner_values_value_inner_oneOf_1_created_by_actor"
+          $ref: "#/components/schemas/_v2_objects__object__records_query_post_200_response_data_inner_values_value_inner_oneOf_created_by_actor"
         value:
           description: A number between 0 and 5 (inclusive) to represent a star rating.
           example: 3
@@ -6728,7 +6737,7 @@ components:
           nullable: true
           type: string
         created_by_actor:
-          $ref: "#/components/schemas/_v2_objects__object__records_query_post_200_response_data_inner_values_value_inner_oneOf_1_created_by_actor"
+          $ref: "#/components/schemas/_v2_objects__object__records_query_post_200_response_data_inner_values_value_inner_oneOf_created_by_actor"
         option:
           $ref: "#/components/schemas/select-option"
         attribute_type:
@@ -6760,7 +6769,7 @@ components:
           nullable: true
           type: string
         created_by_actor:
-          $ref: "#/components/schemas/_v2_objects__object__records_query_post_200_response_data_inner_values_value_inner_oneOf_1_created_by_actor"
+          $ref: "#/components/schemas/_v2_objects__object__records_query_post_200_response_data_inner_values_value_inner_oneOf_created_by_actor"
         value:
           description: A raw text field. Values are limited to 10MB.
           example: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do\
@@ -6795,7 +6804,7 @@ components:
           nullable: true
           type: string
         created_by_actor:
-          $ref: "#/components/schemas/_v2_objects__object__records_query_post_200_response_data_inner_values_value_inner_oneOf_1_created_by_actor"
+          $ref: "#/components/schemas/_v2_objects__object__records_query_post_200_response_data_inner_values_value_inner_oneOf_created_by_actor"
         attribute_type:
           description: The attribute type of the value.
           enum:
@@ -7031,7 +7040,7 @@ components:
           $ref: "#/components/schemas/_v2_objects__object__records_put_request_data"
       required:
       - data
-    _v2_objects__object__records_put_200_response_data_values_value_inner_anyOf:
+    _v2_objects__object__records_put_200_response_data_values_value_inner_oneOf:
       additionalProperties: false
       example:
         referenced_actor_type: workspace-member
@@ -7057,7 +7066,7 @@ components:
           nullable: true
           type: string
         created_by_actor:
-          $ref: "#/components/schemas/_v2_objects__object__records_query_post_200_response_data_inner_values_value_inner_oneOf_1_created_by_actor"
+          $ref: "#/components/schemas/_v2_objects__object__records_query_post_200_response_data_inner_values_value_inner_oneOf_created_by_actor"
         referenced_actor_type:
           description: "The type of the referenced actor. [Read more information on\
             \ actor types here](/docs/actors)."
@@ -7087,7 +7096,7 @@ components:
       - created_by_actor
       - referenced_actor_id
       - referenced_actor_type
-    _v2_objects__object__records_put_200_response_data_values_value_inner_anyOf_1:
+    _v2_objects__object__records_put_200_response_data_values_value_inner_oneOf_1:
       additionalProperties: false
       properties:
         active_from:
@@ -7104,7 +7113,7 @@ components:
           nullable: true
           type: string
         created_by_actor:
-          $ref: "#/components/schemas/_v2_objects__object__records_query_post_200_response_data_inner_values_value_inner_oneOf_1_created_by_actor"
+          $ref: "#/components/schemas/_v2_objects__object__records_query_post_200_response_data_inner_values_value_inner_oneOf_created_by_actor"
         value:
           description: A boolean representing whether the checkbox is checked or not.
             The string values 'true' and 'false' are also accepted.
@@ -7122,7 +7131,7 @@ components:
       - attribute_type
       - created_by_actor
       - value
-    _v2_objects__object__records_put_200_response_data_values_value_inner_anyOf_2:
+    _v2_objects__object__records_put_200_response_data_values_value_inner_oneOf_2:
       additionalProperties: false
       properties:
         active_from:
@@ -7139,7 +7148,7 @@ components:
           nullable: true
           type: string
         created_by_actor:
-          $ref: "#/components/schemas/_v2_objects__object__records_query_post_200_response_data_inner_values_value_inner_oneOf_1_created_by_actor"
+          $ref: "#/components/schemas/_v2_objects__object__records_query_post_200_response_data_inner_values_value_inner_oneOf_created_by_actor"
         currency_value:
           description: A numerical representation of the currency value. A decimal
             with a max of 4 decimal places.
@@ -7152,7 +7161,7 @@ components:
           - ARS
           - AUD
           - BRL
-          - BEL
+          - BGN
           - CAD
           - CLP
           - CNY
@@ -7201,7 +7210,7 @@ components:
       - attribute_type
       - created_by_actor
       - currency_value
-    _v2_objects__object__records_put_200_response_data_values_value_inner_anyOf_3:
+    _v2_objects__object__records_put_200_response_data_values_value_inner_oneOf_3:
       additionalProperties: false
       properties:
         active_from:
@@ -7218,7 +7227,7 @@ components:
           nullable: true
           type: string
         created_by_actor:
-          $ref: "#/components/schemas/_v2_objects__object__records_query_post_200_response_data_inner_values_value_inner_oneOf_1_created_by_actor"
+          $ref: "#/components/schemas/_v2_objects__object__records_query_post_200_response_data_inner_values_value_inner_oneOf_created_by_actor"
         attribute_type:
           description: The attribute type of the value.
           enum:
@@ -7244,7 +7253,7 @@ components:
       - attribute_type
       - created_by_actor
       - value
-    _v2_objects__object__records_put_200_response_data_values_value_inner_anyOf_4:
+    _v2_objects__object__records_put_200_response_data_values_value_inner_oneOf_4:
       additionalProperties: false
       properties:
         active_from:
@@ -7261,7 +7270,7 @@ components:
           nullable: true
           type: string
         created_by_actor:
-          $ref: "#/components/schemas/_v2_objects__object__records_query_post_200_response_data_inner_values_value_inner_oneOf_1_created_by_actor"
+          $ref: "#/components/schemas/_v2_objects__object__records_query_post_200_response_data_inner_values_value_inner_oneOf_created_by_actor"
         domain:
           example: app.attio.com
           type: string
@@ -7281,7 +7290,7 @@ components:
       - created_by_actor
       - domain
       - root_domain
-    _v2_objects__object__records_put_200_response_data_values_value_inner_anyOf_5:
+    _v2_objects__object__records_put_200_response_data_values_value_inner_oneOf_5:
       additionalProperties: false
       properties:
         active_from:
@@ -7298,7 +7307,7 @@ components:
           nullable: true
           type: string
         created_by_actor:
-          $ref: "#/components/schemas/_v2_objects__object__records_query_post_200_response_data_inner_values_value_inner_oneOf_1_created_by_actor"
+          $ref: "#/components/schemas/_v2_objects__object__records_query_post_200_response_data_inner_values_value_inner_oneOf_created_by_actor"
         target_object:
           description: A slug identifying the object that the referenced record belongs
             to.
@@ -7322,7 +7331,7 @@ components:
       - created_by_actor
       - target_object
       - target_record_id
-    _v2_objects__object__records_put_200_response_data_values_value_inner_anyOf_6:
+    _v2_objects__object__records_put_200_response_data_values_value_inner_oneOf_6:
       additionalProperties: false
       properties:
         active_from:
@@ -7339,7 +7348,7 @@ components:
           nullable: true
           type: string
         created_by_actor:
-          $ref: "#/components/schemas/_v2_objects__object__records_query_post_200_response_data_inner_values_value_inner_oneOf_1_created_by_actor"
+          $ref: "#/components/schemas/_v2_objects__object__records_query_post_200_response_data_inner_values_value_inner_oneOf_created_by_actor"
         interaction_type:
           description: The type of interaction e.g. calendar or email.
           enum:
@@ -7357,7 +7366,7 @@ components:
           format: date-time
           type: string
         owner_actor:
-          $ref: "#/components/schemas/_v2_objects__object__records_query_post_200_response_data_inner_values_value_inner_oneOf_1_created_by_actor"
+          $ref: "#/components/schemas/_v2_objects__object__records_query_post_200_response_data_inner_values_value_inner_oneOf_created_by_actor"
         attribute_type:
           description: The attribute type of the value.
           enum:
@@ -7372,7 +7381,7 @@ components:
       - interacted_at
       - interaction_type
       - owner_actor
-    _v2_objects__object__records_put_200_response_data_values_value_inner_anyOf_7:
+    _v2_objects__object__records_put_200_response_data_values_value_inner_oneOf_7:
       additionalProperties: false
       properties:
         active_from:
@@ -7389,7 +7398,7 @@ components:
           nullable: true
           type: string
         created_by_actor:
-          $ref: "#/components/schemas/_v2_objects__object__records_query_post_200_response_data_inner_values_value_inner_oneOf_1_created_by_actor"
+          $ref: "#/components/schemas/_v2_objects__object__records_query_post_200_response_data_inner_values_value_inner_oneOf_created_by_actor"
         line_1:
           description: The first line of the address. Note that this value is not
             currently represented in the UI but will be persisted and readable through
@@ -7736,7 +7745,7 @@ components:
       - longitude
       - postcode
       - region
-    _v2_objects__object__records_put_200_response_data_values_value_inner_anyOf_8:
+    _v2_objects__object__records_put_200_response_data_values_value_inner_oneOf_8:
       additionalProperties: false
       properties:
         active_from:
@@ -7753,7 +7762,7 @@ components:
           nullable: true
           type: string
         created_by_actor:
-          $ref: "#/components/schemas/_v2_objects__object__records_query_post_200_response_data_inner_values_value_inner_oneOf_1_created_by_actor"
+          $ref: "#/components/schemas/_v2_objects__object__records_query_post_200_response_data_inner_values_value_inner_oneOf_created_by_actor"
         first_name:
           description: The first name.
           example: Ada
@@ -7780,7 +7789,7 @@ components:
       - first_name
       - full_name
       - last_name
-    _v2_objects__object__records_put_200_response_data_values_value_inner_anyOf_9:
+    _v2_objects__object__records_put_200_response_data_values_value_inner_oneOf_9:
       additionalProperties: false
       properties:
         active_from:
@@ -7797,7 +7806,7 @@ components:
           nullable: true
           type: string
         created_by_actor:
-          $ref: "#/components/schemas/_v2_objects__object__records_query_post_200_response_data_inner_values_value_inner_oneOf_1_created_by_actor"
+          $ref: "#/components/schemas/_v2_objects__object__records_query_post_200_response_data_inner_values_value_inner_oneOf_created_by_actor"
         status:
           $ref: "#/components/schemas/status"
         attribute_type:
@@ -7812,7 +7821,7 @@ components:
       - attribute_type
       - created_by_actor
       - status
-    _v2_objects__object__records_put_200_response_data_values_value_inner_anyOf_10:
+    _v2_objects__object__records_put_200_response_data_values_value_inner_oneOf_10:
       additionalProperties: false
       properties:
         active_from:
@@ -7829,7 +7838,7 @@ components:
           nullable: true
           type: string
         created_by_actor:
-          $ref: "#/components/schemas/_v2_objects__object__records_query_post_200_response_data_inner_values_value_inner_oneOf_1_created_by_actor"
+          $ref: "#/components/schemas/_v2_objects__object__records_query_post_200_response_data_inner_values_value_inner_oneOf_created_by_actor"
         value:
           description: A number between 0 and 5 (inclusive) to represent a star rating.
           example: 3
@@ -7846,7 +7855,7 @@ components:
       - attribute_type
       - created_by_actor
       - value
-    _v2_objects__object__records_put_200_response_data_values_value_inner_anyOf_11:
+    _v2_objects__object__records_put_200_response_data_values_value_inner_oneOf_11:
       additionalProperties: false
       properties:
         active_from:
@@ -7863,7 +7872,7 @@ components:
           nullable: true
           type: string
         created_by_actor:
-          $ref: "#/components/schemas/_v2_objects__object__records_query_post_200_response_data_inner_values_value_inner_oneOf_1_created_by_actor"
+          $ref: "#/components/schemas/_v2_objects__object__records_query_post_200_response_data_inner_values_value_inner_oneOf_created_by_actor"
         option:
           $ref: "#/components/schemas/select-option"
         attribute_type:
@@ -7878,7 +7887,7 @@ components:
       - attribute_type
       - created_by_actor
       - option
-    _v2_objects__object__records_put_200_response_data_values_value_inner_anyOf_12:
+    _v2_objects__object__records_put_200_response_data_values_value_inner_oneOf_12:
       additionalProperties: false
       properties:
         active_from:
@@ -7895,7 +7904,7 @@ components:
           nullable: true
           type: string
         created_by_actor:
-          $ref: "#/components/schemas/_v2_objects__object__records_query_post_200_response_data_inner_values_value_inner_oneOf_1_created_by_actor"
+          $ref: "#/components/schemas/_v2_objects__object__records_query_post_200_response_data_inner_values_value_inner_oneOf_created_by_actor"
         value:
           description: A raw text field. Values are limited to 10MB.
           example: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do\
@@ -7913,7 +7922,7 @@ components:
       - attribute_type
       - created_by_actor
       - value
-    _v2_objects__object__records_put_200_response_data_values_value_inner_anyOf_13:
+    _v2_objects__object__records_put_200_response_data_values_value_inner_oneOf_13:
       additionalProperties: false
       properties:
         active_from:
@@ -7930,7 +7939,7 @@ components:
           nullable: true
           type: string
         created_by_actor:
-          $ref: "#/components/schemas/_v2_objects__object__records_query_post_200_response_data_inner_values_value_inner_oneOf_1_created_by_actor"
+          $ref: "#/components/schemas/_v2_objects__object__records_query_post_200_response_data_inner_values_value_inner_oneOf_created_by_actor"
         attribute_type:
           description: The attribute type of the value.
           enum:
@@ -7959,24 +7968,24 @@ components:
       - created_by_actor
       - value
     _v2_objects__object__records_put_200_response_data_values_value_inner:
-      anyOf:
-      - $ref: "#/components/schemas/_v2_objects__object__records_put_200_response_data_values_value_inner_anyOf"
-      - $ref: "#/components/schemas/_v2_objects__object__records_put_200_response_data_values_value_inner_anyOf_1"
-      - $ref: "#/components/schemas/_v2_objects__object__records_put_200_response_data_values_value_inner_anyOf_2"
-      - $ref: "#/components/schemas/_v2_objects__object__records_put_200_response_data_values_value_inner_anyOf_3"
-      - $ref: "#/components/schemas/_v2_objects__object__records_put_200_response_data_values_value_inner_anyOf_4"
+      oneOf:
+      - $ref: "#/components/schemas/_v2_objects__object__records_put_200_response_data_values_value_inner_oneOf"
+      - $ref: "#/components/schemas/_v2_objects__object__records_put_200_response_data_values_value_inner_oneOf_1"
+      - $ref: "#/components/schemas/_v2_objects__object__records_put_200_response_data_values_value_inner_oneOf_2"
+      - $ref: "#/components/schemas/_v2_objects__object__records_put_200_response_data_values_value_inner_oneOf_3"
+      - $ref: "#/components/schemas/_v2_objects__object__records_put_200_response_data_values_value_inner_oneOf_4"
       - $ref: "#/components/schemas/_v2_objects__object__records_query_post_200_response_data_inner_values_value_inner_oneOf_5"
-      - $ref: "#/components/schemas/_v2_objects__object__records_put_200_response_data_values_value_inner_anyOf_5"
-      - $ref: "#/components/schemas/_v2_objects__object__records_put_200_response_data_values_value_inner_anyOf_6"
-      - $ref: "#/components/schemas/_v2_objects__object__records_put_200_response_data_values_value_inner_anyOf_7"
+      - $ref: "#/components/schemas/_v2_objects__object__records_put_200_response_data_values_value_inner_oneOf_5"
+      - $ref: "#/components/schemas/_v2_objects__object__records_put_200_response_data_values_value_inner_oneOf_6"
+      - $ref: "#/components/schemas/_v2_objects__object__records_put_200_response_data_values_value_inner_oneOf_7"
       - $ref: "#/components/schemas/_v2_objects__object__records_query_post_200_response_data_inner_values_value_inner_oneOf_9"
-      - $ref: "#/components/schemas/_v2_objects__object__records_put_200_response_data_values_value_inner_anyOf_8"
+      - $ref: "#/components/schemas/_v2_objects__object__records_put_200_response_data_values_value_inner_oneOf_8"
       - $ref: "#/components/schemas/_v2_objects__object__records_query_post_200_response_data_inner_values_value_inner_oneOf_11"
-      - $ref: "#/components/schemas/_v2_objects__object__records_put_200_response_data_values_value_inner_anyOf_9"
-      - $ref: "#/components/schemas/_v2_objects__object__records_put_200_response_data_values_value_inner_anyOf_10"
-      - $ref: "#/components/schemas/_v2_objects__object__records_put_200_response_data_values_value_inner_anyOf_11"
-      - $ref: "#/components/schemas/_v2_objects__object__records_put_200_response_data_values_value_inner_anyOf_12"
-      - $ref: "#/components/schemas/_v2_objects__object__records_put_200_response_data_values_value_inner_anyOf_13"
+      - $ref: "#/components/schemas/_v2_objects__object__records_put_200_response_data_values_value_inner_oneOf_9"
+      - $ref: "#/components/schemas/_v2_objects__object__records_put_200_response_data_values_value_inner_oneOf_10"
+      - $ref: "#/components/schemas/_v2_objects__object__records_put_200_response_data_values_value_inner_oneOf_11"
+      - $ref: "#/components/schemas/_v2_objects__object__records_put_200_response_data_values_value_inner_oneOf_12"
+      - $ref: "#/components/schemas/_v2_objects__object__records_put_200_response_data_values_value_inner_oneOf_13"
     _v2_objects__object__records_put_200_response_data:
       example:
         web_url: https://app.attio.com/salarya/person/bf071e1f-6035-429d-b874-d83ea64ea13b
@@ -8109,108 +8118,6 @@ components:
       properties:
         data:
           $ref: "#/components/schemas/_v2_objects__object__records_post_request_data"
-      required:
-      - data
-    _v2_objects__object__records_post_200_response_data_values_value_inner:
-      oneOf:
-      - $ref: "#/components/schemas/_v2_objects__object__records_put_200_response_data_values_value_inner_anyOf"
-      - $ref: "#/components/schemas/_v2_objects__object__records_put_200_response_data_values_value_inner_anyOf_1"
-      - $ref: "#/components/schemas/_v2_objects__object__records_put_200_response_data_values_value_inner_anyOf_2"
-      - $ref: "#/components/schemas/_v2_objects__object__records_put_200_response_data_values_value_inner_anyOf_3"
-      - $ref: "#/components/schemas/_v2_objects__object__records_put_200_response_data_values_value_inner_anyOf_4"
-      - $ref: "#/components/schemas/_v2_objects__object__records_query_post_200_response_data_inner_values_value_inner_oneOf_5"
-      - $ref: "#/components/schemas/_v2_objects__object__records_put_200_response_data_values_value_inner_anyOf_5"
-      - $ref: "#/components/schemas/_v2_objects__object__records_put_200_response_data_values_value_inner_anyOf_6"
-      - $ref: "#/components/schemas/_v2_objects__object__records_put_200_response_data_values_value_inner_anyOf_7"
-      - $ref: "#/components/schemas/_v2_objects__object__records_query_post_200_response_data_inner_values_value_inner_oneOf_9"
-      - $ref: "#/components/schemas/_v2_objects__object__records_put_200_response_data_values_value_inner_anyOf_8"
-      - $ref: "#/components/schemas/_v2_objects__object__records_query_post_200_response_data_inner_values_value_inner_oneOf_11"
-      - $ref: "#/components/schemas/_v2_objects__object__records_put_200_response_data_values_value_inner_anyOf_9"
-      - $ref: "#/components/schemas/_v2_objects__object__records_put_200_response_data_values_value_inner_anyOf_10"
-      - $ref: "#/components/schemas/_v2_objects__object__records_put_200_response_data_values_value_inner_anyOf_11"
-      - $ref: "#/components/schemas/_v2_objects__object__records_put_200_response_data_values_value_inner_anyOf_12"
-      - $ref: "#/components/schemas/_v2_objects__object__records_put_200_response_data_values_value_inner_anyOf_13"
-    _v2_objects__object__records_post_200_response_data:
-      example:
-        web_url: https://app.attio.com/salarya/person/bf071e1f-6035-429d-b874-d83ea64ea13b
-        values:
-          key:
-          - referenced_actor_type: workspace-member
-            referenced_actor_id: 50cf242c-7fa3-4cad-87d0-75b1af71c57b
-            attribute_type: actor-reference
-            active_from: 2023-01-01T15:00:00.000000000Z
-            created_by_actor:
-              type: workspace-member
-              id: 50cf242c-7fa3-4cad-87d0-75b1af71c57b
-            active_until: 2023-01-01T15:00:00.000000000Z
-          - referenced_actor_type: workspace-member
-            referenced_actor_id: 50cf242c-7fa3-4cad-87d0-75b1af71c57b
-            attribute_type: actor-reference
-            active_from: 2023-01-01T15:00:00.000000000Z
-            created_by_actor:
-              type: workspace-member
-              id: 50cf242c-7fa3-4cad-87d0-75b1af71c57b
-            active_until: 2023-01-01T15:00:00.000000000Z
-        created_at: 2022-11-21T13:22:49.061281000Z
-        id:
-          workspace_id: 14beef7a-99f7-4534-a87e-70b564330a4c
-          record_id: bf071e1f-6035-429d-b874-d83ea64ea13b
-          object_id: 97052eb9-e65e-443f-a297-f2d9a4a7f795
-      properties:
-        id:
-          $ref: "#/components/schemas/_v2_objects__object__records_query_post_200_response_data_inner_id"
-        created_at:
-          description: When this record was created.
-          example: 2022-11-21T13:22:49.061281000Z
-          type: string
-        web_url:
-          description: A URL that links directly to the record page in the Attio web
-            application.
-          example: https://app.attio.com/salarya/person/bf071e1f-6035-429d-b874-d83ea64ea13b
-          format: uri
-          type: string
-        values:
-          additionalProperties:
-            items:
-              $ref: "#/components/schemas/_v2_objects__object__records_post_200_response_data_values_value_inner"
-          description: "A record type with an attribute `api_slug` as the key, and\
-            \ an array of value objects as the values."
-      required:
-      - created_at
-      - id
-      - values
-      - web_url
-    _v2_objects__object__records_post_200_response:
-      description: Success
-      example:
-        data:
-          web_url: https://app.attio.com/salarya/person/bf071e1f-6035-429d-b874-d83ea64ea13b
-          values:
-            key:
-            - referenced_actor_type: workspace-member
-              referenced_actor_id: 50cf242c-7fa3-4cad-87d0-75b1af71c57b
-              attribute_type: actor-reference
-              active_from: 2023-01-01T15:00:00.000000000Z
-              created_by_actor:
-                type: workspace-member
-                id: 50cf242c-7fa3-4cad-87d0-75b1af71c57b
-              active_until: 2023-01-01T15:00:00.000000000Z
-            - referenced_actor_type: workspace-member
-              referenced_actor_id: 50cf242c-7fa3-4cad-87d0-75b1af71c57b
-              attribute_type: actor-reference
-              active_from: 2023-01-01T15:00:00.000000000Z
-              created_by_actor:
-                type: workspace-member
-                id: 50cf242c-7fa3-4cad-87d0-75b1af71c57b
-              active_until: 2023-01-01T15:00:00.000000000Z
-          created_at: 2022-11-21T13:22:49.061281000Z
-          id:
-            workspace_id: 14beef7a-99f7-4534-a87e-70b564330a4c
-            record_id: bf071e1f-6035-429d-b874-d83ea64ea13b
-            object_id: 97052eb9-e65e-443f-a297-f2d9a4a7f795
-      properties:
-        data:
-          $ref: "#/components/schemas/_v2_objects__object__records_post_200_response_data"
       required:
       - data
     _v2_objects__object__records_post_400_response:
@@ -8346,7 +8253,7 @@ components:
       properties:
         data:
           items:
-            $ref: "#/components/schemas/_v2_objects__object__records_post_200_response_data_values_value_inner"
+            $ref: "#/components/schemas/_v2_objects__object__records_put_200_response_data_values_value_inner"
           type: array
       required:
       - data
@@ -8427,6 +8334,242 @@ components:
           type: array
       required:
       - data
+    _v2_objects_records_search_post_request_request_as_anyOf:
+      properties:
+        type:
+          enum:
+          - workspace
+          type: string
+      required:
+      - type
+    _v2_objects_records_search_post_request_request_as_anyOf_1:
+      properties:
+        type:
+          enum:
+          - workspace-member
+          type: string
+        workspace_member_id:
+          example: 50cf242c-7fa3-4cad-87d0-75b1af71c57b
+          format: uuid
+          type: string
+      required:
+      - type
+      - workspace_member_id
+    _v2_objects_records_search_post_request_request_as_anyOf_2:
+      properties:
+        type:
+          enum:
+          - workspace-member
+          type: string
+        email_address:
+          example: alice@attio.com
+          format: email
+          type: string
+      required:
+      - email_address
+      - type
+    _v2_objects_records_search_post_request_request_as:
+      anyOf:
+      - $ref: "#/components/schemas/_v2_objects_records_search_post_request_request_as_anyOf"
+      - $ref: "#/components/schemas/_v2_objects_records_search_post_request_request_as_anyOf_1"
+      - $ref: "#/components/schemas/_v2_objects_records_search_post_request_request_as_anyOf_2"
+      description: Specifies the context in which to perform the search. Use 'workspace'
+        to return all search results or specify a workspace member to limit results
+        to what one specific person in your workspace can see.
+    _v2_objects_records_search_post_request:
+      properties:
+        query:
+          description: Query string to search for. An empty string returns a default
+            set of results.
+          example: alan mathis
+          maxLength: 256
+          type: string
+        limit:
+          default: 25
+          description: The maximum number of results to return. Defaults to 25.
+          example: 25
+          maximum: 25
+          minimum: 1
+          type: number
+        objects:
+          description: Specifies which objects to filter results by. At least one
+            object must be specified. Accepts object slugs or IDs.
+          example:
+          - people
+          - deals
+          - 1b31b79a-ddf9-4d57-a320-884061b2bcff
+          items:
+            description: The object slug or UUID that you would like to filter by.
+            example: people
+            type: string
+          minItems: 1
+          type: array
+        request_as:
+          $ref: "#/components/schemas/_v2_objects_records_search_post_request_request_as"
+      required:
+      - objects
+      - query
+      - request_as
+    _v2_objects_records_search_post_200_response_data_inner_anyOf:
+      example:
+        object_slug: applications
+        record_image: https://cdn.image-service.com/images/profiles/e67b8980-7dbb-46bf-95e3-266d7bceb096
+        id:
+          workspace_id: 14beef7a-99f7-4534-a87e-70b564330a4c
+          record_id: bf071e1f-6035-429d-b874-d83ea64ea13b
+          object_id: 97052eb9-e65e-443f-a297-f2d9a4a7f795
+        record_text: Alan Mathison Turing
+      properties:
+        id:
+          $ref: "#/components/schemas/_v2_objects__object__records_query_post_200_response_data_inner_id"
+        record_text:
+          description: A human-readable label for the record. Present on records from
+            all objects.
+          example: Alan Mathison Turing
+          type: string
+        record_image:
+          description: The image for the record.
+          example: https://cdn.image-service.com/images/profiles/e67b8980-7dbb-46bf-95e3-266d7bceb096
+          nullable: true
+          type: string
+        object_slug:
+          description: The slug of the object this record belongs to.
+          example: applications
+          type: string
+      required:
+      - id
+      - object_slug
+      - record_image
+      - record_text
+    _v2_objects_records_search_post_200_response_data_inner_anyOf_1:
+      properties:
+        id:
+          $ref: "#/components/schemas/_v2_objects__object__records_query_post_200_response_data_inner_id"
+        record_text:
+          description: A human-readable label for the record. Present on records from
+            all objects.
+          example: Alan Mathison Turing
+          type: string
+        record_image:
+          description: The image for the record.
+          example: https://cdn.image-service.com/images/profiles/e67b8980-7dbb-46bf-95e3-266d7bceb096
+          nullable: true
+          type: string
+        object_slug:
+          description: The slug of the object this record belongs to.
+          enum:
+          - people
+          example: people
+          type: string
+        email_addresses:
+          description: The person's email addresses.
+          items:
+            example: alan@bletchley.gov.uk
+            type: string
+          type: array
+        phone_numbers:
+          description: The person's phone numbers.
+          items:
+            example: "+15558675309"
+            type: string
+          type: array
+      required:
+      - email_addresses
+      - id
+      - object_slug
+      - phone_numbers
+      - record_image
+      - record_text
+    _v2_objects_records_search_post_200_response_data_inner_anyOf_2:
+      properties:
+        id:
+          $ref: "#/components/schemas/_v2_objects__object__records_query_post_200_response_data_inner_id"
+        record_text:
+          description: A human-readable label for the record. Present on records from
+            all objects.
+          example: Alan Mathison Turing
+          type: string
+        record_image:
+          description: The image for the record.
+          example: https://cdn.image-service.com/images/profiles/e67b8980-7dbb-46bf-95e3-266d7bceb096
+          nullable: true
+          type: string
+        object_slug:
+          description: The slug of the object this record belongs to.
+          enum:
+          - companies
+          example: companies
+          type: string
+        domains:
+          description: The company's domains.
+          items:
+            example: fundstack.com
+            type: string
+          type: array
+      required:
+      - domains
+      - id
+      - object_slug
+      - record_image
+      - record_text
+    _v2_objects_records_search_post_200_response_data_inner:
+      anyOf:
+      - $ref: "#/components/schemas/_v2_objects_records_search_post_200_response_data_inner_anyOf"
+      - $ref: "#/components/schemas/_v2_objects_records_search_post_200_response_data_inner_anyOf_1"
+      - $ref: "#/components/schemas/_v2_objects_records_search_post_200_response_data_inner_anyOf_2"
+    _v2_objects_records_search_post_200_response:
+      description: Success
+      example:
+        data:
+        - object_slug: applications
+          record_image: https://cdn.image-service.com/images/profiles/e67b8980-7dbb-46bf-95e3-266d7bceb096
+          id:
+            workspace_id: 14beef7a-99f7-4534-a87e-70b564330a4c
+            record_id: bf071e1f-6035-429d-b874-d83ea64ea13b
+            object_id: 97052eb9-e65e-443f-a297-f2d9a4a7f795
+          record_text: Alan Mathison Turing
+        - object_slug: applications
+          record_image: https://cdn.image-service.com/images/profiles/e67b8980-7dbb-46bf-95e3-266d7bceb096
+          id:
+            workspace_id: 14beef7a-99f7-4534-a87e-70b564330a4c
+            record_id: bf071e1f-6035-429d-b874-d83ea64ea13b
+            object_id: 97052eb9-e65e-443f-a297-f2d9a4a7f795
+          record_text: Alan Mathison Turing
+      properties:
+        data:
+          items:
+            $ref: "#/components/schemas/_v2_objects_records_search_post_200_response_data_inner"
+          type: array
+      required:
+      - data
+    _v2_objects_records_search_post_400_response:
+      description: Bad Request
+      example:
+        status_code: 0.8008281904610115
+        code: value_not_found
+        type: invalid_request_error
+        message: Object with slug/ID "foobar" not found.
+      properties:
+        status_code:
+          enum:
+          - 400
+          type: number
+        type:
+          enum:
+          - invalid_request_error
+          type: string
+        code:
+          enum:
+          - value_not_found
+          type: string
+        message:
+          example: Object with slug/ID "foobar" not found.
+          type: string
+      required:
+      - code
+      - message
+      - status_code
+      - type
     _v2_lists_get_200_response:
       description: Success
       example:
@@ -8749,13 +8892,13 @@ components:
         filter:
           additionalProperties: false
           description: "An object used to filter results to a subset of results. See\
-            \ the [full guide to filtering and sorting here](/rest-api/how-to/filtering-and-sorting)."
+            \ the [full guide to filtering and sorting here](/rest-api/guides/filtering-and-sorting)."
           example:
             name: Ada Lovelace
           type: object
         sorts:
           description: "An object used to sort results. See the [full guide to filtering\
-            \ and sorting here](/rest-api/how-to/filtering-and-sorting)."
+            \ and sorting here](/rest-api/guides/filtering-and-sorting)."
           example:
           - direction: asc
             attribute: name
@@ -8765,12 +8908,12 @@ components:
           type: array
         limit:
           description: "The maximum number of results to return. Defaults to 500.\
-            \ See the [full guide to pagination here](/rest-api/how-to/pagination)."
+            \ See the [full guide to pagination here](/rest-api/guides/pagination)."
           example: 500
           type: number
         offset:
           description: "The number of results to skip over before returning. Defaults\
-            \ to 0. See the [full guide to pagination here](/rest-api/how-to/pagination)."
+            \ to 0. See the [full guide to pagination here](/rest-api/guides/pagination)."
           example: 0
           type: number
     _v2_lists__list__entries_query_post_200_response_data_inner_id:
@@ -8862,7 +9005,7 @@ components:
         entry_values:
           additionalProperties:
             items:
-              $ref: "#/components/schemas/_v2_objects__object__records_post_200_response_data_values_value_inner"
+              $ref: "#/components/schemas/_v2_objects__object__records_put_200_response_data_values_value_inner"
           description: A list of attribute values for the list entry (not attribute
             values for its parent record).
           example:
@@ -10026,8 +10169,9 @@ components:
       properties:
         content:
           description: "The text content of the task, in the format specified by the\
-            \ `format` property."
+            \ `format` property. A max length of 2000 characters is enforced."
           example: Follow up on current software solutions
+          maxLength: 2000
           type: string
         format:
           description: "The format of the task content to be created. Rich text formatting,\
@@ -10153,364 +10297,14 @@ components:
       - message
       - status_code
       - type
-    _v2_tasks__task_id__patch_request_data_linked_records_inner_anyOf:
-      properties:
-        target_object:
-          description: The ID or slug of the parent object the tasks refers to. This
-            can reference both standard and custom objects.`
-          example: people
-        target_record_id:
-          description: The ID of the parent record the task refers to.
-          example: 891dcbfc-9141-415d-9b2a-2238a6cc012d
-          format: uuid
-      required:
-      - target_object
-      - target_record_id
-    _v2_tasks__task_id__patch_request_data_linked_records_inner_anyOf_1__slug_or_id_of_matching_attribute__inner_anyOf:
-      properties:
-        domain:
-          description: The full domain of the website.
-          example: app.attio.com
-    _v2_tasks__task_id__patch_request_data_linked_records_inner_anyOf_1__slug_or_id_of_matching_attribute__inner_anyOf_1:
-      properties:
-        email_address:
-          description: An email address string
-          example: alice@app.attio.com
-    _v2_tasks__task_id__patch_request_data_linked_records_inner_anyOf_1__slug_or_id_of_matching_attribute__inner_anyOf_2:
-      properties:
-        value:
-          description: Numbers are persisted as 64 bit floats.
-          example: 17224912
-    _v2_tasks__task_id__patch_request_data_linked_records_inner_anyOf_1__slug_or_id_of_matching_attribute__inner_anyOf_3:
-      properties:
-        original_phone_number:
-          description: "The raw, original phone number, as inputted."
-          example: "07234172834"
-        country_code:
-          description: The ISO 3166-1 alpha-2 country code representing the country
-            that this phone number belongs to.
-          enum:
-          - AF
-          - AX
-          - AL
-          - DZ
-          - AS
-          - AD
-          - AO
-          - AI
-          - AQ
-          - AG
-          - AR
-          - AM
-          - AW
-          - AU
-          - AT
-          - AZ
-          - BS
-          - BH
-          - BD
-          - BB
-          - BY
-          - BE
-          - BZ
-          - BJ
-          - BM
-          - BT
-          - BO
-          - BA
-          - BW
-          - BV
-          - BR
-          - IO
-          - BN
-          - BG
-          - BF
-          - BI
-          - KH
-          - CM
-          - CA
-          - CV
-          - KY
-          - CF
-          - TD
-          - CL
-          - CN
-          - CX
-          - CC
-          - CO
-          - KM
-          - CG
-          - CD
-          - CK
-          - CR
-          - CI
-          - HR
-          - CU
-          - CW
-          - CY
-          - CZ
-          - DK
-          - DJ
-          - DM
-          - DO
-          - EC
-          - EG
-          - SV
-          - GQ
-          - ER
-          - EE
-          - ET
-          - FK
-          - FO
-          - FJ
-          - FI
-          - FR
-          - GF
-          - PF
-          - TF
-          - GA
-          - GM
-          - GE
-          - DE
-          - GH
-          - GI
-          - GR
-          - GL
-          - GD
-          - GP
-          - GU
-          - GT
-          - GG
-          - GN
-          - GW
-          - GY
-          - HT
-          - HM
-          - VA
-          - HN
-          - HK
-          - HU
-          - IS
-          - IN
-          - ID
-          - IR
-          - IQ
-          - IE
-          - IM
-          - IL
-          - IT
-          - JM
-          - JP
-          - JE
-          - JO
-          - KZ
-          - KE
-          - KI
-          - KR
-          - KW
-          - KG
-          - LA
-          - LV
-          - LB
-          - LS
-          - LR
-          - LY
-          - LI
-          - LT
-          - LU
-          - MO
-          - MK
-          - MG
-          - MW
-          - MY
-          - MV
-          - ML
-          - MT
-          - MH
-          - MQ
-          - MR
-          - MU
-          - YT
-          - MX
-          - FM
-          - MD
-          - MC
-          - MN
-          - ME
-          - MS
-          - MA
-          - MZ
-          - MM
-          - NA
-          - NR
-          - NP
-          - NL
-          - AN
-          - NC
-          - NZ
-          - NI
-          - NE
-          - NG
-          - NU
-          - NF
-          - MP
-          - "NO"
-          - OM
-          - PK
-          - PW
-          - PS
-          - PA
-          - PG
-          - PY
-          - PE
-          - PH
-          - PN
-          - PL
-          - PT
-          - PR
-          - QA
-          - RE
-          - RO
-          - RU
-          - RW
-          - BL
-          - SH
-          - KN
-          - LC
-          - MF
-          - PM
-          - VC
-          - WS
-          - SM
-          - ST
-          - SA
-          - SN
-          - SS
-          - RS
-          - SC
-          - SL
-          - SG
-          - SK
-          - SI
-          - SB
-          - SO
-          - ZA
-          - GS
-          - ES
-          - LK
-          - SD
-          - SR
-          - SJ
-          - SZ
-          - SE
-          - CH
-          - SY
-          - TW
-          - TJ
-          - TZ
-          - TH
-          - TL
-          - TG
-          - TK
-          - TO
-          - TT
-          - TN
-          - TR
-          - TM
-          - TC
-          - TV
-          - UG
-          - UA
-          - AE
-          - GB
-          - US
-          - UM
-          - UY
-          - UZ
-          - VU
-          - VE
-          - VN
-          - VG
-          - VI
-          - WF
-          - EH
-          - YE
-          - ZM
-          - ZW
-          - BQ
-          - KP
-          - SX
-          - XK
-          - AC
-          example: GB
-    _v2_tasks__task_id__patch_request_data_linked_records_inner_anyOf_1__slug_or_id_of_matching_attribute__inner_anyOf_4:
-      properties:
-        value:
-          description: A raw text field. Values are limited to 10MB.
-    _v2_tasks__task_id__patch_request_data_linked_records_inner_anyOf_1__slug_or_id_of_matching_attribute__inner:
-      anyOf:
-      - $ref: "#/components/schemas/_v2_tasks__task_id__patch_request_data_linked_records_inner_anyOf_1__slug_or_id_of_matching_attribute__inner_anyOf"
-      - $ref: "#/components/schemas/_v2_tasks__task_id__patch_request_data_linked_records_inner_anyOf_1__slug_or_id_of_matching_attribute__inner_anyOf_1"
-      - $ref: "#/components/schemas/_v2_tasks__task_id__patch_request_data_linked_records_inner_anyOf_1__slug_or_id_of_matching_attribute__inner_anyOf_2"
-      - $ref: "#/components/schemas/_v2_tasks__task_id__patch_request_data_linked_records_inner_anyOf_1__slug_or_id_of_matching_attribute__inner_anyOf_3"
-      - $ref: "#/components/schemas/_v2_tasks__task_id__patch_request_data_linked_records_inner_anyOf_1__slug_or_id_of_matching_attribute__inner_anyOf_4"
-    _v2_tasks__task_id__patch_request_data_linked_records_inner_anyOf_1:
-      example:
-        target_object: people
-        matching_attribute_id_123:
-        - value: matching_attribute_id_123
-      properties:
-        target_object:
-          description: A UUID or slug to identify the object that the referenced record
-            belongs to.
-          example: people
-        '[slug_or_id_of_matching_attribute]':
-          description: "In addition to referencing records directly by record ID,\
-            \ you may also reference by a matching attribute of your choice. For example,\
-            \ if you want to add a reference to the person record with email \"alice@website.com\"\
-            , you should pass a value with `target_object` set to `\"people\"` and\
-            \ `email_addresses` set to `[{email_address:\"alice@website.com\"}]`.\
-            \ The key should be the slug or ID of the matching attribute you would\
-            \ like to use and the value should be an array containing a single value\
-            \ of the appropriate attribute type (as specified below). Matching on\
-            \ multiple values is not currently supported. Matching attributes must\
-            \ be unique. This process is similar to how you use the `matching_attribute`\
-            \ query param in Attio's [assert endpoints](/rest-api/endpoint-reference/records/assert-a-record)."
-          items:
-            $ref: "#/components/schemas/_v2_tasks__task_id__patch_request_data_linked_records_inner_anyOf_1__slug_or_id_of_matching_attribute__inner"
-      required:
-      - "[slug_or_id_of_matching_attribute]"
-      - target_object
-    _v2_tasks__task_id__patch_request_data_linked_records_inner:
-      anyOf:
-      - $ref: "#/components/schemas/_v2_tasks__task_id__patch_request_data_linked_records_inner_anyOf"
-      - $ref: "#/components/schemas/_v2_tasks__task_id__patch_request_data_linked_records_inner_anyOf_1"
-    _v2_tasks__task_id__patch_request_data_assignees_inner_anyOf:
-      properties:
-        referenced_actor_type:
-          description: "The actor type of the task assignee. Only `workspace-member`\
-            \ actors can be assigned to tasks. [Read more information on actor types\
-            \ here](/docs/actors)."
-          enum:
-          - workspace-member
-          example: workspace-member
-        referenced_actor_id:
-          description: The ID of the actor assigned to this task.
-          example: 50cf242c-7fa3-4cad-87d0-75b1af71c57b
-          format: uuid
-      required:
-      - referenced_actor_id
-      - referenced_actor_type
-    _v2_tasks__task_id__patch_request_data_assignees_inner:
-      anyOf:
-      - $ref: "#/components/schemas/_v2_tasks__task_id__patch_request_data_assignees_inner_anyOf"
-      - $ref: "#/components/schemas/_v2_tasks_post_request_data_assignees_inner_anyOf_1"
     _v2_tasks__task_id__patch_request_data:
       additionalProperties: {}
       properties:
         deadline_at:
           description: "The deadline of the task, in ISO 8601 format."
           example: 2023-01-01T15:00:00.000000000Z
+          nullable: true
+          type: string
         is_completed:
           description: Whether the task has been completed.
           example: false
@@ -10519,11 +10313,13 @@ components:
           description: Records linked to the task. Creating record links within task
             content text is not possible via the API at present.
           items:
-            $ref: "#/components/schemas/_v2_tasks__task_id__patch_request_data_linked_records_inner"
+            $ref: "#/components/schemas/_v2_tasks_post_request_data_linked_records_inner"
+          type: array
         assignees:
           description: Workspace members assigned to this task.
           items:
-            $ref: "#/components/schemas/_v2_tasks__task_id__patch_request_data_assignees_inner"
+            $ref: "#/components/schemas/_v2_tasks_post_request_data_assignees_inner"
+          type: array
     _v2_tasks__task_id__patch_request:
       properties:
         data:
@@ -10746,8 +10542,10 @@ components:
         type:
           enum:
           - workspace-member
+          type: string
         id:
           format: uuid
+          type: string
       required:
       - id
       - type
@@ -10760,6 +10558,7 @@ components:
             note content. Rich text formatting and links are not supported.
           enum:
           - plaintext
+          type: string
         content:
           description: "The content of the comment itself. Workspace members can be\
             \ mentioned using their email address, otherwise email addresses will\
@@ -10767,6 +10566,7 @@ components:
           example: "If I put the email address of my colleague on Attio in here, e.g.\
             \ alice@attio.com, they will be notified. Other emails (e.g. person@example.com)\
             \ will be turned into clickable links."
+          type: string
         author:
           $ref: "#/components/schemas/_v2_comments_post_request_data_anyOf_author"
         created_at:
@@ -10775,11 +10575,13 @@ components:
             \ can override with a custom `created_at` value. Note that dates before\
             \ 1970 or in the future are not allowed."
           example: 2023-01-01T15:00:00.000000000Z
+          type: string
         thread_id:
           description: "If responding to an existing thread, this would be the ID\
             \ of that thread."
           example: aa1dc1d9-93ac-4c6c-987e-16b6eea9aab2
           format: uuid
+          type: string
       required:
       - author
       - content
@@ -10791,11 +10593,13 @@ components:
           description: "If creating a top-level comment on a record, this is the slug\
             \ or ID of that object."
           example: 97052eb9-e65e-443f-a297-f2d9a4a7f795
+          type: string
         record_id:
           description: "If creating a top-level comment on a record, this is the ID\
             \ of that record."
           example: bf071e1f-6035-429d-b874-d83ea64ea13b
           format: uuid
+          type: string
       required:
       - object
       - record_id
@@ -10808,6 +10612,7 @@ components:
             note content. Rich text formatting and links are not supported.
           enum:
           - plaintext
+          type: string
         content:
           description: "The content of the comment itself. Workspace members can be\
             \ mentioned using their email address, otherwise email addresses will\
@@ -10815,6 +10620,7 @@ components:
           example: "If I put the email address of my colleague on Attio in here, e.g.\
             \ alice@attio.com, they will be notified. Other emails (e.g. person@example.com)\
             \ will be turned into clickable links."
+          type: string
         author:
           $ref: "#/components/schemas/_v2_comments_post_request_data_anyOf_author"
         created_at:
@@ -10823,6 +10629,7 @@ components:
             \ can override with a custom `created_at` value. Note that dates before\
             \ 1970 or in the future are not allowed."
           example: 2023-01-01T15:00:00.000000000Z
+          type: string
         record:
           $ref: "#/components/schemas/_v2_comments_post_request_data_anyOf_1_record"
       required:
@@ -10836,10 +10643,12 @@ components:
           description: "If creating a top-level comment on a list entry, this is the\
             \ slug or ID of that list."
           example: 33ebdbe9-e529-47c9-b894-0ba25e9c15c0
+          type: string
         entry_id:
           description: "If creating a top-level comment on a list entry, this is the\
             \ ID of that entry."
           example: 2e6e29ea-c4e0-4f44-842d-78a891f8c156
+          type: string
       required:
       - entry_id
       - list
@@ -10852,6 +10661,7 @@ components:
             note content. Rich text formatting and links are not supported.
           enum:
           - plaintext
+          type: string
         content:
           description: "The content of the comment itself. Workspace members can be\
             \ mentioned using their email address, otherwise email addresses will\
@@ -10859,6 +10669,7 @@ components:
           example: "If I put the email address of my colleague on Attio in here, e.g.\
             \ alice@attio.com, they will be notified. Other emails (e.g. person@example.com)\
             \ will be turned into clickable links."
+          type: string
         author:
           $ref: "#/components/schemas/_v2_comments_post_request_data_anyOf_author"
         created_at:
@@ -10867,6 +10678,7 @@ components:
             \ can override with a custom `created_at` value. Note that dates before\
             \ 1970 or in the future are not allowed."
           example: 2023-01-01T15:00:00.000000000Z
+          type: string
         entry:
           $ref: "#/components/schemas/_v2_comments_post_request_data_anyOf_2_entry"
       required:
@@ -11085,7 +10897,228 @@ components:
       required:
       - data
       - pagination
-    _v2_meetings__meeting_id__get_200_response:
+    _v2_meetings_post_request_data_start_anyOf:
+      additionalProperties: {}
+      properties:
+        datetime:
+          description: An ISO 8601 datetime indicating when a non-all day meeting
+            starts.
+          example: 2027-11-27T14:00:00Z
+          format: date-time
+          type: string
+        timezone:
+          description: "The IANA timezone the meeting starts in. If a datetime value\
+            \ is provided without an offset, this timezone will be used to convert\
+            \ the datetime to UTC using the timezone offset. If a datetime value is\
+            \ provided with an offset, this timezone will not be used to apply any\
+            \ additional offset to the datetime. Invalid timezones will be treated\
+            \ as UTC."
+          example: America/New_York
+          nullable: true
+          type: string
+      required:
+      - datetime
+    _v2_meetings_post_request_data_start_anyOf_1:
+      additionalProperties: {}
+      properties:
+        date:
+          description: An ISO 8601 date indicating when an all day meeting starts.
+          example: 2027-11-27
+          type: string
+      required:
+      - date
+    _v2_meetings_post_request_data_start:
+      anyOf:
+      - $ref: "#/components/schemas/_v2_meetings_post_request_data_start_anyOf"
+      - $ref: "#/components/schemas/_v2_meetings_post_request_data_start_anyOf_1"
+      description: "When the meeting starts. Use a datetime and optional timezone\
+        \ for non-all day meetings, or a date for all day meetings."
+    _v2_meetings_post_request_data_end_anyOf:
+      additionalProperties: {}
+      properties:
+        datetime:
+          description: "An ISO 8601 datetime indicating when a non-all day meeting\
+            \ ends. Note that this value is exclusive, meaning that the meeting ends\
+            \ before the specified time, not at it. For example, a one hour meeting\
+            \ starting at 14:00 would end at 15:00, not 15:59:59."
+          example: 2027-11-27T15:00:00.000000000
+          format: date-time
+          type: string
+        timezone:
+          description: "The IANA timezone the meeting ends in. If a datetime value\
+            \ is provided without an offset, this timezone will be used to convert\
+            \ the datetime to UTC using the timezone offset. If a datetime value is\
+            \ provided with an offset, this timezone will not be used to apply any\
+            \ additional offset to the datetime. Invalid timezones will be treated\
+            \ as UTC."
+          example: America/New_York
+          nullable: true
+          type: string
+      required:
+      - datetime
+    _v2_meetings_post_request_data_end_anyOf_1:
+      additionalProperties: {}
+      properties:
+        date:
+          description: "An ISO 8601 date indicating when an all day meeting ends.\
+            \ Note that dates are exclusive, meaning that the meeting ends before\
+            \ the specified time, not at it. For example, a one day meeting on June\
+            \ 3rd would end on June 4th, not June 3rd."
+          example: 2027-11-28
+          type: string
+      required:
+      - date
+    _v2_meetings_post_request_data_end:
+      anyOf:
+      - $ref: "#/components/schemas/_v2_meetings_post_request_data_end_anyOf"
+      - $ref: "#/components/schemas/_v2_meetings_post_request_data_end_anyOf_1"
+      description: "When the meeting ends. Use a datetime and optional timezone for\
+        \ non-all day meetings, or a date for all day meetings."
+    _v2_meetings_post_request_data_participants_inner_is_organizer:
+      anyOf:
+      - type: boolean
+      - enum:
+        - "true"
+        type: string
+      - enum:
+        - "false"
+        type: string
+      description: Whether or not the participant is the organizer of the meeting.
+      example: true
+    _v2_meetings_post_request_data_participants_inner:
+      properties:
+        email_address:
+          description: The email address of the participant. New person records and
+            companies will automatically be created based upon the email address values
+            provided.
+          example: person@company.com
+          type: string
+        is_organizer:
+          $ref: "#/components/schemas/_v2_meetings_post_request_data_participants_inner_is_organizer"
+        status:
+          description: The status of the individual meeting participant.
+          enum:
+          - accepted
+          - tentative
+          - declined
+          - pending
+          example: accepted
+          type: string
+      required:
+      - email_address
+      - is_organizer
+      - status
+    _v2_meetings_post_request_data_linked_records_inner:
+      properties:
+        object:
+          description: The slug or UUID of the object that the record being linked
+            belongs to.
+          example: people
+          type: string
+        record_id:
+          description: The UUID of the record being linked.
+          example: 891dcbfc-9141-415d-9b2a-2238a6cc012d
+          format: uuid
+          type: string
+      required:
+      - object
+      - record_id
+    _v2_meetings_post_request_data_external_ref_anyOf:
+      properties:
+        ical_uid:
+          description: The ical uid of the meeting.
+          example: "1234567890"
+          type: string
+        provider:
+          description: The email provider used to sync the meeting.
+          enum:
+          - google
+          - microsoft
+          example: google
+          type: string
+        original_start_time:
+          description: The original start time of the meeting. Use a timestamp with
+            a specified offset for all day and non-all day meetings. This property
+            is required for recurring event exceptions and optional otherwise.
+          example: 2027-11-27T14:00:00.000Z
+          type: string
+        is_recurring:
+          description: Whether or not the meeting is recurring.
+          example: false
+          type: boolean
+      required:
+      - ical_uid
+      - is_recurring
+      - provider
+    _v2_meetings_post_request_data_external_ref:
+      anyOf:
+      - description: "A text ID that can be used to consistently reference and de-duplicate\
+          \ meetings. For example, this might be the primary key of a meeting in your\
+          \ system, or taken from an API response from a service you are connecting\
+          \ to Attio. You should ensure that this ID is unique across recurring meetings\
+          \ and does not change over time. If you do not have an ID immediately to\
+          \ hand, you may generate a UUID to use as the external reference."
+        example: external_meeting_12345
+        minLength: 1
+        type: string
+      - $ref: "#/components/schemas/_v2_meetings_post_request_data_external_ref_anyOf"
+      description: "A consistent external reference used to match and de-duplicate\
+        \ meetings. Can be either a plain string (for external system IDs) or an object\
+        \ with `ical_uid` and `provider`. If you are writing data into Attio which\
+        \ is based upon calendar events that you have synced from a Google or Microsoft\
+        \ calendar, you must use the iCal format to avoid creating duplicate meetings\
+        \ inside Attio."
+      example: external_meeting_12345
+    _v2_meetings_post_request_data:
+      properties:
+        title:
+          description: The title of the meeting.
+          example: Onboarding Session
+          type: string
+        description:
+          description: The description of the meeting.
+          example: Getting you up to speed with the platform and answering any questions
+            you have.
+          type: string
+        start:
+          $ref: "#/components/schemas/_v2_meetings_post_request_data_start"
+        end:
+          $ref: "#/components/schemas/_v2_meetings_post_request_data_end"
+        is_all_day:
+          description: "Whether or not the meeting is an all day event. All day events\
+            \ may span multiple days. When true, start and end must use date format.\
+            \ When false, start and end must use datetime with timezone format."
+          example: false
+          type: boolean
+        participants:
+          items:
+            $ref: "#/components/schemas/_v2_meetings_post_request_data_participants_inner"
+          type: array
+        linked_records:
+          description: A list of records to link to the meeting. Each record is specified
+            by its object (slug or UUID) and record ID (UUID). Attio will automatically
+            link the meeting participants' companies to the meeting; this behavior
+            is asynchronous.
+          items:
+            $ref: "#/components/schemas/_v2_meetings_post_request_data_linked_records_inner"
+          type: array
+        external_ref:
+          $ref: "#/components/schemas/_v2_meetings_post_request_data_external_ref"
+      required:
+      - description
+      - end
+      - external_ref
+      - is_all_day
+      - participants
+      - start
+      - title
+    _v2_meetings_post_request:
+      properties:
+        data:
+          $ref: "#/components/schemas/_v2_meetings_post_request_data"
+      required:
+      - data
+    _v2_meetings_post_200_response:
       description: Success
       example:
         data:
@@ -11125,6 +11158,34 @@ components:
           $ref: "#/components/schemas/meeting"
       required:
       - data
+    _v2_meetings_post_400_response:
+      description: Bad Request
+      example:
+        code: validation_type
+        type: invalid_request_error
+        message: No participants were provided.
+        statusCode: 0.8008281904610115
+      properties:
+        statusCode:
+          enum:
+          - 400
+          type: number
+        type:
+          enum:
+          - invalid_request_error
+          type: string
+        code:
+          enum:
+          - validation_type
+          type: string
+        message:
+          example: No participants were provided.
+          type: string
+      required:
+      - code
+      - message
+      - statusCode
+      - type
     _v2_meetings__meeting_id__get_404_response:
       description: Not Found
       example:
@@ -11200,6 +11261,7 @@ components:
           nullable: true
     _v2_meetings__meeting_id__call_recordings_get_200_response_data_inner:
       example:
+        web_url: https://app.attio.com/salarya/calls/cb59ab17-ad15-460c-a126-0715617c0853/e8f2a3b7-9b4d-4c5e-8a1f-3d7b2c5e8f9a
         created_at: 2023-01-01T15:00:00.000000000Z
         id:
           workspace_id: 14beef7a-99f7-4534-a87e-70b564330a4c
@@ -11223,6 +11285,12 @@ components:
           - failed
           example: completed
           type: string
+        web_url:
+          description: A URL that links directly to the call recording in the Attio
+            web application.
+          example: https://app.attio.com/salarya/calls/cb59ab17-ad15-460c-a126-0715617c0853/e8f2a3b7-9b4d-4c5e-8a1f-3d7b2c5e8f9a
+          format: uri
+          type: string
         created_by_actor:
           $ref: "#/components/schemas/_v2_meetings__meeting_id__call_recordings_get_200_response_data_inner_created_by_actor"
         created_at:
@@ -11234,13 +11302,15 @@ components:
       - created_by_actor
       - id
       - status
+      - web_url
     _v2_meetings__meeting_id__call_recordings_get_200_response:
       description: Success
       example:
         pagination:
           next_cursor: next_cursor
         data:
-        - created_at: 2023-01-01T15:00:00.000000000Z
+        - web_url: https://app.attio.com/salarya/calls/cb59ab17-ad15-460c-a126-0715617c0853/e8f2a3b7-9b4d-4c5e-8a1f-3d7b2c5e8f9a
+          created_at: 2023-01-01T15:00:00.000000000Z
           id:
             workspace_id: 14beef7a-99f7-4534-a87e-70b564330a4c
             meeting_id: cb59ab17-ad15-460c-a126-0715617c0853
@@ -11249,7 +11319,8 @@ components:
             type: workspace-member
             id: 50cf242c-7fa3-4cad-87d0-75b1af71c57b
           status: completed
-        - created_at: 2023-01-01T15:00:00.000000000Z
+        - web_url: https://app.attio.com/salarya/calls/cb59ab17-ad15-460c-a126-0715617c0853/e8f2a3b7-9b4d-4c5e-8a1f-3d7b2c5e8f9a
+          created_at: 2023-01-01T15:00:00.000000000Z
           id:
             workspace_id: 14beef7a-99f7-4534-a87e-70b564330a4c
             meeting_id: cb59ab17-ad15-460c-a126-0715617c0853
@@ -11268,7 +11339,7 @@ components:
       required:
       - data
       - pagination
-    _v2_meetings__meeting_id__call_recordings_post_request:
+    _v2_meetings__meeting_id__call_recordings_post_request_data:
       properties:
         video_url:
           description: |-
@@ -11284,10 +11355,17 @@ components:
           type: string
       required:
       - video_url
+    _v2_meetings__meeting_id__call_recordings_post_request:
+      properties:
+        data:
+          $ref: "#/components/schemas/_v2_meetings__meeting_id__call_recordings_post_request_data"
+      required:
+      - data
     _v2_meetings__meeting_id__call_recordings_post_200_response:
       description: Success
       example:
         data:
+          web_url: https://app.attio.com/salarya/calls/cb59ab17-ad15-460c-a126-0715617c0853/e8f2a3b7-9b4d-4c5e-8a1f-3d7b2c5e8f9a
           created_at: 2023-01-01T15:00:00.000000000Z
           id:
             workspace_id: 14beef7a-99f7-4534-a87e-70b564330a4c
@@ -11330,14 +11408,6 @@ components:
       - message
       - status_code
       - type
-    _v2_meetings__meeting_id__call_recordings_post_403_response_code:
-      anyOf:
-      - enum:
-        - billing_error
-        type: string
-      - enum:
-        - quota_exceeded
-        type: string
     _v2_meetings__meeting_id__call_recordings_post_403_response:
       description: Forbidden
       example:
@@ -11355,7 +11425,9 @@ components:
           - auth_error
           type: string
         code:
-          $ref: "#/components/schemas/_v2_meetings__meeting_id__call_recordings_post_403_response_code"
+          enum:
+          - billing_error
+          - quota_exceeded
         message:
           type: string
       required:
@@ -11476,36 +11548,28 @@ components:
       - workspace_id
     _v2_meetings__meeting_id__call_recordings__call_recording_id__transcript_get_200_response_data_transcript_inner_speaker:
       description: The speaker of this transcript segment.
-      example:
-        name: Simon Mitchell
       properties:
         name:
           description: The name of the speaker.
-          example: Simon Mitchell
+          example: Alex Bell
           type: string
       required:
       - name
     _v2_meetings__meeting_id__call_recordings__call_recording_id__transcript_get_200_response_data_transcript_inner:
-      example:
-        start_time: 0.512
-        speech: "Hello, how are you?"
-        speaker:
-          name: Simon Mitchell
-        end_time: 3.212
       properties:
         speech:
           description: The spoken text for this segment of the transcript.
-          example: "Hello, how are you?"
+          example: "Hello,"
           type: string
         start_time:
           description: "The start time of this speech segment in seconds, measured\
             \ from the start of the recording."
-          example: 0.512
+          example: 0.51
           type: number
         end_time:
           description: "The end time of this speech segment in seconds, measured from\
             \ the start of the recording."
-          example: 3.212
+          example: 4.31
           type: number
         speaker:
           $ref: "#/components/schemas/_v2_meetings__meeting_id__call_recordings__call_recording_id__transcript_get_200_response_data_transcript_inner_speaker"
@@ -11517,31 +11581,150 @@ components:
     _v2_meetings__meeting_id__call_recordings__call_recording_id__transcript_get_200_response_data:
       example:
         transcript:
-        - start_time: 0.512
-          speech: "Hello, how are you?"
+        - speech: "Hello,"
+          start_time: 0.51
+          end_time: 0.81
           speaker:
-            name: Simon Mitchell
-          end_time: 3.212
-        - start_time: 0.512
-          speech: "Hello, how are you?"
+            name: Alex Bell
+        - speech: "Mr Watson,"
+          start_time: 0.81
+          end_time: 1.41
           speaker:
-            name: Simon Mitchell
-          end_time: 3.212
+            name: Alex Bell
+        - speech: come
+          start_time: 1.41
+          end_time: 1.71
+          speaker:
+            name: Alex Bell
+        - speech: here.
+          start_time: 1.71
+          end_time: 2.11
+          speaker:
+            name: Alex Bell
+        - speech: I
+          start_time: 2.11
+          end_time: 2.31
+          speaker:
+            name: Alex Bell
+        - speech: want
+          start_time: 2.31
+          end_time: 2.71
+          speaker:
+            name: Alex Bell
+        - speech: to
+          start_time: 2.71
+          end_time: 2.91
+          speaker:
+            name: Alex Bell
+        - speech: see
+          start_time: 2.91
+          end_time: 3.21
+          speaker:
+            name: Alex Bell
+        - speech: you.
+          start_time: 3.21
+          end_time: 3.61
+          speaker:
+            name: Alex Bell
+        - speech: I'm
+          start_time: 4.21
+          end_time: 4.51
+          speaker:
+            name: Tom Watson
+        - speech: here.
+          start_time: 4.51
+          end_time: 4.91
+          speaker:
+            name: Tom Watson
+        web_url: https://app.attio.com/salarya/calls/cb59ab17-ad15-460c-a126-0715617c0853/e8f2a3b7-9b4d-4c5e-8a1f-3d7b2c5e8f9a/transcript
         id:
           workspace_id: 14beef7a-99f7-4534-a87e-70b564330a4c
           meeting_id: cb59ab17-ad15-460c-a126-0715617c0853
           call_recording_id: e8f2a3b7-9b4d-4c5e-8a1f-3d7b2c5e8f9a
+        raw_transcript: |-
+          [00:00] Alex Bell: Mr Watson, come here. I want to see you.
+          [00:05] Tom Watson: I'm here.
       properties:
         id:
           $ref: "#/components/schemas/_v2_meetings__meeting_id__call_recordings__call_recording_id__transcript_get_200_response_data_id"
         transcript:
           description: "The transcript segments with speech, timing, and speaker information."
+          example:
+          - speech: "Hello,"
+            start_time: 0.51
+            end_time: 0.81
+            speaker:
+              name: Alex Bell
+          - speech: "Mr Watson,"
+            start_time: 0.81
+            end_time: 1.41
+            speaker:
+              name: Alex Bell
+          - speech: come
+            start_time: 1.41
+            end_time: 1.71
+            speaker:
+              name: Alex Bell
+          - speech: here.
+            start_time: 1.71
+            end_time: 2.11
+            speaker:
+              name: Alex Bell
+          - speech: I
+            start_time: 2.11
+            end_time: 2.31
+            speaker:
+              name: Alex Bell
+          - speech: want
+            start_time: 2.31
+            end_time: 2.71
+            speaker:
+              name: Alex Bell
+          - speech: to
+            start_time: 2.71
+            end_time: 2.91
+            speaker:
+              name: Alex Bell
+          - speech: see
+            start_time: 2.91
+            end_time: 3.21
+            speaker:
+              name: Alex Bell
+          - speech: you.
+            start_time: 3.21
+            end_time: 3.61
+            speaker:
+              name: Alex Bell
+          - speech: I'm
+            start_time: 4.21
+            end_time: 4.51
+            speaker:
+              name: Tom Watson
+          - speech: here.
+            start_time: 4.51
+            end_time: 4.91
+            speaker:
+              name: Tom Watson
           items:
             $ref: "#/components/schemas/_v2_meetings__meeting_id__call_recordings__call_recording_id__transcript_get_200_response_data_transcript_inner"
           type: array
+        raw_transcript:
+          description: The raw transcript of the call recording.
+          example: |-
+            [00:00] Alex Bell: Mr Watson, come here. I want to see you.
+            [00:05] Tom Watson: I'm here.
+          type: string
+        web_url:
+          description: A URL that links directly to the call recording transcript
+            in the Attio web application.
+          example: https://app.attio.com/salarya/calls/cb59ab17-ad15-460c-a126-0715617c0853/e8f2a3b7-9b4d-4c5e-8a1f-3d7b2c5e8f9a/transcript
+          format: uri
+          type: string
       required:
       - id
+      - raw_transcript
       - transcript
+      - web_url
     _v2_meetings__meeting_id__call_recordings__call_recording_id__transcript_get_200_response:
       description: Success
       example:
@@ -11549,20 +11732,69 @@ components:
           next_cursor: next_cursor
         data:
           transcript:
-          - start_time: 0.512
-            speech: "Hello, how are you?"
+          - speech: "Hello,"
+            start_time: 0.51
+            end_time: 0.81
             speaker:
-              name: Simon Mitchell
-            end_time: 3.212
-          - start_time: 0.512
-            speech: "Hello, how are you?"
+              name: Alex Bell
+          - speech: "Mr Watson,"
+            start_time: 0.81
+            end_time: 1.41
             speaker:
-              name: Simon Mitchell
-            end_time: 3.212
+              name: Alex Bell
+          - speech: come
+            start_time: 1.41
+            end_time: 1.71
+            speaker:
+              name: Alex Bell
+          - speech: here.
+            start_time: 1.71
+            end_time: 2.11
+            speaker:
+              name: Alex Bell
+          - speech: I
+            start_time: 2.11
+            end_time: 2.31
+            speaker:
+              name: Alex Bell
+          - speech: want
+            start_time: 2.31
+            end_time: 2.71
+            speaker:
+              name: Alex Bell
+          - speech: to
+            start_time: 2.71
+            end_time: 2.91
+            speaker:
+              name: Alex Bell
+          - speech: see
+            start_time: 2.91
+            end_time: 3.21
+            speaker:
+              name: Alex Bell
+          - speech: you.
+            start_time: 3.21
+            end_time: 3.61
+            speaker:
+              name: Alex Bell
+          - speech: I'm
+            start_time: 4.21
+            end_time: 4.51
+            speaker:
+              name: Tom Watson
+          - speech: here.
+            start_time: 4.51
+            end_time: 4.91
+            speaker:
+              name: Tom Watson
+          web_url: https://app.attio.com/salarya/calls/cb59ab17-ad15-460c-a126-0715617c0853/e8f2a3b7-9b4d-4c5e-8a1f-3d7b2c5e8f9a/transcript
           id:
             workspace_id: 14beef7a-99f7-4534-a87e-70b564330a4c
             meeting_id: cb59ab17-ad15-460c-a126-0715617c0853
             call_recording_id: e8f2a3b7-9b4d-4c5e-8a1f-3d7b2c5e8f9a
+          raw_transcript: |-
+            [00:00] Alex Bell: Mr Watson, come here. I want to see you.
+            [00:05] Tom Watson: I'm here.
       properties:
         data:
           $ref: "#/components/schemas/_v2_meetings__meeting_id__call_recordings__call_recording_id__transcript_get_200_response_data"
@@ -11571,139 +11803,6 @@ components:
       required:
       - data
       - pagination
-    _v2_meetings__meeting_id__call_recordings__call_recording_id__transcript_post_request_data_transcript_inner_speaker:
-      properties:
-        name:
-          description: The name of the speaker.
-          example: Simon Mitchell
-          type: string
-        email_address:
-          description: The email address of the speaker.
-          example: person@company.com
-          format: email
-          type: string
-      required:
-      - name
-    _v2_meetings__meeting_id__call_recordings__call_recording_id__transcript_post_request_data_transcript_inner:
-      properties:
-        speech:
-          description: The spoken text for this segment of the transcript.
-          example: "Hello everyone, welcome to the meeting."
-          type: string
-        start_time:
-          description: The start time of this speech segment in seconds.
-          example: 0.5123
-          minimum: 0
-          type: number
-        end_time:
-          description: The end time of this speech segment in seconds.
-          example: 3.2123
-          type: number
-        speaker:
-          $ref: "#/components/schemas/_v2_meetings__meeting_id__call_recordings__call_recording_id__transcript_post_request_data_transcript_inner_speaker"
-      required:
-      - end_time
-      - speaker
-      - speech
-      - start_time
-    _v2_meetings__meeting_id__call_recordings__call_recording_id__transcript_post_request_data:
-      properties:
-        transcript:
-          description: "Array of transcript segments with speech, timing, and speaker\
-            \ information. A maximum of 4000 transcript segments and 50 unique speakers\
-            \ are allowed per transcript."
-          items:
-            $ref: "#/components/schemas/_v2_meetings__meeting_id__call_recordings__call_recording_id__transcript_post_request_data_transcript_inner"
-          maxItems: 4000
-          type: array
-      required:
-      - transcript
-    _v2_meetings__meeting_id__call_recordings__call_recording_id__transcript_post_request:
-      properties:
-        data:
-          $ref: "#/components/schemas/_v2_meetings__meeting_id__call_recordings__call_recording_id__transcript_post_request_data"
-      required:
-      - data
-    _v2_meetings__meeting_id__call_recordings__call_recording_id__transcript_post_200_response:
-      description: Success
-      example:
-        data:
-          transcript:
-          - start_time: 0.512
-            speech: "Hello, how are you?"
-            speaker:
-              name: Simon Mitchell
-            end_time: 3.212
-          - start_time: 0.512
-            speech: "Hello, how are you?"
-            speaker:
-              name: Simon Mitchell
-            end_time: 3.212
-          id:
-            workspace_id: 14beef7a-99f7-4534-a87e-70b564330a4c
-            meeting_id: cb59ab17-ad15-460c-a126-0715617c0853
-            call_recording_id: e8f2a3b7-9b4d-4c5e-8a1f-3d7b2c5e8f9a
-      properties:
-        data:
-          $ref: "#/components/schemas/_v2_meetings__meeting_id__call_recordings__call_recording_id__transcript_get_200_response_data"
-      required:
-      - data
-    _v2_meetings__meeting_id__call_recordings__call_recording_id__transcript_post_400_response:
-      description: Bad Request
-      example:
-        status_code: 0.8008281904610115
-        code: validation_type
-        type: invalid_request_error
-        message: An invalid email address was provided for one of the speakers.
-      properties:
-        status_code:
-          enum:
-          - 400
-          type: number
-        type:
-          enum:
-          - invalid_request_error
-          type: string
-        code:
-          enum:
-          - validation_type
-          type: string
-        message:
-          example: An invalid email address was provided for one of the speakers.
-          type: string
-      required:
-      - code
-      - message
-      - status_code
-      - type
-    _v2_meetings__meeting_id__call_recordings__call_recording_id__transcript_post_404_response:
-      description: Not Found
-      example:
-        status_code: 6.027456183070403
-        code: not_found
-        type: invalid_request_error
-        message: The referenced call recording was not found.
-      properties:
-        status_code:
-          enum:
-          - 404
-          type: number
-        type:
-          enum:
-          - invalid_request_error
-          type: string
-        code:
-          enum:
-          - not_found
-          type: string
-        message:
-          example: The referenced call recording was not found.
-          type: string
-      required:
-      - code
-      - message
-      - status_code
-      - type
     _v2_webhooks_get_200_response_data_inner_subscriptions_inner_filter_anyOf__or_inner_anyOf:
       properties:
         field:
@@ -12228,10 +12327,8 @@ components:
           - attio.com
           type: string
         authorized_by_workspace_member_id:
-          description: "The ID of the workspace member who authorised this token initially,\
-            \ if known"
+          description: The ID of the workspace member who authorised this token initially.
           format: uuid
-          nullable: true
           type: string
         workspace_id:
           description: The ID of the workspace the token is scoped to.
@@ -12424,7 +12521,7 @@ components:
           format: date-time
           type: string
         owner_actor:
-          $ref: "#/components/schemas/_v2_objects__object__records_query_post_200_response_data_inner_values_value_inner_oneOf_1_created_by_actor"
+          $ref: "#/components/schemas/_v2_objects__object__records_query_post_200_response_data_inner_values_value_inner_oneOf_created_by_actor"
       required:
       - interacted_at
       - interaction_type
@@ -13182,7 +13279,7 @@ components:
           - ARS
           - AUD
           - BRL
-          - BEL
+          - BGN
           - CAD
           - CLP
           - CNY
@@ -13345,7 +13442,7 @@ components:
           format: date-time
           type: string
         owner_actor:
-          $ref: "#/components/schemas/_v2_objects__object__records_query_post_200_response_data_inner_values_value_inner_oneOf_1_created_by_actor"
+          $ref: "#/components/schemas/_v2_objects__object__records_query_post_200_response_data_inner_values_value_inner_oneOf_created_by_actor"
         attribute_type:
           description: The attribute type of the value.
           enum:
@@ -14166,39 +14263,7 @@ components:
       - attribute_id
       - object_id
       - workspace_id
-    attribute_default_value_anyOf_template:
-      anyOf:
-      - description: "For actor reference attributes, you may pass a dynamic value\
-          \ of `\"current-user\"`. When creating new records or entries, this will\
-          \ cause the actor reference value to be populated with either the workspace\
-          \ member or API token that created the record/entry."
-        enum:
-        - current-user
-        example: current-user
-        type: string
-      - description: "Timestamp attributes may use an ISO 8601 duration as a dynamic\
-          \ value. For example, `\"P1M\"` would set the value to the current time\
-          \ plus one month."
-        example: P1M
-        type: string
-      - description: "Date attributes may use an ISO 8601 duration as a dynamic value.\
-          \ For example, `\"P1M\"` would set the value to the current time plus one\
-          \ month."
-        example: P1M
-        type: string
     attribute_default_value_anyOf:
-      properties:
-        type:
-          enum:
-          - dynamic
-          example: dynamic
-          type: string
-        template:
-          $ref: "#/components/schemas/attribute_default_value_anyOf_template"
-      required:
-      - template
-      - type
-    attribute_default_value_anyOf_1:
       properties:
         type:
           enum:
@@ -14217,8 +14282,8 @@ components:
       - type
     attribute_default_value:
       anyOf:
+      - $ref: "#/components/schemas/_v2__target___identifier__attributes_post_request_data_default_value_oneOf"
       - $ref: "#/components/schemas/attribute_default_value_anyOf"
-      - $ref: "#/components/schemas/attribute_default_value_anyOf_1"
       description: "The default value for this attribute. Static values are used to\
         \ directly populate values using their contents. Dynamic values are used to\
         \ lookup data at the point of creation. For example, you could use a dynamic\
@@ -14245,7 +14310,7 @@ components:
           - ARS
           - AUD
           - BRL
-          - BEL
+          - BGN
           - CAD
           - CLP
           - CNY

@@ -12,8 +12,8 @@ Contact: support@attio.com
 package libattio
 
 import (
-	"encoding/json"
 	"bytes"
+	"encoding/json"
 	"fmt"
 )
 
@@ -23,10 +23,10 @@ var _ MappedNullable = &OutputValueAnyOf5{}
 // OutputValueAnyOf5 struct for OutputValueAnyOf5
 type OutputValueAnyOf5 struct {
 	OriginalEmailAddress string `json:"original_email_address"`
-	EmailAddress string `json:"email_address"`
-	EmailDomain string `json:"email_domain"`
-	EmailRootDomain string `json:"email_root_domain"`
-	EmailLocalSpecifier string `json:"email_local_specifier"`
+	EmailAddress         string `json:"email_address"`
+	EmailDomain          string `json:"email_domain"`
+	EmailRootDomain      string `json:"email_root_domain"`
+	EmailLocalSpecifier  string `json:"email_local_specifier"`
 	// The attribute type of the value.
 	AttributeType string `json:"attribute_type"`
 }
@@ -80,7 +80,6 @@ func (o *OutputValueAnyOf5) SetOriginalEmailAddress(v string) {
 	o.OriginalEmailAddress = v
 }
 
-
 // GetEmailAddress returns the EmailAddress field value
 func (o *OutputValueAnyOf5) GetEmailAddress() string {
 	if o == nil {
@@ -104,7 +103,6 @@ func (o *OutputValueAnyOf5) GetEmailAddressOk() (*string, bool) {
 func (o *OutputValueAnyOf5) SetEmailAddress(v string) {
 	o.EmailAddress = v
 }
-
 
 // GetEmailDomain returns the EmailDomain field value
 func (o *OutputValueAnyOf5) GetEmailDomain() string {
@@ -130,7 +128,6 @@ func (o *OutputValueAnyOf5) SetEmailDomain(v string) {
 	o.EmailDomain = v
 }
 
-
 // GetEmailRootDomain returns the EmailRootDomain field value
 func (o *OutputValueAnyOf5) GetEmailRootDomain() string {
 	if o == nil {
@@ -154,7 +151,6 @@ func (o *OutputValueAnyOf5) GetEmailRootDomainOk() (*string, bool) {
 func (o *OutputValueAnyOf5) SetEmailRootDomain(v string) {
 	o.EmailRootDomain = v
 }
-
 
 // GetEmailLocalSpecifier returns the EmailLocalSpecifier field value
 func (o *OutputValueAnyOf5) GetEmailLocalSpecifier() string {
@@ -180,7 +176,6 @@ func (o *OutputValueAnyOf5) SetEmailLocalSpecifier(v string) {
 	o.EmailLocalSpecifier = v
 }
 
-
 // GetAttributeType returns the AttributeType field value
 func (o *OutputValueAnyOf5) GetAttributeType() string {
 	if o == nil {
@@ -205,9 +200,8 @@ func (o *OutputValueAnyOf5) SetAttributeType(v string) {
 	o.AttributeType = v
 }
 
-
 func (o OutputValueAnyOf5) MarshalJSON() ([]byte, error) {
-	toSerialize,err := o.ToMap()
+	toSerialize, err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
 	}
@@ -240,32 +234,31 @@ func (o *OutputValueAnyOf5) UnmarshalJSON(data []byte) (err error) {
 
 	// defaultValueFuncMap captures the default values for required properties.
 	// These values are used when required properties are missing from the payload.
-	defaultValueFuncMap := map[string]func() interface{} {
-	}
+	defaultValueFuncMap := map[string]func() interface{}{}
 	var defaultValueApplied bool
 	allProperties := make(map[string]interface{})
 
 	err = json.Unmarshal(data, &allProperties)
 
 	if err != nil {
-		return err;
+		return err
 	}
 
-	for _, requiredProperty := range(requiredProperties) {
+	for _, requiredProperty := range requiredProperties {
 		if value, exists := allProperties[requiredProperty]; !exists || value == "" {
 			if _, ok := defaultValueFuncMap[requiredProperty]; ok {
 				allProperties[requiredProperty] = defaultValueFuncMap[requiredProperty]()
 				defaultValueApplied = true
 			}
 		}
-		if value, exists := allProperties[requiredProperty]; !exists || value == ""{
+		if value, exists := allProperties[requiredProperty]; !exists || value == "" {
 			return fmt.Errorf("no value given for required property %v", requiredProperty)
 		}
 	}
 
 	if defaultValueApplied {
 		data, err = json.Marshal(allProperties)
-		if err != nil{
+		if err != nil {
 			return err
 		}
 	}
@@ -319,5 +312,3 @@ func (v *NullableOutputValueAnyOf5) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
-
-

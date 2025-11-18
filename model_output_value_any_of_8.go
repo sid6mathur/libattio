@@ -12,8 +12,8 @@ Contact: support@attio.com
 package libattio
 
 import (
-	"encoding/json"
 	"bytes"
+	"encoding/json"
 	"fmt"
 )
 
@@ -102,7 +102,6 @@ func (o *OutputValueAnyOf8) SetLine1(v string) {
 	o.Line1.Set(&v)
 }
 
-
 // GetLine2 returns the Line2 field value
 // If the value is explicit nil, the zero value for string will be returned
 func (o *OutputValueAnyOf8) GetLine2() string {
@@ -128,7 +127,6 @@ func (o *OutputValueAnyOf8) GetLine2Ok() (*string, bool) {
 func (o *OutputValueAnyOf8) SetLine2(v string) {
 	o.Line2.Set(&v)
 }
-
 
 // GetLine3 returns the Line3 field value
 // If the value is explicit nil, the zero value for string will be returned
@@ -156,7 +154,6 @@ func (o *OutputValueAnyOf8) SetLine3(v string) {
 	o.Line3.Set(&v)
 }
 
-
 // GetLine4 returns the Line4 field value
 // If the value is explicit nil, the zero value for string will be returned
 func (o *OutputValueAnyOf8) GetLine4() string {
@@ -182,7 +179,6 @@ func (o *OutputValueAnyOf8) GetLine4Ok() (*string, bool) {
 func (o *OutputValueAnyOf8) SetLine4(v string) {
 	o.Line4.Set(&v)
 }
-
 
 // GetLocality returns the Locality field value
 // If the value is explicit nil, the zero value for string will be returned
@@ -210,7 +206,6 @@ func (o *OutputValueAnyOf8) SetLocality(v string) {
 	o.Locality.Set(&v)
 }
 
-
 // GetRegion returns the Region field value
 // If the value is explicit nil, the zero value for string will be returned
 func (o *OutputValueAnyOf8) GetRegion() string {
@@ -236,7 +231,6 @@ func (o *OutputValueAnyOf8) GetRegionOk() (*string, bool) {
 func (o *OutputValueAnyOf8) SetRegion(v string) {
 	o.Region.Set(&v)
 }
-
 
 // GetPostcode returns the Postcode field value
 // If the value is explicit nil, the zero value for string will be returned
@@ -264,7 +258,6 @@ func (o *OutputValueAnyOf8) SetPostcode(v string) {
 	o.Postcode.Set(&v)
 }
 
-
 // GetCountryCode returns the CountryCode field value
 // If the value is explicit nil, the zero value for string will be returned
 func (o *OutputValueAnyOf8) GetCountryCode() string {
@@ -290,7 +283,6 @@ func (o *OutputValueAnyOf8) GetCountryCodeOk() (*string, bool) {
 func (o *OutputValueAnyOf8) SetCountryCode(v string) {
 	o.CountryCode.Set(&v)
 }
-
 
 // GetLatitude returns the Latitude field value
 // If the value is explicit nil, the zero value for string will be returned
@@ -318,7 +310,6 @@ func (o *OutputValueAnyOf8) SetLatitude(v string) {
 	o.Latitude.Set(&v)
 }
 
-
 // GetLongitude returns the Longitude field value
 // If the value is explicit nil, the zero value for string will be returned
 func (o *OutputValueAnyOf8) GetLongitude() string {
@@ -345,7 +336,6 @@ func (o *OutputValueAnyOf8) SetLongitude(v string) {
 	o.Longitude.Set(&v)
 }
 
-
 // GetAttributeType returns the AttributeType field value
 func (o *OutputValueAnyOf8) GetAttributeType() string {
 	if o == nil {
@@ -370,9 +360,8 @@ func (o *OutputValueAnyOf8) SetAttributeType(v string) {
 	o.AttributeType = v
 }
 
-
 func (o OutputValueAnyOf8) MarshalJSON() ([]byte, error) {
-	toSerialize,err := o.ToMap()
+	toSerialize, err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
 	}
@@ -415,32 +404,31 @@ func (o *OutputValueAnyOf8) UnmarshalJSON(data []byte) (err error) {
 
 	// defaultValueFuncMap captures the default values for required properties.
 	// These values are used when required properties are missing from the payload.
-	defaultValueFuncMap := map[string]func() interface{} {
-	}
+	defaultValueFuncMap := map[string]func() interface{}{}
 	var defaultValueApplied bool
 	allProperties := make(map[string]interface{})
 
 	err = json.Unmarshal(data, &allProperties)
 
 	if err != nil {
-		return err;
+		return err
 	}
 
-	for _, requiredProperty := range(requiredProperties) {
+	for _, requiredProperty := range requiredProperties {
 		if value, exists := allProperties[requiredProperty]; !exists || value == "" {
 			if _, ok := defaultValueFuncMap[requiredProperty]; ok {
 				allProperties[requiredProperty] = defaultValueFuncMap[requiredProperty]()
 				defaultValueApplied = true
 			}
 		}
-		if value, exists := allProperties[requiredProperty]; !exists || value == ""{
+		if value, exists := allProperties[requiredProperty]; !exists || value == "" {
 			return fmt.Errorf("no value given for required property %v", requiredProperty)
 		}
 	}
 
 	if defaultValueApplied {
 		data, err = json.Marshal(allProperties)
-		if err != nil{
+		if err != nil {
 			return err
 		}
 	}
@@ -494,5 +482,3 @@ func (v *NullableOutputValueAnyOf8) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
-
-

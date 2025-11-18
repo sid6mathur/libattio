@@ -6,13 +6,13 @@ Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **InteractionType** | **string** | The type of interaction e.g. calendar or email. | 
 **InteractedAt** | **time.Time** | When the interaction occurred. | 
-**OwnerActor** | [**V2ObjectsObjectRecordsQueryPost200ResponseDataInnerValuesValueInnerOneOf1CreatedByActor**](V2ObjectsObjectRecordsQueryPost200ResponseDataInnerValuesValueInnerOneOf1CreatedByActor.md) |  | 
+**OwnerActor** | [**V2ObjectsObjectRecordsQueryPost200ResponseDataInnerValuesValueInnerOneOfCreatedByActor**](V2ObjectsObjectRecordsQueryPost200ResponseDataInnerValuesValueInnerOneOfCreatedByActor.md) |  | 
 
 ## Methods
 
 ### NewInputValueAnyOf5
 
-`func NewInputValueAnyOf5(interactionType string, interactedAt time.Time, ownerActor V2ObjectsObjectRecordsQueryPost200ResponseDataInnerValuesValueInnerOneOf1CreatedByActor, ) *InputValueAnyOf5`
+`func NewInputValueAnyOf5(interactionType string, interactedAt time.Time, ownerActor V2ObjectsObjectRecordsQueryPost200ResponseDataInnerValuesValueInnerOneOfCreatedByActor, ) *InputValueAnyOf5`
 
 NewInputValueAnyOf5 instantiates a new InputValueAnyOf5 object
 This constructor will assign default values to properties that have it defined,
@@ -69,20 +69,20 @@ SetInteractedAt sets InteractedAt field to given value.
 
 ### GetOwnerActor
 
-`func (o *InputValueAnyOf5) GetOwnerActor() V2ObjectsObjectRecordsQueryPost200ResponseDataInnerValuesValueInnerOneOf1CreatedByActor`
+`func (o *InputValueAnyOf5) GetOwnerActor() V2ObjectsObjectRecordsQueryPost200ResponseDataInnerValuesValueInnerOneOfCreatedByActor`
 
 GetOwnerActor returns the OwnerActor field if non-nil, zero value otherwise.
 
 ### GetOwnerActorOk
 
-`func (o *InputValueAnyOf5) GetOwnerActorOk() (*V2ObjectsObjectRecordsQueryPost200ResponseDataInnerValuesValueInnerOneOf1CreatedByActor, bool)`
+`func (o *InputValueAnyOf5) GetOwnerActorOk() (*V2ObjectsObjectRecordsQueryPost200ResponseDataInnerValuesValueInnerOneOfCreatedByActor, bool)`
 
 GetOwnerActorOk returns a tuple with the OwnerActor field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetOwnerActor
 
-`func (o *InputValueAnyOf5) SetOwnerActor(v V2ObjectsObjectRecordsQueryPost200ResponseDataInnerValuesValueInnerOneOf1CreatedByActor)`
+`func (o *InputValueAnyOf5) SetOwnerActor(v V2ObjectsObjectRecordsQueryPost200ResponseDataInnerValuesValueInnerOneOfCreatedByActor)`
 
 SetOwnerActor sets OwnerActor field to given value.
 

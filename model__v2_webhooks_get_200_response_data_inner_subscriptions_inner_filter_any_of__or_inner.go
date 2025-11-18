@@ -16,10 +16,9 @@ import (
 	"fmt"
 )
 
-
 // V2WebhooksGet200ResponseDataInnerSubscriptionsInnerFilterAnyOfOrInner struct for V2WebhooksGet200ResponseDataInnerSubscriptionsInnerFilterAnyOfOrInner
 type V2WebhooksGet200ResponseDataInnerSubscriptionsInnerFilterAnyOfOrInner struct {
-	V2WebhooksGet200ResponseDataInnerSubscriptionsInnerFilterAnyOfOrInnerAnyOf *V2WebhooksGet200ResponseDataInnerSubscriptionsInnerFilterAnyOfOrInnerAnyOf
+	V2WebhooksGet200ResponseDataInnerSubscriptionsInnerFilterAnyOfOrInnerAnyOf  *V2WebhooksGet200ResponseDataInnerSubscriptionsInnerFilterAnyOfOrInnerAnyOf
 	V2WebhooksGet200ResponseDataInnerSubscriptionsInnerFilterAnyOfOrInnerAnyOf1 *V2WebhooksGet200ResponseDataInnerSubscriptionsInnerFilterAnyOfOrInnerAnyOf1
 }
 
@@ -27,7 +26,7 @@ type V2WebhooksGet200ResponseDataInnerSubscriptionsInnerFilterAnyOfOrInner struc
 func (dst *V2WebhooksGet200ResponseDataInnerSubscriptionsInnerFilterAnyOfOrInner) UnmarshalJSON(data []byte) error {
 	var err error
 	// try to unmarshal JSON data into V2WebhooksGet200ResponseDataInnerSubscriptionsInnerFilterAnyOfOrInnerAnyOf
-	err = json.Unmarshal(data, &dst.V2WebhooksGet200ResponseDataInnerSubscriptionsInnerFilterAnyOfOrInnerAnyOf);
+	err = json.Unmarshal(data, &dst.V2WebhooksGet200ResponseDataInnerSubscriptionsInnerFilterAnyOfOrInnerAnyOf)
 	if err == nil {
 		jsonV2WebhooksGet200ResponseDataInnerSubscriptionsInnerFilterAnyOfOrInnerAnyOf, _ := json.Marshal(dst.V2WebhooksGet200ResponseDataInnerSubscriptionsInnerFilterAnyOfOrInnerAnyOf)
 		if string(jsonV2WebhooksGet200ResponseDataInnerSubscriptionsInnerFilterAnyOfOrInnerAnyOf) == "{}" { // empty struct
@@ -40,7 +39,7 @@ func (dst *V2WebhooksGet200ResponseDataInnerSubscriptionsInnerFilterAnyOfOrInner
 	}
 
 	// try to unmarshal JSON data into V2WebhooksGet200ResponseDataInnerSubscriptionsInnerFilterAnyOfOrInnerAnyOf1
-	err = json.Unmarshal(data, &dst.V2WebhooksGet200ResponseDataInnerSubscriptionsInnerFilterAnyOfOrInnerAnyOf1);
+	err = json.Unmarshal(data, &dst.V2WebhooksGet200ResponseDataInnerSubscriptionsInnerFilterAnyOfOrInnerAnyOf1)
 	if err == nil {
 		jsonV2WebhooksGet200ResponseDataInnerSubscriptionsInnerFilterAnyOfOrInnerAnyOf1, _ := json.Marshal(dst.V2WebhooksGet200ResponseDataInnerSubscriptionsInnerFilterAnyOfOrInnerAnyOf1)
 		if string(jsonV2WebhooksGet200ResponseDataInnerSubscriptionsInnerFilterAnyOfOrInnerAnyOf1) == "{}" { // empty struct
@@ -67,7 +66,6 @@ func (src V2WebhooksGet200ResponseDataInnerSubscriptionsInnerFilterAnyOfOrInner)
 
 	return nil, nil // no data in anyOf schemas
 }
-
 
 type NullableV2WebhooksGet200ResponseDataInnerSubscriptionsInnerFilterAnyOfOrInner struct {
 	value *V2WebhooksGet200ResponseDataInnerSubscriptionsInnerFilterAnyOfOrInner
@@ -104,5 +102,3 @@ func (v *NullableV2WebhooksGet200ResponseDataInnerSubscriptionsInnerFilterAnyOfO
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
-
-

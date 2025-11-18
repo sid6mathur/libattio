@@ -12,8 +12,8 @@ Contact: support@attio.com
 package libattio
 
 import (
-	"encoding/json"
 	"bytes"
+	"encoding/json"
 	"fmt"
 )
 
@@ -72,7 +72,6 @@ func (o *InputValueAnyOf9) SetOriginalPhoneNumber(v string) {
 	o.OriginalPhoneNumber = v
 }
 
-
 // GetCountryCode returns the CountryCode field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *InputValueAnyOf9) GetCountryCode() string {
 	if o == nil || IsNil(o.CountryCode.Get()) {
@@ -105,6 +104,7 @@ func (o *InputValueAnyOf9) HasCountryCode() bool {
 func (o *InputValueAnyOf9) SetCountryCode(v string) {
 	o.CountryCode.Set(&v)
 }
+
 // SetCountryCodeNil sets the value for CountryCode to be an explicit nil
 func (o *InputValueAnyOf9) SetCountryCodeNil() {
 	o.CountryCode.Set(nil)
@@ -116,7 +116,7 @@ func (o *InputValueAnyOf9) UnsetCountryCode() {
 }
 
 func (o InputValueAnyOf9) MarshalJSON() ([]byte, error) {
-	toSerialize,err := o.ToMap()
+	toSerialize, err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
 	}
@@ -142,32 +142,31 @@ func (o *InputValueAnyOf9) UnmarshalJSON(data []byte) (err error) {
 
 	// defaultValueFuncMap captures the default values for required properties.
 	// These values are used when required properties are missing from the payload.
-	defaultValueFuncMap := map[string]func() interface{} {
-	}
+	defaultValueFuncMap := map[string]func() interface{}{}
 	var defaultValueApplied bool
 	allProperties := make(map[string]interface{})
 
 	err = json.Unmarshal(data, &allProperties)
 
 	if err != nil {
-		return err;
+		return err
 	}
 
-	for _, requiredProperty := range(requiredProperties) {
+	for _, requiredProperty := range requiredProperties {
 		if value, exists := allProperties[requiredProperty]; !exists || value == "" {
 			if _, ok := defaultValueFuncMap[requiredProperty]; ok {
 				allProperties[requiredProperty] = defaultValueFuncMap[requiredProperty]()
 				defaultValueApplied = true
 			}
 		}
-		if value, exists := allProperties[requiredProperty]; !exists || value == ""{
+		if value, exists := allProperties[requiredProperty]; !exists || value == "" {
 			return fmt.Errorf("no value given for required property %v", requiredProperty)
 		}
 	}
 
 	if defaultValueApplied {
 		data, err = json.Marshal(allProperties)
-		if err != nil{
+		if err != nil {
 			return err
 		}
 	}
@@ -221,5 +220,3 @@ func (v *NullableInputValueAnyOf9) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
-
-

@@ -12,8 +12,8 @@ Contact: support@attio.com
 package libattio
 
 import (
-	"encoding/json"
 	"bytes"
+	"encoding/json"
 	"fmt"
 )
 
@@ -22,8 +22,7 @@ var _ MappedNullable = &V2MeetingsMeetingIdCallRecordingsPostRequest{}
 
 // V2MeetingsMeetingIdCallRecordingsPostRequest struct for V2MeetingsMeetingIdCallRecordingsPostRequest
 type V2MeetingsMeetingIdCallRecordingsPostRequest struct {
-	// A publicly accessible URL to a video file of the call recording. Attio will download the video from this URL asynchronously.  **Requirements:** - **Protocol:** The URL must use the `https` protocol. - **File type:** The file must be a `.mp4` file. - **File size:** The file must not exceed 30MB in size. - **Accessibility:** For the request to be accepted, the URL must be publicly accessible. Attio will make a `HEAD` request to the URL to verify its accessibility and retrieve file metadata. The response to this request must include a `Content-Length` header.
-	VideoUrl string `json:"video_url"`
+	Data V2MeetingsMeetingIdCallRecordingsPostRequestData `json:"data"`
 }
 
 type _V2MeetingsMeetingIdCallRecordingsPostRequest V2MeetingsMeetingIdCallRecordingsPostRequest
@@ -32,9 +31,9 @@ type _V2MeetingsMeetingIdCallRecordingsPostRequest V2MeetingsMeetingIdCallRecord
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewV2MeetingsMeetingIdCallRecordingsPostRequest(videoUrl string) *V2MeetingsMeetingIdCallRecordingsPostRequest {
+func NewV2MeetingsMeetingIdCallRecordingsPostRequest(data V2MeetingsMeetingIdCallRecordingsPostRequestData) *V2MeetingsMeetingIdCallRecordingsPostRequest {
 	this := V2MeetingsMeetingIdCallRecordingsPostRequest{}
-	this.VideoUrl = videoUrl
+	this.Data = data
 	return &this
 }
 
@@ -46,33 +45,32 @@ func NewV2MeetingsMeetingIdCallRecordingsPostRequestWithDefaults() *V2MeetingsMe
 	return &this
 }
 
-// GetVideoUrl returns the VideoUrl field value
-func (o *V2MeetingsMeetingIdCallRecordingsPostRequest) GetVideoUrl() string {
+// GetData returns the Data field value
+func (o *V2MeetingsMeetingIdCallRecordingsPostRequest) GetData() V2MeetingsMeetingIdCallRecordingsPostRequestData {
 	if o == nil {
-		var ret string
+		var ret V2MeetingsMeetingIdCallRecordingsPostRequestData
 		return ret
 	}
 
-	return o.VideoUrl
+	return o.Data
 }
 
-// GetVideoUrlOk returns a tuple with the VideoUrl field value
+// GetDataOk returns a tuple with the Data field value
 // and a boolean to check if the value has been set.
-func (o *V2MeetingsMeetingIdCallRecordingsPostRequest) GetVideoUrlOk() (*string, bool) {
+func (o *V2MeetingsMeetingIdCallRecordingsPostRequest) GetDataOk() (*V2MeetingsMeetingIdCallRecordingsPostRequestData, bool) {
 	if o == nil {
 		return nil, false
 	}
-	return &o.VideoUrl, true
+	return &o.Data, true
 }
 
-// SetVideoUrl sets field value
-func (o *V2MeetingsMeetingIdCallRecordingsPostRequest) SetVideoUrl(v string) {
-	o.VideoUrl = v
+// SetData sets field value
+func (o *V2MeetingsMeetingIdCallRecordingsPostRequest) SetData(v V2MeetingsMeetingIdCallRecordingsPostRequestData) {
+	o.Data = v
 }
-
 
 func (o V2MeetingsMeetingIdCallRecordingsPostRequest) MarshalJSON() ([]byte, error) {
-	toSerialize,err := o.ToMap()
+	toSerialize, err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
 	}
@@ -81,7 +79,7 @@ func (o V2MeetingsMeetingIdCallRecordingsPostRequest) MarshalJSON() ([]byte, err
 
 func (o V2MeetingsMeetingIdCallRecordingsPostRequest) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
-	toSerialize["video_url"] = o.VideoUrl
+	toSerialize["data"] = o.Data
 	return toSerialize, nil
 }
 
@@ -90,37 +88,36 @@ func (o *V2MeetingsMeetingIdCallRecordingsPostRequest) UnmarshalJSON(data []byte
 	// by unmarshalling the object into a generic map with string keys and checking
 	// that every required field exists as a key in the generic map.
 	requiredProperties := []string{
-		"video_url",
+		"data",
 	}
 
 	// defaultValueFuncMap captures the default values for required properties.
 	// These values are used when required properties are missing from the payload.
-	defaultValueFuncMap := map[string]func() interface{} {
-	}
+	defaultValueFuncMap := map[string]func() interface{}{}
 	var defaultValueApplied bool
 	allProperties := make(map[string]interface{})
 
 	err = json.Unmarshal(data, &allProperties)
 
 	if err != nil {
-		return err;
+		return err
 	}
 
-	for _, requiredProperty := range(requiredProperties) {
+	for _, requiredProperty := range requiredProperties {
 		if value, exists := allProperties[requiredProperty]; !exists || value == "" {
 			if _, ok := defaultValueFuncMap[requiredProperty]; ok {
 				allProperties[requiredProperty] = defaultValueFuncMap[requiredProperty]()
 				defaultValueApplied = true
 			}
 		}
-		if value, exists := allProperties[requiredProperty]; !exists || value == ""{
+		if value, exists := allProperties[requiredProperty]; !exists || value == "" {
 			return fmt.Errorf("no value given for required property %v", requiredProperty)
 		}
 	}
 
 	if defaultValueApplied {
 		data, err = json.Marshal(allProperties)
-		if err != nil{
+		if err != nil {
 			return err
 		}
 	}
@@ -174,5 +171,3 @@ func (v *NullableV2MeetingsMeetingIdCallRecordingsPostRequest) UnmarshalJSON(src
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
-
-

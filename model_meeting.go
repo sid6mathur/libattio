@@ -12,8 +12,8 @@ Contact: support@attio.com
 package libattio
 
 import (
-	"encoding/json"
 	"bytes"
+	"encoding/json"
 	"fmt"
 )
 
@@ -28,14 +28,14 @@ type Meeting struct {
 	// The description of the meeting.
 	Description string `json:"description"`
 	// Whether or not the meeting is an all day event. All day events may span multiple days.
-	IsAllDay bool `json:"is_all_day"`
-	Start MeetingStart `json:"start"`
-	End MeetingEnd `json:"end"`
+	IsAllDay     bool                       `json:"is_all_day"`
+	Start        MeetingStart               `json:"start"`
+	End          MeetingEnd                 `json:"end"`
 	Participants []MeetingParticipantsInner `json:"participants"`
 	// A list of records that are linked to the meeting. Participants with matching person records are automatically linked to the meeting but other records may also be linked explicitly.
 	LinkedRecords []MeetingLinkedRecordsInner `json:"linked_records"`
 	// Timestamp representing when the meeting was created.
-	CreatedAt string `json:"created_at"`
+	CreatedAt      string                `json:"created_at"`
 	CreatedByActor MeetingCreatedByActor `json:"created_by_actor"`
 }
 
@@ -92,7 +92,6 @@ func (o *Meeting) SetId(v MeetingId) {
 	o.Id = v
 }
 
-
 // GetTitle returns the Title field value
 func (o *Meeting) GetTitle() string {
 	if o == nil {
@@ -116,7 +115,6 @@ func (o *Meeting) GetTitleOk() (*string, bool) {
 func (o *Meeting) SetTitle(v string) {
 	o.Title = v
 }
-
 
 // GetDescription returns the Description field value
 func (o *Meeting) GetDescription() string {
@@ -142,7 +140,6 @@ func (o *Meeting) SetDescription(v string) {
 	o.Description = v
 }
 
-
 // GetIsAllDay returns the IsAllDay field value
 func (o *Meeting) GetIsAllDay() bool {
 	if o == nil {
@@ -166,7 +163,6 @@ func (o *Meeting) GetIsAllDayOk() (*bool, bool) {
 func (o *Meeting) SetIsAllDay(v bool) {
 	o.IsAllDay = v
 }
-
 
 // GetStart returns the Start field value
 func (o *Meeting) GetStart() MeetingStart {
@@ -192,7 +188,6 @@ func (o *Meeting) SetStart(v MeetingStart) {
 	o.Start = v
 }
 
-
 // GetEnd returns the End field value
 func (o *Meeting) GetEnd() MeetingEnd {
 	if o == nil {
@@ -216,7 +211,6 @@ func (o *Meeting) GetEndOk() (*MeetingEnd, bool) {
 func (o *Meeting) SetEnd(v MeetingEnd) {
 	o.End = v
 }
-
 
 // GetParticipants returns the Participants field value
 func (o *Meeting) GetParticipants() []MeetingParticipantsInner {
@@ -242,7 +236,6 @@ func (o *Meeting) SetParticipants(v []MeetingParticipantsInner) {
 	o.Participants = v
 }
 
-
 // GetLinkedRecords returns the LinkedRecords field value
 func (o *Meeting) GetLinkedRecords() []MeetingLinkedRecordsInner {
 	if o == nil {
@@ -266,7 +259,6 @@ func (o *Meeting) GetLinkedRecordsOk() ([]MeetingLinkedRecordsInner, bool) {
 func (o *Meeting) SetLinkedRecords(v []MeetingLinkedRecordsInner) {
 	o.LinkedRecords = v
 }
-
 
 // GetCreatedAt returns the CreatedAt field value
 func (o *Meeting) GetCreatedAt() string {
@@ -292,7 +284,6 @@ func (o *Meeting) SetCreatedAt(v string) {
 	o.CreatedAt = v
 }
 
-
 // GetCreatedByActor returns the CreatedByActor field value
 func (o *Meeting) GetCreatedByActor() MeetingCreatedByActor {
 	if o == nil {
@@ -317,9 +308,8 @@ func (o *Meeting) SetCreatedByActor(v MeetingCreatedByActor) {
 	o.CreatedByActor = v
 }
 
-
 func (o Meeting) MarshalJSON() ([]byte, error) {
-	toSerialize,err := o.ToMap()
+	toSerialize, err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
 	}
@@ -360,32 +350,31 @@ func (o *Meeting) UnmarshalJSON(data []byte) (err error) {
 
 	// defaultValueFuncMap captures the default values for required properties.
 	// These values are used when required properties are missing from the payload.
-	defaultValueFuncMap := map[string]func() interface{} {
-	}
+	defaultValueFuncMap := map[string]func() interface{}{}
 	var defaultValueApplied bool
 	allProperties := make(map[string]interface{})
 
 	err = json.Unmarshal(data, &allProperties)
 
 	if err != nil {
-		return err;
+		return err
 	}
 
-	for _, requiredProperty := range(requiredProperties) {
+	for _, requiredProperty := range requiredProperties {
 		if value, exists := allProperties[requiredProperty]; !exists || value == "" {
 			if _, ok := defaultValueFuncMap[requiredProperty]; ok {
 				allProperties[requiredProperty] = defaultValueFuncMap[requiredProperty]()
 				defaultValueApplied = true
 			}
 		}
-		if value, exists := allProperties[requiredProperty]; !exists || value == ""{
+		if value, exists := allProperties[requiredProperty]; !exists || value == "" {
 			return fmt.Errorf("no value given for required property %v", requiredProperty)
 		}
 	}
 
 	if defaultValueApplied {
 		data, err = json.Marshal(allProperties)
-		if err != nil{
+		if err != nil {
 			return err
 		}
 	}
@@ -439,5 +428,3 @@ func (v *NullableMeeting) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
-
-

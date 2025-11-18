@@ -5,11 +5,11 @@
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **Title** | Pointer to **string** | The name of the attribute. The title will be visible across Attio&#39;s UI. | [optional] 
-**Description** | Pointer to **string** | A text description for the attribute. | [optional] 
+**Description** | Pointer to **NullableString** | A text description for the attribute. | [optional] 
 **ApiSlug** | Pointer to **string** | A unique, human-readable slug to access the attribute through URLs and API calls. Formatted in snake case. | [optional] 
 **IsRequired** | Pointer to **bool** | When &#x60;is_required&#x60; is &#x60;true&#x60;, new records/entries must have a value for this attribute. If &#x60;false&#x60;, values may be &#x60;null&#x60;. This value does not affect existing data and you do not need to backfill &#x60;null&#x60; values if changing &#x60;is_required&#x60; from &#x60;false&#x60; to &#x60;true&#x60;. | [optional] 
 **IsUnique** | Pointer to **bool** | Whether or not new values for this attribute must be unique. Uniqueness restrictions are only applied to new data and do not apply retroactively to previously created data. | [optional] 
-**DefaultValue** | Pointer to [**V2TargetIdentifierAttributesPostRequestDataDefaultValue**](V2TargetIdentifierAttributesPostRequestDataDefaultValue.md) |  | [optional] 
+**DefaultValue** | Pointer to [**NullableV2TargetIdentifierAttributesPostRequestDataDefaultValue**](V2TargetIdentifierAttributesPostRequestDataDefaultValue.md) |  | [optional] 
 **Config** | Pointer to [**V2TargetIdentifierAttributesAttributePatchRequestDataConfig**](V2TargetIdentifierAttributesAttributePatchRequestDataConfig.md) |  | [optional] 
 **IsArchived** | Pointer to **bool** | Whether the attribute has been archived or not. See our [archiving guide](/docs/archiving-vs-deleting) for more information on archiving. | [optional] 
 
@@ -82,6 +82,16 @@ SetDescription sets Description field to given value.
 
 HasDescription returns a boolean if a field has been set.
 
+### SetDescriptionNil
+
+`func (o *V2TargetIdentifierAttributesAttributePatchRequestData) SetDescriptionNil(b bool)`
+
+ SetDescriptionNil sets the value for Description to be an explicit nil
+
+### UnsetDescription
+`func (o *V2TargetIdentifierAttributesAttributePatchRequestData) UnsetDescription()`
+
+UnsetDescription ensures that no value is present for Description, not even an explicit nil
 ### GetApiSlug
 
 `func (o *V2TargetIdentifierAttributesAttributePatchRequestData) GetApiSlug() string`
@@ -182,6 +192,16 @@ SetDefaultValue sets DefaultValue field to given value.
 
 HasDefaultValue returns a boolean if a field has been set.
 
+### SetDefaultValueNil
+
+`func (o *V2TargetIdentifierAttributesAttributePatchRequestData) SetDefaultValueNil(b bool)`
+
+ SetDefaultValueNil sets the value for DefaultValue to be an explicit nil
+
+### UnsetDefaultValue
+`func (o *V2TargetIdentifierAttributesAttributePatchRequestData) UnsetDefaultValue()`
+
+UnsetDefaultValue ensures that no value is present for DefaultValue, not even an explicit nil
 ### GetConfig
 
 `func (o *V2TargetIdentifierAttributesAttributePatchRequestData) GetConfig() V2TargetIdentifierAttributesAttributePatchRequestDataConfig`

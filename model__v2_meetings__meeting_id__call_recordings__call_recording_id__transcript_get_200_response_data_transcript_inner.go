@@ -12,8 +12,8 @@ Contact: support@attio.com
 package libattio
 
 import (
-	"encoding/json"
 	"bytes"
+	"encoding/json"
 	"fmt"
 )
 
@@ -27,7 +27,7 @@ type V2MeetingsMeetingIdCallRecordingsCallRecordingIdTranscriptGet200ResponseDat
 	// The start time of this speech segment in seconds, measured from the start of the recording.
 	StartTime float32 `json:"start_time"`
 	// The end time of this speech segment in seconds, measured from the start of the recording.
-	EndTime float32 `json:"end_time"`
+	EndTime float32                                                                                            `json:"end_time"`
 	Speaker V2MeetingsMeetingIdCallRecordingsCallRecordingIdTranscriptGet200ResponseDataTranscriptInnerSpeaker `json:"speaker"`
 }
 
@@ -78,7 +78,6 @@ func (o *V2MeetingsMeetingIdCallRecordingsCallRecordingIdTranscriptGet200Respons
 	o.Speech = v
 }
 
-
 // GetStartTime returns the StartTime field value
 func (o *V2MeetingsMeetingIdCallRecordingsCallRecordingIdTranscriptGet200ResponseDataTranscriptInner) GetStartTime() float32 {
 	if o == nil {
@@ -102,7 +101,6 @@ func (o *V2MeetingsMeetingIdCallRecordingsCallRecordingIdTranscriptGet200Respons
 func (o *V2MeetingsMeetingIdCallRecordingsCallRecordingIdTranscriptGet200ResponseDataTranscriptInner) SetStartTime(v float32) {
 	o.StartTime = v
 }
-
 
 // GetEndTime returns the EndTime field value
 func (o *V2MeetingsMeetingIdCallRecordingsCallRecordingIdTranscriptGet200ResponseDataTranscriptInner) GetEndTime() float32 {
@@ -128,7 +126,6 @@ func (o *V2MeetingsMeetingIdCallRecordingsCallRecordingIdTranscriptGet200Respons
 	o.EndTime = v
 }
 
-
 // GetSpeaker returns the Speaker field value
 func (o *V2MeetingsMeetingIdCallRecordingsCallRecordingIdTranscriptGet200ResponseDataTranscriptInner) GetSpeaker() V2MeetingsMeetingIdCallRecordingsCallRecordingIdTranscriptGet200ResponseDataTranscriptInnerSpeaker {
 	if o == nil {
@@ -153,9 +150,8 @@ func (o *V2MeetingsMeetingIdCallRecordingsCallRecordingIdTranscriptGet200Respons
 	o.Speaker = v
 }
 
-
 func (o V2MeetingsMeetingIdCallRecordingsCallRecordingIdTranscriptGet200ResponseDataTranscriptInner) MarshalJSON() ([]byte, error) {
-	toSerialize,err := o.ToMap()
+	toSerialize, err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
 	}
@@ -184,32 +180,31 @@ func (o *V2MeetingsMeetingIdCallRecordingsCallRecordingIdTranscriptGet200Respons
 
 	// defaultValueFuncMap captures the default values for required properties.
 	// These values are used when required properties are missing from the payload.
-	defaultValueFuncMap := map[string]func() interface{} {
-	}
+	defaultValueFuncMap := map[string]func() interface{}{}
 	var defaultValueApplied bool
 	allProperties := make(map[string]interface{})
 
 	err = json.Unmarshal(data, &allProperties)
 
 	if err != nil {
-		return err;
+		return err
 	}
 
-	for _, requiredProperty := range(requiredProperties) {
+	for _, requiredProperty := range requiredProperties {
 		if value, exists := allProperties[requiredProperty]; !exists || value == "" {
 			if _, ok := defaultValueFuncMap[requiredProperty]; ok {
 				allProperties[requiredProperty] = defaultValueFuncMap[requiredProperty]()
 				defaultValueApplied = true
 			}
 		}
-		if value, exists := allProperties[requiredProperty]; !exists || value == ""{
+		if value, exists := allProperties[requiredProperty]; !exists || value == "" {
 			return fmt.Errorf("no value given for required property %v", requiredProperty)
 		}
 	}
 
 	if defaultValueApplied {
 		data, err = json.Marshal(allProperties)
-		if err != nil{
+		if err != nil {
 			return err
 		}
 	}
@@ -263,5 +258,3 @@ func (v *NullableV2MeetingsMeetingIdCallRecordingsCallRecordingIdTranscriptGet20
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
-
-

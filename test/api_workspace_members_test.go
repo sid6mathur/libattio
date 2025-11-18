@@ -11,10 +11,10 @@ package libattio
 
 import (
 	"context"
+	libattio "github.com/fastah/libattio"
 	"github.com/stretchr/testify/assert"
 	"github.com/stretchr/testify/require"
 	"testing"
-	libattio "github.com/fastah/libattio"
 )
 
 func Test_libattio_WorkspaceMembersAPIService(t *testing.T) {
@@ -24,7 +24,7 @@ func Test_libattio_WorkspaceMembersAPIService(t *testing.T) {
 
 	t.Run("Test WorkspaceMembersAPIService V2WorkspaceMembersGet", func(t *testing.T) {
 
-		t.Skip("skip test")  // remove to run test
+		t.Skip("skip test") // remove to run test
 
 		resp, httpRes, err := apiClient.WorkspaceMembersAPI.V2WorkspaceMembersGet(context.Background()).Execute()
 
@@ -36,7 +36,7 @@ func Test_libattio_WorkspaceMembersAPIService(t *testing.T) {
 
 	t.Run("Test WorkspaceMembersAPIService V2WorkspaceMembersWorkspaceMemberIdGet", func(t *testing.T) {
 
-		t.Skip("skip test")  // remove to run test
+		t.Skip("skip test") // remove to run test
 
 		var workspaceMemberId string
 

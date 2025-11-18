@@ -13,12 +13,13 @@ Method | HTTP request | Description
 [**V2ObjectsObjectRecordsRecordIdGet**](RecordsAPI.md#V2ObjectsObjectRecordsRecordIdGet) | **Get** /v2/objects/{object}/records/{record_id} | Get a record
 [**V2ObjectsObjectRecordsRecordIdPatch**](RecordsAPI.md#V2ObjectsObjectRecordsRecordIdPatch) | **Patch** /v2/objects/{object}/records/{record_id} | Update a record (append multiselect values)
 [**V2ObjectsObjectRecordsRecordIdPut**](RecordsAPI.md#V2ObjectsObjectRecordsRecordIdPut) | **Put** /v2/objects/{object}/records/{record_id} | Update a record (overwrite multiselect values)
+[**V2ObjectsRecordsSearchPost**](RecordsAPI.md#V2ObjectsRecordsSearchPost) | **Post** /v2/objects/records/search | Search records
 
 
 
 ## V2ObjectsObjectRecordsPost
 
-> V2ObjectsObjectRecordsPost200Response V2ObjectsObjectRecordsPost(ctx, object).V2ObjectsObjectRecordsPostRequest(v2ObjectsObjectRecordsPostRequest).Execute()
+> V2ObjectsObjectRecordsPut200Response V2ObjectsObjectRecordsPost(ctx, object).V2ObjectsObjectRecordsPostRequest(v2ObjectsObjectRecordsPostRequest).Execute()
 
 Create a record
 
@@ -47,7 +48,7 @@ func main() {
 		fmt.Fprintf(os.Stderr, "Error when calling `RecordsAPI.V2ObjectsObjectRecordsPost``: %v\n", err)
 		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
 	}
-	// response from `V2ObjectsObjectRecordsPost`: V2ObjectsObjectRecordsPost200Response
+	// response from `V2ObjectsObjectRecordsPost`: V2ObjectsObjectRecordsPut200Response
 	fmt.Fprintf(os.Stdout, "Response from `RecordsAPI.V2ObjectsObjectRecordsPost`: %v\n", resp)
 }
 ```
@@ -72,7 +73,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**V2ObjectsObjectRecordsPost200Response**](V2ObjectsObjectRecordsPost200Response.md)
+[**V2ObjectsObjectRecordsPut200Response**](V2ObjectsObjectRecordsPut200Response.md)
 
 ### Authorization
 
@@ -674,6 +675,72 @@ Name | Type | Description  | Notes
 ### Return type
 
 [**V2ObjectsObjectRecordsPut200Response**](V2ObjectsObjectRecordsPut200Response.md)
+
+### Authorization
+
+[oauth2](../README.md#oauth2)
+
+### HTTP request headers
+
+- **Content-Type**: application/json
+- **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
+
+
+## V2ObjectsRecordsSearchPost
+
+> V2ObjectsRecordsSearchPost200Response V2ObjectsRecordsSearchPost(ctx).V2ObjectsRecordsSearchPostRequest(v2ObjectsRecordsSearchPostRequest).Execute()
+
+Search records
+
+
+
+### Example
+
+```go
+package main
+
+import (
+	"context"
+	"fmt"
+	"os"
+	libattio "github.com/fastah/libattio"
+)
+
+func main() {
+	v2ObjectsRecordsSearchPostRequest := *libattio.NewV2ObjectsRecordsSearchPostRequest("alan mathis", []string{"people"}, *libattio.NewV2ObjectsRecordsSearchPostRequestRequestAs("Type_example", "50cf242c-7fa3-4cad-87d0-75b1af71c57b", "alice@attio.com")) // V2ObjectsRecordsSearchPostRequest | 
+
+	configuration := libattio.NewConfiguration()
+	apiClient := libattio.NewAPIClient(configuration)
+	resp, r, err := apiClient.RecordsAPI.V2ObjectsRecordsSearchPost(context.Background()).V2ObjectsRecordsSearchPostRequest(v2ObjectsRecordsSearchPostRequest).Execute()
+	if err != nil {
+		fmt.Fprintf(os.Stderr, "Error when calling `RecordsAPI.V2ObjectsRecordsSearchPost``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+	}
+	// response from `V2ObjectsRecordsSearchPost`: V2ObjectsRecordsSearchPost200Response
+	fmt.Fprintf(os.Stdout, "Response from `RecordsAPI.V2ObjectsRecordsSearchPost`: %v\n", resp)
+}
+```
+
+### Path Parameters
+
+
+
+### Other Parameters
+
+Other parameters are passed through a pointer to a apiV2ObjectsRecordsSearchPostRequest struct via the builder pattern
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **v2ObjectsRecordsSearchPostRequest** | [**V2ObjectsRecordsSearchPostRequest**](V2ObjectsRecordsSearchPostRequest.md) |  | 
+
+### Return type
+
+[**V2ObjectsRecordsSearchPost200Response**](V2ObjectsRecordsSearchPost200Response.md)
 
 ### Authorization
 

@@ -6,14 +6,14 @@ Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **StatusCode** | **float32** |  | 
 **Type** | **string** |  | 
-**Code** | [**V2MeetingsMeetingIdCallRecordingsPost403ResponseCode**](V2MeetingsMeetingIdCallRecordingsPost403ResponseCode.md) |  | 
+**Code** | **string** |  | 
 **Message** | **string** |  | 
 
 ## Methods
 
 ### NewV2MeetingsMeetingIdCallRecordingsPost403Response
 
-`func NewV2MeetingsMeetingIdCallRecordingsPost403Response(statusCode float32, type_ string, code V2MeetingsMeetingIdCallRecordingsPost403ResponseCode, message string, ) *V2MeetingsMeetingIdCallRecordingsPost403Response`
+`func NewV2MeetingsMeetingIdCallRecordingsPost403Response(statusCode float32, type_ string, code string, message string, ) *V2MeetingsMeetingIdCallRecordingsPost403Response`
 
 NewV2MeetingsMeetingIdCallRecordingsPost403Response instantiates a new V2MeetingsMeetingIdCallRecordingsPost403Response object
 This constructor will assign default values to properties that have it defined,
@@ -70,20 +70,20 @@ SetType sets Type field to given value.
 
 ### GetCode
 
-`func (o *V2MeetingsMeetingIdCallRecordingsPost403Response) GetCode() V2MeetingsMeetingIdCallRecordingsPost403ResponseCode`
+`func (o *V2MeetingsMeetingIdCallRecordingsPost403Response) GetCode() string`
 
 GetCode returns the Code field if non-nil, zero value otherwise.
 
 ### GetCodeOk
 
-`func (o *V2MeetingsMeetingIdCallRecordingsPost403Response) GetCodeOk() (*V2MeetingsMeetingIdCallRecordingsPost403ResponseCode, bool)`
+`func (o *V2MeetingsMeetingIdCallRecordingsPost403Response) GetCodeOk() (*string, bool)`
 
 GetCodeOk returns a tuple with the Code field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetCode
 
-`func (o *V2MeetingsMeetingIdCallRecordingsPost403Response) SetCode(v V2MeetingsMeetingIdCallRecordingsPost403ResponseCode)`
+`func (o *V2MeetingsMeetingIdCallRecordingsPost403Response) SetCode(v string)`
 
 SetCode sets Code field to given value.
 

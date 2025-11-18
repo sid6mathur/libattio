@@ -16,10 +16,9 @@ import (
 	"fmt"
 )
 
-
 // V2CommentsPostRequestData struct for V2CommentsPostRequestData
 type V2CommentsPostRequestData struct {
-	V2CommentsPostRequestDataAnyOf *V2CommentsPostRequestDataAnyOf
+	V2CommentsPostRequestDataAnyOf  *V2CommentsPostRequestDataAnyOf
 	V2CommentsPostRequestDataAnyOf1 *V2CommentsPostRequestDataAnyOf1
 	V2CommentsPostRequestDataAnyOf2 *V2CommentsPostRequestDataAnyOf2
 }
@@ -28,7 +27,7 @@ type V2CommentsPostRequestData struct {
 func (dst *V2CommentsPostRequestData) UnmarshalJSON(data []byte) error {
 	var err error
 	// try to unmarshal JSON data into V2CommentsPostRequestDataAnyOf
-	err = json.Unmarshal(data, &dst.V2CommentsPostRequestDataAnyOf);
+	err = json.Unmarshal(data, &dst.V2CommentsPostRequestDataAnyOf)
 	if err == nil {
 		jsonV2CommentsPostRequestDataAnyOf, _ := json.Marshal(dst.V2CommentsPostRequestDataAnyOf)
 		if string(jsonV2CommentsPostRequestDataAnyOf) == "{}" { // empty struct
@@ -41,7 +40,7 @@ func (dst *V2CommentsPostRequestData) UnmarshalJSON(data []byte) error {
 	}
 
 	// try to unmarshal JSON data into V2CommentsPostRequestDataAnyOf1
-	err = json.Unmarshal(data, &dst.V2CommentsPostRequestDataAnyOf1);
+	err = json.Unmarshal(data, &dst.V2CommentsPostRequestDataAnyOf1)
 	if err == nil {
 		jsonV2CommentsPostRequestDataAnyOf1, _ := json.Marshal(dst.V2CommentsPostRequestDataAnyOf1)
 		if string(jsonV2CommentsPostRequestDataAnyOf1) == "{}" { // empty struct
@@ -54,7 +53,7 @@ func (dst *V2CommentsPostRequestData) UnmarshalJSON(data []byte) error {
 	}
 
 	// try to unmarshal JSON data into V2CommentsPostRequestDataAnyOf2
-	err = json.Unmarshal(data, &dst.V2CommentsPostRequestDataAnyOf2);
+	err = json.Unmarshal(data, &dst.V2CommentsPostRequestDataAnyOf2)
 	if err == nil {
 		jsonV2CommentsPostRequestDataAnyOf2, _ := json.Marshal(dst.V2CommentsPostRequestDataAnyOf2)
 		if string(jsonV2CommentsPostRequestDataAnyOf2) == "{}" { // empty struct
@@ -85,7 +84,6 @@ func (src V2CommentsPostRequestData) MarshalJSON() ([]byte, error) {
 
 	return nil, nil // no data in anyOf schemas
 }
-
 
 type NullableV2CommentsPostRequestData struct {
 	value *V2CommentsPostRequestData
@@ -122,5 +120,3 @@ func (v *NullableV2CommentsPostRequestData) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
-
-

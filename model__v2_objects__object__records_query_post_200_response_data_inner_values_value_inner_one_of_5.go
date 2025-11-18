@@ -12,10 +12,10 @@ Contact: support@attio.com
 package libattio
 
 import (
-	"encoding/json"
-	"time"
 	"bytes"
+	"encoding/json"
 	"fmt"
+	"time"
 )
 
 // checks if the V2ObjectsObjectRecordsQueryPost200ResponseDataInnerValuesValueInnerOneOf5 type satisfies the MappedNullable interface at compile time
@@ -26,13 +26,13 @@ type V2ObjectsObjectRecordsQueryPost200ResponseDataInnerValuesValueInnerOneOf5 s
 	// The point in time at which this value was made \"active\". `active_from` can be considered roughly analogous to `created_at`.
 	ActiveFrom time.Time `json:"active_from"`
 	// The point in time at which this value was deactivated. If `null`, the value is active.
-	ActiveUntil NullableTime `json:"active_until"`
-	CreatedByActor V2ObjectsObjectRecordsQueryPost200ResponseDataInnerValuesValueInnerOneOf1CreatedByActor `json:"created_by_actor"`
-	OriginalEmailAddress string `json:"original_email_address"`
-	EmailAddress string `json:"email_address"`
-	EmailDomain string `json:"email_domain"`
-	EmailRootDomain string `json:"email_root_domain"`
-	EmailLocalSpecifier string `json:"email_local_specifier"`
+	ActiveUntil          NullableTime                                                                           `json:"active_until"`
+	CreatedByActor       V2ObjectsObjectRecordsQueryPost200ResponseDataInnerValuesValueInnerOneOfCreatedByActor `json:"created_by_actor"`
+	OriginalEmailAddress string                                                                                 `json:"original_email_address"`
+	EmailAddress         string                                                                                 `json:"email_address"`
+	EmailDomain          string                                                                                 `json:"email_domain"`
+	EmailRootDomain      string                                                                                 `json:"email_root_domain"`
+	EmailLocalSpecifier  string                                                                                 `json:"email_local_specifier"`
 	// The attribute type of the value.
 	AttributeType string `json:"attribute_type"`
 }
@@ -43,7 +43,7 @@ type _V2ObjectsObjectRecordsQueryPost200ResponseDataInnerValuesValueInnerOneOf5 
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewV2ObjectsObjectRecordsQueryPost200ResponseDataInnerValuesValueInnerOneOf5(activeFrom time.Time, activeUntil NullableTime, createdByActor V2ObjectsObjectRecordsQueryPost200ResponseDataInnerValuesValueInnerOneOf1CreatedByActor, originalEmailAddress string, emailAddress string, emailDomain string, emailRootDomain string, emailLocalSpecifier string, attributeType string) *V2ObjectsObjectRecordsQueryPost200ResponseDataInnerValuesValueInnerOneOf5 {
+func NewV2ObjectsObjectRecordsQueryPost200ResponseDataInnerValuesValueInnerOneOf5(activeFrom time.Time, activeUntil NullableTime, createdByActor V2ObjectsObjectRecordsQueryPost200ResponseDataInnerValuesValueInnerOneOfCreatedByActor, originalEmailAddress string, emailAddress string, emailDomain string, emailRootDomain string, emailLocalSpecifier string, attributeType string) *V2ObjectsObjectRecordsQueryPost200ResponseDataInnerValuesValueInnerOneOf5 {
 	this := V2ObjectsObjectRecordsQueryPost200ResponseDataInnerValuesValueInnerOneOf5{}
 	this.ActiveFrom = activeFrom
 	this.ActiveUntil = activeUntil
@@ -89,7 +89,6 @@ func (o *V2ObjectsObjectRecordsQueryPost200ResponseDataInnerValuesValueInnerOneO
 	o.ActiveFrom = v
 }
 
-
 // GetActiveUntil returns the ActiveUntil field value
 // If the value is explicit nil, the zero value for time.Time will be returned
 func (o *V2ObjectsObjectRecordsQueryPost200ResponseDataInnerValuesValueInnerOneOf5) GetActiveUntil() time.Time {
@@ -116,11 +115,10 @@ func (o *V2ObjectsObjectRecordsQueryPost200ResponseDataInnerValuesValueInnerOneO
 	o.ActiveUntil.Set(&v)
 }
 
-
 // GetCreatedByActor returns the CreatedByActor field value
-func (o *V2ObjectsObjectRecordsQueryPost200ResponseDataInnerValuesValueInnerOneOf5) GetCreatedByActor() V2ObjectsObjectRecordsQueryPost200ResponseDataInnerValuesValueInnerOneOf1CreatedByActor {
+func (o *V2ObjectsObjectRecordsQueryPost200ResponseDataInnerValuesValueInnerOneOf5) GetCreatedByActor() V2ObjectsObjectRecordsQueryPost200ResponseDataInnerValuesValueInnerOneOfCreatedByActor {
 	if o == nil {
-		var ret V2ObjectsObjectRecordsQueryPost200ResponseDataInnerValuesValueInnerOneOf1CreatedByActor
+		var ret V2ObjectsObjectRecordsQueryPost200ResponseDataInnerValuesValueInnerOneOfCreatedByActor
 		return ret
 	}
 
@@ -129,7 +127,7 @@ func (o *V2ObjectsObjectRecordsQueryPost200ResponseDataInnerValuesValueInnerOneO
 
 // GetCreatedByActorOk returns a tuple with the CreatedByActor field value
 // and a boolean to check if the value has been set.
-func (o *V2ObjectsObjectRecordsQueryPost200ResponseDataInnerValuesValueInnerOneOf5) GetCreatedByActorOk() (*V2ObjectsObjectRecordsQueryPost200ResponseDataInnerValuesValueInnerOneOf1CreatedByActor, bool) {
+func (o *V2ObjectsObjectRecordsQueryPost200ResponseDataInnerValuesValueInnerOneOf5) GetCreatedByActorOk() (*V2ObjectsObjectRecordsQueryPost200ResponseDataInnerValuesValueInnerOneOfCreatedByActor, bool) {
 	if o == nil {
 		return nil, false
 	}
@@ -137,10 +135,9 @@ func (o *V2ObjectsObjectRecordsQueryPost200ResponseDataInnerValuesValueInnerOneO
 }
 
 // SetCreatedByActor sets field value
-func (o *V2ObjectsObjectRecordsQueryPost200ResponseDataInnerValuesValueInnerOneOf5) SetCreatedByActor(v V2ObjectsObjectRecordsQueryPost200ResponseDataInnerValuesValueInnerOneOf1CreatedByActor) {
+func (o *V2ObjectsObjectRecordsQueryPost200ResponseDataInnerValuesValueInnerOneOf5) SetCreatedByActor(v V2ObjectsObjectRecordsQueryPost200ResponseDataInnerValuesValueInnerOneOfCreatedByActor) {
 	o.CreatedByActor = v
 }
-
 
 // GetOriginalEmailAddress returns the OriginalEmailAddress field value
 func (o *V2ObjectsObjectRecordsQueryPost200ResponseDataInnerValuesValueInnerOneOf5) GetOriginalEmailAddress() string {
@@ -166,7 +163,6 @@ func (o *V2ObjectsObjectRecordsQueryPost200ResponseDataInnerValuesValueInnerOneO
 	o.OriginalEmailAddress = v
 }
 
-
 // GetEmailAddress returns the EmailAddress field value
 func (o *V2ObjectsObjectRecordsQueryPost200ResponseDataInnerValuesValueInnerOneOf5) GetEmailAddress() string {
 	if o == nil {
@@ -190,7 +186,6 @@ func (o *V2ObjectsObjectRecordsQueryPost200ResponseDataInnerValuesValueInnerOneO
 func (o *V2ObjectsObjectRecordsQueryPost200ResponseDataInnerValuesValueInnerOneOf5) SetEmailAddress(v string) {
 	o.EmailAddress = v
 }
-
 
 // GetEmailDomain returns the EmailDomain field value
 func (o *V2ObjectsObjectRecordsQueryPost200ResponseDataInnerValuesValueInnerOneOf5) GetEmailDomain() string {
@@ -216,7 +211,6 @@ func (o *V2ObjectsObjectRecordsQueryPost200ResponseDataInnerValuesValueInnerOneO
 	o.EmailDomain = v
 }
 
-
 // GetEmailRootDomain returns the EmailRootDomain field value
 func (o *V2ObjectsObjectRecordsQueryPost200ResponseDataInnerValuesValueInnerOneOf5) GetEmailRootDomain() string {
 	if o == nil {
@@ -240,7 +234,6 @@ func (o *V2ObjectsObjectRecordsQueryPost200ResponseDataInnerValuesValueInnerOneO
 func (o *V2ObjectsObjectRecordsQueryPost200ResponseDataInnerValuesValueInnerOneOf5) SetEmailRootDomain(v string) {
 	o.EmailRootDomain = v
 }
-
 
 // GetEmailLocalSpecifier returns the EmailLocalSpecifier field value
 func (o *V2ObjectsObjectRecordsQueryPost200ResponseDataInnerValuesValueInnerOneOf5) GetEmailLocalSpecifier() string {
@@ -266,7 +259,6 @@ func (o *V2ObjectsObjectRecordsQueryPost200ResponseDataInnerValuesValueInnerOneO
 	o.EmailLocalSpecifier = v
 }
 
-
 // GetAttributeType returns the AttributeType field value
 func (o *V2ObjectsObjectRecordsQueryPost200ResponseDataInnerValuesValueInnerOneOf5) GetAttributeType() string {
 	if o == nil {
@@ -291,9 +283,8 @@ func (o *V2ObjectsObjectRecordsQueryPost200ResponseDataInnerValuesValueInnerOneO
 	o.AttributeType = v
 }
 
-
 func (o V2ObjectsObjectRecordsQueryPost200ResponseDataInnerValuesValueInnerOneOf5) MarshalJSON() ([]byte, error) {
-	toSerialize,err := o.ToMap()
+	toSerialize, err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
 	}
@@ -332,32 +323,31 @@ func (o *V2ObjectsObjectRecordsQueryPost200ResponseDataInnerValuesValueInnerOneO
 
 	// defaultValueFuncMap captures the default values for required properties.
 	// These values are used when required properties are missing from the payload.
-	defaultValueFuncMap := map[string]func() interface{} {
-	}
+	defaultValueFuncMap := map[string]func() interface{}{}
 	var defaultValueApplied bool
 	allProperties := make(map[string]interface{})
 
 	err = json.Unmarshal(data, &allProperties)
 
 	if err != nil {
-		return err;
+		return err
 	}
 
-	for _, requiredProperty := range(requiredProperties) {
+	for _, requiredProperty := range requiredProperties {
 		if value, exists := allProperties[requiredProperty]; !exists || value == "" {
 			if _, ok := defaultValueFuncMap[requiredProperty]; ok {
 				allProperties[requiredProperty] = defaultValueFuncMap[requiredProperty]()
 				defaultValueApplied = true
 			}
 		}
-		if value, exists := allProperties[requiredProperty]; !exists || value == ""{
+		if value, exists := allProperties[requiredProperty]; !exists || value == "" {
 			return fmt.Errorf("no value given for required property %v", requiredProperty)
 		}
 	}
 
 	if defaultValueApplied {
 		data, err = json.Marshal(allProperties)
-		if err != nil{
+		if err != nil {
 			return err
 		}
 	}
@@ -411,5 +401,3 @@ func (v *NullableV2ObjectsObjectRecordsQueryPost200ResponseDataInnerValuesValueI
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
-
-

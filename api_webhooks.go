@@ -20,15 +20,14 @@ import (
 	"strings"
 )
 
-
 // WebhooksAPIService WebhooksAPI service
 type WebhooksAPIService service
 
 type ApiV2WebhooksGetRequest struct {
-	ctx context.Context
+	ctx        context.Context
 	ApiService *WebhooksAPIService
-	limit *int32
-	offset *int32
+	limit      *int32
+	offset     *int32
 }
 
 func (r ApiV2WebhooksGetRequest) Limit(limit int32) ApiV2WebhooksGetRequest {
@@ -52,24 +51,25 @@ Get all of the webhooks in your workspace.
 
 Required scopes: `webhook:read`.
 
- @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @return ApiV2WebhooksGetRequest
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@return ApiV2WebhooksGetRequest
 */
 func (a *WebhooksAPIService) V2WebhooksGet(ctx context.Context) ApiV2WebhooksGetRequest {
 	return ApiV2WebhooksGetRequest{
 		ApiService: a,
-		ctx: ctx,
+		ctx:        ctx,
 	}
 }
 
 // Execute executes the request
-//  @return V2WebhooksGet200Response
+//
+//	@return V2WebhooksGet200Response
 func (a *WebhooksAPIService) V2WebhooksGetExecute(r ApiV2WebhooksGetRequest) (*V2WebhooksGet200Response, *http.Response, error) {
 	var (
-		localVarHTTPMethod   = http.MethodGet
-		localVarPostBody     interface{}
-		formFiles            []formFile
-		localVarReturnValue  *V2WebhooksGet200Response
+		localVarHTTPMethod  = http.MethodGet
+		localVarPostBody    interface{}
+		formFiles           []formFile
+		localVarReturnValue *V2WebhooksGet200Response
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "WebhooksAPIService.V2WebhooksGet")
@@ -144,8 +144,8 @@ func (a *WebhooksAPIService) V2WebhooksGetExecute(r ApiV2WebhooksGetRequest) (*V
 }
 
 type ApiV2WebhooksPostRequest struct {
-	ctx context.Context
-	ApiService *WebhooksAPIService
+	ctx                   context.Context
+	ApiService            *WebhooksAPIService
 	v2WebhooksPostRequest *V2WebhooksPostRequest
 }
 
@@ -165,24 +165,25 @@ Create a webhook and associated subscriptions.
 
 Required scopes: `webhook:read-write`.
 
- @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @return ApiV2WebhooksPostRequest
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@return ApiV2WebhooksPostRequest
 */
 func (a *WebhooksAPIService) V2WebhooksPost(ctx context.Context) ApiV2WebhooksPostRequest {
 	return ApiV2WebhooksPostRequest{
 		ApiService: a,
-		ctx: ctx,
+		ctx:        ctx,
 	}
 }
 
 // Execute executes the request
-//  @return V2WebhooksPost200Response
+//
+//	@return V2WebhooksPost200Response
 func (a *WebhooksAPIService) V2WebhooksPostExecute(r ApiV2WebhooksPostRequest) (*V2WebhooksPost200Response, *http.Response, error) {
 	var (
-		localVarHTTPMethod   = http.MethodPost
-		localVarPostBody     interface{}
-		formFiles            []formFile
-		localVarReturnValue  *V2WebhooksPost200Response
+		localVarHTTPMethod  = http.MethodPost
+		localVarPostBody    interface{}
+		formFiles           []formFile
+		localVarReturnValue *V2WebhooksPost200Response
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "WebhooksAPIService.V2WebhooksPost")
@@ -247,8 +248,8 @@ func (a *WebhooksAPIService) V2WebhooksPostExecute(r ApiV2WebhooksPostRequest) (
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 		}
 		return localVarReturnValue, localVarHTTPResponse, newErr
 	}
@@ -266,9 +267,9 @@ func (a *WebhooksAPIService) V2WebhooksPostExecute(r ApiV2WebhooksPostRequest) (
 }
 
 type ApiV2WebhooksWebhookIdDeleteRequest struct {
-	ctx context.Context
+	ctx        context.Context
 	ApiService *WebhooksAPIService
-	webhookId string
+	webhookId  string
 }
 
 func (r ApiV2WebhooksWebhookIdDeleteRequest) Execute() (map[string]interface{}, *http.Response, error) {
@@ -282,26 +283,27 @@ Delete a webhook by ID.
 
 Required scopes: `webhook:read-write`.
 
- @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @param webhookId
- @return ApiV2WebhooksWebhookIdDeleteRequest
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@param webhookId
+	@return ApiV2WebhooksWebhookIdDeleteRequest
 */
 func (a *WebhooksAPIService) V2WebhooksWebhookIdDelete(ctx context.Context, webhookId string) ApiV2WebhooksWebhookIdDeleteRequest {
 	return ApiV2WebhooksWebhookIdDeleteRequest{
 		ApiService: a,
-		ctx: ctx,
-		webhookId: webhookId,
+		ctx:        ctx,
+		webhookId:  webhookId,
 	}
 }
 
 // Execute executes the request
-//  @return map[string]interface{}
+//
+//	@return map[string]interface{}
 func (a *WebhooksAPIService) V2WebhooksWebhookIdDeleteExecute(r ApiV2WebhooksWebhookIdDeleteRequest) (map[string]interface{}, *http.Response, error) {
 	var (
-		localVarHTTPMethod   = http.MethodDelete
-		localVarPostBody     interface{}
-		formFiles            []formFile
-		localVarReturnValue  map[string]interface{}
+		localVarHTTPMethod  = http.MethodDelete
+		localVarPostBody    interface{}
+		formFiles           []formFile
+		localVarReturnValue map[string]interface{}
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "WebhooksAPIService.V2WebhooksWebhookIdDelete")
@@ -362,8 +364,8 @@ func (a *WebhooksAPIService) V2WebhooksWebhookIdDeleteExecute(r ApiV2WebhooksWeb
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 		}
 		return localVarReturnValue, localVarHTTPResponse, newErr
 	}
@@ -381,9 +383,9 @@ func (a *WebhooksAPIService) V2WebhooksWebhookIdDeleteExecute(r ApiV2WebhooksWeb
 }
 
 type ApiV2WebhooksWebhookIdGetRequest struct {
-	ctx context.Context
+	ctx        context.Context
 	ApiService *WebhooksAPIService
-	webhookId string
+	webhookId  string
 }
 
 func (r ApiV2WebhooksWebhookIdGetRequest) Execute() (*V2WebhooksWebhookIdGet200Response, *http.Response, error) {
@@ -397,26 +399,27 @@ Get a single webhook.
 
 Required scopes: `webhook:read`.
 
- @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @param webhookId
- @return ApiV2WebhooksWebhookIdGetRequest
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@param webhookId
+	@return ApiV2WebhooksWebhookIdGetRequest
 */
 func (a *WebhooksAPIService) V2WebhooksWebhookIdGet(ctx context.Context, webhookId string) ApiV2WebhooksWebhookIdGetRequest {
 	return ApiV2WebhooksWebhookIdGetRequest{
 		ApiService: a,
-		ctx: ctx,
-		webhookId: webhookId,
+		ctx:        ctx,
+		webhookId:  webhookId,
 	}
 }
 
 // Execute executes the request
-//  @return V2WebhooksWebhookIdGet200Response
+//
+//	@return V2WebhooksWebhookIdGet200Response
 func (a *WebhooksAPIService) V2WebhooksWebhookIdGetExecute(r ApiV2WebhooksWebhookIdGetRequest) (*V2WebhooksWebhookIdGet200Response, *http.Response, error) {
 	var (
-		localVarHTTPMethod   = http.MethodGet
-		localVarPostBody     interface{}
-		formFiles            []formFile
-		localVarReturnValue  *V2WebhooksWebhookIdGet200Response
+		localVarHTTPMethod  = http.MethodGet
+		localVarPostBody    interface{}
+		formFiles           []formFile
+		localVarReturnValue *V2WebhooksWebhookIdGet200Response
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "WebhooksAPIService.V2WebhooksWebhookIdGet")
@@ -477,8 +480,8 @@ func (a *WebhooksAPIService) V2WebhooksWebhookIdGetExecute(r ApiV2WebhooksWebhoo
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 		}
 		return localVarReturnValue, localVarHTTPResponse, newErr
 	}
@@ -496,9 +499,9 @@ func (a *WebhooksAPIService) V2WebhooksWebhookIdGetExecute(r ApiV2WebhooksWebhoo
 }
 
 type ApiV2WebhooksWebhookIdPatchRequest struct {
-	ctx context.Context
-	ApiService *WebhooksAPIService
-	webhookId string
+	ctx                             context.Context
+	ApiService                      *WebhooksAPIService
+	webhookId                       string
 	v2WebhooksWebhookIdPatchRequest *V2WebhooksWebhookIdPatchRequest
 }
 
@@ -518,26 +521,27 @@ Update a webhook and associated subscriptions.
 
 Required scopes: `webhook:read-write`.
 
- @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @param webhookId
- @return ApiV2WebhooksWebhookIdPatchRequest
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@param webhookId
+	@return ApiV2WebhooksWebhookIdPatchRequest
 */
 func (a *WebhooksAPIService) V2WebhooksWebhookIdPatch(ctx context.Context, webhookId string) ApiV2WebhooksWebhookIdPatchRequest {
 	return ApiV2WebhooksWebhookIdPatchRequest{
 		ApiService: a,
-		ctx: ctx,
-		webhookId: webhookId,
+		ctx:        ctx,
+		webhookId:  webhookId,
 	}
 }
 
 // Execute executes the request
-//  @return V2WebhooksWebhookIdGet200Response
+//
+//	@return V2WebhooksWebhookIdGet200Response
 func (a *WebhooksAPIService) V2WebhooksWebhookIdPatchExecute(r ApiV2WebhooksWebhookIdPatchRequest) (*V2WebhooksWebhookIdGet200Response, *http.Response, error) {
 	var (
-		localVarHTTPMethod   = http.MethodPatch
-		localVarPostBody     interface{}
-		formFiles            []formFile
-		localVarReturnValue  *V2WebhooksWebhookIdGet200Response
+		localVarHTTPMethod  = http.MethodPatch
+		localVarPostBody    interface{}
+		formFiles           []formFile
+		localVarReturnValue *V2WebhooksWebhookIdGet200Response
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "WebhooksAPIService.V2WebhooksWebhookIdPatch")
@@ -603,8 +607,8 @@ func (a *WebhooksAPIService) V2WebhooksWebhookIdPatchExecute(r ApiV2WebhooksWebh
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 		}
 		return localVarReturnValue, localVarHTTPResponse, newErr
 	}

@@ -6,6 +6,7 @@ Method | HTTP request | Description
 ------------- | ------------- | -------------
 [**V2MeetingsGet**](MeetingsAPI.md#V2MeetingsGet) | **Get** /v2/meetings | List meetings
 [**V2MeetingsMeetingIdGet**](MeetingsAPI.md#V2MeetingsMeetingIdGet) | **Get** /v2/meetings/{meeting_id} | Get a meeting
+[**V2MeetingsPost**](MeetingsAPI.md#V2MeetingsPost) | **Post** /v2/meetings | Find or create a meeting
 
 
 
@@ -93,7 +94,7 @@ Name | Type | Description  | Notes
 
 ## V2MeetingsMeetingIdGet
 
-> V2MeetingsMeetingIdGet200Response V2MeetingsMeetingIdGet(ctx, meetingId).Execute()
+> V2MeetingsPost200Response V2MeetingsMeetingIdGet(ctx, meetingId).Execute()
 
 Get a meeting
 
@@ -121,7 +122,7 @@ func main() {
 		fmt.Fprintf(os.Stderr, "Error when calling `MeetingsAPI.V2MeetingsMeetingIdGet``: %v\n", err)
 		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
 	}
-	// response from `V2MeetingsMeetingIdGet`: V2MeetingsMeetingIdGet200Response
+	// response from `V2MeetingsMeetingIdGet`: V2MeetingsPost200Response
 	fmt.Fprintf(os.Stdout, "Response from `MeetingsAPI.V2MeetingsMeetingIdGet`: %v\n", resp)
 }
 ```
@@ -145,7 +146,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**V2MeetingsMeetingIdGet200Response**](V2MeetingsMeetingIdGet200Response.md)
+[**V2MeetingsPost200Response**](V2MeetingsPost200Response.md)
 
 ### Authorization
 
@@ -154,6 +155,73 @@ Name | Type | Description  | Notes
 ### HTTP request headers
 
 - **Content-Type**: Not defined
+- **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
+
+
+## V2MeetingsPost
+
+> V2MeetingsPost200Response V2MeetingsPost(ctx).V2MeetingsPostRequest(v2MeetingsPostRequest).Execute()
+
+Find or create a meeting
+
+
+
+### Example
+
+```go
+package main
+
+import (
+	"context"
+	"fmt"
+	"os"
+    "time"
+	libattio "github.com/fastah/libattio"
+)
+
+func main() {
+	v2MeetingsPostRequest := *libattio.NewV2MeetingsPostRequest(*libattio.NewV2MeetingsPostRequestData("Onboarding Session", "Getting you up to speed with the platform and answering any questions you have.", *libattio.NewV2MeetingsPostRequestDataStart(time.Now(), "2027-11-27"), *libattio.NewV2MeetingsPostRequestDataEnd(time.Now(), "2027-11-28"), false, []libattio.V2MeetingsPostRequestDataParticipantsInner{*libattio.NewV2MeetingsPostRequestDataParticipantsInner("person@company.com", *libattio.NewV2MeetingsPostRequestDataParticipantsInnerIsOrganizer(), "accepted")}, *libattio.NewV2MeetingsPostRequestDataExternalRef("1234567890", "google", false))) // V2MeetingsPostRequest | 
+
+	configuration := libattio.NewConfiguration()
+	apiClient := libattio.NewAPIClient(configuration)
+	resp, r, err := apiClient.MeetingsAPI.V2MeetingsPost(context.Background()).V2MeetingsPostRequest(v2MeetingsPostRequest).Execute()
+	if err != nil {
+		fmt.Fprintf(os.Stderr, "Error when calling `MeetingsAPI.V2MeetingsPost``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+	}
+	// response from `V2MeetingsPost`: V2MeetingsPost200Response
+	fmt.Fprintf(os.Stdout, "Response from `MeetingsAPI.V2MeetingsPost`: %v\n", resp)
+}
+```
+
+### Path Parameters
+
+
+
+### Other Parameters
+
+Other parameters are passed through a pointer to a apiV2MeetingsPostRequest struct via the builder pattern
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **v2MeetingsPostRequest** | [**V2MeetingsPostRequest**](V2MeetingsPostRequest.md) |  | 
+
+### Return type
+
+[**V2MeetingsPost200Response**](V2MeetingsPost200Response.md)
+
+### Authorization
+
+[oauth2](../README.md#oauth2)
+
+### HTTP request headers
+
+- **Content-Type**: application/json
 - **Accept**: application/json
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)

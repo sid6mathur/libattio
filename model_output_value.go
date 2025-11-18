@@ -16,11 +16,10 @@ import (
 	"fmt"
 )
 
-
 // OutputValue A union of possible value types, as returned in response bodies.
 type OutputValue struct {
-	OutputValueAnyOf *OutputValueAnyOf
-	OutputValueAnyOf1 *OutputValueAnyOf1
+	OutputValueAnyOf   *OutputValueAnyOf
+	OutputValueAnyOf1  *OutputValueAnyOf1
 	OutputValueAnyOf10 *OutputValueAnyOf10
 	OutputValueAnyOf11 *OutputValueAnyOf11
 	OutputValueAnyOf12 *OutputValueAnyOf12
@@ -30,21 +29,21 @@ type OutputValue struct {
 	OutputValueAnyOf16 *OutputValueAnyOf16
 	OutputValueAnyOf17 *OutputValueAnyOf17
 	OutputValueAnyOf18 *OutputValueAnyOf18
-	OutputValueAnyOf2 *OutputValueAnyOf2
-	OutputValueAnyOf3 *OutputValueAnyOf3
-	OutputValueAnyOf4 *OutputValueAnyOf4
-	OutputValueAnyOf5 *OutputValueAnyOf5
-	OutputValueAnyOf6 *OutputValueAnyOf6
-	OutputValueAnyOf7 *OutputValueAnyOf7
-	OutputValueAnyOf8 *OutputValueAnyOf8
-	OutputValueAnyOf9 *OutputValueAnyOf9
+	OutputValueAnyOf2  *OutputValueAnyOf2
+	OutputValueAnyOf3  *OutputValueAnyOf3
+	OutputValueAnyOf4  *OutputValueAnyOf4
+	OutputValueAnyOf5  *OutputValueAnyOf5
+	OutputValueAnyOf6  *OutputValueAnyOf6
+	OutputValueAnyOf7  *OutputValueAnyOf7
+	OutputValueAnyOf8  *OutputValueAnyOf8
+	OutputValueAnyOf9  *OutputValueAnyOf9
 }
 
 // Unmarshal JSON data into any of the pointers in the struct
 func (dst *OutputValue) UnmarshalJSON(data []byte) error {
 	var err error
 	// try to unmarshal JSON data into OutputValueAnyOf
-	err = json.Unmarshal(data, &dst.OutputValueAnyOf);
+	err = json.Unmarshal(data, &dst.OutputValueAnyOf)
 	if err == nil {
 		jsonOutputValueAnyOf, _ := json.Marshal(dst.OutputValueAnyOf)
 		if string(jsonOutputValueAnyOf) == "{}" { // empty struct
@@ -57,7 +56,7 @@ func (dst *OutputValue) UnmarshalJSON(data []byte) error {
 	}
 
 	// try to unmarshal JSON data into OutputValueAnyOf1
-	err = json.Unmarshal(data, &dst.OutputValueAnyOf1);
+	err = json.Unmarshal(data, &dst.OutputValueAnyOf1)
 	if err == nil {
 		jsonOutputValueAnyOf1, _ := json.Marshal(dst.OutputValueAnyOf1)
 		if string(jsonOutputValueAnyOf1) == "{}" { // empty struct
@@ -70,7 +69,7 @@ func (dst *OutputValue) UnmarshalJSON(data []byte) error {
 	}
 
 	// try to unmarshal JSON data into OutputValueAnyOf10
-	err = json.Unmarshal(data, &dst.OutputValueAnyOf10);
+	err = json.Unmarshal(data, &dst.OutputValueAnyOf10)
 	if err == nil {
 		jsonOutputValueAnyOf10, _ := json.Marshal(dst.OutputValueAnyOf10)
 		if string(jsonOutputValueAnyOf10) == "{}" { // empty struct
@@ -83,7 +82,7 @@ func (dst *OutputValue) UnmarshalJSON(data []byte) error {
 	}
 
 	// try to unmarshal JSON data into OutputValueAnyOf11
-	err = json.Unmarshal(data, &dst.OutputValueAnyOf11);
+	err = json.Unmarshal(data, &dst.OutputValueAnyOf11)
 	if err == nil {
 		jsonOutputValueAnyOf11, _ := json.Marshal(dst.OutputValueAnyOf11)
 		if string(jsonOutputValueAnyOf11) == "{}" { // empty struct
@@ -96,7 +95,7 @@ func (dst *OutputValue) UnmarshalJSON(data []byte) error {
 	}
 
 	// try to unmarshal JSON data into OutputValueAnyOf12
-	err = json.Unmarshal(data, &dst.OutputValueAnyOf12);
+	err = json.Unmarshal(data, &dst.OutputValueAnyOf12)
 	if err == nil {
 		jsonOutputValueAnyOf12, _ := json.Marshal(dst.OutputValueAnyOf12)
 		if string(jsonOutputValueAnyOf12) == "{}" { // empty struct
@@ -109,7 +108,7 @@ func (dst *OutputValue) UnmarshalJSON(data []byte) error {
 	}
 
 	// try to unmarshal JSON data into OutputValueAnyOf13
-	err = json.Unmarshal(data, &dst.OutputValueAnyOf13);
+	err = json.Unmarshal(data, &dst.OutputValueAnyOf13)
 	if err == nil {
 		jsonOutputValueAnyOf13, _ := json.Marshal(dst.OutputValueAnyOf13)
 		if string(jsonOutputValueAnyOf13) == "{}" { // empty struct
@@ -122,7 +121,7 @@ func (dst *OutputValue) UnmarshalJSON(data []byte) error {
 	}
 
 	// try to unmarshal JSON data into OutputValueAnyOf14
-	err = json.Unmarshal(data, &dst.OutputValueAnyOf14);
+	err = json.Unmarshal(data, &dst.OutputValueAnyOf14)
 	if err == nil {
 		jsonOutputValueAnyOf14, _ := json.Marshal(dst.OutputValueAnyOf14)
 		if string(jsonOutputValueAnyOf14) == "{}" { // empty struct
@@ -135,7 +134,7 @@ func (dst *OutputValue) UnmarshalJSON(data []byte) error {
 	}
 
 	// try to unmarshal JSON data into OutputValueAnyOf15
-	err = json.Unmarshal(data, &dst.OutputValueAnyOf15);
+	err = json.Unmarshal(data, &dst.OutputValueAnyOf15)
 	if err == nil {
 		jsonOutputValueAnyOf15, _ := json.Marshal(dst.OutputValueAnyOf15)
 		if string(jsonOutputValueAnyOf15) == "{}" { // empty struct
@@ -148,7 +147,7 @@ func (dst *OutputValue) UnmarshalJSON(data []byte) error {
 	}
 
 	// try to unmarshal JSON data into OutputValueAnyOf16
-	err = json.Unmarshal(data, &dst.OutputValueAnyOf16);
+	err = json.Unmarshal(data, &dst.OutputValueAnyOf16)
 	if err == nil {
 		jsonOutputValueAnyOf16, _ := json.Marshal(dst.OutputValueAnyOf16)
 		if string(jsonOutputValueAnyOf16) == "{}" { // empty struct
@@ -161,7 +160,7 @@ func (dst *OutputValue) UnmarshalJSON(data []byte) error {
 	}
 
 	// try to unmarshal JSON data into OutputValueAnyOf17
-	err = json.Unmarshal(data, &dst.OutputValueAnyOf17);
+	err = json.Unmarshal(data, &dst.OutputValueAnyOf17)
 	if err == nil {
 		jsonOutputValueAnyOf17, _ := json.Marshal(dst.OutputValueAnyOf17)
 		if string(jsonOutputValueAnyOf17) == "{}" { // empty struct
@@ -174,7 +173,7 @@ func (dst *OutputValue) UnmarshalJSON(data []byte) error {
 	}
 
 	// try to unmarshal JSON data into OutputValueAnyOf18
-	err = json.Unmarshal(data, &dst.OutputValueAnyOf18);
+	err = json.Unmarshal(data, &dst.OutputValueAnyOf18)
 	if err == nil {
 		jsonOutputValueAnyOf18, _ := json.Marshal(dst.OutputValueAnyOf18)
 		if string(jsonOutputValueAnyOf18) == "{}" { // empty struct
@@ -187,7 +186,7 @@ func (dst *OutputValue) UnmarshalJSON(data []byte) error {
 	}
 
 	// try to unmarshal JSON data into OutputValueAnyOf2
-	err = json.Unmarshal(data, &dst.OutputValueAnyOf2);
+	err = json.Unmarshal(data, &dst.OutputValueAnyOf2)
 	if err == nil {
 		jsonOutputValueAnyOf2, _ := json.Marshal(dst.OutputValueAnyOf2)
 		if string(jsonOutputValueAnyOf2) == "{}" { // empty struct
@@ -200,7 +199,7 @@ func (dst *OutputValue) UnmarshalJSON(data []byte) error {
 	}
 
 	// try to unmarshal JSON data into OutputValueAnyOf3
-	err = json.Unmarshal(data, &dst.OutputValueAnyOf3);
+	err = json.Unmarshal(data, &dst.OutputValueAnyOf3)
 	if err == nil {
 		jsonOutputValueAnyOf3, _ := json.Marshal(dst.OutputValueAnyOf3)
 		if string(jsonOutputValueAnyOf3) == "{}" { // empty struct
@@ -213,7 +212,7 @@ func (dst *OutputValue) UnmarshalJSON(data []byte) error {
 	}
 
 	// try to unmarshal JSON data into OutputValueAnyOf4
-	err = json.Unmarshal(data, &dst.OutputValueAnyOf4);
+	err = json.Unmarshal(data, &dst.OutputValueAnyOf4)
 	if err == nil {
 		jsonOutputValueAnyOf4, _ := json.Marshal(dst.OutputValueAnyOf4)
 		if string(jsonOutputValueAnyOf4) == "{}" { // empty struct
@@ -226,7 +225,7 @@ func (dst *OutputValue) UnmarshalJSON(data []byte) error {
 	}
 
 	// try to unmarshal JSON data into OutputValueAnyOf5
-	err = json.Unmarshal(data, &dst.OutputValueAnyOf5);
+	err = json.Unmarshal(data, &dst.OutputValueAnyOf5)
 	if err == nil {
 		jsonOutputValueAnyOf5, _ := json.Marshal(dst.OutputValueAnyOf5)
 		if string(jsonOutputValueAnyOf5) == "{}" { // empty struct
@@ -239,7 +238,7 @@ func (dst *OutputValue) UnmarshalJSON(data []byte) error {
 	}
 
 	// try to unmarshal JSON data into OutputValueAnyOf6
-	err = json.Unmarshal(data, &dst.OutputValueAnyOf6);
+	err = json.Unmarshal(data, &dst.OutputValueAnyOf6)
 	if err == nil {
 		jsonOutputValueAnyOf6, _ := json.Marshal(dst.OutputValueAnyOf6)
 		if string(jsonOutputValueAnyOf6) == "{}" { // empty struct
@@ -252,7 +251,7 @@ func (dst *OutputValue) UnmarshalJSON(data []byte) error {
 	}
 
 	// try to unmarshal JSON data into OutputValueAnyOf7
-	err = json.Unmarshal(data, &dst.OutputValueAnyOf7);
+	err = json.Unmarshal(data, &dst.OutputValueAnyOf7)
 	if err == nil {
 		jsonOutputValueAnyOf7, _ := json.Marshal(dst.OutputValueAnyOf7)
 		if string(jsonOutputValueAnyOf7) == "{}" { // empty struct
@@ -265,7 +264,7 @@ func (dst *OutputValue) UnmarshalJSON(data []byte) error {
 	}
 
 	// try to unmarshal JSON data into OutputValueAnyOf8
-	err = json.Unmarshal(data, &dst.OutputValueAnyOf8);
+	err = json.Unmarshal(data, &dst.OutputValueAnyOf8)
 	if err == nil {
 		jsonOutputValueAnyOf8, _ := json.Marshal(dst.OutputValueAnyOf8)
 		if string(jsonOutputValueAnyOf8) == "{}" { // empty struct
@@ -278,7 +277,7 @@ func (dst *OutputValue) UnmarshalJSON(data []byte) error {
 	}
 
 	// try to unmarshal JSON data into OutputValueAnyOf9
-	err = json.Unmarshal(data, &dst.OutputValueAnyOf9);
+	err = json.Unmarshal(data, &dst.OutputValueAnyOf9)
 	if err == nil {
 		jsonOutputValueAnyOf9, _ := json.Marshal(dst.OutputValueAnyOf9)
 		if string(jsonOutputValueAnyOf9) == "{}" { // empty struct
@@ -374,7 +373,6 @@ func (src OutputValue) MarshalJSON() ([]byte, error) {
 	return nil, nil // no data in anyOf schemas
 }
 
-
 type NullableOutputValue struct {
 	value *OutputValue
 	isSet bool
@@ -410,5 +408,3 @@ func (v *NullableOutputValue) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
-
-

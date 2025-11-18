@@ -4,10 +4,10 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**Filter** | Pointer to **map[string]interface{}** | An object used to filter results to a subset of results. See the [full guide to filtering and sorting here](/rest-api/how-to/filtering-and-sorting). | [optional] 
-**Sorts** | Pointer to [**[]V2ObjectsObjectRecordsQueryPostRequestSortsInner**](V2ObjectsObjectRecordsQueryPostRequestSortsInner.md) | An object used to sort results. See the [full guide to filtering and sorting here](/rest-api/how-to/filtering-and-sorting). | [optional] 
-**Limit** | Pointer to **float32** | The maximum number of results to return. Defaults to 500. See the [full guide to pagination here](/rest-api/how-to/pagination). | [optional] 
-**Offset** | Pointer to **float32** | The number of results to skip over before returning. Defaults to 0. See the [full guide to pagination here](/rest-api/how-to/pagination). | [optional] 
+**Filter** | Pointer to **map[string]interface{}** | An object used to filter results to a subset of results. See the [full guide to filtering and sorting here](/rest-api/guides/filtering-and-sorting). | [optional] 
+**Sorts** | Pointer to [**[]V2ObjectsObjectRecordsQueryPostRequestSortsInner**](V2ObjectsObjectRecordsQueryPostRequestSortsInner.md) | An object used to sort results. See the [full guide to filtering and sorting here](/rest-api/guides/filtering-and-sorting). | [optional] 
+**Limit** | Pointer to **float32** | The maximum number of results to return. Defaults to 500. See the [full guide to pagination here](/rest-api/guides/pagination). | [optional] 
+**Offset** | Pointer to **float32** | The number of results to skip over before returning. Defaults to 0. See the [full guide to pagination here](/rest-api/guides/pagination). | [optional] 
 
 ## Methods
 

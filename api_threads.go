@@ -20,19 +20,18 @@ import (
 	"strings"
 )
 
-
 // ThreadsAPIService ThreadsAPI service
 type ThreadsAPIService service
 
 type ApiV2ThreadsGetRequest struct {
-	ctx context.Context
+	ctx        context.Context
 	ApiService *ThreadsAPIService
-	recordId *string
-	object *string
-	entryId *string
-	list *string
-	limit *int32
-	offset *int32
+	recordId   *string
+	object     *string
+	entryId    *string
+	list       *string
+	limit      *int32
+	offset     *int32
 }
 
 func (r ApiV2ThreadsGetRequest) RecordId(recordId string) ApiV2ThreadsGetRequest {
@@ -80,24 +79,25 @@ To view threads on list entries, you will need the `list_configuration:read` and
 
 Required scopes: `comment:read`.
 
- @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @return ApiV2ThreadsGetRequest
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@return ApiV2ThreadsGetRequest
 */
 func (a *ThreadsAPIService) V2ThreadsGet(ctx context.Context) ApiV2ThreadsGetRequest {
 	return ApiV2ThreadsGetRequest{
 		ApiService: a,
-		ctx: ctx,
+		ctx:        ctx,
 	}
 }
 
 // Execute executes the request
-//  @return V2ThreadsGet200Response
+//
+//	@return V2ThreadsGet200Response
 func (a *ThreadsAPIService) V2ThreadsGetExecute(r ApiV2ThreadsGetRequest) (*V2ThreadsGet200Response, *http.Response, error) {
 	var (
-		localVarHTTPMethod   = http.MethodGet
-		localVarPostBody     interface{}
-		formFiles            []formFile
-		localVarReturnValue  *V2ThreadsGet200Response
+		localVarHTTPMethod  = http.MethodGet
+		localVarPostBody    interface{}
+		formFiles           []formFile
+		localVarReturnValue *V2ThreadsGet200Response
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "ThreadsAPIService.V2ThreadsGet")
@@ -184,9 +184,9 @@ func (a *ThreadsAPIService) V2ThreadsGetExecute(r ApiV2ThreadsGetRequest) (*V2Th
 }
 
 type ApiV2ThreadsThreadIdGetRequest struct {
-	ctx context.Context
+	ctx        context.Context
 	ApiService *ThreadsAPIService
-	threadId string
+	threadId   string
 }
 
 func (r ApiV2ThreadsThreadIdGetRequest) Execute() (*V2ThreadsThreadIdGet200Response, *http.Response, error) {
@@ -204,26 +204,27 @@ To view threads on list entries, you will need the `list_configuration:read` and
 
 Required scopes: `comment:read`.
 
- @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @param threadId
- @return ApiV2ThreadsThreadIdGetRequest
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@param threadId
+	@return ApiV2ThreadsThreadIdGetRequest
 */
 func (a *ThreadsAPIService) V2ThreadsThreadIdGet(ctx context.Context, threadId string) ApiV2ThreadsThreadIdGetRequest {
 	return ApiV2ThreadsThreadIdGetRequest{
 		ApiService: a,
-		ctx: ctx,
-		threadId: threadId,
+		ctx:        ctx,
+		threadId:   threadId,
 	}
 }
 
 // Execute executes the request
-//  @return V2ThreadsThreadIdGet200Response
+//
+//	@return V2ThreadsThreadIdGet200Response
 func (a *ThreadsAPIService) V2ThreadsThreadIdGetExecute(r ApiV2ThreadsThreadIdGetRequest) (*V2ThreadsThreadIdGet200Response, *http.Response, error) {
 	var (
-		localVarHTTPMethod   = http.MethodGet
-		localVarPostBody     interface{}
-		formFiles            []formFile
-		localVarReturnValue  *V2ThreadsThreadIdGet200Response
+		localVarHTTPMethod  = http.MethodGet
+		localVarPostBody    interface{}
+		formFiles           []formFile
+		localVarReturnValue *V2ThreadsThreadIdGet200Response
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "ThreadsAPIService.V2ThreadsThreadIdGet")
@@ -284,8 +285,8 @@ func (a *ThreadsAPIService) V2ThreadsThreadIdGetExecute(r ApiV2ThreadsThreadIdGe
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 		}
 		return localVarReturnValue, localVarHTTPResponse, newErr
 	}

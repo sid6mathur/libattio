@@ -12,8 +12,8 @@ Contact: support@attio.com
 package libattio
 
 import (
-	"encoding/json"
 	"bytes"
+	"encoding/json"
 	"fmt"
 )
 
@@ -81,7 +81,6 @@ func (o *Object) SetId(v ObjectId) {
 	o.Id = v
 }
 
-
 // GetApiSlug returns the ApiSlug field value
 // If the value is explicit nil, the zero value for string will be returned
 func (o *Object) GetApiSlug() string {
@@ -107,7 +106,6 @@ func (o *Object) GetApiSlugOk() (*string, bool) {
 func (o *Object) SetApiSlug(v string) {
 	o.ApiSlug.Set(&v)
 }
-
 
 // GetSingularNoun returns the SingularNoun field value
 // If the value is explicit nil, the zero value for string will be returned
@@ -135,7 +133,6 @@ func (o *Object) SetSingularNoun(v string) {
 	o.SingularNoun.Set(&v)
 }
 
-
 // GetPluralNoun returns the PluralNoun field value
 // If the value is explicit nil, the zero value for string will be returned
 func (o *Object) GetPluralNoun() string {
@@ -162,7 +159,6 @@ func (o *Object) SetPluralNoun(v string) {
 	o.PluralNoun.Set(&v)
 }
 
-
 // GetCreatedAt returns the CreatedAt field value
 func (o *Object) GetCreatedAt() string {
 	if o == nil {
@@ -187,9 +183,8 @@ func (o *Object) SetCreatedAt(v string) {
 	o.CreatedAt = v
 }
 
-
 func (o Object) MarshalJSON() ([]byte, error) {
-	toSerialize,err := o.ToMap()
+	toSerialize, err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
 	}
@@ -220,32 +215,31 @@ func (o *Object) UnmarshalJSON(data []byte) (err error) {
 
 	// defaultValueFuncMap captures the default values for required properties.
 	// These values are used when required properties are missing from the payload.
-	defaultValueFuncMap := map[string]func() interface{} {
-	}
+	defaultValueFuncMap := map[string]func() interface{}{}
 	var defaultValueApplied bool
 	allProperties := make(map[string]interface{})
 
 	err = json.Unmarshal(data, &allProperties)
 
 	if err != nil {
-		return err;
+		return err
 	}
 
-	for _, requiredProperty := range(requiredProperties) {
+	for _, requiredProperty := range requiredProperties {
 		if value, exists := allProperties[requiredProperty]; !exists || value == "" {
 			if _, ok := defaultValueFuncMap[requiredProperty]; ok {
 				allProperties[requiredProperty] = defaultValueFuncMap[requiredProperty]()
 				defaultValueApplied = true
 			}
 		}
-		if value, exists := allProperties[requiredProperty]; !exists || value == ""{
+		if value, exists := allProperties[requiredProperty]; !exists || value == "" {
 			return fmt.Errorf("no value given for required property %v", requiredProperty)
 		}
 	}
 
 	if defaultValueApplied {
 		data, err = json.Marshal(allProperties)
-		if err != nil{
+		if err != nil {
 			return err
 		}
 	}
@@ -299,5 +293,3 @@ func (v *NullableObject) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
-
-

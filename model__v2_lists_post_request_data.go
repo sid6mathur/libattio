@@ -12,8 +12,8 @@ Contact: support@attio.com
 package libattio
 
 import (
-	"encoding/json"
 	"bytes"
+	"encoding/json"
 	"fmt"
 )
 
@@ -82,7 +82,6 @@ func (o *V2ListsPostRequestData) SetName(v string) {
 	o.Name = v
 }
 
-
 // GetApiSlug returns the ApiSlug field value
 func (o *V2ListsPostRequestData) GetApiSlug() string {
 	if o == nil {
@@ -107,7 +106,6 @@ func (o *V2ListsPostRequestData) SetApiSlug(v string) {
 	o.ApiSlug = v
 }
 
-
 // GetParentObject returns the ParentObject field value
 func (o *V2ListsPostRequestData) GetParentObject() string {
 	if o == nil {
@@ -131,7 +129,6 @@ func (o *V2ListsPostRequestData) GetParentObjectOk() (*string, bool) {
 func (o *V2ListsPostRequestData) SetParentObject(v string) {
 	o.ParentObject = v
 }
-
 
 // GetWorkspaceAccess returns the WorkspaceAccess field value
 // If the value is explicit nil, the zero value for string will be returned
@@ -159,7 +156,6 @@ func (o *V2ListsPostRequestData) SetWorkspaceAccess(v string) {
 	o.WorkspaceAccess.Set(&v)
 }
 
-
 // GetWorkspaceMemberAccess returns the WorkspaceMemberAccess field value
 func (o *V2ListsPostRequestData) GetWorkspaceMemberAccess() []V2ListsPostRequestDataWorkspaceMemberAccessInner {
 	if o == nil {
@@ -184,9 +180,8 @@ func (o *V2ListsPostRequestData) SetWorkspaceMemberAccess(v []V2ListsPostRequest
 	o.WorkspaceMemberAccess = v
 }
 
-
 func (o V2ListsPostRequestData) MarshalJSON() ([]byte, error) {
-	toSerialize,err := o.ToMap()
+	toSerialize, err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
 	}
@@ -217,32 +212,31 @@ func (o *V2ListsPostRequestData) UnmarshalJSON(data []byte) (err error) {
 
 	// defaultValueFuncMap captures the default values for required properties.
 	// These values are used when required properties are missing from the payload.
-	defaultValueFuncMap := map[string]func() interface{} {
-	}
+	defaultValueFuncMap := map[string]func() interface{}{}
 	var defaultValueApplied bool
 	allProperties := make(map[string]interface{})
 
 	err = json.Unmarshal(data, &allProperties)
 
 	if err != nil {
-		return err;
+		return err
 	}
 
-	for _, requiredProperty := range(requiredProperties) {
+	for _, requiredProperty := range requiredProperties {
 		if value, exists := allProperties[requiredProperty]; !exists || value == "" {
 			if _, ok := defaultValueFuncMap[requiredProperty]; ok {
 				allProperties[requiredProperty] = defaultValueFuncMap[requiredProperty]()
 				defaultValueApplied = true
 			}
 		}
-		if value, exists := allProperties[requiredProperty]; !exists || value == ""{
+		if value, exists := allProperties[requiredProperty]; !exists || value == "" {
 			return fmt.Errorf("no value given for required property %v", requiredProperty)
 		}
 	}
 
 	if defaultValueApplied {
 		data, err = json.Marshal(allProperties)
-		if err != nil{
+		if err != nil {
 			return err
 		}
 	}
@@ -296,5 +290,3 @@ func (v *NullableV2ListsPostRequestData) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
-
-

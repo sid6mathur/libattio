@@ -20,7 +20,7 @@ var _ MappedNullable = &V2TargetIdentifierAttributesPostRequestDataConfig{}
 
 // V2TargetIdentifierAttributesPostRequestDataConfig struct for V2TargetIdentifierAttributesPostRequestDataConfig
 type V2TargetIdentifierAttributesPostRequestDataConfig struct {
-	Currency *V2TargetIdentifierAttributesPostRequestDataConfigCurrency `json:"currency,omitempty"`
+	Currency        *V2TargetIdentifierAttributesPostRequestDataConfigCurrency        `json:"currency,omitempty"`
 	RecordReference *V2TargetIdentifierAttributesPostRequestDataConfigRecordReference `json:"record_reference,omitempty"`
 }
 
@@ -106,7 +106,7 @@ func (o *V2TargetIdentifierAttributesPostRequestDataConfig) SetRecordReference(v
 }
 
 func (o V2TargetIdentifierAttributesPostRequestDataConfig) MarshalJSON() ([]byte, error) {
-	toSerialize,err := o.ToMap()
+	toSerialize, err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
 	}
@@ -159,5 +159,3 @@ func (v *NullableV2TargetIdentifierAttributesPostRequestDataConfig) UnmarshalJSO
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
-
-

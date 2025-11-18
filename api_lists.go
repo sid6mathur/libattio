@@ -20,12 +20,11 @@ import (
 	"strings"
 )
 
-
 // ListsAPIService ListsAPI service
 type ListsAPIService service
 
 type ApiV2ListsGetRequest struct {
-	ctx context.Context
+	ctx        context.Context
 	ApiService *ListsAPIService
 }
 
@@ -40,24 +39,25 @@ List all lists that your access token has access to. lists are returned in the o
 
 Required scopes: `list_configuration:read`.
 
- @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @return ApiV2ListsGetRequest
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@return ApiV2ListsGetRequest
 */
 func (a *ListsAPIService) V2ListsGet(ctx context.Context) ApiV2ListsGetRequest {
 	return ApiV2ListsGetRequest{
 		ApiService: a,
-		ctx: ctx,
+		ctx:        ctx,
 	}
 }
 
 // Execute executes the request
-//  @return V2ListsGet200Response
+//
+//	@return V2ListsGet200Response
 func (a *ListsAPIService) V2ListsGetExecute(r ApiV2ListsGetRequest) (*V2ListsGet200Response, *http.Response, error) {
 	var (
-		localVarHTTPMethod   = http.MethodGet
-		localVarPostBody     interface{}
-		formFiles            []formFile
-		localVarReturnValue  *V2ListsGet200Response
+		localVarHTTPMethod  = http.MethodGet
+		localVarPostBody    interface{}
+		formFiles           []formFile
+		localVarReturnValue *V2ListsGet200Response
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "ListsAPIService.V2ListsGet")
@@ -126,9 +126,9 @@ func (a *ListsAPIService) V2ListsGetExecute(r ApiV2ListsGetRequest) (*V2ListsGet
 }
 
 type ApiV2ListsListGetRequest struct {
-	ctx context.Context
+	ctx        context.Context
 	ApiService *ListsAPIService
-	list string
+	list       string
 }
 
 func (r ApiV2ListsListGetRequest) Execute() (*V2ListsPost200Response, *http.Response, error) {
@@ -142,26 +142,27 @@ Gets a single list in your workspace that your access token has access to.
 
 Required scopes: `list_configuration:read`.
 
- @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @param list
- @return ApiV2ListsListGetRequest
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@param list
+	@return ApiV2ListsListGetRequest
 */
 func (a *ListsAPIService) V2ListsListGet(ctx context.Context, list string) ApiV2ListsListGetRequest {
 	return ApiV2ListsListGetRequest{
 		ApiService: a,
-		ctx: ctx,
-		list: list,
+		ctx:        ctx,
+		list:       list,
 	}
 }
 
 // Execute executes the request
-//  @return V2ListsPost200Response
+//
+//	@return V2ListsPost200Response
 func (a *ListsAPIService) V2ListsListGetExecute(r ApiV2ListsListGetRequest) (*V2ListsPost200Response, *http.Response, error) {
 	var (
-		localVarHTTPMethod   = http.MethodGet
-		localVarPostBody     interface{}
-		formFiles            []formFile
-		localVarReturnValue  *V2ListsPost200Response
+		localVarHTTPMethod  = http.MethodGet
+		localVarPostBody    interface{}
+		formFiles           []formFile
+		localVarReturnValue *V2ListsPost200Response
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "ListsAPIService.V2ListsListGet")
@@ -222,8 +223,8 @@ func (a *ListsAPIService) V2ListsListGetExecute(r ApiV2ListsListGetRequest) (*V2
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 		}
 		return localVarReturnValue, localVarHTTPResponse, newErr
 	}
@@ -241,9 +242,9 @@ func (a *ListsAPIService) V2ListsListGetExecute(r ApiV2ListsListGetRequest) (*V2
 }
 
 type ApiV2ListsListPatchRequest struct {
-	ctx context.Context
-	ApiService *ListsAPIService
-	list string
+	ctx                     context.Context
+	ApiService              *ListsAPIService
+	list                    string
 	v2ListsListPatchRequest *V2ListsListPatchRequest
 }
 
@@ -263,26 +264,27 @@ Updates an existing list. Permissions for the list are controlled with the `work
 
 Required scopes: `list_configuration:read-write`.
 
- @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @param list
- @return ApiV2ListsListPatchRequest
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@param list
+	@return ApiV2ListsListPatchRequest
 */
 func (a *ListsAPIService) V2ListsListPatch(ctx context.Context, list string) ApiV2ListsListPatchRequest {
 	return ApiV2ListsListPatchRequest{
 		ApiService: a,
-		ctx: ctx,
-		list: list,
+		ctx:        ctx,
+		list:       list,
 	}
 }
 
 // Execute executes the request
-//  @return V2ListsPost200Response
+//
+//	@return V2ListsPost200Response
 func (a *ListsAPIService) V2ListsListPatchExecute(r ApiV2ListsListPatchRequest) (*V2ListsPost200Response, *http.Response, error) {
 	var (
-		localVarHTTPMethod   = http.MethodPatch
-		localVarPostBody     interface{}
-		formFiles            []formFile
-		localVarReturnValue  *V2ListsPost200Response
+		localVarHTTPMethod  = http.MethodPatch
+		localVarPostBody    interface{}
+		formFiles           []formFile
+		localVarReturnValue *V2ListsPost200Response
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "ListsAPIService.V2ListsListPatch")
@@ -348,8 +350,8 @@ func (a *ListsAPIService) V2ListsListPatchExecute(r ApiV2ListsListPatchRequest) 
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 404 {
@@ -359,8 +361,8 @@ func (a *ListsAPIService) V2ListsListPatchExecute(r ApiV2ListsListPatchRequest) 
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 		}
 		return localVarReturnValue, localVarHTTPResponse, newErr
 	}
@@ -378,8 +380,8 @@ func (a *ListsAPIService) V2ListsListPatchExecute(r ApiV2ListsListPatchRequest) 
 }
 
 type ApiV2ListsPostRequest struct {
-	ctx context.Context
-	ApiService *ListsAPIService
+	ctx                context.Context
+	ApiService         *ListsAPIService
 	v2ListsPostRequest *V2ListsPostRequest
 }
 
@@ -397,7 +399,7 @@ V2ListsPost Create a list
 
 Creates a new list.
 
-Once you have your list, add attributes to it using the [Create attribute](/rest-api/endpoint-reference/attributes/create-an-attribute) API, and add records to it using the [Add records to list](/rest-api/endpoint-reference/entries/create-an-entry-add-record-to-list) API. 
+Once you have your list, add attributes to it using the [Create attribute](/rest-api/endpoint-reference/attributes/create-an-attribute) API, and add records to it using the [Add records to list](/rest-api/endpoint-reference/entries/create-an-entry-add-record-to-list) API.
 
 New lists must specify which records can be added with the `parent_object` parameter which accepts either an object slug or an object ID. Permissions for the list are controlled with the `workspace_access` and `workspace_member_access` parameters.
 
@@ -405,24 +407,25 @@ Please note that new lists must have either `workspace_access` set to `"full-acc
 
 Required scopes: `list_configuration:read-write`.
 
- @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @return ApiV2ListsPostRequest
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@return ApiV2ListsPostRequest
 */
 func (a *ListsAPIService) V2ListsPost(ctx context.Context) ApiV2ListsPostRequest {
 	return ApiV2ListsPostRequest{
 		ApiService: a,
-		ctx: ctx,
+		ctx:        ctx,
 	}
 }
 
 // Execute executes the request
-//  @return V2ListsPost200Response
+//
+//	@return V2ListsPost200Response
 func (a *ListsAPIService) V2ListsPostExecute(r ApiV2ListsPostRequest) (*V2ListsPost200Response, *http.Response, error) {
 	var (
-		localVarHTTPMethod   = http.MethodPost
-		localVarPostBody     interface{}
-		formFiles            []formFile
-		localVarReturnValue  *V2ListsPost200Response
+		localVarHTTPMethod  = http.MethodPost
+		localVarPostBody    interface{}
+		formFiles           []formFile
+		localVarReturnValue *V2ListsPost200Response
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "ListsAPIService.V2ListsPost")
@@ -487,8 +490,8 @@ func (a *ListsAPIService) V2ListsPostExecute(r ApiV2ListsPostRequest) (*V2ListsP
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 403 {
@@ -498,8 +501,8 @@ func (a *ListsAPIService) V2ListsPostExecute(r ApiV2ListsPostRequest) (*V2ListsP
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 404 {
@@ -509,8 +512,8 @@ func (a *ListsAPIService) V2ListsPostExecute(r ApiV2ListsPostRequest) (*V2ListsP
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 409 {
@@ -520,8 +523,8 @@ func (a *ListsAPIService) V2ListsPostExecute(r ApiV2ListsPostRequest) (*V2ListsP
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 		}
 		return localVarReturnValue, localVarHTTPResponse, newErr
 	}

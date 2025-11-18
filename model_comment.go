@@ -12,8 +12,8 @@ Contact: support@attio.com
 package libattio
 
 import (
-	"encoding/json"
 	"bytes"
+	"encoding/json"
 	"fmt"
 )
 
@@ -26,15 +26,15 @@ type Comment struct {
 	// The ID of the thread the comment belongs to.
 	ThreadId string `json:"thread_id"`
 	// A plaintext representation of the content of the comment. References to workspace members are cast into email addresses, all other stylistic elements are removed.
-	ContentPlaintext string `json:"content_plaintext"`
-	Entry CommentEntry `json:"entry"`
-	Record CommentRecord `json:"record"`
+	ContentPlaintext string        `json:"content_plaintext"`
+	Entry            CommentEntry  `json:"entry"`
+	Record           CommentRecord `json:"record"`
 	// Whether the comment is resolved.
-	ResolvedAt NullableString `json:"resolved_at"`
+	ResolvedAt NullableString    `json:"resolved_at"`
 	ResolvedBy CommentResolvedBy `json:"resolved_by"`
 	// When the note was created.
-	CreatedAt string `json:"created_at"`
-	Author CommentAuthor `json:"author"`
+	CreatedAt string        `json:"created_at"`
+	Author    CommentAuthor `json:"author"`
 }
 
 type _Comment Comment
@@ -89,7 +89,6 @@ func (o *Comment) SetId(v CommentId) {
 	o.Id = v
 }
 
-
 // GetThreadId returns the ThreadId field value
 func (o *Comment) GetThreadId() string {
 	if o == nil {
@@ -113,7 +112,6 @@ func (o *Comment) GetThreadIdOk() (*string, bool) {
 func (o *Comment) SetThreadId(v string) {
 	o.ThreadId = v
 }
-
 
 // GetContentPlaintext returns the ContentPlaintext field value
 func (o *Comment) GetContentPlaintext() string {
@@ -139,7 +137,6 @@ func (o *Comment) SetContentPlaintext(v string) {
 	o.ContentPlaintext = v
 }
 
-
 // GetEntry returns the Entry field value
 func (o *Comment) GetEntry() CommentEntry {
 	if o == nil {
@@ -164,7 +161,6 @@ func (o *Comment) SetEntry(v CommentEntry) {
 	o.Entry = v
 }
 
-
 // GetRecord returns the Record field value
 func (o *Comment) GetRecord() CommentRecord {
 	if o == nil {
@@ -188,7 +184,6 @@ func (o *Comment) GetRecordOk() (*CommentRecord, bool) {
 func (o *Comment) SetRecord(v CommentRecord) {
 	o.Record = v
 }
-
 
 // GetResolvedAt returns the ResolvedAt field value
 // If the value is explicit nil, the zero value for string will be returned
@@ -216,7 +211,6 @@ func (o *Comment) SetResolvedAt(v string) {
 	o.ResolvedAt.Set(&v)
 }
 
-
 // GetResolvedBy returns the ResolvedBy field value
 func (o *Comment) GetResolvedBy() CommentResolvedBy {
 	if o == nil {
@@ -240,7 +234,6 @@ func (o *Comment) GetResolvedByOk() (*CommentResolvedBy, bool) {
 func (o *Comment) SetResolvedBy(v CommentResolvedBy) {
 	o.ResolvedBy = v
 }
-
 
 // GetCreatedAt returns the CreatedAt field value
 func (o *Comment) GetCreatedAt() string {
@@ -266,7 +259,6 @@ func (o *Comment) SetCreatedAt(v string) {
 	o.CreatedAt = v
 }
 
-
 // GetAuthor returns the Author field value
 func (o *Comment) GetAuthor() CommentAuthor {
 	if o == nil {
@@ -291,9 +283,8 @@ func (o *Comment) SetAuthor(v CommentAuthor) {
 	o.Author = v
 }
 
-
 func (o Comment) MarshalJSON() ([]byte, error) {
-	toSerialize,err := o.ToMap()
+	toSerialize, err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
 	}
@@ -332,32 +323,31 @@ func (o *Comment) UnmarshalJSON(data []byte) (err error) {
 
 	// defaultValueFuncMap captures the default values for required properties.
 	// These values are used when required properties are missing from the payload.
-	defaultValueFuncMap := map[string]func() interface{} {
-	}
+	defaultValueFuncMap := map[string]func() interface{}{}
 	var defaultValueApplied bool
 	allProperties := make(map[string]interface{})
 
 	err = json.Unmarshal(data, &allProperties)
 
 	if err != nil {
-		return err;
+		return err
 	}
 
-	for _, requiredProperty := range(requiredProperties) {
+	for _, requiredProperty := range requiredProperties {
 		if value, exists := allProperties[requiredProperty]; !exists || value == "" {
 			if _, ok := defaultValueFuncMap[requiredProperty]; ok {
 				allProperties[requiredProperty] = defaultValueFuncMap[requiredProperty]()
 				defaultValueApplied = true
 			}
 		}
-		if value, exists := allProperties[requiredProperty]; !exists || value == ""{
+		if value, exists := allProperties[requiredProperty]; !exists || value == "" {
 			return fmt.Errorf("no value given for required property %v", requiredProperty)
 		}
 	}
 
 	if defaultValueApplied {
 		data, err = json.Marshal(allProperties)
-		if err != nil{
+		if err != nil {
 			return err
 		}
 	}
@@ -411,5 +401,3 @@ func (v *NullableComment) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
-
-

@@ -4,7 +4,7 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**Content** | **string** | The text content of the task, in the format specified by the &#x60;format&#x60; property. | 
+**Content** | **string** | The text content of the task, in the format specified by the &#x60;format&#x60; property. A max length of 2000 characters is enforced. | 
 **Format** | **string** | The format of the task content to be created. Rich text formatting, links and @references are not supported. | 
 **DeadlineAt** | **NullableString** | The deadline of the task, in ISO 8601 format. | 
 **IsCompleted** | **bool** | Whether the task has been completed. | 

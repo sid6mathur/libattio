@@ -13,7 +13,7 @@ Name | Type | Description | Notes
 **Sub** | **string** | Since Bearer tokens grant Workspace-level permissions, this property contains the workspace_id. | 
 **Aud** | **string** | The intended audience for this token, for Bearer tokens this is the same as the client_id. | 
 **Iss** | **string** | The issuer of the token. Always attio.com | 
-**AuthorizedByWorkspaceMemberId** | **NullableString** | The ID of the workspace member who authorised this token initially, if known | 
+**AuthorizedByWorkspaceMemberId** | **string** | The ID of the workspace member who authorised this token initially. | 
 **WorkspaceId** | **string** | The ID of the workspace the token is scoped to. | 
 **WorkspaceName** | **string** | The name of the workspace the token is scoped to. | 
 **WorkspaceSlug** | **string** | The slug of the workspace the token is scoped to. | 
@@ -23,7 +23,7 @@ Name | Type | Description | Notes
 
 ### NewV2SelfGet200ResponseAnyOf1
 
-`func NewV2SelfGet200ResponseAnyOf1(active bool, scope string, clientId string, tokenType string, exp NullableFloat32, iat float32, sub string, aud string, iss string, authorizedByWorkspaceMemberId NullableString, workspaceId string, workspaceName string, workspaceSlug string, workspaceLogoUrl NullableString, ) *V2SelfGet200ResponseAnyOf1`
+`func NewV2SelfGet200ResponseAnyOf1(active bool, scope string, clientId string, tokenType string, exp NullableFloat32, iat float32, sub string, aud string, iss string, authorizedByWorkspaceMemberId string, workspaceId string, workspaceName string, workspaceSlug string, workspaceLogoUrl NullableString, ) *V2SelfGet200ResponseAnyOf1`
 
 NewV2SelfGet200ResponseAnyOf1 instantiates a new V2SelfGet200ResponseAnyOf1 object
 This constructor will assign default values to properties that have it defined,
@@ -248,16 +248,6 @@ and a boolean to check if the value has been set.
 SetAuthorizedByWorkspaceMemberId sets AuthorizedByWorkspaceMemberId field to given value.
 
 
-### SetAuthorizedByWorkspaceMemberIdNil
-
-`func (o *V2SelfGet200ResponseAnyOf1) SetAuthorizedByWorkspaceMemberIdNil(b bool)`
-
- SetAuthorizedByWorkspaceMemberIdNil sets the value for AuthorizedByWorkspaceMemberId to be an explicit nil
-
-### UnsetAuthorizedByWorkspaceMemberId
-`func (o *V2SelfGet200ResponseAnyOf1) UnsetAuthorizedByWorkspaceMemberId()`
-
-UnsetAuthorizedByWorkspaceMemberId ensures that no value is present for AuthorizedByWorkspaceMemberId, not even an explicit nil
 ### GetWorkspaceId
 
 `func (o *V2SelfGet200ResponseAnyOf1) GetWorkspaceId() string`

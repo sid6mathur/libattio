@@ -4,10 +4,10 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**DeadlineAt** | Pointer to **string** | The deadline of the task, in ISO 8601 format. | [optional] 
+**DeadlineAt** | Pointer to **NullableString** | The deadline of the task, in ISO 8601 format. | [optional] 
 **IsCompleted** | Pointer to **bool** | Whether the task has been completed. | [optional] 
-**LinkedRecords** | Pointer to [**[]V2TasksTaskIdPatchRequestDataLinkedRecordsInner**](V2TasksTaskIdPatchRequestDataLinkedRecordsInner.md) | Records linked to the task. Creating record links within task content text is not possible via the API at present. | [optional] 
-**Assignees** | Pointer to [**[]V2TasksTaskIdPatchRequestDataAssigneesInner**](V2TasksTaskIdPatchRequestDataAssigneesInner.md) | Workspace members assigned to this task. | [optional] 
+**LinkedRecords** | Pointer to [**[]V2TasksPostRequestDataLinkedRecordsInner**](V2TasksPostRequestDataLinkedRecordsInner.md) | Records linked to the task. Creating record links within task content text is not possible via the API at present. | [optional] 
+**Assignees** | Pointer to [**[]V2TasksPostRequestDataAssigneesInner**](V2TasksPostRequestDataAssigneesInner.md) | Workspace members assigned to this task. | [optional] 
 
 ## Methods
 
@@ -53,6 +53,16 @@ SetDeadlineAt sets DeadlineAt field to given value.
 
 HasDeadlineAt returns a boolean if a field has been set.
 
+### SetDeadlineAtNil
+
+`func (o *V2TasksTaskIdPatchRequestData) SetDeadlineAtNil(b bool)`
+
+ SetDeadlineAtNil sets the value for DeadlineAt to be an explicit nil
+
+### UnsetDeadlineAt
+`func (o *V2TasksTaskIdPatchRequestData) UnsetDeadlineAt()`
+
+UnsetDeadlineAt ensures that no value is present for DeadlineAt, not even an explicit nil
 ### GetIsCompleted
 
 `func (o *V2TasksTaskIdPatchRequestData) GetIsCompleted() bool`
@@ -80,20 +90,20 @@ HasIsCompleted returns a boolean if a field has been set.
 
 ### GetLinkedRecords
 
-`func (o *V2TasksTaskIdPatchRequestData) GetLinkedRecords() []V2TasksTaskIdPatchRequestDataLinkedRecordsInner`
+`func (o *V2TasksTaskIdPatchRequestData) GetLinkedRecords() []V2TasksPostRequestDataLinkedRecordsInner`
 
 GetLinkedRecords returns the LinkedRecords field if non-nil, zero value otherwise.
 
 ### GetLinkedRecordsOk
 
-`func (o *V2TasksTaskIdPatchRequestData) GetLinkedRecordsOk() (*[]V2TasksTaskIdPatchRequestDataLinkedRecordsInner, bool)`
+`func (o *V2TasksTaskIdPatchRequestData) GetLinkedRecordsOk() (*[]V2TasksPostRequestDataLinkedRecordsInner, bool)`
 
 GetLinkedRecordsOk returns a tuple with the LinkedRecords field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetLinkedRecords
 
-`func (o *V2TasksTaskIdPatchRequestData) SetLinkedRecords(v []V2TasksTaskIdPatchRequestDataLinkedRecordsInner)`
+`func (o *V2TasksTaskIdPatchRequestData) SetLinkedRecords(v []V2TasksPostRequestDataLinkedRecordsInner)`
 
 SetLinkedRecords sets LinkedRecords field to given value.
 
@@ -105,20 +115,20 @@ HasLinkedRecords returns a boolean if a field has been set.
 
 ### GetAssignees
 
-`func (o *V2TasksTaskIdPatchRequestData) GetAssignees() []V2TasksTaskIdPatchRequestDataAssigneesInner`
+`func (o *V2TasksTaskIdPatchRequestData) GetAssignees() []V2TasksPostRequestDataAssigneesInner`
 
 GetAssignees returns the Assignees field if non-nil, zero value otherwise.
 
 ### GetAssigneesOk
 
-`func (o *V2TasksTaskIdPatchRequestData) GetAssigneesOk() (*[]V2TasksTaskIdPatchRequestDataAssigneesInner, bool)`
+`func (o *V2TasksTaskIdPatchRequestData) GetAssigneesOk() (*[]V2TasksPostRequestDataAssigneesInner, bool)`
 
 GetAssigneesOk returns a tuple with the Assignees field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetAssignees
 
-`func (o *V2TasksTaskIdPatchRequestData) SetAssignees(v []V2TasksTaskIdPatchRequestDataAssigneesInner)`
+`func (o *V2TasksTaskIdPatchRequestData) SetAssignees(v []V2TasksPostRequestDataAssigneesInner)`
 
 SetAssignees sets Assignees field to given value.
 

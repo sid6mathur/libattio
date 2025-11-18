@@ -16,7 +16,6 @@ import (
 	"fmt"
 )
 
-
 // V2TargetIdentifierAttributesPostRequestDataDefaultValueOneOfTemplate struct for V2TargetIdentifierAttributesPostRequestDataDefaultValueOneOfTemplate
 type V2TargetIdentifierAttributesPostRequestDataDefaultValueOneOfTemplate struct {
 	String *string
@@ -26,7 +25,7 @@ type V2TargetIdentifierAttributesPostRequestDataDefaultValueOneOfTemplate struct
 func (dst *V2TargetIdentifierAttributesPostRequestDataDefaultValueOneOfTemplate) UnmarshalJSON(data []byte) error {
 	var err error
 	// try to unmarshal JSON data into String
-	err = json.Unmarshal(data, &dst.String);
+	err = json.Unmarshal(data, &dst.String)
 	if err == nil {
 		jsonString, _ := json.Marshal(dst.String)
 		if string(jsonString) == "{}" { // empty struct
@@ -49,7 +48,6 @@ func (src V2TargetIdentifierAttributesPostRequestDataDefaultValueOneOfTemplate) 
 
 	return nil, nil // no data in anyOf schemas
 }
-
 
 type NullableV2TargetIdentifierAttributesPostRequestDataDefaultValueOneOfTemplate struct {
 	value *V2TargetIdentifierAttributesPostRequestDataDefaultValueOneOfTemplate
@@ -86,5 +84,3 @@ func (v *NullableV2TargetIdentifierAttributesPostRequestDataDefaultValueOneOfTem
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
-
-

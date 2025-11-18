@@ -6,12 +6,14 @@ Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **Id** | [**V2MeetingsMeetingIdCallRecordingsCallRecordingIdTranscriptGet200ResponseDataId**](V2MeetingsMeetingIdCallRecordingsCallRecordingIdTranscriptGet200ResponseDataId.md) |  | 
 **Transcript** | [**[]V2MeetingsMeetingIdCallRecordingsCallRecordingIdTranscriptGet200ResponseDataTranscriptInner**](V2MeetingsMeetingIdCallRecordingsCallRecordingIdTranscriptGet200ResponseDataTranscriptInner.md) | The transcript segments with speech, timing, and speaker information. | 
+**RawTranscript** | **string** | The raw transcript of the call recording. | 
+**WebUrl** | **string** | A URL that links directly to the call recording transcript in the Attio web application. | 
 
 ## Methods
 
 ### NewV2MeetingsMeetingIdCallRecordingsCallRecordingIdTranscriptGet200ResponseData
 
-`func NewV2MeetingsMeetingIdCallRecordingsCallRecordingIdTranscriptGet200ResponseData(id V2MeetingsMeetingIdCallRecordingsCallRecordingIdTranscriptGet200ResponseDataId, transcript []V2MeetingsMeetingIdCallRecordingsCallRecordingIdTranscriptGet200ResponseDataTranscriptInner, ) *V2MeetingsMeetingIdCallRecordingsCallRecordingIdTranscriptGet200ResponseData`
+`func NewV2MeetingsMeetingIdCallRecordingsCallRecordingIdTranscriptGet200ResponseData(id V2MeetingsMeetingIdCallRecordingsCallRecordingIdTranscriptGet200ResponseDataId, transcript []V2MeetingsMeetingIdCallRecordingsCallRecordingIdTranscriptGet200ResponseDataTranscriptInner, rawTranscript string, webUrl string, ) *V2MeetingsMeetingIdCallRecordingsCallRecordingIdTranscriptGet200ResponseData`
 
 NewV2MeetingsMeetingIdCallRecordingsCallRecordingIdTranscriptGet200ResponseData instantiates a new V2MeetingsMeetingIdCallRecordingsCallRecordingIdTranscriptGet200ResponseData object
 This constructor will assign default values to properties that have it defined,
@@ -64,6 +66,46 @@ and a boolean to check if the value has been set.
 `func (o *V2MeetingsMeetingIdCallRecordingsCallRecordingIdTranscriptGet200ResponseData) SetTranscript(v []V2MeetingsMeetingIdCallRecordingsCallRecordingIdTranscriptGet200ResponseDataTranscriptInner)`
 
 SetTranscript sets Transcript field to given value.
+
+
+### GetRawTranscript
+
+`func (o *V2MeetingsMeetingIdCallRecordingsCallRecordingIdTranscriptGet200ResponseData) GetRawTranscript() string`
+
+GetRawTranscript returns the RawTranscript field if non-nil, zero value otherwise.
+
+### GetRawTranscriptOk
+
+`func (o *V2MeetingsMeetingIdCallRecordingsCallRecordingIdTranscriptGet200ResponseData) GetRawTranscriptOk() (*string, bool)`
+
+GetRawTranscriptOk returns a tuple with the RawTranscript field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetRawTranscript
+
+`func (o *V2MeetingsMeetingIdCallRecordingsCallRecordingIdTranscriptGet200ResponseData) SetRawTranscript(v string)`
+
+SetRawTranscript sets RawTranscript field to given value.
+
+
+### GetWebUrl
+
+`func (o *V2MeetingsMeetingIdCallRecordingsCallRecordingIdTranscriptGet200ResponseData) GetWebUrl() string`
+
+GetWebUrl returns the WebUrl field if non-nil, zero value otherwise.
+
+### GetWebUrlOk
+
+`func (o *V2MeetingsMeetingIdCallRecordingsCallRecordingIdTranscriptGet200ResponseData) GetWebUrlOk() (*string, bool)`
+
+GetWebUrlOk returns a tuple with the WebUrl field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetWebUrl
+
+`func (o *V2MeetingsMeetingIdCallRecordingsCallRecordingIdTranscriptGet200ResponseData) SetWebUrl(v string)`
+
+SetWebUrl sets WebUrl field to given value.
 
 
 

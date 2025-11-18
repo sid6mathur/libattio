@@ -22,7 +22,7 @@ var _ MappedNullable = &V2ObjectsObjectRecordsPutRequestData{}
 // V2ObjectsObjectRecordsPutRequestData struct for V2ObjectsObjectRecordsPutRequestData
 type V2ObjectsObjectRecordsPutRequestData struct {
 	// An object with an attribute `api_slug` or `attribute_id` as the key, and a single value (for single-select attributes), or an array of values (for single or multi-select attributes) as the values. For complete documentation on values for all attribute types, please see our [attribute type docs](/docs/attribute-types).
-	Values map[string][]interface{} `json:"values"`
+	Values               map[string][]interface{} `json:"values"`
 	AdditionalProperties map[string]interface{}
 }
 
@@ -70,9 +70,8 @@ func (o *V2ObjectsObjectRecordsPutRequestData) SetValues(v map[string][]interfac
 	o.Values = v
 }
 
-
 func (o V2ObjectsObjectRecordsPutRequestData) MarshalJSON() ([]byte, error) {
-	toSerialize,err := o.ToMap()
+	toSerialize, err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
 	}
@@ -100,32 +99,31 @@ func (o *V2ObjectsObjectRecordsPutRequestData) UnmarshalJSON(data []byte) (err e
 
 	// defaultValueFuncMap captures the default values for required properties.
 	// These values are used when required properties are missing from the payload.
-	defaultValueFuncMap := map[string]func() interface{} {
-	}
+	defaultValueFuncMap := map[string]func() interface{}{}
 	var defaultValueApplied bool
 	allProperties := make(map[string]interface{})
 
 	err = json.Unmarshal(data, &allProperties)
 
 	if err != nil {
-		return err;
+		return err
 	}
 
-	for _, requiredProperty := range(requiredProperties) {
+	for _, requiredProperty := range requiredProperties {
 		if value, exists := allProperties[requiredProperty]; !exists || value == "" {
 			if _, ok := defaultValueFuncMap[requiredProperty]; ok {
 				allProperties[requiredProperty] = defaultValueFuncMap[requiredProperty]()
 				defaultValueApplied = true
 			}
 		}
-		if value, exists := allProperties[requiredProperty]; !exists || value == ""{
+		if value, exists := allProperties[requiredProperty]; !exists || value == "" {
 			return fmt.Errorf("no value given for required property %v", requiredProperty)
 		}
 	}
 
 	if defaultValueApplied {
 		data, err = json.Marshal(allProperties)
-		if err != nil{
+		if err != nil {
 			return err
 		}
 	}
@@ -184,5 +182,3 @@ func (v *NullableV2ObjectsObjectRecordsPutRequestData) UnmarshalJSON(src []byte)
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
-
-

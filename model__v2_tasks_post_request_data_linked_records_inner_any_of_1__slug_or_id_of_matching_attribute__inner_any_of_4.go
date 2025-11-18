@@ -74,7 +74,7 @@ func (o *V2TasksPostRequestDataLinkedRecordsInnerAnyOf1SlugOrIdOfMatchingAttribu
 }
 
 func (o V2TasksPostRequestDataLinkedRecordsInnerAnyOf1SlugOrIdOfMatchingAttributeInnerAnyOf4) MarshalJSON() ([]byte, error) {
-	toSerialize,err := o.ToMap()
+	toSerialize, err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
 	}
@@ -124,5 +124,3 @@ func (v *NullableV2TasksPostRequestDataLinkedRecordsInnerAnyOf1SlugOrIdOfMatchin
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
-
-

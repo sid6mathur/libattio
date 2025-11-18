@@ -12,8 +12,8 @@ Contact: support@attio.com
 package libattio
 
 import (
-	"encoding/json"
 	"bytes"
+	"encoding/json"
 	"fmt"
 )
 
@@ -30,7 +30,7 @@ type V2ListsListEntriesQueryPost200ResponseDataInner struct {
 	// When this entry was created.
 	CreatedAt string `json:"created_at"`
 	// A list of attribute values for the list entry (not attribute values for its parent record).
-	EntryValues map[string][]V2ObjectsObjectRecordsPost200ResponseDataValuesValueInner `json:"entry_values"`
+	EntryValues map[string][]V2ObjectsObjectRecordsPut200ResponseDataValuesValueInner `json:"entry_values"`
 }
 
 type _V2ListsListEntriesQueryPost200ResponseDataInner V2ListsListEntriesQueryPost200ResponseDataInner
@@ -39,7 +39,7 @@ type _V2ListsListEntriesQueryPost200ResponseDataInner V2ListsListEntriesQueryPos
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewV2ListsListEntriesQueryPost200ResponseDataInner(id V2ListsListEntriesQueryPost200ResponseDataInnerId, parentRecordId string, parentObject string, createdAt string, entryValues map[string][]V2ObjectsObjectRecordsPost200ResponseDataValuesValueInner) *V2ListsListEntriesQueryPost200ResponseDataInner {
+func NewV2ListsListEntriesQueryPost200ResponseDataInner(id V2ListsListEntriesQueryPost200ResponseDataInnerId, parentRecordId string, parentObject string, createdAt string, entryValues map[string][]V2ObjectsObjectRecordsPut200ResponseDataValuesValueInner) *V2ListsListEntriesQueryPost200ResponseDataInner {
 	this := V2ListsListEntriesQueryPost200ResponseDataInner{}
 	this.Id = id
 	this.ParentRecordId = parentRecordId
@@ -81,7 +81,6 @@ func (o *V2ListsListEntriesQueryPost200ResponseDataInner) SetId(v V2ListsListEnt
 	o.Id = v
 }
 
-
 // GetParentRecordId returns the ParentRecordId field value
 func (o *V2ListsListEntriesQueryPost200ResponseDataInner) GetParentRecordId() string {
 	if o == nil {
@@ -105,7 +104,6 @@ func (o *V2ListsListEntriesQueryPost200ResponseDataInner) GetParentRecordIdOk() 
 func (o *V2ListsListEntriesQueryPost200ResponseDataInner) SetParentRecordId(v string) {
 	o.ParentRecordId = v
 }
-
 
 // GetParentObject returns the ParentObject field value
 func (o *V2ListsListEntriesQueryPost200ResponseDataInner) GetParentObject() string {
@@ -131,7 +129,6 @@ func (o *V2ListsListEntriesQueryPost200ResponseDataInner) SetParentObject(v stri
 	o.ParentObject = v
 }
 
-
 // GetCreatedAt returns the CreatedAt field value
 func (o *V2ListsListEntriesQueryPost200ResponseDataInner) GetCreatedAt() string {
 	if o == nil {
@@ -156,11 +153,10 @@ func (o *V2ListsListEntriesQueryPost200ResponseDataInner) SetCreatedAt(v string)
 	o.CreatedAt = v
 }
 
-
 // GetEntryValues returns the EntryValues field value
-func (o *V2ListsListEntriesQueryPost200ResponseDataInner) GetEntryValues() map[string][]V2ObjectsObjectRecordsPost200ResponseDataValuesValueInner {
+func (o *V2ListsListEntriesQueryPost200ResponseDataInner) GetEntryValues() map[string][]V2ObjectsObjectRecordsPut200ResponseDataValuesValueInner {
 	if o == nil {
-		var ret map[string][]V2ObjectsObjectRecordsPost200ResponseDataValuesValueInner
+		var ret map[string][]V2ObjectsObjectRecordsPut200ResponseDataValuesValueInner
 		return ret
 	}
 
@@ -169,21 +165,20 @@ func (o *V2ListsListEntriesQueryPost200ResponseDataInner) GetEntryValues() map[s
 
 // GetEntryValuesOk returns a tuple with the EntryValues field value
 // and a boolean to check if the value has been set.
-func (o *V2ListsListEntriesQueryPost200ResponseDataInner) GetEntryValuesOk() (map[string][]V2ObjectsObjectRecordsPost200ResponseDataValuesValueInner, bool) {
+func (o *V2ListsListEntriesQueryPost200ResponseDataInner) GetEntryValuesOk() (map[string][]V2ObjectsObjectRecordsPut200ResponseDataValuesValueInner, bool) {
 	if o == nil {
-		return map[string][]V2ObjectsObjectRecordsPost200ResponseDataValuesValueInner{}, false
+		return map[string][]V2ObjectsObjectRecordsPut200ResponseDataValuesValueInner{}, false
 	}
 	return o.EntryValues, true
 }
 
 // SetEntryValues sets field value
-func (o *V2ListsListEntriesQueryPost200ResponseDataInner) SetEntryValues(v map[string][]V2ObjectsObjectRecordsPost200ResponseDataValuesValueInner) {
+func (o *V2ListsListEntriesQueryPost200ResponseDataInner) SetEntryValues(v map[string][]V2ObjectsObjectRecordsPut200ResponseDataValuesValueInner) {
 	o.EntryValues = v
 }
 
-
 func (o V2ListsListEntriesQueryPost200ResponseDataInner) MarshalJSON() ([]byte, error) {
-	toSerialize,err := o.ToMap()
+	toSerialize, err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
 	}
@@ -214,32 +209,31 @@ func (o *V2ListsListEntriesQueryPost200ResponseDataInner) UnmarshalJSON(data []b
 
 	// defaultValueFuncMap captures the default values for required properties.
 	// These values are used when required properties are missing from the payload.
-	defaultValueFuncMap := map[string]func() interface{} {
-	}
+	defaultValueFuncMap := map[string]func() interface{}{}
 	var defaultValueApplied bool
 	allProperties := make(map[string]interface{})
 
 	err = json.Unmarshal(data, &allProperties)
 
 	if err != nil {
-		return err;
+		return err
 	}
 
-	for _, requiredProperty := range(requiredProperties) {
+	for _, requiredProperty := range requiredProperties {
 		if value, exists := allProperties[requiredProperty]; !exists || value == "" {
 			if _, ok := defaultValueFuncMap[requiredProperty]; ok {
 				allProperties[requiredProperty] = defaultValueFuncMap[requiredProperty]()
 				defaultValueApplied = true
 			}
 		}
-		if value, exists := allProperties[requiredProperty]; !exists || value == ""{
+		if value, exists := allProperties[requiredProperty]; !exists || value == "" {
 			return fmt.Errorf("no value given for required property %v", requiredProperty)
 		}
 	}
 
 	if defaultValueApplied {
 		data, err = json.Marshal(allProperties)
-		if err != nil{
+		if err != nil {
 			return err
 		}
 	}
@@ -293,5 +287,3 @@ func (v *NullableV2ListsListEntriesQueryPost200ResponseDataInner) UnmarshalJSON(
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
-
-

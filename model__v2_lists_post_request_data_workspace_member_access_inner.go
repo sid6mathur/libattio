@@ -12,8 +12,8 @@ Contact: support@attio.com
 package libattio
 
 import (
-	"encoding/json"
 	"bytes"
+	"encoding/json"
 	"fmt"
 )
 
@@ -73,7 +73,6 @@ func (o *V2ListsPostRequestDataWorkspaceMemberAccessInner) SetWorkspaceMemberId(
 	o.WorkspaceMemberId = v
 }
 
-
 // GetLevel returns the Level field value
 func (o *V2ListsPostRequestDataWorkspaceMemberAccessInner) GetLevel() string {
 	if o == nil {
@@ -98,9 +97,8 @@ func (o *V2ListsPostRequestDataWorkspaceMemberAccessInner) SetLevel(v string) {
 	o.Level = v
 }
 
-
 func (o V2ListsPostRequestDataWorkspaceMemberAccessInner) MarshalJSON() ([]byte, error) {
-	toSerialize,err := o.ToMap()
+	toSerialize, err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
 	}
@@ -125,32 +123,31 @@ func (o *V2ListsPostRequestDataWorkspaceMemberAccessInner) UnmarshalJSON(data []
 
 	// defaultValueFuncMap captures the default values for required properties.
 	// These values are used when required properties are missing from the payload.
-	defaultValueFuncMap := map[string]func() interface{} {
-	}
+	defaultValueFuncMap := map[string]func() interface{}{}
 	var defaultValueApplied bool
 	allProperties := make(map[string]interface{})
 
 	err = json.Unmarshal(data, &allProperties)
 
 	if err != nil {
-		return err;
+		return err
 	}
 
-	for _, requiredProperty := range(requiredProperties) {
+	for _, requiredProperty := range requiredProperties {
 		if value, exists := allProperties[requiredProperty]; !exists || value == "" {
 			if _, ok := defaultValueFuncMap[requiredProperty]; ok {
 				allProperties[requiredProperty] = defaultValueFuncMap[requiredProperty]()
 				defaultValueApplied = true
 			}
 		}
-		if value, exists := allProperties[requiredProperty]; !exists || value == ""{
+		if value, exists := allProperties[requiredProperty]; !exists || value == "" {
 			return fmt.Errorf("no value given for required property %v", requiredProperty)
 		}
 	}
 
 	if defaultValueApplied {
 		data, err = json.Marshal(allProperties)
-		if err != nil{
+		if err != nil {
 			return err
 		}
 	}
@@ -204,5 +201,3 @@ func (v *NullableV2ListsPostRequestDataWorkspaceMemberAccessInner) UnmarshalJSON
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
-
-

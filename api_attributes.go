@@ -20,16 +20,15 @@ import (
 	"strings"
 )
 
-
 // AttributesAPIService AttributesAPI service
 type AttributesAPIService service
 
 type ApiV2TargetIdentifierAttributesAttributeGetRequest struct {
-	ctx context.Context
+	ctx        context.Context
 	ApiService *AttributesAPIService
-	target string
+	target     string
 	identifier string
-	attribute string
+	attribute  string
 }
 
 func (r ApiV2TargetIdentifierAttributesAttributeGetRequest) Execute() (*V2TargetIdentifierAttributesPost200Response, *http.Response, error) {
@@ -43,30 +42,31 @@ Gets information about a single attribute on either an object or a list.
 
 Required scopes: `object_configuration:read`.
 
- @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @param target
- @param identifier
- @param attribute
- @return ApiV2TargetIdentifierAttributesAttributeGetRequest
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@param target
+	@param identifier
+	@param attribute
+	@return ApiV2TargetIdentifierAttributesAttributeGetRequest
 */
 func (a *AttributesAPIService) V2TargetIdentifierAttributesAttributeGet(ctx context.Context, target string, identifier string, attribute string) ApiV2TargetIdentifierAttributesAttributeGetRequest {
 	return ApiV2TargetIdentifierAttributesAttributeGetRequest{
 		ApiService: a,
-		ctx: ctx,
-		target: target,
+		ctx:        ctx,
+		target:     target,
 		identifier: identifier,
-		attribute: attribute,
+		attribute:  attribute,
 	}
 }
 
 // Execute executes the request
-//  @return V2TargetIdentifierAttributesPost200Response
+//
+//	@return V2TargetIdentifierAttributesPost200Response
 func (a *AttributesAPIService) V2TargetIdentifierAttributesAttributeGetExecute(r ApiV2TargetIdentifierAttributesAttributeGetRequest) (*V2TargetIdentifierAttributesPost200Response, *http.Response, error) {
 	var (
-		localVarHTTPMethod   = http.MethodGet
-		localVarPostBody     interface{}
-		formFiles            []formFile
-		localVarReturnValue  *V2TargetIdentifierAttributesPost200Response
+		localVarHTTPMethod  = http.MethodGet
+		localVarPostBody    interface{}
+		formFiles           []formFile
+		localVarReturnValue *V2TargetIdentifierAttributesPost200Response
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "AttributesAPIService.V2TargetIdentifierAttributesAttributeGet")
@@ -129,8 +129,8 @@ func (a *AttributesAPIService) V2TargetIdentifierAttributesAttributeGetExecute(r
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 		}
 		return localVarReturnValue, localVarHTTPResponse, newErr
 	}
@@ -148,11 +148,11 @@ func (a *AttributesAPIService) V2TargetIdentifierAttributesAttributeGetExecute(r
 }
 
 type ApiV2TargetIdentifierAttributesAttributeOptionsGetRequest struct {
-	ctx context.Context
-	ApiService *AttributesAPIService
-	target string
-	identifier string
-	attribute string
+	ctx          context.Context
+	ApiService   *AttributesAPIService
+	target       string
+	identifier   string
+	attribute    string
 	showArchived *bool
 }
 
@@ -172,30 +172,31 @@ Lists all select options for a particular attribute on either an object or a lis
 
 Required scopes: `object_configuration:read`.
 
- @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @param target
- @param identifier
- @param attribute
- @return ApiV2TargetIdentifierAttributesAttributeOptionsGetRequest
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@param target
+	@param identifier
+	@param attribute
+	@return ApiV2TargetIdentifierAttributesAttributeOptionsGetRequest
 */
 func (a *AttributesAPIService) V2TargetIdentifierAttributesAttributeOptionsGet(ctx context.Context, target string, identifier string, attribute string) ApiV2TargetIdentifierAttributesAttributeOptionsGetRequest {
 	return ApiV2TargetIdentifierAttributesAttributeOptionsGetRequest{
 		ApiService: a,
-		ctx: ctx,
-		target: target,
+		ctx:        ctx,
+		target:     target,
 		identifier: identifier,
-		attribute: attribute,
+		attribute:  attribute,
 	}
 }
 
 // Execute executes the request
-//  @return V2TargetIdentifierAttributesAttributeOptionsGet200Response
+//
+//	@return V2TargetIdentifierAttributesAttributeOptionsGet200Response
 func (a *AttributesAPIService) V2TargetIdentifierAttributesAttributeOptionsGetExecute(r ApiV2TargetIdentifierAttributesAttributeOptionsGetRequest) (*V2TargetIdentifierAttributesAttributeOptionsGet200Response, *http.Response, error) {
 	var (
-		localVarHTTPMethod   = http.MethodGet
-		localVarPostBody     interface{}
-		formFiles            []formFile
-		localVarReturnValue  *V2TargetIdentifierAttributesAttributeOptionsGet200Response
+		localVarHTTPMethod  = http.MethodGet
+		localVarPostBody    interface{}
+		formFiles           []formFile
+		localVarReturnValue *V2TargetIdentifierAttributesAttributeOptionsGet200Response
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "AttributesAPIService.V2TargetIdentifierAttributesAttributeOptionsGet")
@@ -261,8 +262,8 @@ func (a *AttributesAPIService) V2TargetIdentifierAttributesAttributeOptionsGetEx
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 		}
 		return localVarReturnValue, localVarHTTPResponse, newErr
 	}
@@ -280,12 +281,12 @@ func (a *AttributesAPIService) V2TargetIdentifierAttributesAttributeOptionsGetEx
 }
 
 type ApiV2TargetIdentifierAttributesAttributeOptionsOptionPatchRequest struct {
-	ctx context.Context
-	ApiService *AttributesAPIService
-	target string
-	identifier string
-	attribute string
-	option string
+	ctx                                                            context.Context
+	ApiService                                                     *AttributesAPIService
+	target                                                         string
+	identifier                                                     string
+	attribute                                                      string
+	option                                                         string
 	v2TargetIdentifierAttributesAttributeOptionsOptionPatchRequest *V2TargetIdentifierAttributesAttributeOptionsOptionPatchRequest
 }
 
@@ -305,32 +306,33 @@ Updates a select option on an attribute on either an object or a list.
 
 Required scopes: `object_configuration:read-write`.
 
- @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @param target
- @param identifier
- @param attribute
- @param option
- @return ApiV2TargetIdentifierAttributesAttributeOptionsOptionPatchRequest
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@param target
+	@param identifier
+	@param attribute
+	@param option
+	@return ApiV2TargetIdentifierAttributesAttributeOptionsOptionPatchRequest
 */
 func (a *AttributesAPIService) V2TargetIdentifierAttributesAttributeOptionsOptionPatch(ctx context.Context, target string, identifier string, attribute string, option string) ApiV2TargetIdentifierAttributesAttributeOptionsOptionPatchRequest {
 	return ApiV2TargetIdentifierAttributesAttributeOptionsOptionPatchRequest{
 		ApiService: a,
-		ctx: ctx,
-		target: target,
+		ctx:        ctx,
+		target:     target,
 		identifier: identifier,
-		attribute: attribute,
-		option: option,
+		attribute:  attribute,
+		option:     option,
 	}
 }
 
 // Execute executes the request
-//  @return V2TargetIdentifierAttributesAttributeOptionsPost200Response
+//
+//	@return V2TargetIdentifierAttributesAttributeOptionsPost200Response
 func (a *AttributesAPIService) V2TargetIdentifierAttributesAttributeOptionsOptionPatchExecute(r ApiV2TargetIdentifierAttributesAttributeOptionsOptionPatchRequest) (*V2TargetIdentifierAttributesAttributeOptionsPost200Response, *http.Response, error) {
 	var (
-		localVarHTTPMethod   = http.MethodPatch
-		localVarPostBody     interface{}
-		formFiles            []formFile
-		localVarReturnValue  *V2TargetIdentifierAttributesAttributeOptionsPost200Response
+		localVarHTTPMethod  = http.MethodPatch
+		localVarPostBody    interface{}
+		formFiles           []formFile
+		localVarReturnValue *V2TargetIdentifierAttributesAttributeOptionsPost200Response
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "AttributesAPIService.V2TargetIdentifierAttributesAttributeOptionsOptionPatch")
@@ -399,8 +401,8 @@ func (a *AttributesAPIService) V2TargetIdentifierAttributesAttributeOptionsOptio
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 404 {
@@ -410,8 +412,8 @@ func (a *AttributesAPIService) V2TargetIdentifierAttributesAttributeOptionsOptio
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 409 {
@@ -421,8 +423,8 @@ func (a *AttributesAPIService) V2TargetIdentifierAttributesAttributeOptionsOptio
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 		}
 		return localVarReturnValue, localVarHTTPResponse, newErr
 	}
@@ -440,11 +442,11 @@ func (a *AttributesAPIService) V2TargetIdentifierAttributesAttributeOptionsOptio
 }
 
 type ApiV2TargetIdentifierAttributesAttributeOptionsPostRequest struct {
-	ctx context.Context
-	ApiService *AttributesAPIService
-	target string
-	identifier string
-	attribute string
+	ctx                                                     context.Context
+	ApiService                                              *AttributesAPIService
+	target                                                  string
+	identifier                                              string
+	attribute                                               string
 	v2TargetIdentifierAttributesAttributeOptionsPostRequest *V2TargetIdentifierAttributesAttributeOptionsPostRequest
 }
 
@@ -464,30 +466,31 @@ Adds a select option to a select attribute on an object or a list.
 
 Required scopes: `object_configuration:read-write`.
 
- @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @param target
- @param identifier
- @param attribute
- @return ApiV2TargetIdentifierAttributesAttributeOptionsPostRequest
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@param target
+	@param identifier
+	@param attribute
+	@return ApiV2TargetIdentifierAttributesAttributeOptionsPostRequest
 */
 func (a *AttributesAPIService) V2TargetIdentifierAttributesAttributeOptionsPost(ctx context.Context, target string, identifier string, attribute string) ApiV2TargetIdentifierAttributesAttributeOptionsPostRequest {
 	return ApiV2TargetIdentifierAttributesAttributeOptionsPostRequest{
 		ApiService: a,
-		ctx: ctx,
-		target: target,
+		ctx:        ctx,
+		target:     target,
 		identifier: identifier,
-		attribute: attribute,
+		attribute:  attribute,
 	}
 }
 
 // Execute executes the request
-//  @return V2TargetIdentifierAttributesAttributeOptionsPost200Response
+//
+//	@return V2TargetIdentifierAttributesAttributeOptionsPost200Response
 func (a *AttributesAPIService) V2TargetIdentifierAttributesAttributeOptionsPostExecute(r ApiV2TargetIdentifierAttributesAttributeOptionsPostRequest) (*V2TargetIdentifierAttributesAttributeOptionsPost200Response, *http.Response, error) {
 	var (
-		localVarHTTPMethod   = http.MethodPost
-		localVarPostBody     interface{}
-		formFiles            []formFile
-		localVarReturnValue  *V2TargetIdentifierAttributesAttributeOptionsPost200Response
+		localVarHTTPMethod  = http.MethodPost
+		localVarPostBody    interface{}
+		formFiles           []formFile
+		localVarReturnValue *V2TargetIdentifierAttributesAttributeOptionsPost200Response
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "AttributesAPIService.V2TargetIdentifierAttributesAttributeOptionsPost")
@@ -555,8 +558,8 @@ func (a *AttributesAPIService) V2TargetIdentifierAttributesAttributeOptionsPostE
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 404 {
@@ -566,8 +569,8 @@ func (a *AttributesAPIService) V2TargetIdentifierAttributesAttributeOptionsPostE
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 409 {
@@ -577,8 +580,8 @@ func (a *AttributesAPIService) V2TargetIdentifierAttributesAttributeOptionsPostE
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 		}
 		return localVarReturnValue, localVarHTTPResponse, newErr
 	}
@@ -596,11 +599,11 @@ func (a *AttributesAPIService) V2TargetIdentifierAttributesAttributeOptionsPostE
 }
 
 type ApiV2TargetIdentifierAttributesAttributePatchRequest struct {
-	ctx context.Context
-	ApiService *AttributesAPIService
-	target string
-	identifier string
-	attribute string
+	ctx                                               context.Context
+	ApiService                                        *AttributesAPIService
+	target                                            string
+	identifier                                        string
+	attribute                                         string
 	v2TargetIdentifierAttributesAttributePatchRequest *V2TargetIdentifierAttributesAttributePatchRequest
 }
 
@@ -620,30 +623,31 @@ Updates a single attribute on a given object or list.
 
 Required scopes: `object_configuration:read-write`.
 
- @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @param target
- @param identifier
- @param attribute
- @return ApiV2TargetIdentifierAttributesAttributePatchRequest
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@param target
+	@param identifier
+	@param attribute
+	@return ApiV2TargetIdentifierAttributesAttributePatchRequest
 */
 func (a *AttributesAPIService) V2TargetIdentifierAttributesAttributePatch(ctx context.Context, target string, identifier string, attribute string) ApiV2TargetIdentifierAttributesAttributePatchRequest {
 	return ApiV2TargetIdentifierAttributesAttributePatchRequest{
 		ApiService: a,
-		ctx: ctx,
-		target: target,
+		ctx:        ctx,
+		target:     target,
 		identifier: identifier,
-		attribute: attribute,
+		attribute:  attribute,
 	}
 }
 
 // Execute executes the request
-//  @return V2TargetIdentifierAttributesPost200Response
+//
+//	@return V2TargetIdentifierAttributesPost200Response
 func (a *AttributesAPIService) V2TargetIdentifierAttributesAttributePatchExecute(r ApiV2TargetIdentifierAttributesAttributePatchRequest) (*V2TargetIdentifierAttributesPost200Response, *http.Response, error) {
 	var (
-		localVarHTTPMethod   = http.MethodPatch
-		localVarPostBody     interface{}
-		formFiles            []formFile
-		localVarReturnValue  *V2TargetIdentifierAttributesPost200Response
+		localVarHTTPMethod  = http.MethodPatch
+		localVarPostBody    interface{}
+		formFiles           []formFile
+		localVarReturnValue *V2TargetIdentifierAttributesPost200Response
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "AttributesAPIService.V2TargetIdentifierAttributesAttributePatch")
@@ -711,8 +715,8 @@ func (a *AttributesAPIService) V2TargetIdentifierAttributesAttributePatchExecute
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 404 {
@@ -722,8 +726,8 @@ func (a *AttributesAPIService) V2TargetIdentifierAttributesAttributePatchExecute
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 		}
 		return localVarReturnValue, localVarHTTPResponse, newErr
 	}
@@ -741,11 +745,11 @@ func (a *AttributesAPIService) V2TargetIdentifierAttributesAttributePatchExecute
 }
 
 type ApiV2TargetIdentifierAttributesAttributeStatusesGetRequest struct {
-	ctx context.Context
-	ApiService *AttributesAPIService
-	target string
-	identifier string
-	attribute string
+	ctx          context.Context
+	ApiService   *AttributesAPIService
+	target       string
+	identifier   string
+	attribute    string
 	showArchived *bool
 }
 
@@ -765,30 +769,31 @@ Lists all statuses for a particular status attribute on either an object or a li
 
 Required scopes: `object_configuration:read`.
 
- @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @param target
- @param identifier
- @param attribute
- @return ApiV2TargetIdentifierAttributesAttributeStatusesGetRequest
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@param target
+	@param identifier
+	@param attribute
+	@return ApiV2TargetIdentifierAttributesAttributeStatusesGetRequest
 */
 func (a *AttributesAPIService) V2TargetIdentifierAttributesAttributeStatusesGet(ctx context.Context, target string, identifier string, attribute string) ApiV2TargetIdentifierAttributesAttributeStatusesGetRequest {
 	return ApiV2TargetIdentifierAttributesAttributeStatusesGetRequest{
 		ApiService: a,
-		ctx: ctx,
-		target: target,
+		ctx:        ctx,
+		target:     target,
 		identifier: identifier,
-		attribute: attribute,
+		attribute:  attribute,
 	}
 }
 
 // Execute executes the request
-//  @return V2TargetIdentifierAttributesAttributeStatusesGet200Response
+//
+//	@return V2TargetIdentifierAttributesAttributeStatusesGet200Response
 func (a *AttributesAPIService) V2TargetIdentifierAttributesAttributeStatusesGetExecute(r ApiV2TargetIdentifierAttributesAttributeStatusesGetRequest) (*V2TargetIdentifierAttributesAttributeStatusesGet200Response, *http.Response, error) {
 	var (
-		localVarHTTPMethod   = http.MethodGet
-		localVarPostBody     interface{}
-		formFiles            []formFile
-		localVarReturnValue  *V2TargetIdentifierAttributesAttributeStatusesGet200Response
+		localVarHTTPMethod  = http.MethodGet
+		localVarPostBody    interface{}
+		formFiles           []formFile
+		localVarReturnValue *V2TargetIdentifierAttributesAttributeStatusesGet200Response
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "AttributesAPIService.V2TargetIdentifierAttributesAttributeStatusesGet")
@@ -809,6 +814,7 @@ func (a *AttributesAPIService) V2TargetIdentifierAttributesAttributeStatusesGetE
 		parameterAddToHeaderOrQuery(localVarQueryParams, "show_archived", r.showArchived, "form", "")
 	} else {
 		var defaultValue bool = false
+		parameterAddToHeaderOrQuery(localVarQueryParams, "show_archived", defaultValue, "form", "")
 		r.showArchived = &defaultValue
 	}
 	// to determine the Content-Type header
@@ -857,8 +863,8 @@ func (a *AttributesAPIService) V2TargetIdentifierAttributesAttributeStatusesGetE
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 		}
 		return localVarReturnValue, localVarHTTPResponse, newErr
 	}
@@ -876,11 +882,11 @@ func (a *AttributesAPIService) V2TargetIdentifierAttributesAttributeStatusesGetE
 }
 
 type ApiV2TargetIdentifierAttributesAttributeStatusesPostRequest struct {
-	ctx context.Context
-	ApiService *AttributesAPIService
-	target string
-	identifier string
-	attribute string
+	ctx                                                      context.Context
+	ApiService                                               *AttributesAPIService
+	target                                                   string
+	identifier                                               string
+	attribute                                                string
 	v2TargetIdentifierAttributesAttributeStatusesPostRequest *V2TargetIdentifierAttributesAttributeStatusesPostRequest
 }
 
@@ -900,30 +906,31 @@ Add a new status to a status attribute on either an object or a list.
 
 Required scopes: `object_configuration:read-write`.
 
- @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @param target
- @param identifier
- @param attribute
- @return ApiV2TargetIdentifierAttributesAttributeStatusesPostRequest
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@param target
+	@param identifier
+	@param attribute
+	@return ApiV2TargetIdentifierAttributesAttributeStatusesPostRequest
 */
 func (a *AttributesAPIService) V2TargetIdentifierAttributesAttributeStatusesPost(ctx context.Context, target string, identifier string, attribute string) ApiV2TargetIdentifierAttributesAttributeStatusesPostRequest {
 	return ApiV2TargetIdentifierAttributesAttributeStatusesPostRequest{
 		ApiService: a,
-		ctx: ctx,
-		target: target,
+		ctx:        ctx,
+		target:     target,
 		identifier: identifier,
-		attribute: attribute,
+		attribute:  attribute,
 	}
 }
 
 // Execute executes the request
-//  @return V2TargetIdentifierAttributesAttributeStatusesPost200Response
+//
+//	@return V2TargetIdentifierAttributesAttributeStatusesPost200Response
 func (a *AttributesAPIService) V2TargetIdentifierAttributesAttributeStatusesPostExecute(r ApiV2TargetIdentifierAttributesAttributeStatusesPostRequest) (*V2TargetIdentifierAttributesAttributeStatusesPost200Response, *http.Response, error) {
 	var (
-		localVarHTTPMethod   = http.MethodPost
-		localVarPostBody     interface{}
-		formFiles            []formFile
-		localVarReturnValue  *V2TargetIdentifierAttributesAttributeStatusesPost200Response
+		localVarHTTPMethod  = http.MethodPost
+		localVarPostBody    interface{}
+		formFiles           []formFile
+		localVarReturnValue *V2TargetIdentifierAttributesAttributeStatusesPost200Response
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "AttributesAPIService.V2TargetIdentifierAttributesAttributeStatusesPost")
@@ -991,8 +998,8 @@ func (a *AttributesAPIService) V2TargetIdentifierAttributesAttributeStatusesPost
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 404 {
@@ -1002,8 +1009,8 @@ func (a *AttributesAPIService) V2TargetIdentifierAttributesAttributeStatusesPost
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 409 {
@@ -1013,8 +1020,8 @@ func (a *AttributesAPIService) V2TargetIdentifierAttributesAttributeStatusesPost
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 		}
 		return localVarReturnValue, localVarHTTPResponse, newErr
 	}
@@ -1032,12 +1039,12 @@ func (a *AttributesAPIService) V2TargetIdentifierAttributesAttributeStatusesPost
 }
 
 type ApiV2TargetIdentifierAttributesAttributeStatusesStatusPatchRequest struct {
-	ctx context.Context
-	ApiService *AttributesAPIService
-	target string
-	identifier string
-	attribute string
-	status string
+	ctx                                                             context.Context
+	ApiService                                                      *AttributesAPIService
+	target                                                          string
+	identifier                                                      string
+	attribute                                                       string
+	status                                                          string
 	v2TargetIdentifierAttributesAttributeStatusesStatusPatchRequest *V2TargetIdentifierAttributesAttributeStatusesStatusPatchRequest
 }
 
@@ -1057,32 +1064,33 @@ Update a status on an status attribute on either an object or a list.
 
 Required scopes: `object_configuration:read-write`.
 
- @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @param target
- @param identifier
- @param attribute
- @param status
- @return ApiV2TargetIdentifierAttributesAttributeStatusesStatusPatchRequest
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@param target
+	@param identifier
+	@param attribute
+	@param status
+	@return ApiV2TargetIdentifierAttributesAttributeStatusesStatusPatchRequest
 */
 func (a *AttributesAPIService) V2TargetIdentifierAttributesAttributeStatusesStatusPatch(ctx context.Context, target string, identifier string, attribute string, status string) ApiV2TargetIdentifierAttributesAttributeStatusesStatusPatchRequest {
 	return ApiV2TargetIdentifierAttributesAttributeStatusesStatusPatchRequest{
 		ApiService: a,
-		ctx: ctx,
-		target: target,
+		ctx:        ctx,
+		target:     target,
 		identifier: identifier,
-		attribute: attribute,
-		status: status,
+		attribute:  attribute,
+		status:     status,
 	}
 }
 
 // Execute executes the request
-//  @return V2TargetIdentifierAttributesAttributeStatusesPost200Response
+//
+//	@return V2TargetIdentifierAttributesAttributeStatusesPost200Response
 func (a *AttributesAPIService) V2TargetIdentifierAttributesAttributeStatusesStatusPatchExecute(r ApiV2TargetIdentifierAttributesAttributeStatusesStatusPatchRequest) (*V2TargetIdentifierAttributesAttributeStatusesPost200Response, *http.Response, error) {
 	var (
-		localVarHTTPMethod   = http.MethodPatch
-		localVarPostBody     interface{}
-		formFiles            []formFile
-		localVarReturnValue  *V2TargetIdentifierAttributesAttributeStatusesPost200Response
+		localVarHTTPMethod  = http.MethodPatch
+		localVarPostBody    interface{}
+		formFiles           []formFile
+		localVarReturnValue *V2TargetIdentifierAttributesAttributeStatusesPost200Response
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "AttributesAPIService.V2TargetIdentifierAttributesAttributeStatusesStatusPatch")
@@ -1151,8 +1159,8 @@ func (a *AttributesAPIService) V2TargetIdentifierAttributesAttributeStatusesStat
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 404 {
@@ -1162,8 +1170,8 @@ func (a *AttributesAPIService) V2TargetIdentifierAttributesAttributeStatusesStat
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 409 {
@@ -1173,8 +1181,8 @@ func (a *AttributesAPIService) V2TargetIdentifierAttributesAttributeStatusesStat
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 		}
 		return localVarReturnValue, localVarHTTPResponse, newErr
 	}
@@ -1192,12 +1200,12 @@ func (a *AttributesAPIService) V2TargetIdentifierAttributesAttributeStatusesStat
 }
 
 type ApiV2TargetIdentifierAttributesGetRequest struct {
-	ctx context.Context
-	ApiService *AttributesAPIService
-	target string
-	identifier string
-	limit *int32
-	offset *int32
+	ctx          context.Context
+	ApiService   *AttributesAPIService
+	target       string
+	identifier   string
+	limit        *int32
+	offset       *int32
 	showArchived *bool
 }
 
@@ -1227,28 +1235,29 @@ Lists all attributes defined on a specific object or list. Attributes are return
 
 Required scopes: `object_configuration:read`.
 
- @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @param target
- @param identifier
- @return ApiV2TargetIdentifierAttributesGetRequest
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@param target
+	@param identifier
+	@return ApiV2TargetIdentifierAttributesGetRequest
 */
 func (a *AttributesAPIService) V2TargetIdentifierAttributesGet(ctx context.Context, target string, identifier string) ApiV2TargetIdentifierAttributesGetRequest {
 	return ApiV2TargetIdentifierAttributesGetRequest{
 		ApiService: a,
-		ctx: ctx,
-		target: target,
+		ctx:        ctx,
+		target:     target,
 		identifier: identifier,
 	}
 }
 
 // Execute executes the request
-//  @return V2TargetIdentifierAttributesGet200Response
+//
+//	@return V2TargetIdentifierAttributesGet200Response
 func (a *AttributesAPIService) V2TargetIdentifierAttributesGetExecute(r ApiV2TargetIdentifierAttributesGetRequest) (*V2TargetIdentifierAttributesGet200Response, *http.Response, error) {
 	var (
-		localVarHTTPMethod   = http.MethodGet
-		localVarPostBody     interface{}
-		formFiles            []formFile
-		localVarReturnValue  *V2TargetIdentifierAttributesGet200Response
+		localVarHTTPMethod  = http.MethodGet
+		localVarPostBody    interface{}
+		formFiles           []formFile
+		localVarReturnValue *V2TargetIdentifierAttributesGet200Response
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "AttributesAPIService.V2TargetIdentifierAttributesGet")
@@ -1328,10 +1337,10 @@ func (a *AttributesAPIService) V2TargetIdentifierAttributesGetExecute(r ApiV2Tar
 }
 
 type ApiV2TargetIdentifierAttributesPostRequest struct {
-	ctx context.Context
-	ApiService *AttributesAPIService
-	target string
-	identifier string
+	ctx                                     context.Context
+	ApiService                              *AttributesAPIService
+	target                                  string
+	identifier                              string
 	v2TargetIdentifierAttributesPostRequest *V2TargetIdentifierAttributesPostRequest
 }
 
@@ -1353,28 +1362,29 @@ To create an attribute on an object, you must also have the `object_configuratio
 
 To create an attribute on a list, you must also have the `list_configuration:read-write` scope.
 
- @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @param target
- @param identifier
- @return ApiV2TargetIdentifierAttributesPostRequest
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@param target
+	@param identifier
+	@return ApiV2TargetIdentifierAttributesPostRequest
 */
 func (a *AttributesAPIService) V2TargetIdentifierAttributesPost(ctx context.Context, target string, identifier string) ApiV2TargetIdentifierAttributesPostRequest {
 	return ApiV2TargetIdentifierAttributesPostRequest{
 		ApiService: a,
-		ctx: ctx,
-		target: target,
+		ctx:        ctx,
+		target:     target,
 		identifier: identifier,
 	}
 }
 
 // Execute executes the request
-//  @return V2TargetIdentifierAttributesPost200Response
+//
+//	@return V2TargetIdentifierAttributesPost200Response
 func (a *AttributesAPIService) V2TargetIdentifierAttributesPostExecute(r ApiV2TargetIdentifierAttributesPostRequest) (*V2TargetIdentifierAttributesPost200Response, *http.Response, error) {
 	var (
-		localVarHTTPMethod   = http.MethodPost
-		localVarPostBody     interface{}
-		formFiles            []formFile
-		localVarReturnValue  *V2TargetIdentifierAttributesPost200Response
+		localVarHTTPMethod  = http.MethodPost
+		localVarPostBody    interface{}
+		formFiles           []formFile
+		localVarReturnValue *V2TargetIdentifierAttributesPost200Response
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "AttributesAPIService.V2TargetIdentifierAttributesPost")
@@ -1441,8 +1451,8 @@ func (a *AttributesAPIService) V2TargetIdentifierAttributesPostExecute(r ApiV2Ta
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 404 {
@@ -1452,8 +1462,8 @@ func (a *AttributesAPIService) V2TargetIdentifierAttributesPostExecute(r ApiV2Ta
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 409 {
@@ -1463,8 +1473,8 @@ func (a *AttributesAPIService) V2TargetIdentifierAttributesPostExecute(r ApiV2Ta
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 		}
 		return localVarReturnValue, localVarHTTPResponse, newErr
 	}

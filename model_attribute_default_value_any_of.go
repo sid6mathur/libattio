@@ -12,8 +12,8 @@ Contact: support@attio.com
 package libattio
 
 import (
-	"encoding/json"
 	"bytes"
+	"encoding/json"
 	"fmt"
 )
 
@@ -22,8 +22,8 @@ var _ MappedNullable = &AttributeDefaultValueAnyOf{}
 
 // AttributeDefaultValueAnyOf struct for AttributeDefaultValueAnyOf
 type AttributeDefaultValueAnyOf struct {
-	Type string `json:"type"`
-	Template AttributeDefaultValueAnyOfTemplate `json:"template"`
+	Type     string        `json:"type"`
+	Template []OutputValue `json:"template"`
 }
 
 type _AttributeDefaultValueAnyOf AttributeDefaultValueAnyOf
@@ -32,7 +32,7 @@ type _AttributeDefaultValueAnyOf AttributeDefaultValueAnyOf
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewAttributeDefaultValueAnyOf(type_ string, template AttributeDefaultValueAnyOfTemplate) *AttributeDefaultValueAnyOf {
+func NewAttributeDefaultValueAnyOf(type_ string, template []OutputValue) *AttributeDefaultValueAnyOf {
 	this := AttributeDefaultValueAnyOf{}
 	this.Type = type_
 	this.Template = template
@@ -71,11 +71,10 @@ func (o *AttributeDefaultValueAnyOf) SetType(v string) {
 	o.Type = v
 }
 
-
 // GetTemplate returns the Template field value
-func (o *AttributeDefaultValueAnyOf) GetTemplate() AttributeDefaultValueAnyOfTemplate {
+func (o *AttributeDefaultValueAnyOf) GetTemplate() []OutputValue {
 	if o == nil {
-		var ret AttributeDefaultValueAnyOfTemplate
+		var ret []OutputValue
 		return ret
 	}
 
@@ -84,21 +83,20 @@ func (o *AttributeDefaultValueAnyOf) GetTemplate() AttributeDefaultValueAnyOfTem
 
 // GetTemplateOk returns a tuple with the Template field value
 // and a boolean to check if the value has been set.
-func (o *AttributeDefaultValueAnyOf) GetTemplateOk() (*AttributeDefaultValueAnyOfTemplate, bool) {
+func (o *AttributeDefaultValueAnyOf) GetTemplateOk() ([]OutputValue, bool) {
 	if o == nil {
 		return nil, false
 	}
-	return &o.Template, true
+	return o.Template, true
 }
 
 // SetTemplate sets field value
-func (o *AttributeDefaultValueAnyOf) SetTemplate(v AttributeDefaultValueAnyOfTemplate) {
+func (o *AttributeDefaultValueAnyOf) SetTemplate(v []OutputValue) {
 	o.Template = v
 }
 
-
 func (o AttributeDefaultValueAnyOf) MarshalJSON() ([]byte, error) {
-	toSerialize,err := o.ToMap()
+	toSerialize, err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
 	}
@@ -123,32 +121,31 @@ func (o *AttributeDefaultValueAnyOf) UnmarshalJSON(data []byte) (err error) {
 
 	// defaultValueFuncMap captures the default values for required properties.
 	// These values are used when required properties are missing from the payload.
-	defaultValueFuncMap := map[string]func() interface{} {
-	}
+	defaultValueFuncMap := map[string]func() interface{}{}
 	var defaultValueApplied bool
 	allProperties := make(map[string]interface{})
 
 	err = json.Unmarshal(data, &allProperties)
 
 	if err != nil {
-		return err;
+		return err
 	}
 
-	for _, requiredProperty := range(requiredProperties) {
+	for _, requiredProperty := range requiredProperties {
 		if value, exists := allProperties[requiredProperty]; !exists || value == "" {
 			if _, ok := defaultValueFuncMap[requiredProperty]; ok {
 				allProperties[requiredProperty] = defaultValueFuncMap[requiredProperty]()
 				defaultValueApplied = true
 			}
 		}
-		if value, exists := allProperties[requiredProperty]; !exists || value == ""{
+		if value, exists := allProperties[requiredProperty]; !exists || value == "" {
 			return fmt.Errorf("no value given for required property %v", requiredProperty)
 		}
 	}
 
 	if defaultValueApplied {
 		data, err = json.Marshal(allProperties)
-		if err != nil{
+		if err != nil {
 			return err
 		}
 	}
@@ -202,5 +199,3 @@ func (v *NullableAttributeDefaultValueAnyOf) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
-
-

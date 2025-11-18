@@ -16,10 +16,9 @@ import (
 	"fmt"
 )
 
-
 // V2WebhooksGet200ResponseDataInnerSubscriptionsInnerFilter Filters to determine whether the webhook event should be sent. If null, the filter always passes.
 type V2WebhooksGet200ResponseDataInnerSubscriptionsInnerFilter struct {
-	V2WebhooksGet200ResponseDataInnerSubscriptionsInnerFilterAnyOf *V2WebhooksGet200ResponseDataInnerSubscriptionsInnerFilterAnyOf
+	V2WebhooksGet200ResponseDataInnerSubscriptionsInnerFilterAnyOf  *V2WebhooksGet200ResponseDataInnerSubscriptionsInnerFilterAnyOf
 	V2WebhooksGet200ResponseDataInnerSubscriptionsInnerFilterAnyOf1 *V2WebhooksGet200ResponseDataInnerSubscriptionsInnerFilterAnyOf1
 }
 
@@ -32,7 +31,7 @@ func (dst *V2WebhooksGet200ResponseDataInnerSubscriptionsInnerFilter) UnmarshalJ
 	}
 
 	// try to unmarshal JSON data into V2WebhooksGet200ResponseDataInnerSubscriptionsInnerFilterAnyOf
-	err = json.Unmarshal(data, &dst.V2WebhooksGet200ResponseDataInnerSubscriptionsInnerFilterAnyOf);
+	err = json.Unmarshal(data, &dst.V2WebhooksGet200ResponseDataInnerSubscriptionsInnerFilterAnyOf)
 	if err == nil {
 		jsonV2WebhooksGet200ResponseDataInnerSubscriptionsInnerFilterAnyOf, _ := json.Marshal(dst.V2WebhooksGet200ResponseDataInnerSubscriptionsInnerFilterAnyOf)
 		if string(jsonV2WebhooksGet200ResponseDataInnerSubscriptionsInnerFilterAnyOf) == "{}" { // empty struct
@@ -45,7 +44,7 @@ func (dst *V2WebhooksGet200ResponseDataInnerSubscriptionsInnerFilter) UnmarshalJ
 	}
 
 	// try to unmarshal JSON data into V2WebhooksGet200ResponseDataInnerSubscriptionsInnerFilterAnyOf1
-	err = json.Unmarshal(data, &dst.V2WebhooksGet200ResponseDataInnerSubscriptionsInnerFilterAnyOf1);
+	err = json.Unmarshal(data, &dst.V2WebhooksGet200ResponseDataInnerSubscriptionsInnerFilterAnyOf1)
 	if err == nil {
 		jsonV2WebhooksGet200ResponseDataInnerSubscriptionsInnerFilterAnyOf1, _ := json.Marshal(dst.V2WebhooksGet200ResponseDataInnerSubscriptionsInnerFilterAnyOf1)
 		if string(jsonV2WebhooksGet200ResponseDataInnerSubscriptionsInnerFilterAnyOf1) == "{}" { // empty struct
@@ -72,7 +71,6 @@ func (src V2WebhooksGet200ResponseDataInnerSubscriptionsInnerFilter) MarshalJSON
 
 	return nil, nil // no data in anyOf schemas
 }
-
 
 type NullableV2WebhooksGet200ResponseDataInnerSubscriptionsInnerFilter struct {
 	value *V2WebhooksGet200ResponseDataInnerSubscriptionsInnerFilter
@@ -109,5 +107,3 @@ func (v *NullableV2WebhooksGet200ResponseDataInnerSubscriptionsInnerFilter) Unma
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
-
-

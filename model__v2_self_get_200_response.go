@@ -16,10 +16,9 @@ import (
 	"fmt"
 )
 
-
 // V2SelfGet200Response struct for V2SelfGet200Response
 type V2SelfGet200Response struct {
-	V2SelfGet200ResponseAnyOf *V2SelfGet200ResponseAnyOf
+	V2SelfGet200ResponseAnyOf  *V2SelfGet200ResponseAnyOf
 	V2SelfGet200ResponseAnyOf1 *V2SelfGet200ResponseAnyOf1
 }
 
@@ -27,7 +26,7 @@ type V2SelfGet200Response struct {
 func (dst *V2SelfGet200Response) UnmarshalJSON(data []byte) error {
 	var err error
 	// try to unmarshal JSON data into V2SelfGet200ResponseAnyOf
-	err = json.Unmarshal(data, &dst.V2SelfGet200ResponseAnyOf);
+	err = json.Unmarshal(data, &dst.V2SelfGet200ResponseAnyOf)
 	if err == nil {
 		jsonV2SelfGet200ResponseAnyOf, _ := json.Marshal(dst.V2SelfGet200ResponseAnyOf)
 		if string(jsonV2SelfGet200ResponseAnyOf) == "{}" { // empty struct
@@ -40,7 +39,7 @@ func (dst *V2SelfGet200Response) UnmarshalJSON(data []byte) error {
 	}
 
 	// try to unmarshal JSON data into V2SelfGet200ResponseAnyOf1
-	err = json.Unmarshal(data, &dst.V2SelfGet200ResponseAnyOf1);
+	err = json.Unmarshal(data, &dst.V2SelfGet200ResponseAnyOf1)
 	if err == nil {
 		jsonV2SelfGet200ResponseAnyOf1, _ := json.Marshal(dst.V2SelfGet200ResponseAnyOf1)
 		if string(jsonV2SelfGet200ResponseAnyOf1) == "{}" { // empty struct
@@ -67,7 +66,6 @@ func (src V2SelfGet200Response) MarshalJSON() ([]byte, error) {
 
 	return nil, nil // no data in anyOf schemas
 }
-
 
 type NullableV2SelfGet200Response struct {
 	value *V2SelfGet200Response
@@ -104,5 +102,3 @@ func (v *NullableV2SelfGet200Response) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
-
-

@@ -20,22 +20,21 @@ import (
 	"strings"
 )
 
-
 // MeetingsAPIService MeetingsAPI service
 type MeetingsAPIService service
 
 type ApiV2MeetingsGetRequest struct {
-	ctx context.Context
-	ApiService *MeetingsAPIService
-	limit *int32
-	cursor *string
-	linkedObject *string
+	ctx            context.Context
+	ApiService     *MeetingsAPIService
+	limit          *int32
+	cursor         *string
+	linkedObject   *string
 	linkedRecordId *string
-	participants *string
-	sort *string
-	endsFrom *string
-	startsBefore *string
-	timezone *string
+	participants   *string
+	sort           *string
+	endsFrom       *string
+	startsBefore   *string
+	timezone       *string
 }
 
 func (r ApiV2MeetingsGetRequest) Limit(limit int32) ApiV2MeetingsGetRequest {
@@ -92,26 +91,29 @@ V2MeetingsGet List meetings
 
 Lists all meetings in the workspace using a deterministic sort order.
 
+This endpoint is in beta. We will aim to avoid breaking changes, but small updates may be made as we roll out to more users.
+
 Required scopes: `meeting:read`, `record_permission:read`.
 
- @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @return ApiV2MeetingsGetRequest
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@return ApiV2MeetingsGetRequest
 */
 func (a *MeetingsAPIService) V2MeetingsGet(ctx context.Context) ApiV2MeetingsGetRequest {
 	return ApiV2MeetingsGetRequest{
 		ApiService: a,
-		ctx: ctx,
+		ctx:        ctx,
 	}
 }
 
 // Execute executes the request
-//  @return V2MeetingsGet200Response
+//
+//	@return V2MeetingsGet200Response
 func (a *MeetingsAPIService) V2MeetingsGetExecute(r ApiV2MeetingsGetRequest) (*V2MeetingsGet200Response, *http.Response, error) {
 	var (
-		localVarHTTPMethod   = http.MethodGet
-		localVarPostBody     interface{}
-		formFiles            []formFile
-		localVarReturnValue  *V2MeetingsGet200Response
+		localVarHTTPMethod  = http.MethodGet
+		localVarPostBody    interface{}
+		formFiles           []formFile
+		localVarReturnValue *V2MeetingsGet200Response
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "MeetingsAPIService.V2MeetingsGet")
@@ -129,6 +131,7 @@ func (a *MeetingsAPIService) V2MeetingsGetExecute(r ApiV2MeetingsGetRequest) (*V
 		parameterAddToHeaderOrQuery(localVarQueryParams, "limit", r.limit, "form", "")
 	} else {
 		var defaultValue int32 = 50
+		parameterAddToHeaderOrQuery(localVarQueryParams, "limit", defaultValue, "form", "")
 		r.limit = &defaultValue
 	}
 	if r.cursor != nil {
@@ -144,12 +147,14 @@ func (a *MeetingsAPIService) V2MeetingsGetExecute(r ApiV2MeetingsGetRequest) (*V
 		parameterAddToHeaderOrQuery(localVarQueryParams, "participants", r.participants, "form", "")
 	} else {
 		var defaultValue string = ""
+		parameterAddToHeaderOrQuery(localVarQueryParams, "participants", defaultValue, "form", "")
 		r.participants = &defaultValue
 	}
 	if r.sort != nil {
 		parameterAddToHeaderOrQuery(localVarQueryParams, "sort", r.sort, "form", "")
 	} else {
 		var defaultValue string = "start_asc"
+		parameterAddToHeaderOrQuery(localVarQueryParams, "sort", defaultValue, "form", "")
 		r.sort = &defaultValue
 	}
 	if r.endsFrom != nil {
@@ -162,6 +167,7 @@ func (a *MeetingsAPIService) V2MeetingsGetExecute(r ApiV2MeetingsGetRequest) (*V
 		parameterAddToHeaderOrQuery(localVarQueryParams, "timezone", r.timezone, "form", "")
 	} else {
 		var defaultValue string = "UTC"
+		parameterAddToHeaderOrQuery(localVarQueryParams, "timezone", defaultValue, "form", "")
 		r.timezone = &defaultValue
 	}
 	// to determine the Content-Type header
@@ -219,12 +225,12 @@ func (a *MeetingsAPIService) V2MeetingsGetExecute(r ApiV2MeetingsGetRequest) (*V
 }
 
 type ApiV2MeetingsMeetingIdGetRequest struct {
-	ctx context.Context
+	ctx        context.Context
 	ApiService *MeetingsAPIService
-	meetingId string
+	meetingId  string
 }
 
-func (r ApiV2MeetingsMeetingIdGetRequest) Execute() (*V2MeetingsMeetingIdGet200Response, *http.Response, error) {
+func (r ApiV2MeetingsMeetingIdGetRequest) Execute() (*V2MeetingsPost200Response, *http.Response, error) {
 	return r.ApiService.V2MeetingsMeetingIdGetExecute(r)
 }
 
@@ -233,28 +239,31 @@ V2MeetingsMeetingIdGet Get a meeting
 
 Get a single meeting by ID.
 
+This endpoint is in beta. We will aim to avoid breaking changes, but small updates may be made as we roll out to more users.
+
 Required scopes: `meeting:read`, `record_permission:read`.
 
- @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @param meetingId
- @return ApiV2MeetingsMeetingIdGetRequest
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@param meetingId
+	@return ApiV2MeetingsMeetingIdGetRequest
 */
 func (a *MeetingsAPIService) V2MeetingsMeetingIdGet(ctx context.Context, meetingId string) ApiV2MeetingsMeetingIdGetRequest {
 	return ApiV2MeetingsMeetingIdGetRequest{
 		ApiService: a,
-		ctx: ctx,
-		meetingId: meetingId,
+		ctx:        ctx,
+		meetingId:  meetingId,
 	}
 }
 
 // Execute executes the request
-//  @return V2MeetingsMeetingIdGet200Response
-func (a *MeetingsAPIService) V2MeetingsMeetingIdGetExecute(r ApiV2MeetingsMeetingIdGetRequest) (*V2MeetingsMeetingIdGet200Response, *http.Response, error) {
+//
+//	@return V2MeetingsPost200Response
+func (a *MeetingsAPIService) V2MeetingsMeetingIdGetExecute(r ApiV2MeetingsMeetingIdGetRequest) (*V2MeetingsPost200Response, *http.Response, error) {
 	var (
-		localVarHTTPMethod   = http.MethodGet
-		localVarPostBody     interface{}
-		formFiles            []formFile
-		localVarReturnValue  *V2MeetingsMeetingIdGet200Response
+		localVarHTTPMethod  = http.MethodGet
+		localVarPostBody    interface{}
+		formFiles           []formFile
+		localVarReturnValue *V2MeetingsPost200Response
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "MeetingsAPIService.V2MeetingsMeetingIdGet")
@@ -315,8 +324,133 @@ func (a *MeetingsAPIService) V2MeetingsMeetingIdGetExecute(r ApiV2MeetingsMeetin
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
+		}
+		return localVarReturnValue, localVarHTTPResponse, newErr
+	}
+
+	err = a.client.decode(&localVarReturnValue, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+	if err != nil {
+		newErr := &GenericOpenAPIError{
+			body:  localVarBody,
+			error: err.Error(),
+		}
+		return localVarReturnValue, localVarHTTPResponse, newErr
+	}
+
+	return localVarReturnValue, localVarHTTPResponse, nil
+}
+
+type ApiV2MeetingsPostRequest struct {
+	ctx                   context.Context
+	ApiService            *MeetingsAPIService
+	v2MeetingsPostRequest *V2MeetingsPostRequest
+}
+
+func (r ApiV2MeetingsPostRequest) V2MeetingsPostRequest(v2MeetingsPostRequest V2MeetingsPostRequest) ApiV2MeetingsPostRequest {
+	r.v2MeetingsPostRequest = &v2MeetingsPostRequest
+	return r
+}
+
+func (r ApiV2MeetingsPostRequest) Execute() (*V2MeetingsPost200Response, *http.Response, error) {
+	return r.ApiService.V2MeetingsPostExecute(r)
+}
+
+/*
+V2MeetingsPost Find or create a meeting
+
+Finds an existing meeting or creates a new one if it doesn't yet exist. [Please see here](/rest-api/guides/syncing-meetings) for a full guide on syncing meetings to Attio.
+
+This endpoint is in alpha and may be subject to breaking changes as we gather feedback.
+
+Required scopes: `meeting:read-write`, `record_permission:read`.
+
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@return ApiV2MeetingsPostRequest
+*/
+func (a *MeetingsAPIService) V2MeetingsPost(ctx context.Context) ApiV2MeetingsPostRequest {
+	return ApiV2MeetingsPostRequest{
+		ApiService: a,
+		ctx:        ctx,
+	}
+}
+
+// Execute executes the request
+//
+//	@return V2MeetingsPost200Response
+func (a *MeetingsAPIService) V2MeetingsPostExecute(r ApiV2MeetingsPostRequest) (*V2MeetingsPost200Response, *http.Response, error) {
+	var (
+		localVarHTTPMethod  = http.MethodPost
+		localVarPostBody    interface{}
+		formFiles           []formFile
+		localVarReturnValue *V2MeetingsPost200Response
+	)
+
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "MeetingsAPIService.V2MeetingsPost")
+	if err != nil {
+		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
+	}
+
+	localVarPath := localBasePath + "/v2/meetings"
+
+	localVarHeaderParams := make(map[string]string)
+	localVarQueryParams := url.Values{}
+	localVarFormParams := url.Values{}
+	if r.v2MeetingsPostRequest == nil {
+		return localVarReturnValue, nil, reportError("v2MeetingsPostRequest is required and must be specified")
+	}
+
+	// to determine the Content-Type header
+	localVarHTTPContentTypes := []string{"application/json"}
+
+	// set Content-Type header
+	localVarHTTPContentType := selectHeaderContentType(localVarHTTPContentTypes)
+	if localVarHTTPContentType != "" {
+		localVarHeaderParams["Content-Type"] = localVarHTTPContentType
+	}
+
+	// to determine the Accept header
+	localVarHTTPHeaderAccepts := []string{"application/json"}
+
+	// set Accept header
+	localVarHTTPHeaderAccept := selectHeaderAccept(localVarHTTPHeaderAccepts)
+	if localVarHTTPHeaderAccept != "" {
+		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
+	}
+	// body params
+	localVarPostBody = r.v2MeetingsPostRequest
+	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
+	if err != nil {
+		return localVarReturnValue, nil, err
+	}
+
+	localVarHTTPResponse, err := a.client.callAPI(req)
+	if err != nil || localVarHTTPResponse == nil {
+		return localVarReturnValue, localVarHTTPResponse, err
+	}
+
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
+	localVarHTTPResponse.Body.Close()
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
+	if err != nil {
+		return localVarReturnValue, localVarHTTPResponse, err
+	}
+
+	if localVarHTTPResponse.StatusCode >= 300 {
+		newErr := &GenericOpenAPIError{
+			body:  localVarBody,
+			error: localVarHTTPResponse.Status,
+		}
+		if localVarHTTPResponse.StatusCode == 400 {
+			var v V2MeetingsPost400Response
+			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+			if err != nil {
+				newErr.error = err.Error()
+				return localVarReturnValue, localVarHTTPResponse, newErr
+			}
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 		}
 		return localVarReturnValue, localVarHTTPResponse, newErr
 	}

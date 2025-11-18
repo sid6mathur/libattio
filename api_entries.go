@@ -20,19 +20,18 @@ import (
 	"strings"
 )
 
-
 // EntriesAPIService EntriesAPI service
 type EntriesAPIService service
 
 type ApiV2ListsListEntriesEntryIdAttributesAttributeValuesGetRequest struct {
-	ctx context.Context
-	ApiService *EntriesAPIService
-	list string
-	entryId string
-	attribute string
+	ctx          context.Context
+	ApiService   *EntriesAPIService
+	list         string
+	entryId      string
+	attribute    string
 	showHistoric *bool
-	limit *int32
-	offset *int32
+	limit        *int32
+	offset       *int32
 }
 
 func (r ApiV2ListsListEntriesEntryIdAttributesAttributeValuesGetRequest) ShowHistoric(showHistoric bool) ApiV2ListsListEntriesEntryIdAttributesAttributeValuesGetRequest {
@@ -61,30 +60,31 @@ Gets all values for a given attribute on a list entry. This endpoint has the abi
 
 Required scopes: `list_entry:read`, `list_configuration:read`.
 
- @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @param list
- @param entryId
- @param attribute
- @return ApiV2ListsListEntriesEntryIdAttributesAttributeValuesGetRequest
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@param list
+	@param entryId
+	@param attribute
+	@return ApiV2ListsListEntriesEntryIdAttributesAttributeValuesGetRequest
 */
 func (a *EntriesAPIService) V2ListsListEntriesEntryIdAttributesAttributeValuesGet(ctx context.Context, list string, entryId string, attribute string) ApiV2ListsListEntriesEntryIdAttributesAttributeValuesGetRequest {
 	return ApiV2ListsListEntriesEntryIdAttributesAttributeValuesGetRequest{
 		ApiService: a,
-		ctx: ctx,
-		list: list,
-		entryId: entryId,
-		attribute: attribute,
+		ctx:        ctx,
+		list:       list,
+		entryId:    entryId,
+		attribute:  attribute,
 	}
 }
 
 // Execute executes the request
-//  @return V2ObjectsObjectRecordsRecordIdAttributesAttributeValuesGet200Response
+//
+//	@return V2ObjectsObjectRecordsRecordIdAttributesAttributeValuesGet200Response
 func (a *EntriesAPIService) V2ListsListEntriesEntryIdAttributesAttributeValuesGetExecute(r ApiV2ListsListEntriesEntryIdAttributesAttributeValuesGetRequest) (*V2ObjectsObjectRecordsRecordIdAttributesAttributeValuesGet200Response, *http.Response, error) {
 	var (
-		localVarHTTPMethod   = http.MethodGet
-		localVarPostBody     interface{}
-		formFiles            []formFile
-		localVarReturnValue  *V2ObjectsObjectRecordsRecordIdAttributesAttributeValuesGet200Response
+		localVarHTTPMethod  = http.MethodGet
+		localVarPostBody    interface{}
+		formFiles           []formFile
+		localVarReturnValue *V2ObjectsObjectRecordsRecordIdAttributesAttributeValuesGet200Response
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "EntriesAPIService.V2ListsListEntriesEntryIdAttributesAttributeValuesGet")
@@ -105,6 +105,7 @@ func (a *EntriesAPIService) V2ListsListEntriesEntryIdAttributesAttributeValuesGe
 		parameterAddToHeaderOrQuery(localVarQueryParams, "show_historic", r.showHistoric, "form", "")
 	} else {
 		var defaultValue bool = false
+		parameterAddToHeaderOrQuery(localVarQueryParams, "show_historic", defaultValue, "form", "")
 		r.showHistoric = &defaultValue
 	}
 	if r.limit != nil {
@@ -159,8 +160,8 @@ func (a *EntriesAPIService) V2ListsListEntriesEntryIdAttributesAttributeValuesGe
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 		}
 		return localVarReturnValue, localVarHTTPResponse, newErr
 	}
@@ -178,10 +179,10 @@ func (a *EntriesAPIService) V2ListsListEntriesEntryIdAttributesAttributeValuesGe
 }
 
 type ApiV2ListsListEntriesEntryIdDeleteRequest struct {
-	ctx context.Context
+	ctx        context.Context
 	ApiService *EntriesAPIService
-	list string
-	entryId string
+	list       string
+	entryId    string
 }
 
 func (r ApiV2ListsListEntriesEntryIdDeleteRequest) Execute() (map[string]interface{}, *http.Response, error) {
@@ -195,28 +196,29 @@ Deletes a single list entry by its `entry_id`.
 
 Required scopes: `list_entry:read-write`, `list_configuration:read`.
 
- @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @param list
- @param entryId
- @return ApiV2ListsListEntriesEntryIdDeleteRequest
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@param list
+	@param entryId
+	@return ApiV2ListsListEntriesEntryIdDeleteRequest
 */
 func (a *EntriesAPIService) V2ListsListEntriesEntryIdDelete(ctx context.Context, list string, entryId string) ApiV2ListsListEntriesEntryIdDeleteRequest {
 	return ApiV2ListsListEntriesEntryIdDeleteRequest{
 		ApiService: a,
-		ctx: ctx,
-		list: list,
-		entryId: entryId,
+		ctx:        ctx,
+		list:       list,
+		entryId:    entryId,
 	}
 }
 
 // Execute executes the request
-//  @return map[string]interface{}
+//
+//	@return map[string]interface{}
 func (a *EntriesAPIService) V2ListsListEntriesEntryIdDeleteExecute(r ApiV2ListsListEntriesEntryIdDeleteRequest) (map[string]interface{}, *http.Response, error) {
 	var (
-		localVarHTTPMethod   = http.MethodDelete
-		localVarPostBody     interface{}
-		formFiles            []formFile
-		localVarReturnValue  map[string]interface{}
+		localVarHTTPMethod  = http.MethodDelete
+		localVarPostBody    interface{}
+		formFiles           []formFile
+		localVarReturnValue map[string]interface{}
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "EntriesAPIService.V2ListsListEntriesEntryIdDelete")
@@ -278,8 +280,8 @@ func (a *EntriesAPIService) V2ListsListEntriesEntryIdDeleteExecute(r ApiV2ListsL
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 		}
 		return localVarReturnValue, localVarHTTPResponse, newErr
 	}
@@ -297,10 +299,10 @@ func (a *EntriesAPIService) V2ListsListEntriesEntryIdDeleteExecute(r ApiV2ListsL
 }
 
 type ApiV2ListsListEntriesEntryIdGetRequest struct {
-	ctx context.Context
+	ctx        context.Context
 	ApiService *EntriesAPIService
-	list string
-	entryId string
+	list       string
+	entryId    string
 }
 
 func (r ApiV2ListsListEntriesEntryIdGetRequest) Execute() (*V2ListsListEntriesPut200Response, *http.Response, error) {
@@ -314,28 +316,29 @@ Gets a single list entry by its `entry_id`.
 
 Required scopes: `list_entry:read`, `list_configuration:read`.
 
- @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @param list
- @param entryId
- @return ApiV2ListsListEntriesEntryIdGetRequest
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@param list
+	@param entryId
+	@return ApiV2ListsListEntriesEntryIdGetRequest
 */
 func (a *EntriesAPIService) V2ListsListEntriesEntryIdGet(ctx context.Context, list string, entryId string) ApiV2ListsListEntriesEntryIdGetRequest {
 	return ApiV2ListsListEntriesEntryIdGetRequest{
 		ApiService: a,
-		ctx: ctx,
-		list: list,
-		entryId: entryId,
+		ctx:        ctx,
+		list:       list,
+		entryId:    entryId,
 	}
 }
 
 // Execute executes the request
-//  @return V2ListsListEntriesPut200Response
+//
+//	@return V2ListsListEntriesPut200Response
 func (a *EntriesAPIService) V2ListsListEntriesEntryIdGetExecute(r ApiV2ListsListEntriesEntryIdGetRequest) (*V2ListsListEntriesPut200Response, *http.Response, error) {
 	var (
-		localVarHTTPMethod   = http.MethodGet
-		localVarPostBody     interface{}
-		formFiles            []formFile
-		localVarReturnValue  *V2ListsListEntriesPut200Response
+		localVarHTTPMethod  = http.MethodGet
+		localVarPostBody    interface{}
+		formFiles           []formFile
+		localVarReturnValue *V2ListsListEntriesPut200Response
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "EntriesAPIService.V2ListsListEntriesEntryIdGet")
@@ -397,8 +400,8 @@ func (a *EntriesAPIService) V2ListsListEntriesEntryIdGetExecute(r ApiV2ListsList
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 		}
 		return localVarReturnValue, localVarHTTPResponse, newErr
 	}
@@ -416,10 +419,10 @@ func (a *EntriesAPIService) V2ListsListEntriesEntryIdGetExecute(r ApiV2ListsList
 }
 
 type ApiV2ListsListEntriesEntryIdPatchRequest struct {
-	ctx context.Context
-	ApiService *EntriesAPIService
-	list string
-	entryId string
+	ctx                                   context.Context
+	ApiService                            *EntriesAPIService
+	list                                  string
+	entryId                               string
 	v2ListsListEntriesEntryIdPatchRequest *V2ListsListEntriesEntryIdPatchRequest
 }
 
@@ -439,28 +442,29 @@ Use this endpoint to update list entries by `entry_id`. If the update payload in
 
 Required scopes: `list_entry:read-write`, `list_configuration:read`.
 
- @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @param list
- @param entryId
- @return ApiV2ListsListEntriesEntryIdPatchRequest
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@param list
+	@param entryId
+	@return ApiV2ListsListEntriesEntryIdPatchRequest
 */
 func (a *EntriesAPIService) V2ListsListEntriesEntryIdPatch(ctx context.Context, list string, entryId string) ApiV2ListsListEntriesEntryIdPatchRequest {
 	return ApiV2ListsListEntriesEntryIdPatchRequest{
 		ApiService: a,
-		ctx: ctx,
-		list: list,
-		entryId: entryId,
+		ctx:        ctx,
+		list:       list,
+		entryId:    entryId,
 	}
 }
 
 // Execute executes the request
-//  @return V2ListsListEntriesPut200Response
+//
+//	@return V2ListsListEntriesPut200Response
 func (a *EntriesAPIService) V2ListsListEntriesEntryIdPatchExecute(r ApiV2ListsListEntriesEntryIdPatchRequest) (*V2ListsListEntriesPut200Response, *http.Response, error) {
 	var (
-		localVarHTTPMethod   = http.MethodPatch
-		localVarPostBody     interface{}
-		formFiles            []formFile
-		localVarReturnValue  *V2ListsListEntriesPut200Response
+		localVarHTTPMethod  = http.MethodPatch
+		localVarPostBody    interface{}
+		formFiles           []formFile
+		localVarReturnValue *V2ListsListEntriesPut200Response
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "EntriesAPIService.V2ListsListEntriesEntryIdPatch")
@@ -527,8 +531,8 @@ func (a *EntriesAPIService) V2ListsListEntriesEntryIdPatchExecute(r ApiV2ListsLi
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 404 {
@@ -538,8 +542,8 @@ func (a *EntriesAPIService) V2ListsListEntriesEntryIdPatchExecute(r ApiV2ListsLi
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 		}
 		return localVarReturnValue, localVarHTTPResponse, newErr
 	}
@@ -557,10 +561,10 @@ func (a *EntriesAPIService) V2ListsListEntriesEntryIdPatchExecute(r ApiV2ListsLi
 }
 
 type ApiV2ListsListEntriesEntryIdPutRequest struct {
-	ctx context.Context
-	ApiService *EntriesAPIService
-	list string
-	entryId string
+	ctx                                 context.Context
+	ApiService                          *EntriesAPIService
+	list                                string
+	entryId                             string
 	v2ListsListEntriesEntryIdPutRequest *V2ListsListEntriesEntryIdPutRequest
 }
 
@@ -580,28 +584,29 @@ Use this endpoint to update list entries by `entry_id`. If the update payload in
 
 Required scopes: `list_entry:read-write`, `list_configuration:read`.
 
- @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @param list
- @param entryId
- @return ApiV2ListsListEntriesEntryIdPutRequest
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@param list
+	@param entryId
+	@return ApiV2ListsListEntriesEntryIdPutRequest
 */
 func (a *EntriesAPIService) V2ListsListEntriesEntryIdPut(ctx context.Context, list string, entryId string) ApiV2ListsListEntriesEntryIdPutRequest {
 	return ApiV2ListsListEntriesEntryIdPutRequest{
 		ApiService: a,
-		ctx: ctx,
-		list: list,
-		entryId: entryId,
+		ctx:        ctx,
+		list:       list,
+		entryId:    entryId,
 	}
 }
 
 // Execute executes the request
-//  @return V2ListsListEntriesPut200Response
+//
+//	@return V2ListsListEntriesPut200Response
 func (a *EntriesAPIService) V2ListsListEntriesEntryIdPutExecute(r ApiV2ListsListEntriesEntryIdPutRequest) (*V2ListsListEntriesPut200Response, *http.Response, error) {
 	var (
-		localVarHTTPMethod   = http.MethodPut
-		localVarPostBody     interface{}
-		formFiles            []formFile
-		localVarReturnValue  *V2ListsListEntriesPut200Response
+		localVarHTTPMethod  = http.MethodPut
+		localVarPostBody    interface{}
+		formFiles           []formFile
+		localVarReturnValue *V2ListsListEntriesPut200Response
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "EntriesAPIService.V2ListsListEntriesEntryIdPut")
@@ -668,8 +673,8 @@ func (a *EntriesAPIService) V2ListsListEntriesEntryIdPutExecute(r ApiV2ListsList
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 404 {
@@ -679,8 +684,8 @@ func (a *EntriesAPIService) V2ListsListEntriesEntryIdPutExecute(r ApiV2ListsList
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 		}
 		return localVarReturnValue, localVarHTTPResponse, newErr
 	}
@@ -698,9 +703,9 @@ func (a *EntriesAPIService) V2ListsListEntriesEntryIdPutExecute(r ApiV2ListsList
 }
 
 type ApiV2ListsListEntriesPostRequest struct {
-	ctx context.Context
-	ApiService *EntriesAPIService
-	list string
+	ctx                          context.Context
+	ApiService                   *EntriesAPIService
+	list                         string
 	v2ListsListEntriesPutRequest *V2ListsListEntriesPutRequest
 }
 
@@ -720,26 +725,27 @@ Adds a record to a list as a new list entry. This endpoint will throw on conflic
 
 Required scopes: `list_entry:read-write`, `list_configuration:read`.
 
- @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @param list
- @return ApiV2ListsListEntriesPostRequest
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@param list
+	@return ApiV2ListsListEntriesPostRequest
 */
 func (a *EntriesAPIService) V2ListsListEntriesPost(ctx context.Context, list string) ApiV2ListsListEntriesPostRequest {
 	return ApiV2ListsListEntriesPostRequest{
 		ApiService: a,
-		ctx: ctx,
-		list: list,
+		ctx:        ctx,
+		list:       list,
 	}
 }
 
 // Execute executes the request
-//  @return V2ListsListEntriesPut200Response
+//
+//	@return V2ListsListEntriesPut200Response
 func (a *EntriesAPIService) V2ListsListEntriesPostExecute(r ApiV2ListsListEntriesPostRequest) (*V2ListsListEntriesPut200Response, *http.Response, error) {
 	var (
-		localVarHTTPMethod   = http.MethodPost
-		localVarPostBody     interface{}
-		formFiles            []formFile
-		localVarReturnValue  *V2ListsListEntriesPut200Response
+		localVarHTTPMethod  = http.MethodPost
+		localVarPostBody    interface{}
+		formFiles           []formFile
+		localVarReturnValue *V2ListsListEntriesPut200Response
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "EntriesAPIService.V2ListsListEntriesPost")
@@ -805,8 +811,8 @@ func (a *EntriesAPIService) V2ListsListEntriesPostExecute(r ApiV2ListsListEntrie
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 404 {
@@ -816,8 +822,8 @@ func (a *EntriesAPIService) V2ListsListEntriesPostExecute(r ApiV2ListsListEntrie
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 		}
 		return localVarReturnValue, localVarHTTPResponse, newErr
 	}
@@ -835,9 +841,9 @@ func (a *EntriesAPIService) V2ListsListEntriesPostExecute(r ApiV2ListsListEntrie
 }
 
 type ApiV2ListsListEntriesPutRequest struct {
-	ctx context.Context
-	ApiService *EntriesAPIService
-	list string
+	ctx                          context.Context
+	ApiService                   *EntriesAPIService
+	list                         string
 	v2ListsListEntriesPutRequest *V2ListsListEntriesPutRequest
 }
 
@@ -857,26 +863,27 @@ Use this endpoint to create or update a list entry for a given parent record. If
 
 Required scopes: `list_entry:read-write`, `list_configuration:read`.
 
- @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @param list
- @return ApiV2ListsListEntriesPutRequest
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@param list
+	@return ApiV2ListsListEntriesPutRequest
 */
 func (a *EntriesAPIService) V2ListsListEntriesPut(ctx context.Context, list string) ApiV2ListsListEntriesPutRequest {
 	return ApiV2ListsListEntriesPutRequest{
 		ApiService: a,
-		ctx: ctx,
-		list: list,
+		ctx:        ctx,
+		list:       list,
 	}
 }
 
 // Execute executes the request
-//  @return V2ListsListEntriesPut200Response
+//
+//	@return V2ListsListEntriesPut200Response
 func (a *EntriesAPIService) V2ListsListEntriesPutExecute(r ApiV2ListsListEntriesPutRequest) (*V2ListsListEntriesPut200Response, *http.Response, error) {
 	var (
-		localVarHTTPMethod   = http.MethodPut
-		localVarPostBody     interface{}
-		formFiles            []formFile
-		localVarReturnValue  *V2ListsListEntriesPut200Response
+		localVarHTTPMethod  = http.MethodPut
+		localVarPostBody    interface{}
+		formFiles           []formFile
+		localVarReturnValue *V2ListsListEntriesPut200Response
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "EntriesAPIService.V2ListsListEntriesPut")
@@ -942,8 +949,8 @@ func (a *EntriesAPIService) V2ListsListEntriesPutExecute(r ApiV2ListsListEntries
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 404 {
@@ -953,8 +960,8 @@ func (a *EntriesAPIService) V2ListsListEntriesPutExecute(r ApiV2ListsListEntries
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 		}
 		return localVarReturnValue, localVarHTTPResponse, newErr
 	}
@@ -972,9 +979,9 @@ func (a *EntriesAPIService) V2ListsListEntriesPutExecute(r ApiV2ListsListEntries
 }
 
 type ApiV2ListsListEntriesQueryPostRequest struct {
-	ctx context.Context
-	ApiService *EntriesAPIService
-	list string
+	ctx                                context.Context
+	ApiService                         *EntriesAPIService
+	list                               string
 	v2ListsListEntriesQueryPostRequest *V2ListsListEntriesQueryPostRequest
 }
 
@@ -994,26 +1001,27 @@ Lists entries in a given list, with the option to filter and sort results.
 
 Required scopes: `list_entry:read`, `list_configuration:read`.
 
- @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @param list
- @return ApiV2ListsListEntriesQueryPostRequest
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@param list
+	@return ApiV2ListsListEntriesQueryPostRequest
 */
 func (a *EntriesAPIService) V2ListsListEntriesQueryPost(ctx context.Context, list string) ApiV2ListsListEntriesQueryPostRequest {
 	return ApiV2ListsListEntriesQueryPostRequest{
 		ApiService: a,
-		ctx: ctx,
-		list: list,
+		ctx:        ctx,
+		list:       list,
 	}
 }
 
 // Execute executes the request
-//  @return V2ListsListEntriesQueryPost200Response
+//
+//	@return V2ListsListEntriesQueryPost200Response
 func (a *EntriesAPIService) V2ListsListEntriesQueryPostExecute(r ApiV2ListsListEntriesQueryPostRequest) (*V2ListsListEntriesQueryPost200Response, *http.Response, error) {
 	var (
-		localVarHTTPMethod   = http.MethodPost
-		localVarPostBody     interface{}
-		formFiles            []formFile
-		localVarReturnValue  *V2ListsListEntriesQueryPost200Response
+		localVarHTTPMethod  = http.MethodPost
+		localVarPostBody    interface{}
+		formFiles           []formFile
+		localVarReturnValue *V2ListsListEntriesQueryPost200Response
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "EntriesAPIService.V2ListsListEntriesQueryPost")
@@ -1079,8 +1087,8 @@ func (a *EntriesAPIService) V2ListsListEntriesQueryPostExecute(r ApiV2ListsListE
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 		}
 		return localVarReturnValue, localVarHTTPResponse, newErr
 	}

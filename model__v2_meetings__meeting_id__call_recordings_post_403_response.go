@@ -12,8 +12,8 @@ Contact: support@attio.com
 package libattio
 
 import (
-	"encoding/json"
 	"bytes"
+	"encoding/json"
 	"fmt"
 )
 
@@ -23,9 +23,9 @@ var _ MappedNullable = &V2MeetingsMeetingIdCallRecordingsPost403Response{}
 // V2MeetingsMeetingIdCallRecordingsPost403Response Forbidden
 type V2MeetingsMeetingIdCallRecordingsPost403Response struct {
 	StatusCode float32 `json:"status_code"`
-	Type string `json:"type"`
-	Code V2MeetingsMeetingIdCallRecordingsPost403ResponseCode `json:"code"`
-	Message string `json:"message"`
+	Type       string  `json:"type"`
+	Code       string  `json:"code"`
+	Message    string  `json:"message"`
 }
 
 type _V2MeetingsMeetingIdCallRecordingsPost403Response V2MeetingsMeetingIdCallRecordingsPost403Response
@@ -34,7 +34,7 @@ type _V2MeetingsMeetingIdCallRecordingsPost403Response V2MeetingsMeetingIdCallRe
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewV2MeetingsMeetingIdCallRecordingsPost403Response(statusCode float32, type_ string, code V2MeetingsMeetingIdCallRecordingsPost403ResponseCode, message string) *V2MeetingsMeetingIdCallRecordingsPost403Response {
+func NewV2MeetingsMeetingIdCallRecordingsPost403Response(statusCode float32, type_ string, code string, message string) *V2MeetingsMeetingIdCallRecordingsPost403Response {
 	this := V2MeetingsMeetingIdCallRecordingsPost403Response{}
 	this.StatusCode = statusCode
 	this.Type = type_
@@ -75,7 +75,6 @@ func (o *V2MeetingsMeetingIdCallRecordingsPost403Response) SetStatusCode(v float
 	o.StatusCode = v
 }
 
-
 // GetType returns the Type field value
 func (o *V2MeetingsMeetingIdCallRecordingsPost403Response) GetType() string {
 	if o == nil {
@@ -100,11 +99,10 @@ func (o *V2MeetingsMeetingIdCallRecordingsPost403Response) SetType(v string) {
 	o.Type = v
 }
 
-
 // GetCode returns the Code field value
-func (o *V2MeetingsMeetingIdCallRecordingsPost403Response) GetCode() V2MeetingsMeetingIdCallRecordingsPost403ResponseCode {
+func (o *V2MeetingsMeetingIdCallRecordingsPost403Response) GetCode() string {
 	if o == nil {
-		var ret V2MeetingsMeetingIdCallRecordingsPost403ResponseCode
+		var ret string
 		return ret
 	}
 
@@ -113,7 +111,7 @@ func (o *V2MeetingsMeetingIdCallRecordingsPost403Response) GetCode() V2MeetingsM
 
 // GetCodeOk returns a tuple with the Code field value
 // and a boolean to check if the value has been set.
-func (o *V2MeetingsMeetingIdCallRecordingsPost403Response) GetCodeOk() (*V2MeetingsMeetingIdCallRecordingsPost403ResponseCode, bool) {
+func (o *V2MeetingsMeetingIdCallRecordingsPost403Response) GetCodeOk() (*string, bool) {
 	if o == nil {
 		return nil, false
 	}
@@ -121,10 +119,9 @@ func (o *V2MeetingsMeetingIdCallRecordingsPost403Response) GetCodeOk() (*V2Meeti
 }
 
 // SetCode sets field value
-func (o *V2MeetingsMeetingIdCallRecordingsPost403Response) SetCode(v V2MeetingsMeetingIdCallRecordingsPost403ResponseCode) {
+func (o *V2MeetingsMeetingIdCallRecordingsPost403Response) SetCode(v string) {
 	o.Code = v
 }
-
 
 // GetMessage returns the Message field value
 func (o *V2MeetingsMeetingIdCallRecordingsPost403Response) GetMessage() string {
@@ -150,9 +147,8 @@ func (o *V2MeetingsMeetingIdCallRecordingsPost403Response) SetMessage(v string) 
 	o.Message = v
 }
 
-
 func (o V2MeetingsMeetingIdCallRecordingsPost403Response) MarshalJSON() ([]byte, error) {
-	toSerialize,err := o.ToMap()
+	toSerialize, err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
 	}
@@ -181,32 +177,31 @@ func (o *V2MeetingsMeetingIdCallRecordingsPost403Response) UnmarshalJSON(data []
 
 	// defaultValueFuncMap captures the default values for required properties.
 	// These values are used when required properties are missing from the payload.
-	defaultValueFuncMap := map[string]func() interface{} {
-	}
+	defaultValueFuncMap := map[string]func() interface{}{}
 	var defaultValueApplied bool
 	allProperties := make(map[string]interface{})
 
 	err = json.Unmarshal(data, &allProperties)
 
 	if err != nil {
-		return err;
+		return err
 	}
 
-	for _, requiredProperty := range(requiredProperties) {
+	for _, requiredProperty := range requiredProperties {
 		if value, exists := allProperties[requiredProperty]; !exists || value == "" {
 			if _, ok := defaultValueFuncMap[requiredProperty]; ok {
 				allProperties[requiredProperty] = defaultValueFuncMap[requiredProperty]()
 				defaultValueApplied = true
 			}
 		}
-		if value, exists := allProperties[requiredProperty]; !exists || value == ""{
+		if value, exists := allProperties[requiredProperty]; !exists || value == "" {
 			return fmt.Errorf("no value given for required property %v", requiredProperty)
 		}
 	}
 
 	if defaultValueApplied {
 		data, err = json.Marshal(allProperties)
-		if err != nil{
+		if err != nil {
 			return err
 		}
 	}
@@ -260,5 +255,3 @@ func (v *NullableV2MeetingsMeetingIdCallRecordingsPost403Response) UnmarshalJSON
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
-
-

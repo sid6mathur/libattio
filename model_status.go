@@ -12,8 +12,8 @@ Contact: support@attio.com
 package libattio
 
 import (
-	"encoding/json"
 	"bytes"
+	"encoding/json"
 	"fmt"
 )
 
@@ -81,7 +81,6 @@ func (o *Status) SetId(v StatusId) {
 	o.Id = v
 }
 
-
 // GetTitle returns the Title field value
 func (o *Status) GetTitle() string {
 	if o == nil {
@@ -105,7 +104,6 @@ func (o *Status) GetTitleOk() (*string, bool) {
 func (o *Status) SetTitle(v string) {
 	o.Title = v
 }
-
 
 // GetIsArchived returns the IsArchived field value
 func (o *Status) GetIsArchived() bool {
@@ -131,7 +129,6 @@ func (o *Status) SetIsArchived(v bool) {
 	o.IsArchived = v
 }
 
-
 // GetCelebrationEnabled returns the CelebrationEnabled field value
 func (o *Status) GetCelebrationEnabled() bool {
 	if o == nil {
@@ -155,7 +152,6 @@ func (o *Status) GetCelebrationEnabledOk() (*bool, bool) {
 func (o *Status) SetCelebrationEnabled(v bool) {
 	o.CelebrationEnabled = v
 }
-
 
 // GetTargetTimeInStatus returns the TargetTimeInStatus field value
 // If the value is explicit nil, the zero value for string will be returned
@@ -183,9 +179,8 @@ func (o *Status) SetTargetTimeInStatus(v string) {
 	o.TargetTimeInStatus.Set(&v)
 }
 
-
 func (o Status) MarshalJSON() ([]byte, error) {
-	toSerialize,err := o.ToMap()
+	toSerialize, err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
 	}
@@ -216,32 +211,31 @@ func (o *Status) UnmarshalJSON(data []byte) (err error) {
 
 	// defaultValueFuncMap captures the default values for required properties.
 	// These values are used when required properties are missing from the payload.
-	defaultValueFuncMap := map[string]func() interface{} {
-	}
+	defaultValueFuncMap := map[string]func() interface{}{}
 	var defaultValueApplied bool
 	allProperties := make(map[string]interface{})
 
 	err = json.Unmarshal(data, &allProperties)
 
 	if err != nil {
-		return err;
+		return err
 	}
 
-	for _, requiredProperty := range(requiredProperties) {
+	for _, requiredProperty := range requiredProperties {
 		if value, exists := allProperties[requiredProperty]; !exists || value == "" {
 			if _, ok := defaultValueFuncMap[requiredProperty]; ok {
 				allProperties[requiredProperty] = defaultValueFuncMap[requiredProperty]()
 				defaultValueApplied = true
 			}
 		}
-		if value, exists := allProperties[requiredProperty]; !exists || value == ""{
+		if value, exists := allProperties[requiredProperty]; !exists || value == "" {
 			return fmt.Errorf("no value given for required property %v", requiredProperty)
 		}
 	}
 
 	if defaultValueApplied {
 		data, err = json.Marshal(allProperties)
-		if err != nil{
+		if err != nil {
 			return err
 		}
 	}
@@ -295,5 +289,3 @@ func (v *NullableStatus) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
-
-

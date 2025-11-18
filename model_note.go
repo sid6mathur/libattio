@@ -12,8 +12,8 @@ Contact: support@attio.com
 package libattio
 
 import (
-	"encoding/json"
 	"bytes"
+	"encoding/json"
 	"fmt"
 )
 
@@ -36,7 +36,7 @@ type Note struct {
 	// The markdown representation of the note content. Supports a subset of markdown features including: - Headings (levels 1-3 only with `#`, `##`, `###`) - Unordered lists (`-`, `*`, `+`) - Ordered lists (`1.`, `2.`, etc.) - Text styling: `**bold**`, `*italic*`, `~~strikethrough~~`, `==highlighted==` - Links: `[link text](https://example.com)`  Note that note images are not returned as part of the markdown API representation.
 	ContentMarkdown string `json:"content_markdown"`
 	// An array of records or workspace members that are @-tagged in the note content.
-	Tags []NoteTagsInner `json:"tags"`
+	Tags           []NoteTagsInner    `json:"tags"`
 	CreatedByActor NoteCreatedByActor `json:"created_by_actor"`
 	// When the note was created.
 	CreatedAt string `json:"created_at"`
@@ -95,7 +95,6 @@ func (o *Note) SetId(v NoteId) {
 	o.Id = v
 }
 
-
 // GetParentObject returns the ParentObject field value
 func (o *Note) GetParentObject() string {
 	if o == nil {
@@ -119,7 +118,6 @@ func (o *Note) GetParentObjectOk() (*string, bool) {
 func (o *Note) SetParentObject(v string) {
 	o.ParentObject = v
 }
-
 
 // GetParentRecordId returns the ParentRecordId field value
 func (o *Note) GetParentRecordId() string {
@@ -145,7 +143,6 @@ func (o *Note) SetParentRecordId(v string) {
 	o.ParentRecordId = v
 }
 
-
 // GetTitle returns the Title field value
 func (o *Note) GetTitle() string {
 	if o == nil {
@@ -169,7 +166,6 @@ func (o *Note) GetTitleOk() (*string, bool) {
 func (o *Note) SetTitle(v string) {
 	o.Title = v
 }
-
 
 // GetMeetingId returns the MeetingId field value
 // If the value is explicit nil, the zero value for string will be returned
@@ -197,7 +193,6 @@ func (o *Note) SetMeetingId(v string) {
 	o.MeetingId.Set(&v)
 }
 
-
 // GetContentPlaintext returns the ContentPlaintext field value
 func (o *Note) GetContentPlaintext() string {
 	if o == nil {
@@ -221,7 +216,6 @@ func (o *Note) GetContentPlaintextOk() (*string, bool) {
 func (o *Note) SetContentPlaintext(v string) {
 	o.ContentPlaintext = v
 }
-
 
 // GetContentMarkdown returns the ContentMarkdown field value
 func (o *Note) GetContentMarkdown() string {
@@ -247,7 +241,6 @@ func (o *Note) SetContentMarkdown(v string) {
 	o.ContentMarkdown = v
 }
 
-
 // GetTags returns the Tags field value
 func (o *Note) GetTags() []NoteTagsInner {
 	if o == nil {
@@ -271,7 +264,6 @@ func (o *Note) GetTagsOk() ([]NoteTagsInner, bool) {
 func (o *Note) SetTags(v []NoteTagsInner) {
 	o.Tags = v
 }
-
 
 // GetCreatedByActor returns the CreatedByActor field value
 func (o *Note) GetCreatedByActor() NoteCreatedByActor {
@@ -297,7 +289,6 @@ func (o *Note) SetCreatedByActor(v NoteCreatedByActor) {
 	o.CreatedByActor = v
 }
 
-
 // GetCreatedAt returns the CreatedAt field value
 func (o *Note) GetCreatedAt() string {
 	if o == nil {
@@ -322,9 +313,8 @@ func (o *Note) SetCreatedAt(v string) {
 	o.CreatedAt = v
 }
 
-
 func (o Note) MarshalJSON() ([]byte, error) {
-	toSerialize,err := o.ToMap()
+	toSerialize, err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
 	}
@@ -365,32 +355,31 @@ func (o *Note) UnmarshalJSON(data []byte) (err error) {
 
 	// defaultValueFuncMap captures the default values for required properties.
 	// These values are used when required properties are missing from the payload.
-	defaultValueFuncMap := map[string]func() interface{} {
-	}
+	defaultValueFuncMap := map[string]func() interface{}{}
 	var defaultValueApplied bool
 	allProperties := make(map[string]interface{})
 
 	err = json.Unmarshal(data, &allProperties)
 
 	if err != nil {
-		return err;
+		return err
 	}
 
-	for _, requiredProperty := range(requiredProperties) {
+	for _, requiredProperty := range requiredProperties {
 		if value, exists := allProperties[requiredProperty]; !exists || value == "" {
 			if _, ok := defaultValueFuncMap[requiredProperty]; ok {
 				allProperties[requiredProperty] = defaultValueFuncMap[requiredProperty]()
 				defaultValueApplied = true
 			}
 		}
-		if value, exists := allProperties[requiredProperty]; !exists || value == ""{
+		if value, exists := allProperties[requiredProperty]; !exists || value == "" {
 			return fmt.Errorf("no value given for required property %v", requiredProperty)
 		}
 	}
 
 	if defaultValueApplied {
 		data, err = json.Marshal(allProperties)
-		if err != nil{
+		if err != nil {
 			return err
 		}
 	}
@@ -444,5 +433,3 @@ func (v *NullableNote) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
-
-

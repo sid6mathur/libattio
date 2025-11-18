@@ -12,8 +12,8 @@ Contact: support@attio.com
 package libattio
 
 import (
-	"encoding/json"
 	"bytes"
+	"encoding/json"
 	"fmt"
 )
 
@@ -86,7 +86,6 @@ func (o *V2NotesPostRequestData) SetParentObject(v string) {
 	o.ParentObject = v
 }
 
-
 // GetParentRecordId returns the ParentRecordId field value
 func (o *V2NotesPostRequestData) GetParentRecordId() string {
 	if o == nil {
@@ -110,7 +109,6 @@ func (o *V2NotesPostRequestData) GetParentRecordIdOk() (*string, bool) {
 func (o *V2NotesPostRequestData) SetParentRecordId(v string) {
 	o.ParentRecordId = v
 }
-
 
 // GetTitle returns the Title field value
 func (o *V2NotesPostRequestData) GetTitle() string {
@@ -136,7 +134,6 @@ func (o *V2NotesPostRequestData) SetTitle(v string) {
 	o.Title = v
 }
 
-
 // GetFormat returns the Format field value
 func (o *V2NotesPostRequestData) GetFormat() string {
 	if o == nil {
@@ -161,7 +158,6 @@ func (o *V2NotesPostRequestData) SetFormat(v string) {
 	o.Format = v
 }
 
-
 // GetContent returns the Content field value
 func (o *V2NotesPostRequestData) GetContent() string {
 	if o == nil {
@@ -185,7 +181,6 @@ func (o *V2NotesPostRequestData) GetContentOk() (*string, bool) {
 func (o *V2NotesPostRequestData) SetContent(v string) {
 	o.Content = v
 }
-
 
 // GetCreatedAt returns the CreatedAt field value if set, zero value otherwise.
 func (o *V2NotesPostRequestData) GetCreatedAt() string {
@@ -251,6 +246,7 @@ func (o *V2NotesPostRequestData) HasMeetingId() bool {
 func (o *V2NotesPostRequestData) SetMeetingId(v string) {
 	o.MeetingId.Set(&v)
 }
+
 // SetMeetingIdNil sets the value for MeetingId to be an explicit nil
 func (o *V2NotesPostRequestData) SetMeetingIdNil() {
 	o.MeetingId.Set(nil)
@@ -262,7 +258,7 @@ func (o *V2NotesPostRequestData) UnsetMeetingId() {
 }
 
 func (o V2NotesPostRequestData) MarshalJSON() ([]byte, error) {
-	toSerialize,err := o.ToMap()
+	toSerialize, err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
 	}
@@ -299,32 +295,31 @@ func (o *V2NotesPostRequestData) UnmarshalJSON(data []byte) (err error) {
 
 	// defaultValueFuncMap captures the default values for required properties.
 	// These values are used when required properties are missing from the payload.
-	defaultValueFuncMap := map[string]func() interface{} {
-	}
+	defaultValueFuncMap := map[string]func() interface{}{}
 	var defaultValueApplied bool
 	allProperties := make(map[string]interface{})
 
 	err = json.Unmarshal(data, &allProperties)
 
 	if err != nil {
-		return err;
+		return err
 	}
 
-	for _, requiredProperty := range(requiredProperties) {
+	for _, requiredProperty := range requiredProperties {
 		if value, exists := allProperties[requiredProperty]; !exists || value == "" {
 			if _, ok := defaultValueFuncMap[requiredProperty]; ok {
 				allProperties[requiredProperty] = defaultValueFuncMap[requiredProperty]()
 				defaultValueApplied = true
 			}
 		}
-		if value, exists := allProperties[requiredProperty]; !exists || value == ""{
+		if value, exists := allProperties[requiredProperty]; !exists || value == "" {
 			return fmt.Errorf("no value given for required property %v", requiredProperty)
 		}
 	}
 
 	if defaultValueApplied {
 		data, err = json.Marshal(allProperties)
-		if err != nil{
+		if err != nil {
 			return err
 		}
 	}
@@ -378,5 +373,3 @@ func (v *NullableV2NotesPostRequestData) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
-
-

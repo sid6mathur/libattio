@@ -16,27 +16,26 @@ import (
 	"fmt"
 )
 
-
 // InputValue A union of possible value types, as required in request bodies.
 type InputValue struct {
-	InputValueAnyOf *InputValueAnyOf
-	InputValueAnyOf1 *InputValueAnyOf1
-	InputValueAnyOf10 *InputValueAnyOf10
-	InputValueAnyOf11 *InputValueAnyOf11
-	InputValueAnyOf12 *InputValueAnyOf12
-	InputValueAnyOf13 *InputValueAnyOf13
-	InputValueAnyOf14 *InputValueAnyOf14
-	InputValueAnyOf2 *InputValueAnyOf2
-	InputValueAnyOf3 *InputValueAnyOf3
-	InputValueAnyOf4 *InputValueAnyOf4
-	InputValueAnyOf5 *InputValueAnyOf5
-	InputValueAnyOf6 *InputValueAnyOf6
-	InputValueAnyOf7 *InputValueAnyOf7
-	InputValueAnyOf8 *InputValueAnyOf8
-	InputValueAnyOf9 *InputValueAnyOf9
-	V2TasksPostRequestDataAssigneesInnerAnyOf1 *V2TasksPostRequestDataAssigneesInnerAnyOf1
-	V2TasksPostRequestDataLinkedRecordsInnerAnyOf1 *V2TasksPostRequestDataLinkedRecordsInnerAnyOf1
-	V2TasksPostRequestDataLinkedRecordsInnerAnyOf1SlugOrIdOfMatchingAttributeInnerAnyOf *V2TasksPostRequestDataLinkedRecordsInnerAnyOf1SlugOrIdOfMatchingAttributeInnerAnyOf
+	InputValueAnyOf                                                                      *InputValueAnyOf
+	InputValueAnyOf1                                                                     *InputValueAnyOf1
+	InputValueAnyOf10                                                                    *InputValueAnyOf10
+	InputValueAnyOf11                                                                    *InputValueAnyOf11
+	InputValueAnyOf12                                                                    *InputValueAnyOf12
+	InputValueAnyOf13                                                                    *InputValueAnyOf13
+	InputValueAnyOf14                                                                    *InputValueAnyOf14
+	InputValueAnyOf2                                                                     *InputValueAnyOf2
+	InputValueAnyOf3                                                                     *InputValueAnyOf3
+	InputValueAnyOf4                                                                     *InputValueAnyOf4
+	InputValueAnyOf5                                                                     *InputValueAnyOf5
+	InputValueAnyOf6                                                                     *InputValueAnyOf6
+	InputValueAnyOf7                                                                     *InputValueAnyOf7
+	InputValueAnyOf8                                                                     *InputValueAnyOf8
+	InputValueAnyOf9                                                                     *InputValueAnyOf9
+	V2TasksPostRequestDataAssigneesInnerAnyOf1                                           *V2TasksPostRequestDataAssigneesInnerAnyOf1
+	V2TasksPostRequestDataLinkedRecordsInnerAnyOf1                                       *V2TasksPostRequestDataLinkedRecordsInnerAnyOf1
+	V2TasksPostRequestDataLinkedRecordsInnerAnyOf1SlugOrIdOfMatchingAttributeInnerAnyOf  *V2TasksPostRequestDataLinkedRecordsInnerAnyOf1SlugOrIdOfMatchingAttributeInnerAnyOf
 	V2TasksPostRequestDataLinkedRecordsInnerAnyOf1SlugOrIdOfMatchingAttributeInnerAnyOf1 *V2TasksPostRequestDataLinkedRecordsInnerAnyOf1SlugOrIdOfMatchingAttributeInnerAnyOf1
 }
 
@@ -44,7 +43,7 @@ type InputValue struct {
 func (dst *InputValue) UnmarshalJSON(data []byte) error {
 	var err error
 	// try to unmarshal JSON data into InputValueAnyOf
-	err = json.Unmarshal(data, &dst.InputValueAnyOf);
+	err = json.Unmarshal(data, &dst.InputValueAnyOf)
 	if err == nil {
 		jsonInputValueAnyOf, _ := json.Marshal(dst.InputValueAnyOf)
 		if string(jsonInputValueAnyOf) == "{}" { // empty struct
@@ -57,7 +56,7 @@ func (dst *InputValue) UnmarshalJSON(data []byte) error {
 	}
 
 	// try to unmarshal JSON data into InputValueAnyOf1
-	err = json.Unmarshal(data, &dst.InputValueAnyOf1);
+	err = json.Unmarshal(data, &dst.InputValueAnyOf1)
 	if err == nil {
 		jsonInputValueAnyOf1, _ := json.Marshal(dst.InputValueAnyOf1)
 		if string(jsonInputValueAnyOf1) == "{}" { // empty struct
@@ -70,7 +69,7 @@ func (dst *InputValue) UnmarshalJSON(data []byte) error {
 	}
 
 	// try to unmarshal JSON data into InputValueAnyOf10
-	err = json.Unmarshal(data, &dst.InputValueAnyOf10);
+	err = json.Unmarshal(data, &dst.InputValueAnyOf10)
 	if err == nil {
 		jsonInputValueAnyOf10, _ := json.Marshal(dst.InputValueAnyOf10)
 		if string(jsonInputValueAnyOf10) == "{}" { // empty struct
@@ -83,7 +82,7 @@ func (dst *InputValue) UnmarshalJSON(data []byte) error {
 	}
 
 	// try to unmarshal JSON data into InputValueAnyOf11
-	err = json.Unmarshal(data, &dst.InputValueAnyOf11);
+	err = json.Unmarshal(data, &dst.InputValueAnyOf11)
 	if err == nil {
 		jsonInputValueAnyOf11, _ := json.Marshal(dst.InputValueAnyOf11)
 		if string(jsonInputValueAnyOf11) == "{}" { // empty struct
@@ -96,7 +95,7 @@ func (dst *InputValue) UnmarshalJSON(data []byte) error {
 	}
 
 	// try to unmarshal JSON data into InputValueAnyOf12
-	err = json.Unmarshal(data, &dst.InputValueAnyOf12);
+	err = json.Unmarshal(data, &dst.InputValueAnyOf12)
 	if err == nil {
 		jsonInputValueAnyOf12, _ := json.Marshal(dst.InputValueAnyOf12)
 		if string(jsonInputValueAnyOf12) == "{}" { // empty struct
@@ -109,7 +108,7 @@ func (dst *InputValue) UnmarshalJSON(data []byte) error {
 	}
 
 	// try to unmarshal JSON data into InputValueAnyOf13
-	err = json.Unmarshal(data, &dst.InputValueAnyOf13);
+	err = json.Unmarshal(data, &dst.InputValueAnyOf13)
 	if err == nil {
 		jsonInputValueAnyOf13, _ := json.Marshal(dst.InputValueAnyOf13)
 		if string(jsonInputValueAnyOf13) == "{}" { // empty struct
@@ -122,7 +121,7 @@ func (dst *InputValue) UnmarshalJSON(data []byte) error {
 	}
 
 	// try to unmarshal JSON data into InputValueAnyOf14
-	err = json.Unmarshal(data, &dst.InputValueAnyOf14);
+	err = json.Unmarshal(data, &dst.InputValueAnyOf14)
 	if err == nil {
 		jsonInputValueAnyOf14, _ := json.Marshal(dst.InputValueAnyOf14)
 		if string(jsonInputValueAnyOf14) == "{}" { // empty struct
@@ -135,7 +134,7 @@ func (dst *InputValue) UnmarshalJSON(data []byte) error {
 	}
 
 	// try to unmarshal JSON data into InputValueAnyOf2
-	err = json.Unmarshal(data, &dst.InputValueAnyOf2);
+	err = json.Unmarshal(data, &dst.InputValueAnyOf2)
 	if err == nil {
 		jsonInputValueAnyOf2, _ := json.Marshal(dst.InputValueAnyOf2)
 		if string(jsonInputValueAnyOf2) == "{}" { // empty struct
@@ -148,7 +147,7 @@ func (dst *InputValue) UnmarshalJSON(data []byte) error {
 	}
 
 	// try to unmarshal JSON data into InputValueAnyOf3
-	err = json.Unmarshal(data, &dst.InputValueAnyOf3);
+	err = json.Unmarshal(data, &dst.InputValueAnyOf3)
 	if err == nil {
 		jsonInputValueAnyOf3, _ := json.Marshal(dst.InputValueAnyOf3)
 		if string(jsonInputValueAnyOf3) == "{}" { // empty struct
@@ -161,7 +160,7 @@ func (dst *InputValue) UnmarshalJSON(data []byte) error {
 	}
 
 	// try to unmarshal JSON data into InputValueAnyOf4
-	err = json.Unmarshal(data, &dst.InputValueAnyOf4);
+	err = json.Unmarshal(data, &dst.InputValueAnyOf4)
 	if err == nil {
 		jsonInputValueAnyOf4, _ := json.Marshal(dst.InputValueAnyOf4)
 		if string(jsonInputValueAnyOf4) == "{}" { // empty struct
@@ -174,7 +173,7 @@ func (dst *InputValue) UnmarshalJSON(data []byte) error {
 	}
 
 	// try to unmarshal JSON data into InputValueAnyOf5
-	err = json.Unmarshal(data, &dst.InputValueAnyOf5);
+	err = json.Unmarshal(data, &dst.InputValueAnyOf5)
 	if err == nil {
 		jsonInputValueAnyOf5, _ := json.Marshal(dst.InputValueAnyOf5)
 		if string(jsonInputValueAnyOf5) == "{}" { // empty struct
@@ -187,7 +186,7 @@ func (dst *InputValue) UnmarshalJSON(data []byte) error {
 	}
 
 	// try to unmarshal JSON data into InputValueAnyOf6
-	err = json.Unmarshal(data, &dst.InputValueAnyOf6);
+	err = json.Unmarshal(data, &dst.InputValueAnyOf6)
 	if err == nil {
 		jsonInputValueAnyOf6, _ := json.Marshal(dst.InputValueAnyOf6)
 		if string(jsonInputValueAnyOf6) == "{}" { // empty struct
@@ -200,7 +199,7 @@ func (dst *InputValue) UnmarshalJSON(data []byte) error {
 	}
 
 	// try to unmarshal JSON data into InputValueAnyOf7
-	err = json.Unmarshal(data, &dst.InputValueAnyOf7);
+	err = json.Unmarshal(data, &dst.InputValueAnyOf7)
 	if err == nil {
 		jsonInputValueAnyOf7, _ := json.Marshal(dst.InputValueAnyOf7)
 		if string(jsonInputValueAnyOf7) == "{}" { // empty struct
@@ -213,7 +212,7 @@ func (dst *InputValue) UnmarshalJSON(data []byte) error {
 	}
 
 	// try to unmarshal JSON data into InputValueAnyOf8
-	err = json.Unmarshal(data, &dst.InputValueAnyOf8);
+	err = json.Unmarshal(data, &dst.InputValueAnyOf8)
 	if err == nil {
 		jsonInputValueAnyOf8, _ := json.Marshal(dst.InputValueAnyOf8)
 		if string(jsonInputValueAnyOf8) == "{}" { // empty struct
@@ -226,7 +225,7 @@ func (dst *InputValue) UnmarshalJSON(data []byte) error {
 	}
 
 	// try to unmarshal JSON data into InputValueAnyOf9
-	err = json.Unmarshal(data, &dst.InputValueAnyOf9);
+	err = json.Unmarshal(data, &dst.InputValueAnyOf9)
 	if err == nil {
 		jsonInputValueAnyOf9, _ := json.Marshal(dst.InputValueAnyOf9)
 		if string(jsonInputValueAnyOf9) == "{}" { // empty struct
@@ -239,7 +238,7 @@ func (dst *InputValue) UnmarshalJSON(data []byte) error {
 	}
 
 	// try to unmarshal JSON data into V2TasksPostRequestDataAssigneesInnerAnyOf1
-	err = json.Unmarshal(data, &dst.V2TasksPostRequestDataAssigneesInnerAnyOf1);
+	err = json.Unmarshal(data, &dst.V2TasksPostRequestDataAssigneesInnerAnyOf1)
 	if err == nil {
 		jsonV2TasksPostRequestDataAssigneesInnerAnyOf1, _ := json.Marshal(dst.V2TasksPostRequestDataAssigneesInnerAnyOf1)
 		if string(jsonV2TasksPostRequestDataAssigneesInnerAnyOf1) == "{}" { // empty struct
@@ -252,7 +251,7 @@ func (dst *InputValue) UnmarshalJSON(data []byte) error {
 	}
 
 	// try to unmarshal JSON data into V2TasksPostRequestDataLinkedRecordsInnerAnyOf1
-	err = json.Unmarshal(data, &dst.V2TasksPostRequestDataLinkedRecordsInnerAnyOf1);
+	err = json.Unmarshal(data, &dst.V2TasksPostRequestDataLinkedRecordsInnerAnyOf1)
 	if err == nil {
 		jsonV2TasksPostRequestDataLinkedRecordsInnerAnyOf1, _ := json.Marshal(dst.V2TasksPostRequestDataLinkedRecordsInnerAnyOf1)
 		if string(jsonV2TasksPostRequestDataLinkedRecordsInnerAnyOf1) == "{}" { // empty struct
@@ -265,7 +264,7 @@ func (dst *InputValue) UnmarshalJSON(data []byte) error {
 	}
 
 	// try to unmarshal JSON data into V2TasksPostRequestDataLinkedRecordsInnerAnyOf1SlugOrIdOfMatchingAttributeInnerAnyOf
-	err = json.Unmarshal(data, &dst.V2TasksPostRequestDataLinkedRecordsInnerAnyOf1SlugOrIdOfMatchingAttributeInnerAnyOf);
+	err = json.Unmarshal(data, &dst.V2TasksPostRequestDataLinkedRecordsInnerAnyOf1SlugOrIdOfMatchingAttributeInnerAnyOf)
 	if err == nil {
 		jsonV2TasksPostRequestDataLinkedRecordsInnerAnyOf1SlugOrIdOfMatchingAttributeInnerAnyOf, _ := json.Marshal(dst.V2TasksPostRequestDataLinkedRecordsInnerAnyOf1SlugOrIdOfMatchingAttributeInnerAnyOf)
 		if string(jsonV2TasksPostRequestDataLinkedRecordsInnerAnyOf1SlugOrIdOfMatchingAttributeInnerAnyOf) == "{}" { // empty struct
@@ -278,7 +277,7 @@ func (dst *InputValue) UnmarshalJSON(data []byte) error {
 	}
 
 	// try to unmarshal JSON data into V2TasksPostRequestDataLinkedRecordsInnerAnyOf1SlugOrIdOfMatchingAttributeInnerAnyOf1
-	err = json.Unmarshal(data, &dst.V2TasksPostRequestDataLinkedRecordsInnerAnyOf1SlugOrIdOfMatchingAttributeInnerAnyOf1);
+	err = json.Unmarshal(data, &dst.V2TasksPostRequestDataLinkedRecordsInnerAnyOf1SlugOrIdOfMatchingAttributeInnerAnyOf1)
 	if err == nil {
 		jsonV2TasksPostRequestDataLinkedRecordsInnerAnyOf1SlugOrIdOfMatchingAttributeInnerAnyOf1, _ := json.Marshal(dst.V2TasksPostRequestDataLinkedRecordsInnerAnyOf1SlugOrIdOfMatchingAttributeInnerAnyOf1)
 		if string(jsonV2TasksPostRequestDataLinkedRecordsInnerAnyOf1SlugOrIdOfMatchingAttributeInnerAnyOf1) == "{}" { // empty struct
@@ -374,7 +373,6 @@ func (src InputValue) MarshalJSON() ([]byte, error) {
 	return nil, nil // no data in anyOf schemas
 }
 
-
 type NullableInputValue struct {
 	value *InputValue
 	isSet bool
@@ -410,5 +408,3 @@ func (v *NullableInputValue) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
-
-

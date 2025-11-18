@@ -12,8 +12,8 @@ Contact: support@attio.com
 package libattio
 
 import (
-	"encoding/json"
 	"bytes"
+	"encoding/json"
 	"fmt"
 )
 
@@ -33,7 +33,7 @@ type List struct {
 	WorkspaceAccess NullableString `json:"workspace_access"`
 	// The level of access granted to specific workspace members for this list. An empty array represents a list that has granted access to no workspace members.
 	WorkspaceMemberAccess []V2ListsPostRequestDataWorkspaceMemberAccessInner `json:"workspace_member_access"`
-	CreatedByActor ListCreatedByActor `json:"created_by_actor"`
+	CreatedByActor        ListCreatedByActor                                 `json:"created_by_actor"`
 	// When the list was created.
 	CreatedAt string `json:"created_at"`
 }
@@ -89,7 +89,6 @@ func (o *List) SetId(v ListId) {
 	o.Id = v
 }
 
-
 // GetApiSlug returns the ApiSlug field value
 func (o *List) GetApiSlug() string {
 	if o == nil {
@@ -113,7 +112,6 @@ func (o *List) GetApiSlugOk() (*string, bool) {
 func (o *List) SetApiSlug(v string) {
 	o.ApiSlug = v
 }
-
 
 // GetName returns the Name field value
 func (o *List) GetName() string {
@@ -139,7 +137,6 @@ func (o *List) SetName(v string) {
 	o.Name = v
 }
 
-
 // GetParentObject returns the ParentObject field value
 func (o *List) GetParentObject() []string {
 	if o == nil {
@@ -163,7 +160,6 @@ func (o *List) GetParentObjectOk() ([]string, bool) {
 func (o *List) SetParentObject(v []string) {
 	o.ParentObject = v
 }
-
 
 // GetWorkspaceAccess returns the WorkspaceAccess field value
 // If the value is explicit nil, the zero value for string will be returned
@@ -191,7 +187,6 @@ func (o *List) SetWorkspaceAccess(v string) {
 	o.WorkspaceAccess.Set(&v)
 }
 
-
 // GetWorkspaceMemberAccess returns the WorkspaceMemberAccess field value
 func (o *List) GetWorkspaceMemberAccess() []V2ListsPostRequestDataWorkspaceMemberAccessInner {
 	if o == nil {
@@ -215,7 +210,6 @@ func (o *List) GetWorkspaceMemberAccessOk() ([]V2ListsPostRequestDataWorkspaceMe
 func (o *List) SetWorkspaceMemberAccess(v []V2ListsPostRequestDataWorkspaceMemberAccessInner) {
 	o.WorkspaceMemberAccess = v
 }
-
 
 // GetCreatedByActor returns the CreatedByActor field value
 func (o *List) GetCreatedByActor() ListCreatedByActor {
@@ -241,7 +235,6 @@ func (o *List) SetCreatedByActor(v ListCreatedByActor) {
 	o.CreatedByActor = v
 }
 
-
 // GetCreatedAt returns the CreatedAt field value
 func (o *List) GetCreatedAt() string {
 	if o == nil {
@@ -266,9 +259,8 @@ func (o *List) SetCreatedAt(v string) {
 	o.CreatedAt = v
 }
 
-
 func (o List) MarshalJSON() ([]byte, error) {
-	toSerialize,err := o.ToMap()
+	toSerialize, err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
 	}
@@ -305,32 +297,31 @@ func (o *List) UnmarshalJSON(data []byte) (err error) {
 
 	// defaultValueFuncMap captures the default values for required properties.
 	// These values are used when required properties are missing from the payload.
-	defaultValueFuncMap := map[string]func() interface{} {
-	}
+	defaultValueFuncMap := map[string]func() interface{}{}
 	var defaultValueApplied bool
 	allProperties := make(map[string]interface{})
 
 	err = json.Unmarshal(data, &allProperties)
 
 	if err != nil {
-		return err;
+		return err
 	}
 
-	for _, requiredProperty := range(requiredProperties) {
+	for _, requiredProperty := range requiredProperties {
 		if value, exists := allProperties[requiredProperty]; !exists || value == "" {
 			if _, ok := defaultValueFuncMap[requiredProperty]; ok {
 				allProperties[requiredProperty] = defaultValueFuncMap[requiredProperty]()
 				defaultValueApplied = true
 			}
 		}
-		if value, exists := allProperties[requiredProperty]; !exists || value == ""{
+		if value, exists := allProperties[requiredProperty]; !exists || value == "" {
 			return fmt.Errorf("no value given for required property %v", requiredProperty)
 		}
 	}
 
 	if defaultValueApplied {
 		data, err = json.Marshal(allProperties)
-		if err != nil{
+		if err != nil {
 			return err
 		}
 	}
@@ -384,5 +375,3 @@ func (v *NullableList) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
-
-

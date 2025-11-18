@@ -11,10 +11,10 @@ package libattio
 
 import (
 	"context"
+	libattio "github.com/fastah/libattio"
 	"github.com/stretchr/testify/assert"
 	"github.com/stretchr/testify/require"
 	"testing"
-	libattio "github.com/fastah/libattio"
 )
 
 func Test_libattio_MeetingsAPIService(t *testing.T) {
@@ -24,7 +24,7 @@ func Test_libattio_MeetingsAPIService(t *testing.T) {
 
 	t.Run("Test MeetingsAPIService V2MeetingsGet", func(t *testing.T) {
 
-		t.Skip("skip test")  // remove to run test
+		t.Skip("skip test") // remove to run test
 
 		resp, httpRes, err := apiClient.MeetingsAPI.V2MeetingsGet(context.Background()).Execute()
 
@@ -36,11 +36,23 @@ func Test_libattio_MeetingsAPIService(t *testing.T) {
 
 	t.Run("Test MeetingsAPIService V2MeetingsMeetingIdGet", func(t *testing.T) {
 
-		t.Skip("skip test")  // remove to run test
+		t.Skip("skip test") // remove to run test
 
 		var meetingId string
 
 		resp, httpRes, err := apiClient.MeetingsAPI.V2MeetingsMeetingIdGet(context.Background(), meetingId).Execute()
+
+		require.Nil(t, err)
+		require.NotNil(t, resp)
+		assert.Equal(t, 200, httpRes.StatusCode)
+
+	})
+
+	t.Run("Test MeetingsAPIService V2MeetingsPost", func(t *testing.T) {
+
+		t.Skip("skip test") // remove to run test
+
+		resp, httpRes, err := apiClient.MeetingsAPI.V2MeetingsPost(context.Background()).Execute()
 
 		require.Nil(t, err)
 		require.NotNil(t, resp)

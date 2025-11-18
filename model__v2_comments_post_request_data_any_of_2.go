@@ -24,11 +24,11 @@ type V2CommentsPostRequestDataAnyOf2 struct {
 	// The format that the comment content is provided in. The `plaintext` format uses the line feed character `\\n` to create new lines within the note content. Rich text formatting and links are not supported.
 	Format string `json:"format"`
 	// The content of the comment itself. Workspace members can be mentioned using their email address, otherwise email addresses will be presented to users as clickable mailto links.
-	Content string `json:"content"`
-	Author V2CommentsPostRequestDataAnyOfAuthor `json:"author"`
+	Content string                               `json:"content"`
+	Author  V2CommentsPostRequestDataAnyOfAuthor `json:"author"`
 	// `created_at` will default to the current time. However, if you wish to backdate a comment for migration or other purposes, you can override with a custom `created_at` value. Note that dates before 1970 or in the future are not allowed.
-	CreatedAt *string `json:"created_at,omitempty"`
-	Entry V2CommentsPostRequestDataAnyOf2Entry `json:"entry"`
+	CreatedAt            *string                              `json:"created_at,omitempty"`
+	Entry                V2CommentsPostRequestDataAnyOf2Entry `json:"entry"`
 	AdditionalProperties map[string]interface{}
 }
 
@@ -79,7 +79,6 @@ func (o *V2CommentsPostRequestDataAnyOf2) SetFormat(v string) {
 	o.Format = v
 }
 
-
 // GetContent returns the Content field value
 func (o *V2CommentsPostRequestDataAnyOf2) GetContent() string {
 	if o == nil {
@@ -104,7 +103,6 @@ func (o *V2CommentsPostRequestDataAnyOf2) SetContent(v string) {
 	o.Content = v
 }
 
-
 // GetAuthor returns the Author field value
 func (o *V2CommentsPostRequestDataAnyOf2) GetAuthor() V2CommentsPostRequestDataAnyOfAuthor {
 	if o == nil {
@@ -128,7 +126,6 @@ func (o *V2CommentsPostRequestDataAnyOf2) GetAuthorOk() (*V2CommentsPostRequestD
 func (o *V2CommentsPostRequestDataAnyOf2) SetAuthor(v V2CommentsPostRequestDataAnyOfAuthor) {
 	o.Author = v
 }
-
 
 // GetCreatedAt returns the CreatedAt field value if set, zero value otherwise.
 func (o *V2CommentsPostRequestDataAnyOf2) GetCreatedAt() string {
@@ -186,9 +183,8 @@ func (o *V2CommentsPostRequestDataAnyOf2) SetEntry(v V2CommentsPostRequestDataAn
 	o.Entry = v
 }
 
-
 func (o V2CommentsPostRequestDataAnyOf2) MarshalJSON() ([]byte, error) {
-	toSerialize,err := o.ToMap()
+	toSerialize, err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
 	}
@@ -225,32 +221,31 @@ func (o *V2CommentsPostRequestDataAnyOf2) UnmarshalJSON(data []byte) (err error)
 
 	// defaultValueFuncMap captures the default values for required properties.
 	// These values are used when required properties are missing from the payload.
-	defaultValueFuncMap := map[string]func() interface{} {
-	}
+	defaultValueFuncMap := map[string]func() interface{}{}
 	var defaultValueApplied bool
 	allProperties := make(map[string]interface{})
 
 	err = json.Unmarshal(data, &allProperties)
 
 	if err != nil {
-		return err;
+		return err
 	}
 
-	for _, requiredProperty := range(requiredProperties) {
+	for _, requiredProperty := range requiredProperties {
 		if value, exists := allProperties[requiredProperty]; !exists || value == "" {
 			if _, ok := defaultValueFuncMap[requiredProperty]; ok {
 				allProperties[requiredProperty] = defaultValueFuncMap[requiredProperty]()
 				defaultValueApplied = true
 			}
 		}
-		if value, exists := allProperties[requiredProperty]; !exists || value == ""{
+		if value, exists := allProperties[requiredProperty]; !exists || value == "" {
 			return fmt.Errorf("no value given for required property %v", requiredProperty)
 		}
 	}
 
 	if defaultValueApplied {
 		data, err = json.Marshal(allProperties)
-		if err != nil{
+		if err != nil {
 			return err
 		}
 	}
@@ -313,5 +308,3 @@ func (v *NullableV2CommentsPostRequestDataAnyOf2) UnmarshalJSON(src []byte) erro
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
-
-

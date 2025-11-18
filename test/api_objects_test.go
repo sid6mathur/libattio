@@ -11,10 +11,10 @@ package libattio
 
 import (
 	"context"
+	libattio "github.com/fastah/libattio"
 	"github.com/stretchr/testify/assert"
 	"github.com/stretchr/testify/require"
 	"testing"
-	libattio "github.com/fastah/libattio"
 )
 
 func Test_libattio_ObjectsAPIService(t *testing.T) {
@@ -24,7 +24,7 @@ func Test_libattio_ObjectsAPIService(t *testing.T) {
 
 	t.Run("Test ObjectsAPIService V2ObjectsGet", func(t *testing.T) {
 
-		t.Skip("skip test")  // remove to run test
+		t.Skip("skip test") // remove to run test
 
 		resp, httpRes, err := apiClient.ObjectsAPI.V2ObjectsGet(context.Background()).Execute()
 
@@ -36,7 +36,7 @@ func Test_libattio_ObjectsAPIService(t *testing.T) {
 
 	t.Run("Test ObjectsAPIService V2ObjectsObjectGet", func(t *testing.T) {
 
-		t.Skip("skip test")  // remove to run test
+		t.Skip("skip test") // remove to run test
 
 		var object string
 
@@ -50,7 +50,7 @@ func Test_libattio_ObjectsAPIService(t *testing.T) {
 
 	t.Run("Test ObjectsAPIService V2ObjectsObjectPatch", func(t *testing.T) {
 
-		t.Skip("skip test")  // remove to run test
+		t.Skip("skip test") // remove to run test
 
 		var object string
 
@@ -64,7 +64,7 @@ func Test_libattio_ObjectsAPIService(t *testing.T) {
 
 	t.Run("Test ObjectsAPIService V2ObjectsPost", func(t *testing.T) {
 
-		t.Skip("skip test")  // remove to run test
+		t.Skip("skip test") // remove to run test
 
 		resp, httpRes, err := apiClient.ObjectsAPI.V2ObjectsPost(context.Background()).Execute()
 

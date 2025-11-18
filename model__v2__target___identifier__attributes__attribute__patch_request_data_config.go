@@ -20,7 +20,7 @@ var _ MappedNullable = &V2TargetIdentifierAttributesAttributePatchRequestDataCon
 
 // V2TargetIdentifierAttributesAttributePatchRequestDataConfig Additional, type-dependent configuration for the attribute.
 type V2TargetIdentifierAttributesAttributePatchRequestDataConfig struct {
-	Currency *V2TargetIdentifierAttributesPostRequestDataConfigCurrency `json:"currency,omitempty"`
+	Currency        *V2TargetIdentifierAttributesPostRequestDataConfigCurrency        `json:"currency,omitempty"`
 	RecordReference *V2TargetIdentifierAttributesPostRequestDataConfigRecordReference `json:"record_reference,omitempty"`
 }
 
@@ -106,7 +106,7 @@ func (o *V2TargetIdentifierAttributesAttributePatchRequestDataConfig) SetRecordR
 }
 
 func (o V2TargetIdentifierAttributesAttributePatchRequestDataConfig) MarshalJSON() ([]byte, error) {
-	toSerialize,err := o.ToMap()
+	toSerialize, err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
 	}
@@ -159,5 +159,3 @@ func (v *NullableV2TargetIdentifierAttributesAttributePatchRequestDataConfig) Un
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
-
-

@@ -20,12 +20,11 @@ import (
 	"strings"
 )
 
-
 // WorkspaceMembersAPIService WorkspaceMembersAPI service
 type WorkspaceMembersAPIService service
 
 type ApiV2WorkspaceMembersGetRequest struct {
-	ctx context.Context
+	ctx        context.Context
 	ApiService *WorkspaceMembersAPIService
 }
 
@@ -40,24 +39,25 @@ Lists all workspace members in the workspace.
 
 Required scopes: `user_management:read`.
 
- @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @return ApiV2WorkspaceMembersGetRequest
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@return ApiV2WorkspaceMembersGetRequest
 */
 func (a *WorkspaceMembersAPIService) V2WorkspaceMembersGet(ctx context.Context) ApiV2WorkspaceMembersGetRequest {
 	return ApiV2WorkspaceMembersGetRequest{
 		ApiService: a,
-		ctx: ctx,
+		ctx:        ctx,
 	}
 }
 
 // Execute executes the request
-//  @return V2WorkspaceMembersGet200Response
+//
+//	@return V2WorkspaceMembersGet200Response
 func (a *WorkspaceMembersAPIService) V2WorkspaceMembersGetExecute(r ApiV2WorkspaceMembersGetRequest) (*V2WorkspaceMembersGet200Response, *http.Response, error) {
 	var (
-		localVarHTTPMethod   = http.MethodGet
-		localVarPostBody     interface{}
-		formFiles            []formFile
-		localVarReturnValue  *V2WorkspaceMembersGet200Response
+		localVarHTTPMethod  = http.MethodGet
+		localVarPostBody    interface{}
+		formFiles           []formFile
+		localVarReturnValue *V2WorkspaceMembersGet200Response
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "WorkspaceMembersAPIService.V2WorkspaceMembersGet")
@@ -126,8 +126,8 @@ func (a *WorkspaceMembersAPIService) V2WorkspaceMembersGetExecute(r ApiV2Workspa
 }
 
 type ApiV2WorkspaceMembersWorkspaceMemberIdGetRequest struct {
-	ctx context.Context
-	ApiService *WorkspaceMembersAPIService
+	ctx               context.Context
+	ApiService        *WorkspaceMembersAPIService
 	workspaceMemberId string
 }
 
@@ -142,26 +142,27 @@ Gets a single workspace member by ID.
 
 Required scopes: `user_management:read`.
 
- @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @param workspaceMemberId
- @return ApiV2WorkspaceMembersWorkspaceMemberIdGetRequest
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@param workspaceMemberId
+	@return ApiV2WorkspaceMembersWorkspaceMemberIdGetRequest
 */
 func (a *WorkspaceMembersAPIService) V2WorkspaceMembersWorkspaceMemberIdGet(ctx context.Context, workspaceMemberId string) ApiV2WorkspaceMembersWorkspaceMemberIdGetRequest {
 	return ApiV2WorkspaceMembersWorkspaceMemberIdGetRequest{
-		ApiService: a,
-		ctx: ctx,
+		ApiService:        a,
+		ctx:               ctx,
 		workspaceMemberId: workspaceMemberId,
 	}
 }
 
 // Execute executes the request
-//  @return V2WorkspaceMembersWorkspaceMemberIdGet200Response
+//
+//	@return V2WorkspaceMembersWorkspaceMemberIdGet200Response
 func (a *WorkspaceMembersAPIService) V2WorkspaceMembersWorkspaceMemberIdGetExecute(r ApiV2WorkspaceMembersWorkspaceMemberIdGetRequest) (*V2WorkspaceMembersWorkspaceMemberIdGet200Response, *http.Response, error) {
 	var (
-		localVarHTTPMethod   = http.MethodGet
-		localVarPostBody     interface{}
-		formFiles            []formFile
-		localVarReturnValue  *V2WorkspaceMembersWorkspaceMemberIdGet200Response
+		localVarHTTPMethod  = http.MethodGet
+		localVarPostBody    interface{}
+		formFiles           []formFile
+		localVarReturnValue *V2WorkspaceMembersWorkspaceMemberIdGet200Response
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "WorkspaceMembersAPIService.V2WorkspaceMembersWorkspaceMemberIdGet")
@@ -222,8 +223,8 @@ func (a *WorkspaceMembersAPIService) V2WorkspaceMembersWorkspaceMemberIdGetExecu
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 		}
 		return localVarReturnValue, localVarHTTPResponse, newErr
 	}

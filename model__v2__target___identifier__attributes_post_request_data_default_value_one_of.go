@@ -12,8 +12,8 @@ Contact: support@attio.com
 package libattio
 
 import (
-	"encoding/json"
 	"bytes"
+	"encoding/json"
 	"fmt"
 )
 
@@ -22,7 +22,7 @@ var _ MappedNullable = &V2TargetIdentifierAttributesPostRequestDataDefaultValueO
 
 // V2TargetIdentifierAttributesPostRequestDataDefaultValueOneOf struct for V2TargetIdentifierAttributesPostRequestDataDefaultValueOneOf
 type V2TargetIdentifierAttributesPostRequestDataDefaultValueOneOf struct {
-	Type string `json:"type"`
+	Type     string                                                               `json:"type"`
 	Template V2TargetIdentifierAttributesPostRequestDataDefaultValueOneOfTemplate `json:"template"`
 }
 
@@ -71,7 +71,6 @@ func (o *V2TargetIdentifierAttributesPostRequestDataDefaultValueOneOf) SetType(v
 	o.Type = v
 }
 
-
 // GetTemplate returns the Template field value
 func (o *V2TargetIdentifierAttributesPostRequestDataDefaultValueOneOf) GetTemplate() V2TargetIdentifierAttributesPostRequestDataDefaultValueOneOfTemplate {
 	if o == nil {
@@ -96,9 +95,8 @@ func (o *V2TargetIdentifierAttributesPostRequestDataDefaultValueOneOf) SetTempla
 	o.Template = v
 }
 
-
 func (o V2TargetIdentifierAttributesPostRequestDataDefaultValueOneOf) MarshalJSON() ([]byte, error) {
-	toSerialize,err := o.ToMap()
+	toSerialize, err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
 	}
@@ -123,32 +121,31 @@ func (o *V2TargetIdentifierAttributesPostRequestDataDefaultValueOneOf) Unmarshal
 
 	// defaultValueFuncMap captures the default values for required properties.
 	// These values are used when required properties are missing from the payload.
-	defaultValueFuncMap := map[string]func() interface{} {
-	}
+	defaultValueFuncMap := map[string]func() interface{}{}
 	var defaultValueApplied bool
 	allProperties := make(map[string]interface{})
 
 	err = json.Unmarshal(data, &allProperties)
 
 	if err != nil {
-		return err;
+		return err
 	}
 
-	for _, requiredProperty := range(requiredProperties) {
+	for _, requiredProperty := range requiredProperties {
 		if value, exists := allProperties[requiredProperty]; !exists || value == "" {
 			if _, ok := defaultValueFuncMap[requiredProperty]; ok {
 				allProperties[requiredProperty] = defaultValueFuncMap[requiredProperty]()
 				defaultValueApplied = true
 			}
 		}
-		if value, exists := allProperties[requiredProperty]; !exists || value == ""{
+		if value, exists := allProperties[requiredProperty]; !exists || value == "" {
 			return fmt.Errorf("no value given for required property %v", requiredProperty)
 		}
 	}
 
 	if defaultValueApplied {
 		data, err = json.Marshal(allProperties)
-		if err != nil{
+		if err != nil {
 			return err
 		}
 	}
@@ -202,5 +199,3 @@ func (v *NullableV2TargetIdentifierAttributesPostRequestDataDefaultValueOneOf) U
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
-
-

@@ -1609,7 +1609,7 @@
                                     "ARS",
                                     "AUD",
                                     "BRL",
-                                    "BEL",
+                                    "BGN",
                                     "CAD",
                                     "CLP",
                                     "CNY",
@@ -2960,7 +2960,7 @@
                                             "ARS",
                                             "AUD",
                                             "BRL",
-                                            "BEL",
+                                            "BGN",
                                             "CAD",
                                             "CLP",
                                             "CNY",
@@ -4610,7 +4610,7 @@
                     {
                         "schema": {
                             "type": "integer",
-                            "description": "The maximum number of results to return. See the [full guide to pagination here](/rest-api/how-to/pagination).",
+                            "description": "The maximum number of results to return. See the [full guide to pagination here](/rest-api/guides/pagination).",
                             "example": 10
                         },
                         "required": false,
@@ -4620,7 +4620,7 @@
                     {
                         "schema": {
                             "type": "integer",
-                            "description": "The number of results to skip over before returning. See the [full guide to pagination here](/rest-api/how-to/pagination).",
+                            "description": "The number of results to skip over before returning. See the [full guide to pagination here](/rest-api/guides/pagination).",
                             "example": 5
                         },
                         "required": false,
@@ -4858,7 +4858,7 @@
                                                                     "ARS",
                                                                     "AUD",
                                                                     "BRL",
-                                                                    "BEL",
+                                                                    "BGN",
                                                                     "CAD",
                                                                     "CLP",
                                                                     "CNY",
@@ -5394,7 +5394,7 @@
                                                                     "ARS",
                                                                     "AUD",
                                                                     "BRL",
-                                                                    "BEL",
+                                                                    "BGN",
                                                                     "CAD",
                                                                     "CLP",
                                                                     "CNY",
@@ -6833,7 +6833,7 @@
                                 "properties": {
                                     "filter": {
                                         "type": "object",
-                                        "description": "An object used to filter results to a subset of results. See the [full guide to filtering and sorting here](/rest-api/how-to/filtering-and-sorting).",
+                                        "description": "An object used to filter results to a subset of results. See the [full guide to filtering and sorting here](/rest-api/guides/filtering-and-sorting).",
                                         "additionalProperties": true,
                                         "example": {
                                             "name": "Ada Lovelace"
@@ -6914,7 +6914,7 @@
                                                 }
                                             ]
                                         },
-                                        "description": "An object used to sort results. See the [full guide to filtering and sorting here](/rest-api/how-to/filtering-and-sorting).",
+                                        "description": "An object used to sort results. See the [full guide to filtering and sorting here](/rest-api/guides/filtering-and-sorting).",
                                         "example": [
                                             {
                                                 "direction": "asc",
@@ -6925,12 +6925,12 @@
                                     },
                                     "limit": {
                                         "type": "number",
-                                        "description": "The maximum number of results to return. Defaults to 500. See the [full guide to pagination here](/rest-api/how-to/pagination).",
+                                        "description": "The maximum number of results to return. Defaults to 500. See the [full guide to pagination here](/rest-api/guides/pagination).",
                                         "example": 500
                                     },
                                     "offset": {
                                         "type": "number",
-                                        "description": "The number of results to skip over before returning. Defaults to 0. See the [full guide to pagination here](/rest-api/how-to/pagination).",
+                                        "description": "The number of results to skip over before returning. Defaults to 0. See the [full guide to pagination here](/rest-api/guides/pagination).",
                                         "example": 0
                                     }
                                 }
@@ -7204,7 +7204,7 @@
                                                                                     "ARS",
                                                                                     "AUD",
                                                                                     "BRL",
-                                                                                    "BEL",
+                                                                                    "BGN",
                                                                                     "CAD",
                                                                                     "CLP",
                                                                                     "CNY",
@@ -9317,7 +9317,7 @@
                                                                                 "ARS",
                                                                                 "AUD",
                                                                                 "BRL",
-                                                                                "BEL",
+                                                                                "BGN",
                                                                                 "CAD",
                                                                                 "CLP",
                                                                                 "CNY",
@@ -11229,7 +11229,7 @@
                                                     "additionalProperties": {
                                                         "type": "array",
                                                         "items": {
-                                                            "anyOf": [
+                                                            "oneOf": [
                                                                 {
                                                                     "type": "object",
                                                                     "properties": {
@@ -11438,7 +11438,7 @@
                                                                                 "ARS",
                                                                                 "AUD",
                                                                                 "BRL",
-                                                                                "BEL",
+                                                                                "BGN",
                                                                                 "CAD",
                                                                                 "CLP",
                                                                                 "CNY",
@@ -13315,7 +13315,7 @@
                                                     "additionalProperties": {
                                                         "type": "array",
                                                         "items": {
-                                                            "anyOf": [
+                                                            "oneOf": [
                                                                 {
                                                                     "type": "object",
                                                                     "properties": {
@@ -13524,7 +13524,7 @@
                                                                                 "ARS",
                                                                                 "AUD",
                                                                                 "BRL",
-                                                                                "BEL",
+                                                                                "BGN",
                                                                                 "CAD",
                                                                                 "CLP",
                                                                                 "CNY",
@@ -15395,7 +15395,7 @@
                                                     "additionalProperties": {
                                                         "type": "array",
                                                         "items": {
-                                                            "anyOf": [
+                                                            "oneOf": [
                                                                 {
                                                                     "type": "object",
                                                                     "properties": {
@@ -15604,7 +15604,7 @@
                                                                                 "ARS",
                                                                                 "AUD",
                                                                                 "BRL",
-                                                                                "BEL",
+                                                                                "BGN",
                                                                                 "CAD",
                                                                                 "CLP",
                                                                                 "CNY",
@@ -17516,7 +17516,7 @@
                                                     "additionalProperties": {
                                                         "type": "array",
                                                         "items": {
-                                                            "anyOf": [
+                                                            "oneOf": [
                                                                 {
                                                                     "type": "object",
                                                                     "properties": {
@@ -17725,7 +17725,7 @@
                                                                                 "ARS",
                                                                                 "AUD",
                                                                                 "BRL",
-                                                                                "BEL",
+                                                                                "BGN",
                                                                                 "CAD",
                                                                                 "CLP",
                                                                                 "CNY",
@@ -19662,7 +19662,7 @@
                     {
                         "schema": {
                             "type": "integer",
-                            "description": "The maximum number of results to return. See the [full guide to pagination here](/rest-api/how-to/pagination).",
+                            "description": "The maximum number of results to return. See the [full guide to pagination here](/rest-api/guides/pagination).",
                             "example": 10
                         },
                         "required": false,
@@ -19672,7 +19672,7 @@
                     {
                         "schema": {
                             "type": "integer",
-                            "description": "The number of results to skip over before returning. See the [full guide to pagination here](/rest-api/how-to/pagination).",
+                            "description": "The number of results to skip over before returning. See the [full guide to pagination here](/rest-api/guides/pagination).",
                             "example": 5
                         },
                         "required": false,
@@ -19900,7 +19900,7 @@
                                                                     "ARS",
                                                                     "AUD",
                                                                     "BRL",
-                                                                    "BEL",
+                                                                    "BGN",
                                                                     "CAD",
                                                                     "CLP",
                                                                     "CNY",
@@ -21715,7 +21715,7 @@
                     {
                         "schema": {
                             "type": "integer",
-                            "description": "The maximum number of results to return. The default is `100` and the maximum is `1000`. See the [full guide to pagination here](/rest-api/how-to/pagination).",
+                            "description": "The maximum number of results to return. The default is `100` and the maximum is `1000`. See the [full guide to pagination here](/rest-api/guides/pagination).",
                             "example": 10
                         },
                         "required": false,
@@ -21725,7 +21725,7 @@
                     {
                         "schema": {
                             "type": "integer",
-                            "description": "The number of results to skip over before returning. The default is `0`. See the [full guide to pagination here](/rest-api/how-to/pagination).",
+                            "description": "The number of results to skip over before returning. The default is `0`. See the [full guide to pagination here](/rest-api/guides/pagination).",
                             "example": 5
                         },
                         "required": false,
@@ -21782,6 +21782,403 @@
                                         "data"
                                     ],
                                     "description": "Success"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/v2/objects/records/search": {
+            "post": {
+                "summary": "Search records",
+                "description": "The search records endpoint provides a convenient way to fuzzy search for records across one or more objects.\nThe matching strategy employed in this endpoint follows the in-product strategy and will match names, domains, emails, phone numbers and social handles on people and companies, and labels on all other objects.\nPlease note, results returned from this endpoint are eventually consistent. For results which are guaranteed to be up to date, please use the record query endpoint instead.\n\nThis endpoint is in beta. We will aim to avoid breaking changes, but small updates may be made as we roll out to more users.\n\nRequired scopes: `record_permission:read`, `object_configuration:read`.",
+                "tags": [
+                    "Records"
+                ],
+                "security": [
+                    {
+                        "oauth2": [
+                            "record_permission:read",
+                            "object_configuration:read"
+                        ]
+                    }
+                ],
+                "x-mint": {
+                    "metadata": {
+                        "tag": "BETA"
+                    }
+                },
+                "requestBody": {
+                    "required": true,
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "type": "object",
+                                "properties": {
+                                    "query": {
+                                        "type": "string",
+                                        "maxLength": 256,
+                                        "description": "Query string to search for. An empty string returns a default set of results.",
+                                        "example": "alan mathis"
+                                    },
+                                    "limit": {
+                                        "type": "number",
+                                        "minimum": 1,
+                                        "maximum": 25,
+                                        "default": 25,
+                                        "description": "The maximum number of results to return. Defaults to 25.",
+                                        "example": 25
+                                    },
+                                    "objects": {
+                                        "type": "array",
+                                        "items": {
+                                            "type": "string",
+                                            "description": "The object slug or UUID that you would like to filter by.",
+                                            "example": "people"
+                                        },
+                                        "minItems": 1,
+                                        "description": "Specifies which objects to filter results by. At least one object must be specified. Accepts object slugs or IDs.",
+                                        "example": [
+                                            "people",
+                                            "deals",
+                                            "1b31b79a-ddf9-4d57-a320-884061b2bcff"
+                                        ]
+                                    },
+                                    "request_as": {
+                                        "anyOf": [
+                                            {
+                                                "type": "object",
+                                                "properties": {
+                                                    "type": {
+                                                        "type": "string",
+                                                        "enum": [
+                                                            "workspace"
+                                                        ]
+                                                    }
+                                                },
+                                                "required": [
+                                                    "type"
+                                                ]
+                                            },
+                                            {
+                                                "type": "object",
+                                                "properties": {
+                                                    "type": {
+                                                        "type": "string",
+                                                        "enum": [
+                                                            "workspace-member"
+                                                        ]
+                                                    },
+                                                    "workspace_member_id": {
+                                                        "type": "string",
+                                                        "format": "uuid",
+                                                        "example": "50cf242c-7fa3-4cad-87d0-75b1af71c57b"
+                                                    }
+                                                },
+                                                "required": [
+                                                    "type",
+                                                    "workspace_member_id"
+                                                ]
+                                            },
+                                            {
+                                                "type": "object",
+                                                "properties": {
+                                                    "type": {
+                                                        "type": "string",
+                                                        "enum": [
+                                                            "workspace-member"
+                                                        ]
+                                                    },
+                                                    "email_address": {
+                                                        "type": "string",
+                                                        "format": "email",
+                                                        "example": "alice@attio.com"
+                                                    }
+                                                },
+                                                "required": [
+                                                    "type",
+                                                    "email_address"
+                                                ]
+                                            }
+                                        ],
+                                        "description": "Specifies the context in which to perform the search. Use 'workspace' to return all search results or specify a workspace member to limit results to what one specific person in your workspace can see."
+                                    }
+                                },
+                                "required": [
+                                    "query",
+                                    "objects",
+                                    "request_as"
+                                ]
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "200": {
+                        "description": "Success",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "type": "object",
+                                    "properties": {
+                                        "data": {
+                                            "type": "array",
+                                            "items": {
+                                                "anyOf": [
+                                                    {
+                                                        "type": "object",
+                                                        "properties": {
+                                                            "id": {
+                                                                "type": "object",
+                                                                "properties": {
+                                                                    "workspace_id": {
+                                                                        "type": "string",
+                                                                        "format": "uuid",
+                                                                        "description": "A UUID identifying the workspace this record belongs to.",
+                                                                        "example": "14beef7a-99f7-4534-a87e-70b564330a4c"
+                                                                    },
+                                                                    "object_id": {
+                                                                        "type": "string",
+                                                                        "format": "uuid",
+                                                                        "description": "A UUID identifying the object this record belongs to.",
+                                                                        "example": "97052eb9-e65e-443f-a297-f2d9a4a7f795"
+                                                                    },
+                                                                    "record_id": {
+                                                                        "type": "string",
+                                                                        "format": "uuid",
+                                                                        "description": "A UUID identifying this record.",
+                                                                        "example": "bf071e1f-6035-429d-b874-d83ea64ea13b"
+                                                                    }
+                                                                },
+                                                                "required": [
+                                                                    "workspace_id",
+                                                                    "object_id",
+                                                                    "record_id"
+                                                                ]
+                                                            },
+                                                            "record_text": {
+                                                                "type": "string",
+                                                                "description": "A human-readable label for the record. Present on records from all objects.",
+                                                                "example": "Alan Mathison Turing"
+                                                            },
+                                                            "record_image": {
+                                                                "type": [
+                                                                    "string",
+                                                                    "null"
+                                                                ],
+                                                                "description": "The image for the record.",
+                                                                "example": "https://cdn.image-service.com/images/profiles/e67b8980-7dbb-46bf-95e3-266d7bceb096"
+                                                            },
+                                                            "object_slug": {
+                                                                "type": "string",
+                                                                "description": "The slug of the object this record belongs to.",
+                                                                "example": "applications"
+                                                            }
+                                                        },
+                                                        "required": [
+                                                            "id",
+                                                            "record_text",
+                                                            "record_image",
+                                                            "object_slug"
+                                                        ]
+                                                    },
+                                                    {
+                                                        "type": "object",
+                                                        "properties": {
+                                                            "id": {
+                                                                "type": "object",
+                                                                "properties": {
+                                                                    "workspace_id": {
+                                                                        "type": "string",
+                                                                        "format": "uuid",
+                                                                        "description": "A UUID identifying the workspace this record belongs to.",
+                                                                        "example": "14beef7a-99f7-4534-a87e-70b564330a4c"
+                                                                    },
+                                                                    "object_id": {
+                                                                        "type": "string",
+                                                                        "format": "uuid",
+                                                                        "description": "A UUID identifying the object this record belongs to.",
+                                                                        "example": "97052eb9-e65e-443f-a297-f2d9a4a7f795"
+                                                                    },
+                                                                    "record_id": {
+                                                                        "type": "string",
+                                                                        "format": "uuid",
+                                                                        "description": "A UUID identifying this record.",
+                                                                        "example": "bf071e1f-6035-429d-b874-d83ea64ea13b"
+                                                                    }
+                                                                },
+                                                                "required": [
+                                                                    "workspace_id",
+                                                                    "object_id",
+                                                                    "record_id"
+                                                                ]
+                                                            },
+                                                            "record_text": {
+                                                                "type": "string",
+                                                                "description": "A human-readable label for the record. Present on records from all objects.",
+                                                                "example": "Alan Mathison Turing"
+                                                            },
+                                                            "record_image": {
+                                                                "type": [
+                                                                    "string",
+                                                                    "null"
+                                                                ],
+                                                                "description": "The image for the record.",
+                                                                "example": "https://cdn.image-service.com/images/profiles/e67b8980-7dbb-46bf-95e3-266d7bceb096"
+                                                            },
+                                                            "object_slug": {
+                                                                "type": "string",
+                                                                "enum": [
+                                                                    "people"
+                                                                ],
+                                                                "description": "The slug of the object this record belongs to.",
+                                                                "example": "people"
+                                                            },
+                                                            "email_addresses": {
+                                                                "type": "array",
+                                                                "items": {
+                                                                    "type": "string",
+                                                                    "example": "alan@bletchley.gov.uk"
+                                                                },
+                                                                "description": "The person's email addresses."
+                                                            },
+                                                            "phone_numbers": {
+                                                                "type": "array",
+                                                                "items": {
+                                                                    "type": "string",
+                                                                    "example": "+15558675309"
+                                                                },
+                                                                "description": "The person's phone numbers."
+                                                            }
+                                                        },
+                                                        "required": [
+                                                            "id",
+                                                            "record_text",
+                                                            "record_image",
+                                                            "object_slug",
+                                                            "email_addresses",
+                                                            "phone_numbers"
+                                                        ]
+                                                    },
+                                                    {
+                                                        "type": "object",
+                                                        "properties": {
+                                                            "id": {
+                                                                "type": "object",
+                                                                "properties": {
+                                                                    "workspace_id": {
+                                                                        "type": "string",
+                                                                        "format": "uuid",
+                                                                        "description": "A UUID identifying the workspace this record belongs to.",
+                                                                        "example": "14beef7a-99f7-4534-a87e-70b564330a4c"
+                                                                    },
+                                                                    "object_id": {
+                                                                        "type": "string",
+                                                                        "format": "uuid",
+                                                                        "description": "A UUID identifying the object this record belongs to.",
+                                                                        "example": "97052eb9-e65e-443f-a297-f2d9a4a7f795"
+                                                                    },
+                                                                    "record_id": {
+                                                                        "type": "string",
+                                                                        "format": "uuid",
+                                                                        "description": "A UUID identifying this record.",
+                                                                        "example": "bf071e1f-6035-429d-b874-d83ea64ea13b"
+                                                                    }
+                                                                },
+                                                                "required": [
+                                                                    "workspace_id",
+                                                                    "object_id",
+                                                                    "record_id"
+                                                                ]
+                                                            },
+                                                            "record_text": {
+                                                                "type": "string",
+                                                                "description": "A human-readable label for the record. Present on records from all objects.",
+                                                                "example": "Alan Mathison Turing"
+                                                            },
+                                                            "record_image": {
+                                                                "type": [
+                                                                    "string",
+                                                                    "null"
+                                                                ],
+                                                                "description": "The image for the record.",
+                                                                "example": "https://cdn.image-service.com/images/profiles/e67b8980-7dbb-46bf-95e3-266d7bceb096"
+                                                            },
+                                                            "object_slug": {
+                                                                "type": "string",
+                                                                "enum": [
+                                                                    "companies"
+                                                                ],
+                                                                "description": "The slug of the object this record belongs to.",
+                                                                "example": "companies"
+                                                            },
+                                                            "domains": {
+                                                                "type": "array",
+                                                                "items": {
+                                                                    "type": "string",
+                                                                    "example": "fundstack.com"
+                                                                },
+                                                                "description": "The company's domains."
+                                                            }
+                                                        },
+                                                        "required": [
+                                                            "id",
+                                                            "record_text",
+                                                            "record_image",
+                                                            "object_slug",
+                                                            "domains"
+                                                        ]
+                                                    }
+                                                ]
+                                            }
+                                        }
+                                    },
+                                    "required": [
+                                        "data"
+                                    ],
+                                    "description": "Success"
+                                }
+                            }
+                        }
+                    },
+                    "400": {
+                        "description": "Bad Request",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "type": "object",
+                                    "properties": {
+                                        "status_code": {
+                                            "type": "number",
+                                            "enum": [
+                                                400
+                                            ]
+                                        },
+                                        "type": {
+                                            "type": "string",
+                                            "enum": [
+                                                "invalid_request_error"
+                                            ]
+                                        },
+                                        "code": {
+                                            "type": "string",
+                                            "enum": [
+                                                "value_not_found"
+                                            ]
+                                        },
+                                        "message": {
+                                            "type": "string",
+                                            "example": "Object with slug/ID \"foobar\" not found."
+                                        }
+                                    },
+                                    "required": [
+                                        "status_code",
+                                        "type",
+                                        "code",
+                                        "message"
+                                    ],
+                                    "description": "Bad Request"
                                 }
                             }
                         }
@@ -22439,7 +22836,7 @@
                                 "properties": {
                                     "filter": {
                                         "type": "object",
-                                        "description": "An object used to filter results to a subset of results. See the [full guide to filtering and sorting here](/rest-api/how-to/filtering-and-sorting).",
+                                        "description": "An object used to filter results to a subset of results. See the [full guide to filtering and sorting here](/rest-api/guides/filtering-and-sorting).",
                                         "additionalProperties": true,
                                         "example": {
                                             "name": "Ada Lovelace"
@@ -22520,7 +22917,7 @@
                                                 }
                                             ]
                                         },
-                                        "description": "An object used to sort results. See the [full guide to filtering and sorting here](/rest-api/how-to/filtering-and-sorting).",
+                                        "description": "An object used to sort results. See the [full guide to filtering and sorting here](/rest-api/guides/filtering-and-sorting).",
                                         "example": [
                                             {
                                                 "direction": "asc",
@@ -22531,12 +22928,12 @@
                                     },
                                     "limit": {
                                         "type": "number",
-                                        "description": "The maximum number of results to return. Defaults to 500. See the [full guide to pagination here](/rest-api/how-to/pagination).",
+                                        "description": "The maximum number of results to return. Defaults to 500. See the [full guide to pagination here](/rest-api/guides/pagination).",
                                         "example": 500
                                     },
                                     "offset": {
                                         "type": "number",
-                                        "description": "The number of results to skip over before returning. Defaults to 0. See the [full guide to pagination here](/rest-api/how-to/pagination).",
+                                        "description": "The number of results to skip over before returning. Defaults to 0. See the [full guide to pagination here](/rest-api/guides/pagination).",
                                         "example": 0
                                     }
                                 }
@@ -22815,7 +23212,7 @@
                                                                                     "ARS",
                                                                                     "AUD",
                                                                                     "BRL",
-                                                                                    "BEL",
+                                                                                    "BGN",
                                                                                     "CAD",
                                                                                     "CLP",
                                                                                     "CNY",
@@ -24956,7 +25353,7 @@
                                                                                 "ARS",
                                                                                 "AUD",
                                                                                 "BRL",
-                                                                                "BEL",
+                                                                                "BGN",
                                                                                 "CAD",
                                                                                 "CLP",
                                                                                 "CNY",
@@ -27135,7 +27532,7 @@
                                                                                 "ARS",
                                                                                 "AUD",
                                                                                 "BRL",
-                                                                                "BEL",
+                                                                                "BGN",
                                                                                 "CAD",
                                                                                 "CLP",
                                                                                 "CNY",
@@ -29277,7 +29674,7 @@
                                                                                 "ARS",
                                                                                 "AUD",
                                                                                 "BRL",
-                                                                                "BEL",
+                                                                                "BGN",
                                                                                 "CAD",
                                                                                 "CLP",
                                                                                 "CNY",
@@ -31413,7 +31810,7 @@
                                                                                 "ARS",
                                                                                 "AUD",
                                                                                 "BRL",
-                                                                                "BEL",
+                                                                                "BGN",
                                                                                 "CAD",
                                                                                 "CLP",
                                                                                 "CNY",
@@ -33590,7 +33987,7 @@
                                                                                 "ARS",
                                                                                 "AUD",
                                                                                 "BRL",
-                                                                                "BEL",
+                                                                                "BGN",
                                                                                 "CAD",
                                                                                 "CLP",
                                                                                 "CNY",
@@ -35579,7 +35976,7 @@
                     {
                         "schema": {
                             "type": "integer",
-                            "description": "The maximum number of results to return. See the [full guide to pagination here](/rest-api/how-to/pagination).",
+                            "description": "The maximum number of results to return. See the [full guide to pagination here](/rest-api/guides/pagination).",
                             "example": 10
                         },
                         "required": false,
@@ -35589,7 +35986,7 @@
                     {
                         "schema": {
                             "type": "integer",
-                            "description": "The number of results to skip over before returning. See the [full guide to pagination here](/rest-api/how-to/pagination).",
+                            "description": "The number of results to skip over before returning. See the [full guide to pagination here](/rest-api/guides/pagination).",
                             "example": 5
                         },
                         "required": false,
@@ -35817,7 +36214,7 @@
                                                                     "ARS",
                                                                     "AUD",
                                                                     "BRL",
-                                                                    "BEL",
+                                                                    "BGN",
                                                                     "CAD",
                                                                     "CLP",
                                                                     "CNY",
@@ -37701,7 +38098,7 @@
                     {
                         "schema": {
                             "type": "integer",
-                            "description": "The maximum number of results to return. The default is `10` and the maximum is `50`. See the [full guide to pagination here](/rest-api/how-to/pagination).",
+                            "description": "The maximum number of results to return. The default is `10` and the maximum is `50`. See the [full guide to pagination here](/rest-api/guides/pagination).",
                             "example": 10
                         },
                         "required": false,
@@ -37711,7 +38108,7 @@
                     {
                         "schema": {
                             "type": "integer",
-                            "description": "The number of results to skip over before returning. The default is `0`. See the [full guide to pagination here](/rest-api/how-to/pagination).",
+                            "description": "The number of results to skip over before returning. The default is `0`. See the [full guide to pagination here](/rest-api/guides/pagination).",
                             "example": 5
                         },
                         "required": false,
@@ -38151,7 +38548,7 @@
                     {
                         "schema": {
                             "type": "integer",
-                            "description": "The maximum number of results to return. Defaults to 500. See the [full guide to pagination here](/rest-api/how-to/pagination).",
+                            "description": "The maximum number of results to return. Defaults to 500. See the [full guide to pagination here](/rest-api/guides/pagination).",
                             "example": 10
                         },
                         "required": false,
@@ -38161,7 +38558,7 @@
                     {
                         "schema": {
                             "type": "integer",
-                            "description": "The number of results to skip over before returning. Defaults to 0. See the [full guide to pagination here](/rest-api/how-to/pagination).",
+                            "description": "The number of results to skip over before returning. Defaults to 0. See the [full guide to pagination here](/rest-api/guides/pagination).",
                             "example": 5
                         },
                         "required": false,
@@ -38283,7 +38680,8 @@
                                         "properties": {
                                             "content": {
                                                 "type": "string",
-                                                "description": "The text content of the task, in the format specified by the `format` property.",
+                                                "maxLength": 2000,
+                                                "description": "The text content of the task, in the format specified by the `format` property. A max length of 2000 characters is enforced.",
                                                 "example": "Follow up on current software solutions"
                                             },
                                             "format": {
@@ -39660,7 +40058,7 @@
                     {
                         "schema": {
                             "type": "integer",
-                            "description": "The maximum number of results to return. The default is `10` and the maximum is `50`. See the [full guide to pagination here](/rest-api/how-to/pagination).",
+                            "description": "The maximum number of results to return. The default is `10` and the maximum is `50`. See the [full guide to pagination here](/rest-api/guides/pagination).",
                             "example": 10
                         },
                         "required": false,
@@ -39670,7 +40068,7 @@
                     {
                         "schema": {
                             "type": "integer",
-                            "description": "The number of results to skip over before returning. The default is `0`. See the [full guide to pagination here](/rest-api/how-to/pagination).",
+                            "description": "The number of results to skip over before returning. The default is `0`. See the [full guide to pagination here](/rest-api/guides/pagination).",
                             "example": 5
                         },
                         "required": false,
@@ -40272,7 +40670,7 @@
         "/v2/meetings": {
             "get": {
                 "summary": "List meetings",
-                "description": "Lists all meetings in the workspace using a deterministic sort order.\n\nRequired scopes: `meeting:read`, `record_permission:read`.",
+                "description": "Lists all meetings in the workspace using a deterministic sort order.\n\nThis endpoint is in beta. We will aim to avoid breaking changes, but small updates may be made as we roll out to more users.\n\nRequired scopes: `meeting:read`, `record_permission:read`.",
                 "tags": [
                     "Meetings"
                 ],
@@ -40284,7 +40682,11 @@
                         ]
                     }
                 ],
-                "x-hidden": true,
+                "x-mint": {
+                    "metadata": {
+                        "tag": "BETA"
+                    }
+                },
                 "parameters": [
                     {
                         "schema": {
@@ -40426,12 +40828,343 @@
                         }
                     }
                 }
+            },
+            "post": {
+                "summary": "Find or create a meeting",
+                "description": "Finds an existing meeting or creates a new one if it doesn't yet exist. [Please see here](/rest-api/guides/syncing-meetings) for a full guide on syncing meetings to Attio.\n\nThis endpoint is in alpha and may be subject to breaking changes as we gather feedback.\n\nRequired scopes: `meeting:read-write`, `record_permission:read`.",
+                "tags": [
+                    "Meetings"
+                ],
+                "security": [
+                    {
+                        "oauth2": [
+                            "meeting:read-write",
+                            "record_permission:read"
+                        ]
+                    }
+                ],
+                "x-hidden": true,
+                "x-mint": {
+                    "metadata": {
+                        "tag": "ALPHA"
+                    }
+                },
+                "requestBody": {
+                    "required": true,
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "type": "object",
+                                "properties": {
+                                    "data": {
+                                        "type": "object",
+                                        "properties": {
+                                            "title": {
+                                                "type": "string",
+                                                "description": "The title of the meeting.",
+                                                "example": "Onboarding Session"
+                                            },
+                                            "description": {
+                                                "type": "string",
+                                                "description": "The description of the meeting.",
+                                                "example": "Getting you up to speed with the platform and answering any questions you have."
+                                            },
+                                            "start": {
+                                                "anyOf": [
+                                                    {
+                                                        "type": "object",
+                                                        "properties": {
+                                                            "datetime": {
+                                                                "type": "string",
+                                                                "format": "date-time",
+                                                                "description": "An ISO 8601 datetime indicating when a non-all day meeting starts.",
+                                                                "example": "2027-11-27T14:00:00Z"
+                                                            },
+                                                            "timezone": {
+                                                                "type": [
+                                                                    "string",
+                                                                    "null"
+                                                                ],
+                                                                "description": "The IANA timezone the meeting starts in. If a datetime value is provided without an offset, this timezone will be used to convert the datetime to UTC using the timezone offset. If a datetime value is provided with an offset, this timezone will not be used to apply any additional offset to the datetime. Invalid timezones will be treated as UTC.",
+                                                                "example": "America/New_York"
+                                                            }
+                                                        },
+                                                        "required": [
+                                                            "datetime"
+                                                        ],
+                                                        "additionalProperties": false
+                                                    },
+                                                    {
+                                                        "type": "object",
+                                                        "properties": {
+                                                            "date": {
+                                                                "type": "string",
+                                                                "description": "An ISO 8601 date indicating when an all day meeting starts.",
+                                                                "example": "2027-11-27"
+                                                            }
+                                                        },
+                                                        "required": [
+                                                            "date"
+                                                        ],
+                                                        "additionalProperties": false
+                                                    }
+                                                ],
+                                                "description": "When the meeting starts. Use a datetime and optional timezone for non-all day meetings, or a date for all day meetings."
+                                            },
+                                            "end": {
+                                                "anyOf": [
+                                                    {
+                                                        "type": "object",
+                                                        "properties": {
+                                                            "datetime": {
+                                                                "type": "string",
+                                                                "format": "date-time",
+                                                                "description": "An ISO 8601 datetime indicating when a non-all day meeting ends. Note that this value is exclusive, meaning that the meeting ends before the specified time, not at it. For example, a one hour meeting starting at 14:00 would end at 15:00, not 15:59:59.",
+                                                                "example": "2027-11-27T15:00:00.000000000"
+                                                            },
+                                                            "timezone": {
+                                                                "type": [
+                                                                    "string",
+                                                                    "null"
+                                                                ],
+                                                                "description": "The IANA timezone the meeting ends in. If a datetime value is provided without an offset, this timezone will be used to convert the datetime to UTC using the timezone offset. If a datetime value is provided with an offset, this timezone will not be used to apply any additional offset to the datetime. Invalid timezones will be treated as UTC.",
+                                                                "example": "America/New_York"
+                                                            }
+                                                        },
+                                                        "required": [
+                                                            "datetime"
+                                                        ],
+                                                        "additionalProperties": false
+                                                    },
+                                                    {
+                                                        "type": "object",
+                                                        "properties": {
+                                                            "date": {
+                                                                "type": "string",
+                                                                "description": "An ISO 8601 date indicating when an all day meeting ends. Note that dates are exclusive, meaning that the meeting ends before the specified time, not at it. For example, a one day meeting on June 3rd would end on June 4th, not June 3rd.",
+                                                                "example": "2027-11-28"
+                                                            }
+                                                        },
+                                                        "required": [
+                                                            "date"
+                                                        ],
+                                                        "additionalProperties": false
+                                                    }
+                                                ],
+                                                "description": "When the meeting ends. Use a datetime and optional timezone for non-all day meetings, or a date for all day meetings."
+                                            },
+                                            "is_all_day": {
+                                                "type": "boolean",
+                                                "description": "Whether or not the meeting is an all day event. All day events may span multiple days. When true, start and end must use date format. When false, start and end must use datetime with timezone format.",
+                                                "example": false
+                                            },
+                                            "participants": {
+                                                "type": "array",
+                                                "items": {
+                                                    "type": "object",
+                                                    "properties": {
+                                                        "email_address": {
+                                                            "type": "string",
+                                                            "description": "The email address of the participant. New person records and companies will automatically be created based upon the email address values provided.",
+                                                            "example": "person@company.com"
+                                                        },
+                                                        "is_organizer": {
+                                                            "anyOf": [
+                                                                {
+                                                                    "type": "boolean"
+                                                                },
+                                                                {
+                                                                    "type": "string",
+                                                                    "enum": [
+                                                                        "true"
+                                                                    ]
+                                                                },
+                                                                {
+                                                                    "type": "string",
+                                                                    "enum": [
+                                                                        "false"
+                                                                    ]
+                                                                }
+                                                            ],
+                                                            "description": "Whether or not the participant is the organizer of the meeting.",
+                                                            "example": true
+                                                        },
+                                                        "status": {
+                                                            "type": "string",
+                                                            "enum": [
+                                                                "accepted",
+                                                                "tentative",
+                                                                "declined",
+                                                                "pending"
+                                                            ],
+                                                            "description": "The status of the individual meeting participant.",
+                                                            "example": "accepted"
+                                                        }
+                                                    },
+                                                    "required": [
+                                                        "email_address",
+                                                        "is_organizer",
+                                                        "status"
+                                                    ]
+                                                }
+                                            },
+                                            "linked_records": {
+                                                "type": "array",
+                                                "items": {
+                                                    "type": "object",
+                                                    "properties": {
+                                                        "object": {
+                                                            "type": "string",
+                                                            "description": "The slug or UUID of the object that the record being linked belongs to.",
+                                                            "example": "people"
+                                                        },
+                                                        "record_id": {
+                                                            "type": "string",
+                                                            "format": "uuid",
+                                                            "description": "The UUID of the record being linked.",
+                                                            "example": "891dcbfc-9141-415d-9b2a-2238a6cc012d"
+                                                        }
+                                                    },
+                                                    "required": [
+                                                        "object",
+                                                        "record_id"
+                                                    ]
+                                                },
+                                                "description": "A list of records to link to the meeting. Each record is specified by its object (slug or UUID) and record ID (UUID). Attio will automatically link the meeting participants' companies to the meeting; this behavior is asynchronous."
+                                            },
+                                            "external_ref": {
+                                                "anyOf": [
+                                                    {
+                                                        "type": "string",
+                                                        "minLength": 1,
+                                                        "description": "A text ID that can be used to consistently reference and de-duplicate meetings. For example, this might be the primary key of a meeting in your system, or taken from an API response from a service you are connecting to Attio. You should ensure that this ID is unique across recurring meetings and does not change over time. If you do not have an ID immediately to hand, you may generate a UUID to use as the external reference.",
+                                                        "example": "external_meeting_12345"
+                                                    },
+                                                    {
+                                                        "type": "object",
+                                                        "properties": {
+                                                            "ical_uid": {
+                                                                "type": "string",
+                                                                "description": "The ical uid of the meeting.",
+                                                                "example": "1234567890"
+                                                            },
+                                                            "provider": {
+                                                                "type": "string",
+                                                                "enum": [
+                                                                    "google",
+                                                                    "microsoft"
+                                                                ],
+                                                                "description": "The email provider used to sync the meeting.",
+                                                                "example": "google"
+                                                            },
+                                                            "original_start_time": {
+                                                                "type": "string",
+                                                                "description": "The original start time of the meeting. Use a timestamp with a specified offset for all day and non-all day meetings. This property is required for recurring event exceptions and optional otherwise.",
+                                                                "example": "2027-11-27T14:00:00.000Z"
+                                                            },
+                                                            "is_recurring": {
+                                                                "type": "boolean",
+                                                                "description": "Whether or not the meeting is recurring.",
+                                                                "example": false
+                                                            }
+                                                        },
+                                                        "required": [
+                                                            "ical_uid",
+                                                            "provider",
+                                                            "is_recurring"
+                                                        ]
+                                                    }
+                                                ],
+                                                "description": "A consistent external reference used to match and de-duplicate meetings. Can be either a plain string (for external system IDs) or an object with `ical_uid` and `provider`. If you are writing data into Attio which is based upon calendar events that you have synced from a Google or Microsoft calendar, you must use the iCal format to avoid creating duplicate meetings inside Attio.",
+                                                "example": "external_meeting_12345"
+                                            }
+                                        },
+                                        "required": [
+                                            "title",
+                                            "description",
+                                            "start",
+                                            "end",
+                                            "is_all_day",
+                                            "participants",
+                                            "external_ref"
+                                        ]
+                                    }
+                                },
+                                "required": [
+                                    "data"
+                                ]
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "200": {
+                        "description": "Success",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "type": "object",
+                                    "properties": {
+                                        "data": {
+                                            "$ref": "#/components/schemas/meeting"
+                                        }
+                                    },
+                                    "required": [
+                                        "data"
+                                    ],
+                                    "description": "Success"
+                                }
+                            }
+                        }
+                    },
+                    "400": {
+                        "description": "Bad Request",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "type": "object",
+                                    "properties": {
+                                        "statusCode": {
+                                            "type": "number",
+                                            "enum": [
+                                                400
+                                            ]
+                                        },
+                                        "type": {
+                                            "type": "string",
+                                            "enum": [
+                                                "invalid_request_error"
+                                            ]
+                                        },
+                                        "code": {
+                                            "type": "string",
+                                            "enum": [
+                                                "validation_type"
+                                            ]
+                                        },
+                                        "message": {
+                                            "type": "string",
+                                            "example": "No participants were provided."
+                                        }
+                                    },
+                                    "required": [
+                                        "statusCode",
+                                        "type",
+                                        "code",
+                                        "message"
+                                    ],
+                                    "description": "Bad Request"
+                                }
+                            }
+                        }
+                    }
+                }
             }
         },
         "/v2/meetings/{meeting_id}": {
             "get": {
                 "summary": "Get a meeting",
-                "description": "Get a single meeting by ID.\n\nRequired scopes: `meeting:read`, `record_permission:read`.",
+                "description": "Get a single meeting by ID.\n\nThis endpoint is in beta. We will aim to avoid breaking changes, but small updates may be made as we roll out to more users.\n\nRequired scopes: `meeting:read`, `record_permission:read`.",
                 "tags": [
                     "Meetings"
                 ],
@@ -40443,7 +41176,11 @@
                         ]
                     }
                 ],
-                "x-hidden": true,
+                "x-mint": {
+                    "metadata": {
+                        "tag": "BETA"
+                    }
+                },
                 "parameters": [
                     {
                         "schema": {
@@ -40524,7 +41261,7 @@
         "/v2/meetings/{meeting_id}/call_recordings": {
             "get": {
                 "summary": "List call recordings",
-                "description": "List all call recordings for a meeting.\n\nRequired scopes: `meeting:read`, `call_recording:read`.",
+                "description": "List all call recordings for a meeting.\n\nThis endpoint is in beta. We will aim to avoid breaking changes, but small updates may be made as we roll out to more users.\n\nRequired scopes: `meeting:read`, `call_recording:read`.",
                 "tags": [
                     "Call recordings"
                 ],
@@ -40536,7 +41273,11 @@
                         ]
                     }
                 ],
-                "x-hidden": true,
+                "x-mint": {
+                    "metadata": {
+                        "tag": "BETA"
+                    }
+                },
                 "parameters": [
                     {
                         "schema": {
@@ -40622,6 +41363,12 @@
                                                         "description": "The status of the call recording. When a call recording is first created, it will have a status of `PROCESSING`. Once the recording is ready, it will transition to `COMPLETED`. If the recording fails for any reason, the status will be `FAILED`.",
                                                         "example": "completed"
                                                     },
+                                                    "web_url": {
+                                                        "type": "string",
+                                                        "format": "uri",
+                                                        "description": "A URL that links directly to the call recording in the Attio web application.",
+                                                        "example": "https://app.attio.com/salarya/calls/cb59ab17-ad15-460c-a126-0715617c0853/e8f2a3b7-9b4d-4c5e-8a1f-3d7b2c5e8f9a"
+                                                    },
                                                     "created_by_actor": {
                                                         "type": "object",
                                                         "description": "The actor that created this call recording.",
@@ -40657,6 +41404,7 @@
                                                 "required": [
                                                     "id",
                                                     "status",
+                                                    "web_url",
                                                     "created_by_actor",
                                                     "created_at"
                                                 ]
@@ -40690,7 +41438,7 @@
             },
             "post": {
                 "summary": "Create call recording",
-                "description": "Create a call recording for a meeting. This endpoint is rate limited to 1 request per second.\n\nRequired scopes: `meeting:read`, `call_recording:read-write`.",
+                "description": "Create a call recording for a meeting. This endpoint is rate limited to 1 request per second.\n\nThis endpoint is in alpha and may be subject to breaking changes as we gather feedback.\n\nRequired scopes: `meeting:read`, `call_recording:read-write`.",
                 "tags": [
                     "Call recordings"
                 ],
@@ -40703,6 +41451,11 @@
                     }
                 ],
                 "x-hidden": true,
+                "x-mint": {
+                    "metadata": {
+                        "tag": "ALPHA"
+                    }
+                },
                 "parameters": [
                     {
                         "schema": {
@@ -40723,15 +41476,23 @@
                             "schema": {
                                 "type": "object",
                                 "properties": {
-                                    "video_url": {
-                                        "type": "string",
-                                        "format": "uri",
-                                        "description": "A publicly accessible URL to a video file of the call recording. Attio will download the video from this URL asynchronously.\n\n**Requirements:**\n- **Protocol:** The URL must use the `https` protocol.\n- **File type:** The file must be a `.mp4` file.\n- **File size:** The file must not exceed 30MB in size.\n- **Accessibility:** For the request to be accepted, the URL must be publicly accessible. Attio will make a `HEAD` request to the URL to verify its accessibility and retrieve file metadata. The response to this request must include a `Content-Length` header.",
-                                        "example": "https://example.com/recording.mp4"
+                                    "data": {
+                                        "type": "object",
+                                        "properties": {
+                                            "video_url": {
+                                                "type": "string",
+                                                "format": "uri",
+                                                "description": "A publicly accessible URL to a video file of the call recording. Attio will download the video from this URL asynchronously.\n\n**Requirements:**\n- **Protocol:** The URL must use the `https` protocol.\n- **File type:** The file must be a `.mp4` file.\n- **File size:** The file must not exceed 30MB in size.\n- **Accessibility:** For the request to be accepted, the URL must be publicly accessible. Attio will make a `HEAD` request to the URL to verify its accessibility and retrieve file metadata. The response to this request must include a `Content-Length` header.",
+                                                "example": "https://example.com/recording.mp4"
+                                            }
+                                        },
+                                        "required": [
+                                            "video_url"
+                                        ]
                                     }
                                 },
                                 "required": [
-                                    "video_url"
+                                    "data"
                                 ]
                             }
                         }
@@ -40786,6 +41547,12 @@
                                                     "description": "The status of the call recording. When a call recording is first created, it will have a status of `PROCESSING`. Once the recording is ready, it will transition to `COMPLETED`. If the recording fails for any reason, the status will be `FAILED`.",
                                                     "example": "completed"
                                                 },
+                                                "web_url": {
+                                                    "type": "string",
+                                                    "format": "uri",
+                                                    "description": "A URL that links directly to the call recording in the Attio web application.",
+                                                    "example": "https://app.attio.com/salarya/calls/cb59ab17-ad15-460c-a126-0715617c0853/e8f2a3b7-9b4d-4c5e-8a1f-3d7b2c5e8f9a"
+                                                },
                                                 "created_by_actor": {
                                                     "type": "object",
                                                     "description": "The actor that created this call recording.",
@@ -40821,6 +41588,7 @@
                                             "required": [
                                                 "id",
                                                 "status",
+                                                "web_url",
                                                 "created_by_actor",
                                                 "created_at"
                                             ]
@@ -40972,7 +41740,7 @@
         "/v2/meetings/{meeting_id}/call_recordings/{call_recording_id}": {
             "get": {
                 "summary": "Get call recording",
-                "description": "Get a single call recording by ID.\n\nRequired scopes: `meeting:read`, `call_recording:read`.",
+                "description": "Get a single call recording by ID.\n\nThis endpoint is in beta. We will aim to avoid breaking changes, but small updates may be made as we roll out to more users.\n\nRequired scopes: `meeting:read`, `call_recording:read`.",
                 "tags": [
                     "Call recordings"
                 ],
@@ -40984,7 +41752,11 @@
                         ]
                     }
                 ],
-                "x-hidden": true,
+                "x-mint": {
+                    "metadata": {
+                        "tag": "BETA"
+                    }
+                },
                 "parameters": [
                     {
                         "schema": {
@@ -41058,6 +41830,12 @@
                                                     "description": "The status of the call recording. When a call recording is first created, it will have a status of `PROCESSING`. Once the recording is ready, it will transition to `COMPLETED`. If the recording fails for any reason, the status will be `FAILED`.",
                                                     "example": "completed"
                                                 },
+                                                "web_url": {
+                                                    "type": "string",
+                                                    "format": "uri",
+                                                    "description": "A URL that links directly to the call recording in the Attio web application.",
+                                                    "example": "https://app.attio.com/salarya/calls/cb59ab17-ad15-460c-a126-0715617c0853/e8f2a3b7-9b4d-4c5e-8a1f-3d7b2c5e8f9a"
+                                                },
                                                 "created_by_actor": {
                                                     "type": "object",
                                                     "description": "The actor that created this call recording.",
@@ -41093,6 +41871,7 @@
                                             "required": [
                                                 "id",
                                                 "status",
+                                                "web_url",
                                                 "created_by_actor",
                                                 "created_at"
                                             ]
@@ -41151,7 +41930,7 @@
             },
             "delete": {
                 "summary": "Delete call recording",
-                "description": "Deletes the specified call recording. This will remove the call recording and all associated data.\n\nRequired scopes: `meeting:read`, `call_recording:read-write`.",
+                "description": "Deletes the specified call recording. This will remove the call recording and all associated data.\n\nThis endpoint is in alpha and may be subject to breaking changes as we gather feedback.\n\nRequired scopes: `meeting:read`, `call_recording:read-write`.",
                 "tags": [
                     "Call recordings"
                 ],
@@ -41164,6 +41943,11 @@
                     }
                 ],
                 "x-hidden": true,
+                "x-mint": {
+                    "metadata": {
+                        "tag": "ALPHA"
+                    }
+                },
                 "parameters": [
                     {
                         "schema": {
@@ -41248,7 +42032,7 @@
         "/v2/meetings/{meeting_id}/call_recordings/{call_recording_id}/transcript": {
             "get": {
                 "summary": "Get call transcript",
-                "description": "Get the transcript for a call recording.\n\nRequired scopes: `meeting:read`, `call_recording:read`.",
+                "description": "Get the transcript for a call recording.\n\nThis endpoint is in beta. We will aim to avoid breaking changes, but small updates may be made as we roll out to more users.\n\nRequired scopes: `meeting:read`, `call_recording:read`.",
                 "tags": [
                     "Transcripts"
                 ],
@@ -41260,7 +42044,11 @@
                         ]
                     }
                 ],
-                "x-hidden": true,
+                "x-mint": {
+                    "metadata": {
+                        "tag": "BETA"
+                    }
+                },
                 "parameters": [
                     {
                         "schema": {
@@ -41342,17 +42130,17 @@
                                                             "speech": {
                                                                 "type": "string",
                                                                 "description": "The spoken text for this segment of the transcript.",
-                                                                "example": "Hello, how are you?"
+                                                                "example": "Hello,"
                                                             },
                                                             "start_time": {
                                                                 "type": "number",
                                                                 "description": "The start time of this speech segment in seconds, measured from the start of the recording.",
-                                                                "example": 0.512
+                                                                "example": 0.51
                                                             },
                                                             "end_time": {
                                                                 "type": "number",
                                                                 "description": "The end time of this speech segment in seconds, measured from the start of the recording.",
-                                                                "example": 3.212
+                                                                "example": 4.31
                                                             },
                                                             "speaker": {
                                                                 "type": "object",
@@ -41360,7 +42148,7 @@
                                                                     "name": {
                                                                         "type": "string",
                                                                         "description": "The name of the speaker.",
-                                                                        "example": "Simon Mitchell"
+                                                                        "example": "Alex Bell"
                                                                     }
                                                                 },
                                                                 "required": [
@@ -41376,12 +42164,115 @@
                                                             "speaker"
                                                         ]
                                                     },
-                                                    "description": "The transcript segments with speech, timing, and speaker information."
+                                                    "description": "The transcript segments with speech, timing, and speaker information.",
+                                                    "example": [
+                                                        {
+                                                            "speech": "Hello,",
+                                                            "start_time": 0.51,
+                                                            "end_time": 0.81,
+                                                            "speaker": {
+                                                                "name": "Alex Bell"
+                                                            }
+                                                        },
+                                                        {
+                                                            "speech": "Mr Watson,",
+                                                            "start_time": 0.81,
+                                                            "end_time": 1.41,
+                                                            "speaker": {
+                                                                "name": "Alex Bell"
+                                                            }
+                                                        },
+                                                        {
+                                                            "speech": "come",
+                                                            "start_time": 1.41,
+                                                            "end_time": 1.71,
+                                                            "speaker": {
+                                                                "name": "Alex Bell"
+                                                            }
+                                                        },
+                                                        {
+                                                            "speech": "here.",
+                                                            "start_time": 1.71,
+                                                            "end_time": 2.11,
+                                                            "speaker": {
+                                                                "name": "Alex Bell"
+                                                            }
+                                                        },
+                                                        {
+                                                            "speech": "I",
+                                                            "start_time": 2.11,
+                                                            "end_time": 2.31,
+                                                            "speaker": {
+                                                                "name": "Alex Bell"
+                                                            }
+                                                        },
+                                                        {
+                                                            "speech": "want",
+                                                            "start_time": 2.31,
+                                                            "end_time": 2.71,
+                                                            "speaker": {
+                                                                "name": "Alex Bell"
+                                                            }
+                                                        },
+                                                        {
+                                                            "speech": "to",
+                                                            "start_time": 2.71,
+                                                            "end_time": 2.91,
+                                                            "speaker": {
+                                                                "name": "Alex Bell"
+                                                            }
+                                                        },
+                                                        {
+                                                            "speech": "see",
+                                                            "start_time": 2.91,
+                                                            "end_time": 3.21,
+                                                            "speaker": {
+                                                                "name": "Alex Bell"
+                                                            }
+                                                        },
+                                                        {
+                                                            "speech": "you.",
+                                                            "start_time": 3.21,
+                                                            "end_time": 3.61,
+                                                            "speaker": {
+                                                                "name": "Alex Bell"
+                                                            }
+                                                        },
+                                                        {
+                                                            "speech": "I'm",
+                                                            "start_time": 4.21,
+                                                            "end_time": 4.51,
+                                                            "speaker": {
+                                                                "name": "Tom Watson"
+                                                            }
+                                                        },
+                                                        {
+                                                            "speech": "here.",
+                                                            "start_time": 4.51,
+                                                            "end_time": 4.91,
+                                                            "speaker": {
+                                                                "name": "Tom Watson"
+                                                            }
+                                                        }
+                                                    ]
+                                                },
+                                                "raw_transcript": {
+                                                    "type": "string",
+                                                    "description": "The raw transcript of the call recording.",
+                                                    "example": "[00:00] Alex Bell: Mr Watson, come here. I want to see you.\n[00:05] Tom Watson: I'm here."
+                                                },
+                                                "web_url": {
+                                                    "type": "string",
+                                                    "format": "uri",
+                                                    "description": "A URL that links directly to the call recording transcript in the Attio web application.",
+                                                    "example": "https://app.attio.com/salarya/calls/cb59ab17-ad15-460c-a126-0715617c0853/e8f2a3b7-9b4d-4c5e-8a1f-3d7b2c5e8f9a/transcript"
                                                 }
                                             },
                                             "required": [
                                                 "id",
-                                                "transcript"
+                                                "transcript",
+                                                "raw_transcript",
+                                                "web_url"
                                             ]
                                         },
                                         "pagination": {
@@ -41409,396 +42300,6 @@
                         }
                     }
                 }
-            },
-            "post": {
-                "summary": "Create transcript",
-                "description": "Creates a transcript for the specified call recording. Each call recording can have only one associated transcript. Once created, transcripts are immutable and cannot be modified. To update a transcript, you must first delete the existing one and then create a new transcript.\n\nRequired scopes: `meeting:read`, `call_recording:read-write`.",
-                "tags": [
-                    "Transcripts"
-                ],
-                "security": [
-                    {
-                        "oauth2": [
-                            "meeting:read",
-                            "call_recording:read-write"
-                        ]
-                    }
-                ],
-                "x-hidden": true,
-                "parameters": [
-                    {
-                        "schema": {
-                            "type": "string",
-                            "format": "uuid",
-                            "description": "The ID of the meeting this transcript belongs to.",
-                            "example": "cb59ab17-ad15-460c-a126-0715617c0853"
-                        },
-                        "required": true,
-                        "name": "meeting_id",
-                        "in": "path"
-                    },
-                    {
-                        "schema": {
-                            "type": "string",
-                            "format": "uuid",
-                            "description": "The ID of the call recording this transcript belongs to.",
-                            "example": "e8f2a3b7-9b4d-4c5e-8a1f-3d7b2c5e8f9a"
-                        },
-                        "required": true,
-                        "name": "call_recording_id",
-                        "in": "path"
-                    }
-                ],
-                "requestBody": {
-                    "required": true,
-                    "content": {
-                        "application/json": {
-                            "schema": {
-                                "type": "object",
-                                "properties": {
-                                    "data": {
-                                        "type": "object",
-                                        "properties": {
-                                            "transcript": {
-                                                "type": "array",
-                                                "items": {
-                                                    "type": "object",
-                                                    "properties": {
-                                                        "speech": {
-                                                            "type": "string",
-                                                            "description": "The spoken text for this segment of the transcript.",
-                                                            "example": "Hello everyone, welcome to the meeting."
-                                                        },
-                                                        "start_time": {
-                                                            "type": "number",
-                                                            "minimum": 0,
-                                                            "description": "The start time of this speech segment in seconds.",
-                                                            "example": 0.5123
-                                                        },
-                                                        "end_time": {
-                                                            "type": "number",
-                                                            "description": "The end time of this speech segment in seconds.",
-                                                            "example": 3.2123
-                                                        },
-                                                        "speaker": {
-                                                            "type": "object",
-                                                            "properties": {
-                                                                "name": {
-                                                                    "type": "string",
-                                                                    "description": "The name of the speaker.",
-                                                                    "example": "Simon Mitchell"
-                                                                },
-                                                                "email_address": {
-                                                                    "type": "string",
-                                                                    "format": "email",
-                                                                    "description": "The email address of the speaker.",
-                                                                    "example": "person@company.com"
-                                                                }
-                                                            },
-                                                            "required": [
-                                                                "name"
-                                                            ]
-                                                        }
-                                                    },
-                                                    "required": [
-                                                        "speech",
-                                                        "start_time",
-                                                        "end_time",
-                                                        "speaker"
-                                                    ]
-                                                },
-                                                "maxItems": 4000,
-                                                "description": "Array of transcript segments with speech, timing, and speaker information. A maximum of 4000 transcript segments and 50 unique speakers are allowed per transcript."
-                                            }
-                                        },
-                                        "required": [
-                                            "transcript"
-                                        ]
-                                    }
-                                },
-                                "required": [
-                                    "data"
-                                ]
-                            }
-                        }
-                    }
-                },
-                "responses": {
-                    "200": {
-                        "description": "Success",
-                        "content": {
-                            "application/json": {
-                                "schema": {
-                                    "type": "object",
-                                    "properties": {
-                                        "data": {
-                                            "type": "object",
-                                            "properties": {
-                                                "id": {
-                                                    "type": "object",
-                                                    "properties": {
-                                                        "workspace_id": {
-                                                            "type": "string",
-                                                            "format": "uuid",
-                                                            "description": "The ID of the workspace this transcript belongs to.",
-                                                            "example": "14beef7a-99f7-4534-a87e-70b564330a4c"
-                                                        },
-                                                        "meeting_id": {
-                                                            "type": "string",
-                                                            "format": "uuid",
-                                                            "description": "The ID of the meeting associated with this transcript.",
-                                                            "example": "cb59ab17-ad15-460c-a126-0715617c0853"
-                                                        },
-                                                        "call_recording_id": {
-                                                            "type": "string",
-                                                            "format": "uuid",
-                                                            "description": "The ID of the call recording this transcript belongs to.",
-                                                            "example": "e8f2a3b7-9b4d-4c5e-8a1f-3d7b2c5e8f9a"
-                                                        }
-                                                    },
-                                                    "required": [
-                                                        "workspace_id",
-                                                        "meeting_id",
-                                                        "call_recording_id"
-                                                    ]
-                                                },
-                                                "transcript": {
-                                                    "type": "array",
-                                                    "items": {
-                                                        "type": "object",
-                                                        "properties": {
-                                                            "speech": {
-                                                                "type": "string",
-                                                                "description": "The spoken text for this segment of the transcript.",
-                                                                "example": "Hello, how are you?"
-                                                            },
-                                                            "start_time": {
-                                                                "type": "number",
-                                                                "description": "The start time of this speech segment in seconds, measured from the start of the recording.",
-                                                                "example": 0.512
-                                                            },
-                                                            "end_time": {
-                                                                "type": "number",
-                                                                "description": "The end time of this speech segment in seconds, measured from the start of the recording.",
-                                                                "example": 3.212
-                                                            },
-                                                            "speaker": {
-                                                                "type": "object",
-                                                                "properties": {
-                                                                    "name": {
-                                                                        "type": "string",
-                                                                        "description": "The name of the speaker.",
-                                                                        "example": "Simon Mitchell"
-                                                                    }
-                                                                },
-                                                                "required": [
-                                                                    "name"
-                                                                ],
-                                                                "description": "The speaker of this transcript segment."
-                                                            }
-                                                        },
-                                                        "required": [
-                                                            "speech",
-                                                            "start_time",
-                                                            "end_time",
-                                                            "speaker"
-                                                        ]
-                                                    },
-                                                    "description": "The transcript segments with speech, timing, and speaker information."
-                                                }
-                                            },
-                                            "required": [
-                                                "id",
-                                                "transcript"
-                                            ]
-                                        }
-                                    },
-                                    "required": [
-                                        "data"
-                                    ],
-                                    "description": "Success"
-                                }
-                            }
-                        }
-                    },
-                    "400": {
-                        "description": "Bad Request",
-                        "content": {
-                            "application/json": {
-                                "schema": {
-                                    "type": "object",
-                                    "properties": {
-                                        "status_code": {
-                                            "type": "number",
-                                            "enum": [
-                                                400
-                                            ]
-                                        },
-                                        "type": {
-                                            "type": "string",
-                                            "enum": [
-                                                "invalid_request_error"
-                                            ]
-                                        },
-                                        "code": {
-                                            "type": "string",
-                                            "enum": [
-                                                "validation_type"
-                                            ]
-                                        },
-                                        "message": {
-                                            "type": "string",
-                                            "example": "An invalid email address was provided for one of the speakers."
-                                        }
-                                    },
-                                    "required": [
-                                        "status_code",
-                                        "type",
-                                        "code",
-                                        "message"
-                                    ],
-                                    "description": "Bad Request"
-                                }
-                            }
-                        }
-                    },
-                    "404": {
-                        "description": "Not Found",
-                        "content": {
-                            "application/json": {
-                                "schema": {
-                                    "type": "object",
-                                    "properties": {
-                                        "status_code": {
-                                            "type": "number",
-                                            "enum": [
-                                                404
-                                            ]
-                                        },
-                                        "type": {
-                                            "type": "string",
-                                            "enum": [
-                                                "invalid_request_error"
-                                            ]
-                                        },
-                                        "code": {
-                                            "type": "string",
-                                            "enum": [
-                                                "not_found"
-                                            ]
-                                        },
-                                        "message": {
-                                            "type": "string",
-                                            "example": "The referenced call recording was not found."
-                                        }
-                                    },
-                                    "required": [
-                                        "status_code",
-                                        "type",
-                                        "code",
-                                        "message"
-                                    ],
-                                    "description": "Not Found"
-                                }
-                            }
-                        }
-                    }
-                }
-            },
-            "delete": {
-                "summary": "Delete call recording transcript",
-                "description": "Deletes the transcript for the specified call recording.\n\nRequired scopes: `meeting:read`, `call_recording:read-write`.",
-                "tags": [
-                    "Transcripts"
-                ],
-                "security": [
-                    {
-                        "oauth2": [
-                            "meeting:read",
-                            "call_recording:read-write"
-                        ]
-                    }
-                ],
-                "x-hidden": true,
-                "parameters": [
-                    {
-                        "schema": {
-                            "type": "string",
-                            "format": "uuid",
-                            "description": "The ID of the meeting this transcript belongs to.",
-                            "example": "cb59ab17-ad15-460c-a126-0715617c0853"
-                        },
-                        "required": true,
-                        "name": "meeting_id",
-                        "in": "path"
-                    },
-                    {
-                        "schema": {
-                            "type": "string",
-                            "format": "uuid",
-                            "description": "The ID of the call recording this transcript belongs to.",
-                            "example": "e8f2a3b7-9b4d-4c5e-8a1f-3d7b2c5e8f9a"
-                        },
-                        "required": true,
-                        "name": "call_recording_id",
-                        "in": "path"
-                    }
-                ],
-                "responses": {
-                    "200": {
-                        "description": "Success",
-                        "content": {
-                            "application/json": {
-                                "schema": {
-                                    "type": "object",
-                                    "properties": {},
-                                    "description": "Success"
-                                }
-                            }
-                        }
-                    },
-                    "404": {
-                        "description": "Call recording not found",
-                        "content": {
-                            "application/json": {
-                                "schema": {
-                                    "type": "object",
-                                    "properties": {
-                                        "status_code": {
-                                            "type": "number",
-                                            "enum": [
-                                                404
-                                            ]
-                                        },
-                                        "type": {
-                                            "type": "string",
-                                            "enum": [
-                                                "invalid_request_error"
-                                            ]
-                                        },
-                                        "code": {
-                                            "type": "string",
-                                            "enum": [
-                                                "not_found"
-                                            ]
-                                        },
-                                        "message": {
-                                            "type": "string",
-                                            "example": "The referenced call recording was not found."
-                                        }
-                                    },
-                                    "required": [
-                                        "status_code",
-                                        "type",
-                                        "code",
-                                        "message"
-                                    ],
-                                    "description": "Call recording not found"
-                                }
-                            }
-                        }
-                    }
-                }
             }
         },
         "/v2/webhooks": {
@@ -41819,7 +42320,7 @@
                     {
                         "schema": {
                             "type": "integer",
-                            "description": "The maximum number of results to return, between 10 and 100, defaults to 10. See the [full guide to pagination here](/rest-api/how-to/pagination).",
+                            "description": "The maximum number of results to return, between 10 and 100, defaults to 10. See the [full guide to pagination here](/rest-api/guides/pagination).",
                             "example": 10
                         },
                         "required": false,
@@ -41829,7 +42330,7 @@
                     {
                         "schema": {
                             "type": "integer",
-                            "description": "The number of results to skip over before returning, defaults to 0. See the [full guide to pagination here](/rest-api/how-to/pagination).",
+                            "description": "The number of results to skip over before returning, defaults to 0. See the [full guide to pagination here](/rest-api/guides/pagination).",
                             "example": 5
                         },
                         "required": false,
@@ -43643,12 +44144,9 @@
                                                     "description": "The issuer of the token. Always attio.com"
                                                 },
                                                 "authorized_by_workspace_member_id": {
-                                                    "type": [
-                                                        "string",
-                                                        "null"
-                                                    ],
+                                                    "type": "string",
                                                     "format": "uuid",
-                                                    "description": "The ID of the workspace member who authorised this token initially, if known"
+                                                    "description": "The ID of the workspace member who authorised this token initially."
                                                 },
                                                 "workspace_id": {
                                                     "type": "string",

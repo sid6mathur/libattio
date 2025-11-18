@@ -12,8 +12,8 @@ Contact: support@attio.com
 package libattio
 
 import (
-	"encoding/json"
 	"bytes"
+	"encoding/json"
 	"fmt"
 )
 
@@ -25,6 +25,8 @@ type V2MeetingsMeetingIdCallRecordingsGet200ResponseDataInner struct {
 	Id V2MeetingsMeetingIdCallRecordingsGet200ResponseDataInnerId `json:"id"`
 	// The status of the call recording. When a call recording is first created, it will have a status of `PROCESSING`. Once the recording is ready, it will transition to `COMPLETED`. If the recording fails for any reason, the status will be `FAILED`.
 	Status string `json:"status"`
+	// A URL that links directly to the call recording in the Attio web application.
+	WebUrl         string                                                                 `json:"web_url"`
 	CreatedByActor V2MeetingsMeetingIdCallRecordingsGet200ResponseDataInnerCreatedByActor `json:"created_by_actor"`
 	// The timestamp of when the call recording was created.
 	CreatedAt string `json:"created_at"`
@@ -36,10 +38,11 @@ type _V2MeetingsMeetingIdCallRecordingsGet200ResponseDataInner V2MeetingsMeeting
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewV2MeetingsMeetingIdCallRecordingsGet200ResponseDataInner(id V2MeetingsMeetingIdCallRecordingsGet200ResponseDataInnerId, status string, createdByActor V2MeetingsMeetingIdCallRecordingsGet200ResponseDataInnerCreatedByActor, createdAt string) *V2MeetingsMeetingIdCallRecordingsGet200ResponseDataInner {
+func NewV2MeetingsMeetingIdCallRecordingsGet200ResponseDataInner(id V2MeetingsMeetingIdCallRecordingsGet200ResponseDataInnerId, status string, webUrl string, createdByActor V2MeetingsMeetingIdCallRecordingsGet200ResponseDataInnerCreatedByActor, createdAt string) *V2MeetingsMeetingIdCallRecordingsGet200ResponseDataInner {
 	this := V2MeetingsMeetingIdCallRecordingsGet200ResponseDataInner{}
 	this.Id = id
 	this.Status = status
+	this.WebUrl = webUrl
 	this.CreatedByActor = createdByActor
 	this.CreatedAt = createdAt
 	return &this
@@ -77,7 +80,6 @@ func (o *V2MeetingsMeetingIdCallRecordingsGet200ResponseDataInner) SetId(v V2Mee
 	o.Id = v
 }
 
-
 // GetStatus returns the Status field value
 func (o *V2MeetingsMeetingIdCallRecordingsGet200ResponseDataInner) GetStatus() string {
 	if o == nil {
@@ -102,6 +104,29 @@ func (o *V2MeetingsMeetingIdCallRecordingsGet200ResponseDataInner) SetStatus(v s
 	o.Status = v
 }
 
+// GetWebUrl returns the WebUrl field value
+func (o *V2MeetingsMeetingIdCallRecordingsGet200ResponseDataInner) GetWebUrl() string {
+	if o == nil {
+		var ret string
+		return ret
+	}
+
+	return o.WebUrl
+}
+
+// GetWebUrlOk returns a tuple with the WebUrl field value
+// and a boolean to check if the value has been set.
+func (o *V2MeetingsMeetingIdCallRecordingsGet200ResponseDataInner) GetWebUrlOk() (*string, bool) {
+	if o == nil {
+		return nil, false
+	}
+	return &o.WebUrl, true
+}
+
+// SetWebUrl sets field value
+func (o *V2MeetingsMeetingIdCallRecordingsGet200ResponseDataInner) SetWebUrl(v string) {
+	o.WebUrl = v
+}
 
 // GetCreatedByActor returns the CreatedByActor field value
 func (o *V2MeetingsMeetingIdCallRecordingsGet200ResponseDataInner) GetCreatedByActor() V2MeetingsMeetingIdCallRecordingsGet200ResponseDataInnerCreatedByActor {
@@ -127,7 +152,6 @@ func (o *V2MeetingsMeetingIdCallRecordingsGet200ResponseDataInner) SetCreatedByA
 	o.CreatedByActor = v
 }
 
-
 // GetCreatedAt returns the CreatedAt field value
 func (o *V2MeetingsMeetingIdCallRecordingsGet200ResponseDataInner) GetCreatedAt() string {
 	if o == nil {
@@ -152,9 +176,8 @@ func (o *V2MeetingsMeetingIdCallRecordingsGet200ResponseDataInner) SetCreatedAt(
 	o.CreatedAt = v
 }
 
-
 func (o V2MeetingsMeetingIdCallRecordingsGet200ResponseDataInner) MarshalJSON() ([]byte, error) {
-	toSerialize,err := o.ToMap()
+	toSerialize, err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
 	}
@@ -165,6 +188,7 @@ func (o V2MeetingsMeetingIdCallRecordingsGet200ResponseDataInner) ToMap() (map[s
 	toSerialize := map[string]interface{}{}
 	toSerialize["id"] = o.Id
 	toSerialize["status"] = o.Status
+	toSerialize["web_url"] = o.WebUrl
 	toSerialize["created_by_actor"] = o.CreatedByActor
 	toSerialize["created_at"] = o.CreatedAt
 	return toSerialize, nil
@@ -177,38 +201,38 @@ func (o *V2MeetingsMeetingIdCallRecordingsGet200ResponseDataInner) UnmarshalJSON
 	requiredProperties := []string{
 		"id",
 		"status",
+		"web_url",
 		"created_by_actor",
 		"created_at",
 	}
 
 	// defaultValueFuncMap captures the default values for required properties.
 	// These values are used when required properties are missing from the payload.
-	defaultValueFuncMap := map[string]func() interface{} {
-	}
+	defaultValueFuncMap := map[string]func() interface{}{}
 	var defaultValueApplied bool
 	allProperties := make(map[string]interface{})
 
 	err = json.Unmarshal(data, &allProperties)
 
 	if err != nil {
-		return err;
+		return err
 	}
 
-	for _, requiredProperty := range(requiredProperties) {
+	for _, requiredProperty := range requiredProperties {
 		if value, exists := allProperties[requiredProperty]; !exists || value == "" {
 			if _, ok := defaultValueFuncMap[requiredProperty]; ok {
 				allProperties[requiredProperty] = defaultValueFuncMap[requiredProperty]()
 				defaultValueApplied = true
 			}
 		}
-		if value, exists := allProperties[requiredProperty]; !exists || value == ""{
+		if value, exists := allProperties[requiredProperty]; !exists || value == "" {
 			return fmt.Errorf("no value given for required property %v", requiredProperty)
 		}
 	}
 
 	if defaultValueApplied {
 		data, err = json.Marshal(allProperties)
-		if err != nil{
+		if err != nil {
 			return err
 		}
 	}
@@ -262,5 +286,3 @@ func (v *NullableV2MeetingsMeetingIdCallRecordingsGet200ResponseDataInner) Unmar
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
-
-

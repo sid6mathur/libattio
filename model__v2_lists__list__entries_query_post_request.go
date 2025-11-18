@@ -20,13 +20,13 @@ var _ MappedNullable = &V2ListsListEntriesQueryPostRequest{}
 
 // V2ListsListEntriesQueryPostRequest struct for V2ListsListEntriesQueryPostRequest
 type V2ListsListEntriesQueryPostRequest struct {
-	// An object used to filter results to a subset of results. See the [full guide to filtering and sorting here](/rest-api/how-to/filtering-and-sorting).
+	// An object used to filter results to a subset of results. See the [full guide to filtering and sorting here](/rest-api/guides/filtering-and-sorting).
 	Filter map[string]interface{} `json:"filter,omitempty"`
-	// An object used to sort results. See the [full guide to filtering and sorting here](/rest-api/how-to/filtering-and-sorting).
+	// An object used to sort results. See the [full guide to filtering and sorting here](/rest-api/guides/filtering-and-sorting).
 	Sorts []V2ObjectsObjectRecordsQueryPostRequestSortsInner `json:"sorts,omitempty"`
-	// The maximum number of results to return. Defaults to 500. See the [full guide to pagination here](/rest-api/how-to/pagination).
+	// The maximum number of results to return. Defaults to 500. See the [full guide to pagination here](/rest-api/guides/pagination).
 	Limit *float32 `json:"limit,omitempty"`
-	// The number of results to skip over before returning. Defaults to 0. See the [full guide to pagination here](/rest-api/how-to/pagination).
+	// The number of results to skip over before returning. Defaults to 0. See the [full guide to pagination here](/rest-api/guides/pagination).
 	Offset *float32 `json:"offset,omitempty"`
 }
 
@@ -176,7 +176,7 @@ func (o *V2ListsListEntriesQueryPostRequest) SetOffset(v float32) {
 }
 
 func (o V2ListsListEntriesQueryPostRequest) MarshalJSON() ([]byte, error) {
-	toSerialize,err := o.ToMap()
+	toSerialize, err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
 	}
@@ -235,5 +235,3 @@ func (v *NullableV2ListsListEntriesQueryPostRequest) UnmarshalJSON(src []byte) e
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
-
-

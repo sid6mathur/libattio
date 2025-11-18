@@ -12,10 +12,10 @@ Contact: support@attio.com
 package libattio
 
 import (
-	"encoding/json"
-	"time"
 	"bytes"
+	"encoding/json"
 	"fmt"
+	"time"
 )
 
 // checks if the InputValueAnyOf5 type satisfies the MappedNullable interface at compile time
@@ -26,8 +26,8 @@ type InputValueAnyOf5 struct {
 	// The type of interaction e.g. calendar or email.
 	InteractionType string `json:"interaction_type"`
 	// When the interaction occurred.
-	InteractedAt time.Time `json:"interacted_at"`
-	OwnerActor V2ObjectsObjectRecordsQueryPost200ResponseDataInnerValuesValueInnerOneOf1CreatedByActor `json:"owner_actor"`
+	InteractedAt time.Time                                                                              `json:"interacted_at"`
+	OwnerActor   V2ObjectsObjectRecordsQueryPost200ResponseDataInnerValuesValueInnerOneOfCreatedByActor `json:"owner_actor"`
 }
 
 type _InputValueAnyOf5 InputValueAnyOf5
@@ -36,7 +36,7 @@ type _InputValueAnyOf5 InputValueAnyOf5
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewInputValueAnyOf5(interactionType string, interactedAt time.Time, ownerActor V2ObjectsObjectRecordsQueryPost200ResponseDataInnerValuesValueInnerOneOf1CreatedByActor) *InputValueAnyOf5 {
+func NewInputValueAnyOf5(interactionType string, interactedAt time.Time, ownerActor V2ObjectsObjectRecordsQueryPost200ResponseDataInnerValuesValueInnerOneOfCreatedByActor) *InputValueAnyOf5 {
 	this := InputValueAnyOf5{}
 	this.InteractionType = interactionType
 	this.InteractedAt = interactedAt
@@ -76,7 +76,6 @@ func (o *InputValueAnyOf5) SetInteractionType(v string) {
 	o.InteractionType = v
 }
 
-
 // GetInteractedAt returns the InteractedAt field value
 func (o *InputValueAnyOf5) GetInteractedAt() time.Time {
 	if o == nil {
@@ -101,11 +100,10 @@ func (o *InputValueAnyOf5) SetInteractedAt(v time.Time) {
 	o.InteractedAt = v
 }
 
-
 // GetOwnerActor returns the OwnerActor field value
-func (o *InputValueAnyOf5) GetOwnerActor() V2ObjectsObjectRecordsQueryPost200ResponseDataInnerValuesValueInnerOneOf1CreatedByActor {
+func (o *InputValueAnyOf5) GetOwnerActor() V2ObjectsObjectRecordsQueryPost200ResponseDataInnerValuesValueInnerOneOfCreatedByActor {
 	if o == nil {
-		var ret V2ObjectsObjectRecordsQueryPost200ResponseDataInnerValuesValueInnerOneOf1CreatedByActor
+		var ret V2ObjectsObjectRecordsQueryPost200ResponseDataInnerValuesValueInnerOneOfCreatedByActor
 		return ret
 	}
 
@@ -114,7 +112,7 @@ func (o *InputValueAnyOf5) GetOwnerActor() V2ObjectsObjectRecordsQueryPost200Res
 
 // GetOwnerActorOk returns a tuple with the OwnerActor field value
 // and a boolean to check if the value has been set.
-func (o *InputValueAnyOf5) GetOwnerActorOk() (*V2ObjectsObjectRecordsQueryPost200ResponseDataInnerValuesValueInnerOneOf1CreatedByActor, bool) {
+func (o *InputValueAnyOf5) GetOwnerActorOk() (*V2ObjectsObjectRecordsQueryPost200ResponseDataInnerValuesValueInnerOneOfCreatedByActor, bool) {
 	if o == nil {
 		return nil, false
 	}
@@ -122,13 +120,12 @@ func (o *InputValueAnyOf5) GetOwnerActorOk() (*V2ObjectsObjectRecordsQueryPost20
 }
 
 // SetOwnerActor sets field value
-func (o *InputValueAnyOf5) SetOwnerActor(v V2ObjectsObjectRecordsQueryPost200ResponseDataInnerValuesValueInnerOneOf1CreatedByActor) {
+func (o *InputValueAnyOf5) SetOwnerActor(v V2ObjectsObjectRecordsQueryPost200ResponseDataInnerValuesValueInnerOneOfCreatedByActor) {
 	o.OwnerActor = v
 }
 
-
 func (o InputValueAnyOf5) MarshalJSON() ([]byte, error) {
-	toSerialize,err := o.ToMap()
+	toSerialize, err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
 	}
@@ -155,32 +152,31 @@ func (o *InputValueAnyOf5) UnmarshalJSON(data []byte) (err error) {
 
 	// defaultValueFuncMap captures the default values for required properties.
 	// These values are used when required properties are missing from the payload.
-	defaultValueFuncMap := map[string]func() interface{} {
-	}
+	defaultValueFuncMap := map[string]func() interface{}{}
 	var defaultValueApplied bool
 	allProperties := make(map[string]interface{})
 
 	err = json.Unmarshal(data, &allProperties)
 
 	if err != nil {
-		return err;
+		return err
 	}
 
-	for _, requiredProperty := range(requiredProperties) {
+	for _, requiredProperty := range requiredProperties {
 		if value, exists := allProperties[requiredProperty]; !exists || value == "" {
 			if _, ok := defaultValueFuncMap[requiredProperty]; ok {
 				allProperties[requiredProperty] = defaultValueFuncMap[requiredProperty]()
 				defaultValueApplied = true
 			}
 		}
-		if value, exists := allProperties[requiredProperty]; !exists || value == ""{
+		if value, exists := allProperties[requiredProperty]; !exists || value == "" {
 			return fmt.Errorf("no value given for required property %v", requiredProperty)
 		}
 	}
 
 	if defaultValueApplied {
 		data, err = json.Marshal(allProperties)
-		if err != nil{
+		if err != nil {
 			return err
 		}
 	}
@@ -234,5 +230,3 @@ func (v *NullableInputValueAnyOf5) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
-
-

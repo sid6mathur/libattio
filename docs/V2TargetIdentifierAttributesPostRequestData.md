@@ -5,20 +5,20 @@
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **Title** | **string** | The name of the attribute. The title will be visible across Attio&#39;s UI. | 
-**Description** | **string** | A text description for the attribute. | 
+**Description** | **NullableString** | A text description for the attribute. | 
 **ApiSlug** | **string** | A unique, human-readable slug to access the attribute through URLs and API calls. Formatted in snake case. | 
 **Type** | **string** | The type of the attribute. This value affects the possible &#x60;config&#x60; values. Attributes of type \&quot;status\&quot; are not supported on objects. | 
 **IsRequired** | **bool** | When &#x60;is_required&#x60; is &#x60;true&#x60;, new records/entries must have a value for this attribute. If &#x60;false&#x60;, values may be &#x60;null&#x60;. This value does not affect existing data and you do not need to backfill &#x60;null&#x60; values if changing &#x60;is_required&#x60; from &#x60;false&#x60; to &#x60;true&#x60;. | 
 **IsUnique** | **bool** | Whether or not new values for this attribute must be unique. Uniqueness restrictions are only applied to new data and do not apply retroactively to previously created data. | 
 **IsMultiselect** | **bool** | Whether or not this attribute can have multiple values. Multiselect is only available on some value types. | 
-**DefaultValue** | Pointer to [**V2TargetIdentifierAttributesPostRequestDataDefaultValue**](V2TargetIdentifierAttributesPostRequestDataDefaultValue.md) |  | [optional] 
+**DefaultValue** | Pointer to [**NullableV2TargetIdentifierAttributesPostRequestDataDefaultValue**](V2TargetIdentifierAttributesPostRequestDataDefaultValue.md) |  | [optional] 
 **Config** | [**V2TargetIdentifierAttributesPostRequestDataConfig**](V2TargetIdentifierAttributesPostRequestDataConfig.md) |  | 
 
 ## Methods
 
 ### NewV2TargetIdentifierAttributesPostRequestData
 
-`func NewV2TargetIdentifierAttributesPostRequestData(title string, description string, apiSlug string, type_ string, isRequired bool, isUnique bool, isMultiselect bool, config V2TargetIdentifierAttributesPostRequestDataConfig, ) *V2TargetIdentifierAttributesPostRequestData`
+`func NewV2TargetIdentifierAttributesPostRequestData(title string, description NullableString, apiSlug string, type_ string, isRequired bool, isUnique bool, isMultiselect bool, config V2TargetIdentifierAttributesPostRequestDataConfig, ) *V2TargetIdentifierAttributesPostRequestData`
 
 NewV2TargetIdentifierAttributesPostRequestData instantiates a new V2TargetIdentifierAttributesPostRequestData object
 This constructor will assign default values to properties that have it defined,
@@ -73,6 +73,16 @@ and a boolean to check if the value has been set.
 SetDescription sets Description field to given value.
 
 
+### SetDescriptionNil
+
+`func (o *V2TargetIdentifierAttributesPostRequestData) SetDescriptionNil(b bool)`
+
+ SetDescriptionNil sets the value for Description to be an explicit nil
+
+### UnsetDescription
+`func (o *V2TargetIdentifierAttributesPostRequestData) UnsetDescription()`
+
+UnsetDescription ensures that no value is present for Description, not even an explicit nil
 ### GetApiSlug
 
 `func (o *V2TargetIdentifierAttributesPostRequestData) GetApiSlug() string`
@@ -198,6 +208,16 @@ SetDefaultValue sets DefaultValue field to given value.
 
 HasDefaultValue returns a boolean if a field has been set.
 
+### SetDefaultValueNil
+
+`func (o *V2TargetIdentifierAttributesPostRequestData) SetDefaultValueNil(b bool)`
+
+ SetDefaultValueNil sets the value for DefaultValue to be an explicit nil
+
+### UnsetDefaultValue
+`func (o *V2TargetIdentifierAttributesPostRequestData) UnsetDefaultValue()`
+
+UnsetDefaultValue ensures that no value is present for DefaultValue, not even an explicit nil
 ### GetConfig
 
 `func (o *V2TargetIdentifierAttributesPostRequestData) GetConfig() V2TargetIdentifierAttributesPostRequestDataConfig`

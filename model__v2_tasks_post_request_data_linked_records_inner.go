@@ -16,10 +16,9 @@ import (
 	"fmt"
 )
 
-
 // V2TasksPostRequestDataLinkedRecordsInner struct for V2TasksPostRequestDataLinkedRecordsInner
 type V2TasksPostRequestDataLinkedRecordsInner struct {
-	V2TasksPostRequestDataLinkedRecordsInnerAnyOf *V2TasksPostRequestDataLinkedRecordsInnerAnyOf
+	V2TasksPostRequestDataLinkedRecordsInnerAnyOf  *V2TasksPostRequestDataLinkedRecordsInnerAnyOf
 	V2TasksPostRequestDataLinkedRecordsInnerAnyOf1 *V2TasksPostRequestDataLinkedRecordsInnerAnyOf1
 }
 
@@ -27,7 +26,7 @@ type V2TasksPostRequestDataLinkedRecordsInner struct {
 func (dst *V2TasksPostRequestDataLinkedRecordsInner) UnmarshalJSON(data []byte) error {
 	var err error
 	// try to unmarshal JSON data into V2TasksPostRequestDataLinkedRecordsInnerAnyOf
-	err = json.Unmarshal(data, &dst.V2TasksPostRequestDataLinkedRecordsInnerAnyOf);
+	err = json.Unmarshal(data, &dst.V2TasksPostRequestDataLinkedRecordsInnerAnyOf)
 	if err == nil {
 		jsonV2TasksPostRequestDataLinkedRecordsInnerAnyOf, _ := json.Marshal(dst.V2TasksPostRequestDataLinkedRecordsInnerAnyOf)
 		if string(jsonV2TasksPostRequestDataLinkedRecordsInnerAnyOf) == "{}" { // empty struct
@@ -40,7 +39,7 @@ func (dst *V2TasksPostRequestDataLinkedRecordsInner) UnmarshalJSON(data []byte) 
 	}
 
 	// try to unmarshal JSON data into V2TasksPostRequestDataLinkedRecordsInnerAnyOf1
-	err = json.Unmarshal(data, &dst.V2TasksPostRequestDataLinkedRecordsInnerAnyOf1);
+	err = json.Unmarshal(data, &dst.V2TasksPostRequestDataLinkedRecordsInnerAnyOf1)
 	if err == nil {
 		jsonV2TasksPostRequestDataLinkedRecordsInnerAnyOf1, _ := json.Marshal(dst.V2TasksPostRequestDataLinkedRecordsInnerAnyOf1)
 		if string(jsonV2TasksPostRequestDataLinkedRecordsInnerAnyOf1) == "{}" { // empty struct
@@ -67,7 +66,6 @@ func (src V2TasksPostRequestDataLinkedRecordsInner) MarshalJSON() ([]byte, error
 
 	return nil, nil // no data in anyOf schemas
 }
-
 
 type NullableV2TasksPostRequestDataLinkedRecordsInner struct {
 	value *V2TasksPostRequestDataLinkedRecordsInner
@@ -104,5 +102,3 @@ func (v *NullableV2TasksPostRequestDataLinkedRecordsInner) UnmarshalJSON(src []b
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
-
-

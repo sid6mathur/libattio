@@ -107,6 +107,7 @@ func (o *V2TasksPostRequestDataLinkedRecordsInnerAnyOf1SlugOrIdOfMatchingAttribu
 func (o *V2TasksPostRequestDataLinkedRecordsInnerAnyOf1SlugOrIdOfMatchingAttributeInnerAnyOf3) SetCountryCode(v string) {
 	o.CountryCode.Set(&v)
 }
+
 // SetCountryCodeNil sets the value for CountryCode to be an explicit nil
 func (o *V2TasksPostRequestDataLinkedRecordsInnerAnyOf1SlugOrIdOfMatchingAttributeInnerAnyOf3) SetCountryCodeNil() {
 	o.CountryCode.Set(nil)
@@ -118,7 +119,7 @@ func (o *V2TasksPostRequestDataLinkedRecordsInnerAnyOf1SlugOrIdOfMatchingAttribu
 }
 
 func (o V2TasksPostRequestDataLinkedRecordsInnerAnyOf1SlugOrIdOfMatchingAttributeInnerAnyOf3) MarshalJSON() ([]byte, error) {
-	toSerialize,err := o.ToMap()
+	toSerialize, err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
 	}
@@ -171,5 +172,3 @@ func (v *NullableV2TasksPostRequestDataLinkedRecordsInnerAnyOf1SlugOrIdOfMatchin
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
-
-

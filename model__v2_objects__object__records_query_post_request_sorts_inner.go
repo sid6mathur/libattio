@@ -16,10 +16,9 @@ import (
 	"fmt"
 )
 
-
 // V2ObjectsObjectRecordsQueryPostRequestSortsInner struct for V2ObjectsObjectRecordsQueryPostRequestSortsInner
 type V2ObjectsObjectRecordsQueryPostRequestSortsInner struct {
-	V2ObjectsObjectRecordsQueryPostRequestSortsInnerAnyOf *V2ObjectsObjectRecordsQueryPostRequestSortsInnerAnyOf
+	V2ObjectsObjectRecordsQueryPostRequestSortsInnerAnyOf  *V2ObjectsObjectRecordsQueryPostRequestSortsInnerAnyOf
 	V2ObjectsObjectRecordsQueryPostRequestSortsInnerAnyOf1 *V2ObjectsObjectRecordsQueryPostRequestSortsInnerAnyOf1
 }
 
@@ -27,7 +26,7 @@ type V2ObjectsObjectRecordsQueryPostRequestSortsInner struct {
 func (dst *V2ObjectsObjectRecordsQueryPostRequestSortsInner) UnmarshalJSON(data []byte) error {
 	var err error
 	// try to unmarshal JSON data into V2ObjectsObjectRecordsQueryPostRequestSortsInnerAnyOf
-	err = json.Unmarshal(data, &dst.V2ObjectsObjectRecordsQueryPostRequestSortsInnerAnyOf);
+	err = json.Unmarshal(data, &dst.V2ObjectsObjectRecordsQueryPostRequestSortsInnerAnyOf)
 	if err == nil {
 		jsonV2ObjectsObjectRecordsQueryPostRequestSortsInnerAnyOf, _ := json.Marshal(dst.V2ObjectsObjectRecordsQueryPostRequestSortsInnerAnyOf)
 		if string(jsonV2ObjectsObjectRecordsQueryPostRequestSortsInnerAnyOf) == "{}" { // empty struct
@@ -40,7 +39,7 @@ func (dst *V2ObjectsObjectRecordsQueryPostRequestSortsInner) UnmarshalJSON(data 
 	}
 
 	// try to unmarshal JSON data into V2ObjectsObjectRecordsQueryPostRequestSortsInnerAnyOf1
-	err = json.Unmarshal(data, &dst.V2ObjectsObjectRecordsQueryPostRequestSortsInnerAnyOf1);
+	err = json.Unmarshal(data, &dst.V2ObjectsObjectRecordsQueryPostRequestSortsInnerAnyOf1)
 	if err == nil {
 		jsonV2ObjectsObjectRecordsQueryPostRequestSortsInnerAnyOf1, _ := json.Marshal(dst.V2ObjectsObjectRecordsQueryPostRequestSortsInnerAnyOf1)
 		if string(jsonV2ObjectsObjectRecordsQueryPostRequestSortsInnerAnyOf1) == "{}" { // empty struct
@@ -67,7 +66,6 @@ func (src V2ObjectsObjectRecordsQueryPostRequestSortsInner) MarshalJSON() ([]byt
 
 	return nil, nil // no data in anyOf schemas
 }
-
 
 type NullableV2ObjectsObjectRecordsQueryPostRequestSortsInner struct {
 	value *V2ObjectsObjectRecordsQueryPostRequestSortsInner
@@ -104,5 +102,3 @@ func (v *NullableV2ObjectsObjectRecordsQueryPostRequestSortsInner) UnmarshalJSON
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
-
-

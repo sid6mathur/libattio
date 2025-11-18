@@ -16,10 +16,9 @@ import (
 	"fmt"
 )
 
-
 // MeetingStart struct for MeetingStart
 type MeetingStart struct {
-	MeetingStartAnyOf *MeetingStartAnyOf
+	MeetingStartAnyOf  *MeetingStartAnyOf
 	MeetingStartAnyOf1 *MeetingStartAnyOf1
 }
 
@@ -27,7 +26,7 @@ type MeetingStart struct {
 func (dst *MeetingStart) UnmarshalJSON(data []byte) error {
 	var err error
 	// try to unmarshal JSON data into MeetingStartAnyOf
-	err = json.Unmarshal(data, &dst.MeetingStartAnyOf);
+	err = json.Unmarshal(data, &dst.MeetingStartAnyOf)
 	if err == nil {
 		jsonMeetingStartAnyOf, _ := json.Marshal(dst.MeetingStartAnyOf)
 		if string(jsonMeetingStartAnyOf) == "{}" { // empty struct
@@ -40,7 +39,7 @@ func (dst *MeetingStart) UnmarshalJSON(data []byte) error {
 	}
 
 	// try to unmarshal JSON data into MeetingStartAnyOf1
-	err = json.Unmarshal(data, &dst.MeetingStartAnyOf1);
+	err = json.Unmarshal(data, &dst.MeetingStartAnyOf1)
 	if err == nil {
 		jsonMeetingStartAnyOf1, _ := json.Marshal(dst.MeetingStartAnyOf1)
 		if string(jsonMeetingStartAnyOf1) == "{}" { // empty struct
@@ -67,7 +66,6 @@ func (src MeetingStart) MarshalJSON() ([]byte, error) {
 
 	return nil, nil // no data in anyOf schemas
 }
-
 
 type NullableMeetingStart struct {
 	value *MeetingStart
@@ -104,5 +102,3 @@ func (v *NullableMeetingStart) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
-
-

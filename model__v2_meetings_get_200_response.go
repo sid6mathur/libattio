@@ -12,8 +12,8 @@ Contact: support@attio.com
 package libattio
 
 import (
-	"encoding/json"
 	"bytes"
+	"encoding/json"
 	"fmt"
 )
 
@@ -22,7 +22,7 @@ var _ MappedNullable = &V2MeetingsGet200Response{}
 
 // V2MeetingsGet200Response Success
 type V2MeetingsGet200Response struct {
-	Data []Meeting `json:"data"`
+	Data       []Meeting                          `json:"data"`
 	Pagination V2MeetingsGet200ResponsePagination `json:"pagination"`
 }
 
@@ -71,7 +71,6 @@ func (o *V2MeetingsGet200Response) SetData(v []Meeting) {
 	o.Data = v
 }
 
-
 // GetPagination returns the Pagination field value
 func (o *V2MeetingsGet200Response) GetPagination() V2MeetingsGet200ResponsePagination {
 	if o == nil {
@@ -96,9 +95,8 @@ func (o *V2MeetingsGet200Response) SetPagination(v V2MeetingsGet200ResponsePagin
 	o.Pagination = v
 }
 
-
 func (o V2MeetingsGet200Response) MarshalJSON() ([]byte, error) {
-	toSerialize,err := o.ToMap()
+	toSerialize, err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
 	}
@@ -123,32 +121,31 @@ func (o *V2MeetingsGet200Response) UnmarshalJSON(data []byte) (err error) {
 
 	// defaultValueFuncMap captures the default values for required properties.
 	// These values are used when required properties are missing from the payload.
-	defaultValueFuncMap := map[string]func() interface{} {
-	}
+	defaultValueFuncMap := map[string]func() interface{}{}
 	var defaultValueApplied bool
 	allProperties := make(map[string]interface{})
 
 	err = json.Unmarshal(data, &allProperties)
 
 	if err != nil {
-		return err;
+		return err
 	}
 
-	for _, requiredProperty := range(requiredProperties) {
+	for _, requiredProperty := range requiredProperties {
 		if value, exists := allProperties[requiredProperty]; !exists || value == "" {
 			if _, ok := defaultValueFuncMap[requiredProperty]; ok {
 				allProperties[requiredProperty] = defaultValueFuncMap[requiredProperty]()
 				defaultValueApplied = true
 			}
 		}
-		if value, exists := allProperties[requiredProperty]; !exists || value == ""{
+		if value, exists := allProperties[requiredProperty]; !exists || value == "" {
 			return fmt.Errorf("no value given for required property %v", requiredProperty)
 		}
 	}
 
 	if defaultValueApplied {
 		data, err = json.Marshal(allProperties)
-		if err != nil{
+		if err != nil {
 			return err
 		}
 	}
@@ -202,5 +199,3 @@ func (v *NullableV2MeetingsGet200Response) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
-
-

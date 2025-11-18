@@ -12,8 +12,8 @@ Contact: support@attio.com
 package libattio
 
 import (
-	"encoding/json"
 	"bytes"
+	"encoding/json"
 	"fmt"
 )
 
@@ -26,7 +26,7 @@ type V2WebhooksPost200ResponseData struct {
 	TargetUrl string `json:"target_url" validate:"regexp=^https:\\/\\/.*"`
 	// One or more events the webhook is subscribed to.
 	Subscriptions []V2WebhooksGet200ResponseDataInnerSubscriptionsInner `json:"subscriptions"`
-	Id V2WebhooksGet200ResponseDataInnerId `json:"id"`
+	Id            V2WebhooksGet200ResponseDataInnerId                   `json:"id"`
 	// The state of the webhook. Webhooks marked as active and degraded will receive events, inactive ones will not. If a webhook remains in the degraded state for 7 days, it will be marked inactive.
 	Status string `json:"status"`
 	// When the webhook was created.
@@ -84,7 +84,6 @@ func (o *V2WebhooksPost200ResponseData) SetTargetUrl(v string) {
 	o.TargetUrl = v
 }
 
-
 // GetSubscriptions returns the Subscriptions field value
 func (o *V2WebhooksPost200ResponseData) GetSubscriptions() []V2WebhooksGet200ResponseDataInnerSubscriptionsInner {
 	if o == nil {
@@ -108,7 +107,6 @@ func (o *V2WebhooksPost200ResponseData) GetSubscriptionsOk() ([]V2WebhooksGet200
 func (o *V2WebhooksPost200ResponseData) SetSubscriptions(v []V2WebhooksGet200ResponseDataInnerSubscriptionsInner) {
 	o.Subscriptions = v
 }
-
 
 // GetId returns the Id field value
 func (o *V2WebhooksPost200ResponseData) GetId() V2WebhooksGet200ResponseDataInnerId {
@@ -134,7 +132,6 @@ func (o *V2WebhooksPost200ResponseData) SetId(v V2WebhooksGet200ResponseDataInne
 	o.Id = v
 }
 
-
 // GetStatus returns the Status field value
 func (o *V2WebhooksPost200ResponseData) GetStatus() string {
 	if o == nil {
@@ -158,7 +155,6 @@ func (o *V2WebhooksPost200ResponseData) GetStatusOk() (*string, bool) {
 func (o *V2WebhooksPost200ResponseData) SetStatus(v string) {
 	o.Status = v
 }
-
 
 // GetCreatedAt returns the CreatedAt field value
 func (o *V2WebhooksPost200ResponseData) GetCreatedAt() string {
@@ -184,7 +180,6 @@ func (o *V2WebhooksPost200ResponseData) SetCreatedAt(v string) {
 	o.CreatedAt = v
 }
 
-
 // GetSecret returns the Secret field value
 func (o *V2WebhooksPost200ResponseData) GetSecret() string {
 	if o == nil {
@@ -209,9 +204,8 @@ func (o *V2WebhooksPost200ResponseData) SetSecret(v string) {
 	o.Secret = v
 }
 
-
 func (o V2WebhooksPost200ResponseData) MarshalJSON() ([]byte, error) {
-	toSerialize,err := o.ToMap()
+	toSerialize, err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
 	}
@@ -244,32 +238,31 @@ func (o *V2WebhooksPost200ResponseData) UnmarshalJSON(data []byte) (err error) {
 
 	// defaultValueFuncMap captures the default values for required properties.
 	// These values are used when required properties are missing from the payload.
-	defaultValueFuncMap := map[string]func() interface{} {
-	}
+	defaultValueFuncMap := map[string]func() interface{}{}
 	var defaultValueApplied bool
 	allProperties := make(map[string]interface{})
 
 	err = json.Unmarshal(data, &allProperties)
 
 	if err != nil {
-		return err;
+		return err
 	}
 
-	for _, requiredProperty := range(requiredProperties) {
+	for _, requiredProperty := range requiredProperties {
 		if value, exists := allProperties[requiredProperty]; !exists || value == "" {
 			if _, ok := defaultValueFuncMap[requiredProperty]; ok {
 				allProperties[requiredProperty] = defaultValueFuncMap[requiredProperty]()
 				defaultValueApplied = true
 			}
 		}
-		if value, exists := allProperties[requiredProperty]; !exists || value == ""{
+		if value, exists := allProperties[requiredProperty]; !exists || value == "" {
 			return fmt.Errorf("no value given for required property %v", requiredProperty)
 		}
 	}
 
 	if defaultValueApplied {
 		data, err = json.Marshal(allProperties)
-		if err != nil{
+		if err != nil {
 			return err
 		}
 	}
@@ -323,5 +316,3 @@ func (v *NullableV2WebhooksPost200ResponseData) UnmarshalJSON(src []byte) error 
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
-
-

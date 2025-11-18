@@ -20,20 +20,19 @@ import (
 	"strings"
 )
 
-
 // TasksAPIService TasksAPI service
 type TasksAPIService service
 
 type ApiV2TasksGetRequest struct {
-	ctx context.Context
-	ApiService *TasksAPIService
-	limit *int32
-	offset *int32
-	sort *string
-	linkedObject *string
+	ctx            context.Context
+	ApiService     *TasksAPIService
+	limit          *int32
+	offset         *int32
+	sort           *string
+	linkedObject   *string
 	linkedRecordId *string
-	assignee *string
-	isCompleted *bool
+	assignee       *string
+	isCompleted    *bool
 }
 
 func (r ApiV2TasksGetRequest) Limit(limit int32) ApiV2TasksGetRequest {
@@ -82,24 +81,25 @@ List all tasks. Results are sorted by creation date, from oldest to newest.
 
 Required scopes: `task:read`, `object_configuration:read`, `record_permission:read`, `user_management:read`.
 
- @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @return ApiV2TasksGetRequest
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@return ApiV2TasksGetRequest
 */
 func (a *TasksAPIService) V2TasksGet(ctx context.Context) ApiV2TasksGetRequest {
 	return ApiV2TasksGetRequest{
 		ApiService: a,
-		ctx: ctx,
+		ctx:        ctx,
 	}
 }
 
 // Execute executes the request
-//  @return V2TasksGet200Response
+//
+//	@return V2TasksGet200Response
 func (a *TasksAPIService) V2TasksGetExecute(r ApiV2TasksGetRequest) (*V2TasksGet200Response, *http.Response, error) {
 	var (
-		localVarHTTPMethod   = http.MethodGet
-		localVarPostBody     interface{}
-		formFiles            []formFile
-		localVarReturnValue  *V2TasksGet200Response
+		localVarHTTPMethod  = http.MethodGet
+		localVarPostBody    interface{}
+		formFiles           []formFile
+		localVarReturnValue *V2TasksGet200Response
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "TasksAPIService.V2TasksGet")
@@ -189,8 +189,8 @@ func (a *TasksAPIService) V2TasksGetExecute(r ApiV2TasksGetRequest) (*V2TasksGet
 }
 
 type ApiV2TasksPostRequest struct {
-	ctx context.Context
-	ApiService *TasksAPIService
+	ctx                context.Context
+	ApiService         *TasksAPIService
 	v2TasksPostRequest *V2TasksPostRequest
 }
 
@@ -212,24 +212,25 @@ At present, tasks can only be created from plaintext without record reference fo
 
 Required scopes: `task:read-write`, `object_configuration:read`, `record_permission:read`, `user_management:read`.
 
- @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @return ApiV2TasksPostRequest
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@return ApiV2TasksPostRequest
 */
 func (a *TasksAPIService) V2TasksPost(ctx context.Context) ApiV2TasksPostRequest {
 	return ApiV2TasksPostRequest{
 		ApiService: a,
-		ctx: ctx,
+		ctx:        ctx,
 	}
 }
 
 // Execute executes the request
-//  @return V2TasksPost200Response
+//
+//	@return V2TasksPost200Response
 func (a *TasksAPIService) V2TasksPostExecute(r ApiV2TasksPostRequest) (*V2TasksPost200Response, *http.Response, error) {
 	var (
-		localVarHTTPMethod   = http.MethodPost
-		localVarPostBody     interface{}
-		formFiles            []formFile
-		localVarReturnValue  *V2TasksPost200Response
+		localVarHTTPMethod  = http.MethodPost
+		localVarPostBody    interface{}
+		formFiles           []formFile
+		localVarReturnValue *V2TasksPost200Response
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "TasksAPIService.V2TasksPost")
@@ -294,8 +295,8 @@ func (a *TasksAPIService) V2TasksPostExecute(r ApiV2TasksPostRequest) (*V2TasksP
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 404 {
@@ -305,8 +306,8 @@ func (a *TasksAPIService) V2TasksPostExecute(r ApiV2TasksPostRequest) (*V2TasksP
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 		}
 		return localVarReturnValue, localVarHTTPResponse, newErr
 	}
@@ -324,9 +325,9 @@ func (a *TasksAPIService) V2TasksPostExecute(r ApiV2TasksPostRequest) (*V2TasksP
 }
 
 type ApiV2TasksTaskIdDeleteRequest struct {
-	ctx context.Context
+	ctx        context.Context
 	ApiService *TasksAPIService
-	taskId string
+	taskId     string
 }
 
 func (r ApiV2TasksTaskIdDeleteRequest) Execute() (map[string]interface{}, *http.Response, error) {
@@ -340,26 +341,27 @@ Delete a task by ID.
 
 Required scopes: `task:read-write`.
 
- @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @param taskId
- @return ApiV2TasksTaskIdDeleteRequest
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@param taskId
+	@return ApiV2TasksTaskIdDeleteRequest
 */
 func (a *TasksAPIService) V2TasksTaskIdDelete(ctx context.Context, taskId string) ApiV2TasksTaskIdDeleteRequest {
 	return ApiV2TasksTaskIdDeleteRequest{
 		ApiService: a,
-		ctx: ctx,
-		taskId: taskId,
+		ctx:        ctx,
+		taskId:     taskId,
 	}
 }
 
 // Execute executes the request
-//  @return map[string]interface{}
+//
+//	@return map[string]interface{}
 func (a *TasksAPIService) V2TasksTaskIdDeleteExecute(r ApiV2TasksTaskIdDeleteRequest) (map[string]interface{}, *http.Response, error) {
 	var (
-		localVarHTTPMethod   = http.MethodDelete
-		localVarPostBody     interface{}
-		formFiles            []formFile
-		localVarReturnValue  map[string]interface{}
+		localVarHTTPMethod  = http.MethodDelete
+		localVarPostBody    interface{}
+		formFiles           []formFile
+		localVarReturnValue map[string]interface{}
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "TasksAPIService.V2TasksTaskIdDelete")
@@ -420,8 +422,8 @@ func (a *TasksAPIService) V2TasksTaskIdDeleteExecute(r ApiV2TasksTaskIdDeleteReq
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 		}
 		return localVarReturnValue, localVarHTTPResponse, newErr
 	}
@@ -439,9 +441,9 @@ func (a *TasksAPIService) V2TasksTaskIdDeleteExecute(r ApiV2TasksTaskIdDeleteReq
 }
 
 type ApiV2TasksTaskIdGetRequest struct {
-	ctx context.Context
+	ctx        context.Context
 	ApiService *TasksAPIService
-	taskId string
+	taskId     string
 }
 
 func (r ApiV2TasksTaskIdGetRequest) Execute() (*V2TasksPost200Response, *http.Response, error) {
@@ -455,26 +457,27 @@ Get a single task by ID.
 
 Required scopes: `task:read`, `object_configuration:read`, `record_permission:read`, `user_management:read`.
 
- @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @param taskId
- @return ApiV2TasksTaskIdGetRequest
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@param taskId
+	@return ApiV2TasksTaskIdGetRequest
 */
 func (a *TasksAPIService) V2TasksTaskIdGet(ctx context.Context, taskId string) ApiV2TasksTaskIdGetRequest {
 	return ApiV2TasksTaskIdGetRequest{
 		ApiService: a,
-		ctx: ctx,
-		taskId: taskId,
+		ctx:        ctx,
+		taskId:     taskId,
 	}
 }
 
 // Execute executes the request
-//  @return V2TasksPost200Response
+//
+//	@return V2TasksPost200Response
 func (a *TasksAPIService) V2TasksTaskIdGetExecute(r ApiV2TasksTaskIdGetRequest) (*V2TasksPost200Response, *http.Response, error) {
 	var (
-		localVarHTTPMethod   = http.MethodGet
-		localVarPostBody     interface{}
-		formFiles            []formFile
-		localVarReturnValue  *V2TasksPost200Response
+		localVarHTTPMethod  = http.MethodGet
+		localVarPostBody    interface{}
+		formFiles           []formFile
+		localVarReturnValue *V2TasksPost200Response
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "TasksAPIService.V2TasksTaskIdGet")
@@ -535,8 +538,8 @@ func (a *TasksAPIService) V2TasksTaskIdGetExecute(r ApiV2TasksTaskIdGetRequest) 
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 		}
 		return localVarReturnValue, localVarHTTPResponse, newErr
 	}
@@ -554,9 +557,9 @@ func (a *TasksAPIService) V2TasksTaskIdGetExecute(r ApiV2TasksTaskIdGetRequest) 
 }
 
 type ApiV2TasksTaskIdPatchRequest struct {
-	ctx context.Context
-	ApiService *TasksAPIService
-	taskId string
+	ctx                       context.Context
+	ApiService                *TasksAPIService
+	taskId                    string
 	v2TasksTaskIdPatchRequest *V2TasksTaskIdPatchRequest
 }
 
@@ -576,26 +579,27 @@ Updates an existing task by `task_id`. At present, only the `deadline_at`, `is_c
 
 Required scopes: `task:read-write`, `object_configuration:read`, `record_permission:read`, `user_management:read`.
 
- @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @param taskId
- @return ApiV2TasksTaskIdPatchRequest
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@param taskId
+	@return ApiV2TasksTaskIdPatchRequest
 */
 func (a *TasksAPIService) V2TasksTaskIdPatch(ctx context.Context, taskId string) ApiV2TasksTaskIdPatchRequest {
 	return ApiV2TasksTaskIdPatchRequest{
 		ApiService: a,
-		ctx: ctx,
-		taskId: taskId,
+		ctx:        ctx,
+		taskId:     taskId,
 	}
 }
 
 // Execute executes the request
-//  @return V2TasksPost200Response
+//
+//	@return V2TasksPost200Response
 func (a *TasksAPIService) V2TasksTaskIdPatchExecute(r ApiV2TasksTaskIdPatchRequest) (*V2TasksPost200Response, *http.Response, error) {
 	var (
-		localVarHTTPMethod   = http.MethodPatch
-		localVarPostBody     interface{}
-		formFiles            []formFile
-		localVarReturnValue  *V2TasksPost200Response
+		localVarHTTPMethod  = http.MethodPatch
+		localVarPostBody    interface{}
+		formFiles           []formFile
+		localVarReturnValue *V2TasksPost200Response
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "TasksAPIService.V2TasksTaskIdPatch")
@@ -661,8 +665,8 @@ func (a *TasksAPIService) V2TasksTaskIdPatchExecute(r ApiV2TasksTaskIdPatchReque
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 404 {
@@ -672,8 +676,8 @@ func (a *TasksAPIService) V2TasksTaskIdPatchExecute(r ApiV2TasksTaskIdPatchReque
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 		}
 		return localVarReturnValue, localVarHTTPResponse, newErr
 	}

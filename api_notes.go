@@ -20,16 +20,15 @@ import (
 	"strings"
 )
 
-
 // NotesAPIService NotesAPI service
 type NotesAPIService service
 
 type ApiV2NotesGetRequest struct {
-	ctx context.Context
-	ApiService *NotesAPIService
-	limit *int32
-	offset *int32
-	parentObject *string
+	ctx            context.Context
+	ApiService     *NotesAPIService
+	limit          *int32
+	offset         *int32
+	parentObject   *string
 	parentRecordId *string
 }
 
@@ -64,24 +63,25 @@ List notes for all records or for a specific record.
 
 Required scopes: `note:read`, `object_configuration:read`, `record_permission:read`.
 
- @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @return ApiV2NotesGetRequest
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@return ApiV2NotesGetRequest
 */
 func (a *NotesAPIService) V2NotesGet(ctx context.Context) ApiV2NotesGetRequest {
 	return ApiV2NotesGetRequest{
 		ApiService: a,
-		ctx: ctx,
+		ctx:        ctx,
 	}
 }
 
 // Execute executes the request
-//  @return V2NotesGet200Response
+//
+//	@return V2NotesGet200Response
 func (a *NotesAPIService) V2NotesGetExecute(r ApiV2NotesGetRequest) (*V2NotesGet200Response, *http.Response, error) {
 	var (
-		localVarHTTPMethod   = http.MethodGet
-		localVarPostBody     interface{}
-		formFiles            []formFile
-		localVarReturnValue  *V2NotesGet200Response
+		localVarHTTPMethod  = http.MethodGet
+		localVarPostBody    interface{}
+		formFiles           []formFile
+		localVarReturnValue *V2NotesGet200Response
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "NotesAPIService.V2NotesGet")
@@ -153,8 +153,8 @@ func (a *NotesAPIService) V2NotesGetExecute(r ApiV2NotesGetRequest) (*V2NotesGet
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 		}
 		return localVarReturnValue, localVarHTTPResponse, newErr
 	}
@@ -172,9 +172,9 @@ func (a *NotesAPIService) V2NotesGetExecute(r ApiV2NotesGetRequest) (*V2NotesGet
 }
 
 type ApiV2NotesNoteIdDeleteRequest struct {
-	ctx context.Context
+	ctx        context.Context
 	ApiService *NotesAPIService
-	noteId string
+	noteId     string
 }
 
 func (r ApiV2NotesNoteIdDeleteRequest) Execute() (map[string]interface{}, *http.Response, error) {
@@ -188,26 +188,27 @@ Delete a single note by ID.
 
 Required scopes: `note:read-write`.
 
- @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @param noteId
- @return ApiV2NotesNoteIdDeleteRequest
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@param noteId
+	@return ApiV2NotesNoteIdDeleteRequest
 */
 func (a *NotesAPIService) V2NotesNoteIdDelete(ctx context.Context, noteId string) ApiV2NotesNoteIdDeleteRequest {
 	return ApiV2NotesNoteIdDeleteRequest{
 		ApiService: a,
-		ctx: ctx,
-		noteId: noteId,
+		ctx:        ctx,
+		noteId:     noteId,
 	}
 }
 
 // Execute executes the request
-//  @return map[string]interface{}
+//
+//	@return map[string]interface{}
 func (a *NotesAPIService) V2NotesNoteIdDeleteExecute(r ApiV2NotesNoteIdDeleteRequest) (map[string]interface{}, *http.Response, error) {
 	var (
-		localVarHTTPMethod   = http.MethodDelete
-		localVarPostBody     interface{}
-		formFiles            []formFile
-		localVarReturnValue  map[string]interface{}
+		localVarHTTPMethod  = http.MethodDelete
+		localVarPostBody    interface{}
+		formFiles           []formFile
+		localVarReturnValue map[string]interface{}
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "NotesAPIService.V2NotesNoteIdDelete")
@@ -268,8 +269,8 @@ func (a *NotesAPIService) V2NotesNoteIdDeleteExecute(r ApiV2NotesNoteIdDeleteReq
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 		}
 		return localVarReturnValue, localVarHTTPResponse, newErr
 	}
@@ -287,9 +288,9 @@ func (a *NotesAPIService) V2NotesNoteIdDeleteExecute(r ApiV2NotesNoteIdDeleteReq
 }
 
 type ApiV2NotesNoteIdGetRequest struct {
-	ctx context.Context
+	ctx        context.Context
 	ApiService *NotesAPIService
-	noteId string
+	noteId     string
 }
 
 func (r ApiV2NotesNoteIdGetRequest) Execute() (*V2NotesPost200Response, *http.Response, error) {
@@ -303,26 +304,27 @@ Get a single note by ID.
 
 Required scopes: `note:read`, `object_configuration:read`, `record_permission:read`.
 
- @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @param noteId
- @return ApiV2NotesNoteIdGetRequest
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@param noteId
+	@return ApiV2NotesNoteIdGetRequest
 */
 func (a *NotesAPIService) V2NotesNoteIdGet(ctx context.Context, noteId string) ApiV2NotesNoteIdGetRequest {
 	return ApiV2NotesNoteIdGetRequest{
 		ApiService: a,
-		ctx: ctx,
-		noteId: noteId,
+		ctx:        ctx,
+		noteId:     noteId,
 	}
 }
 
 // Execute executes the request
-//  @return V2NotesPost200Response
+//
+//	@return V2NotesPost200Response
 func (a *NotesAPIService) V2NotesNoteIdGetExecute(r ApiV2NotesNoteIdGetRequest) (*V2NotesPost200Response, *http.Response, error) {
 	var (
-		localVarHTTPMethod   = http.MethodGet
-		localVarPostBody     interface{}
-		formFiles            []formFile
-		localVarReturnValue  *V2NotesPost200Response
+		localVarHTTPMethod  = http.MethodGet
+		localVarPostBody    interface{}
+		formFiles           []formFile
+		localVarReturnValue *V2NotesPost200Response
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "NotesAPIService.V2NotesNoteIdGet")
@@ -383,8 +385,8 @@ func (a *NotesAPIService) V2NotesNoteIdGetExecute(r ApiV2NotesNoteIdGetRequest) 
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 		}
 		return localVarReturnValue, localVarHTTPResponse, newErr
 	}
@@ -402,8 +404,8 @@ func (a *NotesAPIService) V2NotesNoteIdGetExecute(r ApiV2NotesNoteIdGetRequest) 
 }
 
 type ApiV2NotesPostRequest struct {
-	ctx context.Context
-	ApiService *NotesAPIService
+	ctx                context.Context
+	ApiService         *NotesAPIService
 	v2NotesPostRequest *V2NotesPostRequest
 }
 
@@ -423,24 +425,25 @@ Creates a new note for a given record.
 
 Required scopes: `note:read-write`, `object_configuration:read`, `record_permission:read`.
 
- @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @return ApiV2NotesPostRequest
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@return ApiV2NotesPostRequest
 */
 func (a *NotesAPIService) V2NotesPost(ctx context.Context) ApiV2NotesPostRequest {
 	return ApiV2NotesPostRequest{
 		ApiService: a,
-		ctx: ctx,
+		ctx:        ctx,
 	}
 }
 
 // Execute executes the request
-//  @return V2NotesPost200Response
+//
+//	@return V2NotesPost200Response
 func (a *NotesAPIService) V2NotesPostExecute(r ApiV2NotesPostRequest) (*V2NotesPost200Response, *http.Response, error) {
 	var (
-		localVarHTTPMethod   = http.MethodPost
-		localVarPostBody     interface{}
-		formFiles            []formFile
-		localVarReturnValue  *V2NotesPost200Response
+		localVarHTTPMethod  = http.MethodPost
+		localVarPostBody    interface{}
+		formFiles           []formFile
+		localVarReturnValue *V2NotesPost200Response
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "NotesAPIService.V2NotesPost")
@@ -505,8 +508,8 @@ func (a *NotesAPIService) V2NotesPostExecute(r ApiV2NotesPostRequest) (*V2NotesP
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 		}
 		return localVarReturnValue, localVarHTTPResponse, newErr
 	}

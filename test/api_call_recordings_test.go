@@ -11,10 +11,10 @@ package libattio
 
 import (
 	"context"
+	libattio "github.com/fastah/libattio"
 	"github.com/stretchr/testify/assert"
 	"github.com/stretchr/testify/require"
 	"testing"
-	libattio "github.com/fastah/libattio"
 )
 
 func Test_libattio_CallRecordingsAPIService(t *testing.T) {
@@ -24,7 +24,7 @@ func Test_libattio_CallRecordingsAPIService(t *testing.T) {
 
 	t.Run("Test CallRecordingsAPIService V2MeetingsMeetingIdCallRecordingsCallRecordingIdDelete", func(t *testing.T) {
 
-		t.Skip("skip test")  // remove to run test
+		t.Skip("skip test") // remove to run test
 
 		var meetingId string
 		var callRecordingId string
@@ -39,7 +39,7 @@ func Test_libattio_CallRecordingsAPIService(t *testing.T) {
 
 	t.Run("Test CallRecordingsAPIService V2MeetingsMeetingIdCallRecordingsCallRecordingIdGet", func(t *testing.T) {
 
-		t.Skip("skip test")  // remove to run test
+		t.Skip("skip test") // remove to run test
 
 		var meetingId string
 		var callRecordingId string
@@ -54,7 +54,7 @@ func Test_libattio_CallRecordingsAPIService(t *testing.T) {
 
 	t.Run("Test CallRecordingsAPIService V2MeetingsMeetingIdCallRecordingsGet", func(t *testing.T) {
 
-		t.Skip("skip test")  // remove to run test
+		t.Skip("skip test") // remove to run test
 
 		var meetingId string
 
@@ -68,7 +68,7 @@ func Test_libattio_CallRecordingsAPIService(t *testing.T) {
 
 	t.Run("Test CallRecordingsAPIService V2MeetingsMeetingIdCallRecordingsPost", func(t *testing.T) {
 
-		t.Skip("skip test")  // remove to run test
+		t.Skip("skip test") // remove to run test
 
 		var meetingId string
 

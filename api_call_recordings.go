@@ -20,14 +20,13 @@ import (
 	"strings"
 )
 
-
 // CallRecordingsAPIService CallRecordingsAPI service
 type CallRecordingsAPIService service
 
 type ApiV2MeetingsMeetingIdCallRecordingsCallRecordingIdDeleteRequest struct {
-	ctx context.Context
-	ApiService *CallRecordingsAPIService
-	meetingId string
+	ctx             context.Context
+	ApiService      *CallRecordingsAPIService
+	meetingId       string
 	callRecordingId string
 }
 
@@ -40,30 +39,33 @@ V2MeetingsMeetingIdCallRecordingsCallRecordingIdDelete Delete call recording
 
 Deletes the specified call recording. This will remove the call recording and all associated data.
 
+This endpoint is in alpha and may be subject to breaking changes as we gather feedback.
+
 Required scopes: `meeting:read`, `call_recording:read-write`.
 
- @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @param meetingId
- @param callRecordingId
- @return ApiV2MeetingsMeetingIdCallRecordingsCallRecordingIdDeleteRequest
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@param meetingId
+	@param callRecordingId
+	@return ApiV2MeetingsMeetingIdCallRecordingsCallRecordingIdDeleteRequest
 */
 func (a *CallRecordingsAPIService) V2MeetingsMeetingIdCallRecordingsCallRecordingIdDelete(ctx context.Context, meetingId string, callRecordingId string) ApiV2MeetingsMeetingIdCallRecordingsCallRecordingIdDeleteRequest {
 	return ApiV2MeetingsMeetingIdCallRecordingsCallRecordingIdDeleteRequest{
-		ApiService: a,
-		ctx: ctx,
-		meetingId: meetingId,
+		ApiService:      a,
+		ctx:             ctx,
+		meetingId:       meetingId,
 		callRecordingId: callRecordingId,
 	}
 }
 
 // Execute executes the request
-//  @return map[string]interface{}
+//
+//	@return map[string]interface{}
 func (a *CallRecordingsAPIService) V2MeetingsMeetingIdCallRecordingsCallRecordingIdDeleteExecute(r ApiV2MeetingsMeetingIdCallRecordingsCallRecordingIdDeleteRequest) (map[string]interface{}, *http.Response, error) {
 	var (
-		localVarHTTPMethod   = http.MethodDelete
-		localVarPostBody     interface{}
-		formFiles            []formFile
-		localVarReturnValue  map[string]interface{}
+		localVarHTTPMethod  = http.MethodDelete
+		localVarPostBody    interface{}
+		formFiles           []formFile
+		localVarReturnValue map[string]interface{}
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "CallRecordingsAPIService.V2MeetingsMeetingIdCallRecordingsCallRecordingIdDelete")
@@ -125,8 +127,8 @@ func (a *CallRecordingsAPIService) V2MeetingsMeetingIdCallRecordingsCallRecordin
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 		}
 		return localVarReturnValue, localVarHTTPResponse, newErr
 	}
@@ -144,9 +146,9 @@ func (a *CallRecordingsAPIService) V2MeetingsMeetingIdCallRecordingsCallRecordin
 }
 
 type ApiV2MeetingsMeetingIdCallRecordingsCallRecordingIdGetRequest struct {
-	ctx context.Context
-	ApiService *CallRecordingsAPIService
-	meetingId string
+	ctx             context.Context
+	ApiService      *CallRecordingsAPIService
+	meetingId       string
 	callRecordingId string
 }
 
@@ -159,30 +161,33 @@ V2MeetingsMeetingIdCallRecordingsCallRecordingIdGet Get call recording
 
 Get a single call recording by ID.
 
+This endpoint is in beta. We will aim to avoid breaking changes, but small updates may be made as we roll out to more users.
+
 Required scopes: `meeting:read`, `call_recording:read`.
 
- @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @param meetingId
- @param callRecordingId
- @return ApiV2MeetingsMeetingIdCallRecordingsCallRecordingIdGetRequest
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@param meetingId
+	@param callRecordingId
+	@return ApiV2MeetingsMeetingIdCallRecordingsCallRecordingIdGetRequest
 */
 func (a *CallRecordingsAPIService) V2MeetingsMeetingIdCallRecordingsCallRecordingIdGet(ctx context.Context, meetingId string, callRecordingId string) ApiV2MeetingsMeetingIdCallRecordingsCallRecordingIdGetRequest {
 	return ApiV2MeetingsMeetingIdCallRecordingsCallRecordingIdGetRequest{
-		ApiService: a,
-		ctx: ctx,
-		meetingId: meetingId,
+		ApiService:      a,
+		ctx:             ctx,
+		meetingId:       meetingId,
 		callRecordingId: callRecordingId,
 	}
 }
 
 // Execute executes the request
-//  @return V2MeetingsMeetingIdCallRecordingsPost200Response
+//
+//	@return V2MeetingsMeetingIdCallRecordingsPost200Response
 func (a *CallRecordingsAPIService) V2MeetingsMeetingIdCallRecordingsCallRecordingIdGetExecute(r ApiV2MeetingsMeetingIdCallRecordingsCallRecordingIdGetRequest) (*V2MeetingsMeetingIdCallRecordingsPost200Response, *http.Response, error) {
 	var (
-		localVarHTTPMethod   = http.MethodGet
-		localVarPostBody     interface{}
-		formFiles            []formFile
-		localVarReturnValue  *V2MeetingsMeetingIdCallRecordingsPost200Response
+		localVarHTTPMethod  = http.MethodGet
+		localVarPostBody    interface{}
+		formFiles           []formFile
+		localVarReturnValue *V2MeetingsMeetingIdCallRecordingsPost200Response
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "CallRecordingsAPIService.V2MeetingsMeetingIdCallRecordingsCallRecordingIdGet")
@@ -244,8 +249,8 @@ func (a *CallRecordingsAPIService) V2MeetingsMeetingIdCallRecordingsCallRecordin
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 		}
 		return localVarReturnValue, localVarHTTPResponse, newErr
 	}
@@ -263,11 +268,11 @@ func (a *CallRecordingsAPIService) V2MeetingsMeetingIdCallRecordingsCallRecordin
 }
 
 type ApiV2MeetingsMeetingIdCallRecordingsGetRequest struct {
-	ctx context.Context
+	ctx        context.Context
 	ApiService *CallRecordingsAPIService
-	meetingId string
-	limit *int32
-	cursor *string
+	meetingId  string
+	limit      *int32
+	cursor     *string
 }
 
 func (r ApiV2MeetingsMeetingIdCallRecordingsGetRequest) Limit(limit int32) ApiV2MeetingsMeetingIdCallRecordingsGetRequest {
@@ -289,28 +294,31 @@ V2MeetingsMeetingIdCallRecordingsGet List call recordings
 
 List all call recordings for a meeting.
 
+This endpoint is in beta. We will aim to avoid breaking changes, but small updates may be made as we roll out to more users.
+
 Required scopes: `meeting:read`, `call_recording:read`.
 
- @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @param meetingId
- @return ApiV2MeetingsMeetingIdCallRecordingsGetRequest
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@param meetingId
+	@return ApiV2MeetingsMeetingIdCallRecordingsGetRequest
 */
 func (a *CallRecordingsAPIService) V2MeetingsMeetingIdCallRecordingsGet(ctx context.Context, meetingId string) ApiV2MeetingsMeetingIdCallRecordingsGetRequest {
 	return ApiV2MeetingsMeetingIdCallRecordingsGetRequest{
 		ApiService: a,
-		ctx: ctx,
-		meetingId: meetingId,
+		ctx:        ctx,
+		meetingId:  meetingId,
 	}
 }
 
 // Execute executes the request
-//  @return V2MeetingsMeetingIdCallRecordingsGet200Response
+//
+//	@return V2MeetingsMeetingIdCallRecordingsGet200Response
 func (a *CallRecordingsAPIService) V2MeetingsMeetingIdCallRecordingsGetExecute(r ApiV2MeetingsMeetingIdCallRecordingsGetRequest) (*V2MeetingsMeetingIdCallRecordingsGet200Response, *http.Response, error) {
 	var (
-		localVarHTTPMethod   = http.MethodGet
-		localVarPostBody     interface{}
-		formFiles            []formFile
-		localVarReturnValue  *V2MeetingsMeetingIdCallRecordingsGet200Response
+		localVarHTTPMethod  = http.MethodGet
+		localVarPostBody    interface{}
+		formFiles           []formFile
+		localVarReturnValue *V2MeetingsMeetingIdCallRecordingsGet200Response
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "CallRecordingsAPIService.V2MeetingsMeetingIdCallRecordingsGet")
@@ -386,9 +394,9 @@ func (a *CallRecordingsAPIService) V2MeetingsMeetingIdCallRecordingsGetExecute(r
 }
 
 type ApiV2MeetingsMeetingIdCallRecordingsPostRequest struct {
-	ctx context.Context
-	ApiService *CallRecordingsAPIService
-	meetingId string
+	ctx                                          context.Context
+	ApiService                                   *CallRecordingsAPIService
+	meetingId                                    string
 	v2MeetingsMeetingIdCallRecordingsPostRequest *V2MeetingsMeetingIdCallRecordingsPostRequest
 }
 
@@ -406,28 +414,31 @@ V2MeetingsMeetingIdCallRecordingsPost Create call recording
 
 Create a call recording for a meeting. This endpoint is rate limited to 1 request per second.
 
+This endpoint is in alpha and may be subject to breaking changes as we gather feedback.
+
 Required scopes: `meeting:read`, `call_recording:read-write`.
 
- @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @param meetingId
- @return ApiV2MeetingsMeetingIdCallRecordingsPostRequest
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@param meetingId
+	@return ApiV2MeetingsMeetingIdCallRecordingsPostRequest
 */
 func (a *CallRecordingsAPIService) V2MeetingsMeetingIdCallRecordingsPost(ctx context.Context, meetingId string) ApiV2MeetingsMeetingIdCallRecordingsPostRequest {
 	return ApiV2MeetingsMeetingIdCallRecordingsPostRequest{
 		ApiService: a,
-		ctx: ctx,
-		meetingId: meetingId,
+		ctx:        ctx,
+		meetingId:  meetingId,
 	}
 }
 
 // Execute executes the request
-//  @return V2MeetingsMeetingIdCallRecordingsPost200Response
+//
+//	@return V2MeetingsMeetingIdCallRecordingsPost200Response
 func (a *CallRecordingsAPIService) V2MeetingsMeetingIdCallRecordingsPostExecute(r ApiV2MeetingsMeetingIdCallRecordingsPostRequest) (*V2MeetingsMeetingIdCallRecordingsPost200Response, *http.Response, error) {
 	var (
-		localVarHTTPMethod   = http.MethodPost
-		localVarPostBody     interface{}
-		formFiles            []formFile
-		localVarReturnValue  *V2MeetingsMeetingIdCallRecordingsPost200Response
+		localVarHTTPMethod  = http.MethodPost
+		localVarPostBody    interface{}
+		formFiles           []formFile
+		localVarReturnValue *V2MeetingsMeetingIdCallRecordingsPost200Response
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "CallRecordingsAPIService.V2MeetingsMeetingIdCallRecordingsPost")
@@ -493,8 +504,8 @@ func (a *CallRecordingsAPIService) V2MeetingsMeetingIdCallRecordingsPostExecute(
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 403 {
@@ -504,8 +515,8 @@ func (a *CallRecordingsAPIService) V2MeetingsMeetingIdCallRecordingsPostExecute(
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 404 {
@@ -515,8 +526,8 @@ func (a *CallRecordingsAPIService) V2MeetingsMeetingIdCallRecordingsPostExecute(
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 		}
 		return localVarReturnValue, localVarHTTPResponse, newErr
 	}

@@ -5,13 +5,13 @@
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **Type** | **string** |  | 
-**Template** | [**AttributeDefaultValueAnyOfTemplate**](AttributeDefaultValueAnyOfTemplate.md) |  | 
+**Template** | [**[]OutputValue**](OutputValue.md) |  | 
 
 ## Methods
 
 ### NewAttributeDefaultValueAnyOf
 
-`func NewAttributeDefaultValueAnyOf(type_ string, template AttributeDefaultValueAnyOfTemplate, ) *AttributeDefaultValueAnyOf`
+`func NewAttributeDefaultValueAnyOf(type_ string, template []OutputValue, ) *AttributeDefaultValueAnyOf`
 
 NewAttributeDefaultValueAnyOf instantiates a new AttributeDefaultValueAnyOf object
 This constructor will assign default values to properties that have it defined,
@@ -48,20 +48,20 @@ SetType sets Type field to given value.
 
 ### GetTemplate
 
-`func (o *AttributeDefaultValueAnyOf) GetTemplate() AttributeDefaultValueAnyOfTemplate`
+`func (o *AttributeDefaultValueAnyOf) GetTemplate() []OutputValue`
 
 GetTemplate returns the Template field if non-nil, zero value otherwise.
 
 ### GetTemplateOk
 
-`func (o *AttributeDefaultValueAnyOf) GetTemplateOk() (*AttributeDefaultValueAnyOfTemplate, bool)`
+`func (o *AttributeDefaultValueAnyOf) GetTemplateOk() (*[]OutputValue, bool)`
 
 GetTemplateOk returns a tuple with the Template field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetTemplate
 
-`func (o *AttributeDefaultValueAnyOf) SetTemplate(v AttributeDefaultValueAnyOfTemplate)`
+`func (o *AttributeDefaultValueAnyOf) SetTemplate(v []OutputValue)`
 
 SetTemplate sets Template field to given value.
 

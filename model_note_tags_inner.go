@@ -19,7 +19,7 @@ import (
 
 // NoteTagsInner - struct for NoteTagsInner
 type NoteTagsInner struct {
-	NoteTagsInnerOneOf *NoteTagsInnerOneOf
+	NoteTagsInnerOneOf  *NoteTagsInnerOneOf
 	NoteTagsInnerOneOf1 *NoteTagsInnerOneOf1
 }
 
@@ -36,7 +36,6 @@ func NoteTagsInnerOneOf1AsNoteTagsInner(v *NoteTagsInnerOneOf1) NoteTagsInner {
 		NoteTagsInnerOneOf1: v,
 	}
 }
-
 
 // Unmarshal JSON data into one of the pointers in the struct
 func (dst *NoteTagsInner) UnmarshalJSON(data []byte) error {
@@ -103,7 +102,7 @@ func (src NoteTagsInner) MarshalJSON() ([]byte, error) {
 }
 
 // Get the actual instance
-func (obj *NoteTagsInner) GetActualInstance() (interface{}) {
+func (obj *NoteTagsInner) GetActualInstance() interface{} {
 	if obj == nil {
 		return nil
 	}
@@ -120,7 +119,7 @@ func (obj *NoteTagsInner) GetActualInstance() (interface{}) {
 }
 
 // Get the actual instance value
-func (obj NoteTagsInner) GetActualInstanceValue() (interface{}) {
+func (obj NoteTagsInner) GetActualInstanceValue() interface{} {
 	if obj.NoteTagsInnerOneOf != nil {
 		return *obj.NoteTagsInnerOneOf
 	}
@@ -168,5 +167,3 @@ func (v *NullableNoteTagsInner) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
-
-

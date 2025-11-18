@@ -20,12 +20,11 @@ import (
 	"strings"
 )
 
-
 // ObjectsAPIService ObjectsAPI service
 type ObjectsAPIService service
 
 type ApiV2ObjectsGetRequest struct {
-	ctx context.Context
+	ctx        context.Context
 	ApiService *ObjectsAPIService
 }
 
@@ -40,24 +39,25 @@ Lists all system-defined and user-defined objects in your workspace.
 
 Required scopes: `object_configuration:read`.
 
- @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @return ApiV2ObjectsGetRequest
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@return ApiV2ObjectsGetRequest
 */
 func (a *ObjectsAPIService) V2ObjectsGet(ctx context.Context) ApiV2ObjectsGetRequest {
 	return ApiV2ObjectsGetRequest{
 		ApiService: a,
-		ctx: ctx,
+		ctx:        ctx,
 	}
 }
 
 // Execute executes the request
-//  @return V2ObjectsGet200Response
+//
+//	@return V2ObjectsGet200Response
 func (a *ObjectsAPIService) V2ObjectsGetExecute(r ApiV2ObjectsGetRequest) (*V2ObjectsGet200Response, *http.Response, error) {
 	var (
-		localVarHTTPMethod   = http.MethodGet
-		localVarPostBody     interface{}
-		formFiles            []formFile
-		localVarReturnValue  *V2ObjectsGet200Response
+		localVarHTTPMethod  = http.MethodGet
+		localVarPostBody    interface{}
+		formFiles           []formFile
+		localVarReturnValue *V2ObjectsGet200Response
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "ObjectsAPIService.V2ObjectsGet")
@@ -126,9 +126,9 @@ func (a *ObjectsAPIService) V2ObjectsGetExecute(r ApiV2ObjectsGetRequest) (*V2Ob
 }
 
 type ApiV2ObjectsObjectGetRequest struct {
-	ctx context.Context
+	ctx        context.Context
 	ApiService *ObjectsAPIService
-	object string
+	object     string
 }
 
 func (r ApiV2ObjectsObjectGetRequest) Execute() (*V2ObjectsPost200Response, *http.Response, error) {
@@ -142,26 +142,27 @@ Gets a single object by its `object_id` or slug.
 
 Required scopes: `object_configuration:read`.
 
- @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @param object
- @return ApiV2ObjectsObjectGetRequest
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@param object
+	@return ApiV2ObjectsObjectGetRequest
 */
 func (a *ObjectsAPIService) V2ObjectsObjectGet(ctx context.Context, object string) ApiV2ObjectsObjectGetRequest {
 	return ApiV2ObjectsObjectGetRequest{
 		ApiService: a,
-		ctx: ctx,
-		object: object,
+		ctx:        ctx,
+		object:     object,
 	}
 }
 
 // Execute executes the request
-//  @return V2ObjectsPost200Response
+//
+//	@return V2ObjectsPost200Response
 func (a *ObjectsAPIService) V2ObjectsObjectGetExecute(r ApiV2ObjectsObjectGetRequest) (*V2ObjectsPost200Response, *http.Response, error) {
 	var (
-		localVarHTTPMethod   = http.MethodGet
-		localVarPostBody     interface{}
-		formFiles            []formFile
-		localVarReturnValue  *V2ObjectsPost200Response
+		localVarHTTPMethod  = http.MethodGet
+		localVarPostBody    interface{}
+		formFiles           []formFile
+		localVarReturnValue *V2ObjectsPost200Response
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "ObjectsAPIService.V2ObjectsObjectGet")
@@ -222,8 +223,8 @@ func (a *ObjectsAPIService) V2ObjectsObjectGetExecute(r ApiV2ObjectsObjectGetReq
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 		}
 		return localVarReturnValue, localVarHTTPResponse, newErr
 	}
@@ -241,9 +242,9 @@ func (a *ObjectsAPIService) V2ObjectsObjectGetExecute(r ApiV2ObjectsObjectGetReq
 }
 
 type ApiV2ObjectsObjectPatchRequest struct {
-	ctx context.Context
-	ApiService *ObjectsAPIService
-	object string
+	ctx                         context.Context
+	ApiService                  *ObjectsAPIService
+	object                      string
 	v2ObjectsObjectPatchRequest *V2ObjectsObjectPatchRequest
 }
 
@@ -263,26 +264,27 @@ Updates a single object. The object to be updated is identified by its `object_i
 
 Required scopes: `object_configuration:read-write`.
 
- @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @param object
- @return ApiV2ObjectsObjectPatchRequest
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@param object
+	@return ApiV2ObjectsObjectPatchRequest
 */
 func (a *ObjectsAPIService) V2ObjectsObjectPatch(ctx context.Context, object string) ApiV2ObjectsObjectPatchRequest {
 	return ApiV2ObjectsObjectPatchRequest{
 		ApiService: a,
-		ctx: ctx,
-		object: object,
+		ctx:        ctx,
+		object:     object,
 	}
 }
 
 // Execute executes the request
-//  @return V2ObjectsPost200Response
+//
+//	@return V2ObjectsPost200Response
 func (a *ObjectsAPIService) V2ObjectsObjectPatchExecute(r ApiV2ObjectsObjectPatchRequest) (*V2ObjectsPost200Response, *http.Response, error) {
 	var (
-		localVarHTTPMethod   = http.MethodPatch
-		localVarPostBody     interface{}
-		formFiles            []formFile
-		localVarReturnValue  *V2ObjectsPost200Response
+		localVarHTTPMethod  = http.MethodPatch
+		localVarPostBody    interface{}
+		formFiles           []formFile
+		localVarReturnValue *V2ObjectsPost200Response
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "ObjectsAPIService.V2ObjectsObjectPatch")
@@ -348,8 +350,8 @@ func (a *ObjectsAPIService) V2ObjectsObjectPatchExecute(r ApiV2ObjectsObjectPatc
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 404 {
@@ -359,8 +361,8 @@ func (a *ObjectsAPIService) V2ObjectsObjectPatchExecute(r ApiV2ObjectsObjectPatc
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 409 {
@@ -370,8 +372,8 @@ func (a *ObjectsAPIService) V2ObjectsObjectPatchExecute(r ApiV2ObjectsObjectPatc
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 		}
 		return localVarReturnValue, localVarHTTPResponse, newErr
 	}
@@ -389,8 +391,8 @@ func (a *ObjectsAPIService) V2ObjectsObjectPatchExecute(r ApiV2ObjectsObjectPatc
 }
 
 type ApiV2ObjectsPostRequest struct {
-	ctx context.Context
-	ApiService *ObjectsAPIService
+	ctx                  context.Context
+	ApiService           *ObjectsAPIService
 	v2ObjectsPostRequest *V2ObjectsPostRequest
 }
 
@@ -410,24 +412,25 @@ Creates a new custom object in your workspace.
 
 Required scopes: `object_configuration:read-write`.
 
- @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @return ApiV2ObjectsPostRequest
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@return ApiV2ObjectsPostRequest
 */
 func (a *ObjectsAPIService) V2ObjectsPost(ctx context.Context) ApiV2ObjectsPostRequest {
 	return ApiV2ObjectsPostRequest{
 		ApiService: a,
-		ctx: ctx,
+		ctx:        ctx,
 	}
 }
 
 // Execute executes the request
-//  @return V2ObjectsPost200Response
+//
+//	@return V2ObjectsPost200Response
 func (a *ObjectsAPIService) V2ObjectsPostExecute(r ApiV2ObjectsPostRequest) (*V2ObjectsPost200Response, *http.Response, error) {
 	var (
-		localVarHTTPMethod   = http.MethodPost
-		localVarPostBody     interface{}
-		formFiles            []formFile
-		localVarReturnValue  *V2ObjectsPost200Response
+		localVarHTTPMethod  = http.MethodPost
+		localVarPostBody    interface{}
+		formFiles           []formFile
+		localVarReturnValue *V2ObjectsPost200Response
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "ObjectsAPIService.V2ObjectsPost")
@@ -492,8 +495,8 @@ func (a *ObjectsAPIService) V2ObjectsPostExecute(r ApiV2ObjectsPostRequest) (*V2
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 		}
 		return localVarReturnValue, localVarHTTPResponse, newErr
 	}

@@ -12,8 +12,8 @@ Contact: support@attio.com
 package libattio
 
 import (
-	"encoding/json"
 	"bytes"
+	"encoding/json"
 	"fmt"
 )
 
@@ -40,8 +40,8 @@ type V2SelfGet200ResponseAnyOf1 struct {
 	Aud string `json:"aud"`
 	// The issuer of the token. Always attio.com
 	Iss string `json:"iss"`
-	// The ID of the workspace member who authorised this token initially, if known
-	AuthorizedByWorkspaceMemberId NullableString `json:"authorized_by_workspace_member_id"`
+	// The ID of the workspace member who authorised this token initially.
+	AuthorizedByWorkspaceMemberId string `json:"authorized_by_workspace_member_id"`
 	// The ID of the workspace the token is scoped to.
 	WorkspaceId string `json:"workspace_id"`
 	// The name of the workspace the token is scoped to.
@@ -58,7 +58,7 @@ type _V2SelfGet200ResponseAnyOf1 V2SelfGet200ResponseAnyOf1
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewV2SelfGet200ResponseAnyOf1(active bool, scope string, clientId string, tokenType string, exp NullableFloat32, iat float32, sub string, aud string, iss string, authorizedByWorkspaceMemberId NullableString, workspaceId string, workspaceName string, workspaceSlug string, workspaceLogoUrl NullableString) *V2SelfGet200ResponseAnyOf1 {
+func NewV2SelfGet200ResponseAnyOf1(active bool, scope string, clientId string, tokenType string, exp NullableFloat32, iat float32, sub string, aud string, iss string, authorizedByWorkspaceMemberId string, workspaceId string, workspaceName string, workspaceSlug string, workspaceLogoUrl NullableString) *V2SelfGet200ResponseAnyOf1 {
 	this := V2SelfGet200ResponseAnyOf1{}
 	this.Active = active
 	this.Scope = scope
@@ -109,7 +109,6 @@ func (o *V2SelfGet200ResponseAnyOf1) SetActive(v bool) {
 	o.Active = v
 }
 
-
 // GetScope returns the Scope field value
 func (o *V2SelfGet200ResponseAnyOf1) GetScope() string {
 	if o == nil {
@@ -133,7 +132,6 @@ func (o *V2SelfGet200ResponseAnyOf1) GetScopeOk() (*string, bool) {
 func (o *V2SelfGet200ResponseAnyOf1) SetScope(v string) {
 	o.Scope = v
 }
-
 
 // GetClientId returns the ClientId field value
 func (o *V2SelfGet200ResponseAnyOf1) GetClientId() string {
@@ -159,7 +157,6 @@ func (o *V2SelfGet200ResponseAnyOf1) SetClientId(v string) {
 	o.ClientId = v
 }
 
-
 // GetTokenType returns the TokenType field value
 func (o *V2SelfGet200ResponseAnyOf1) GetTokenType() string {
 	if o == nil {
@@ -183,7 +180,6 @@ func (o *V2SelfGet200ResponseAnyOf1) GetTokenTypeOk() (*string, bool) {
 func (o *V2SelfGet200ResponseAnyOf1) SetTokenType(v string) {
 	o.TokenType = v
 }
-
 
 // GetExp returns the Exp field value
 // If the value is explicit nil, the zero value for float32 will be returned
@@ -211,7 +207,6 @@ func (o *V2SelfGet200ResponseAnyOf1) SetExp(v float32) {
 	o.Exp.Set(&v)
 }
 
-
 // GetIat returns the Iat field value
 func (o *V2SelfGet200ResponseAnyOf1) GetIat() float32 {
 	if o == nil {
@@ -235,7 +230,6 @@ func (o *V2SelfGet200ResponseAnyOf1) GetIatOk() (*float32, bool) {
 func (o *V2SelfGet200ResponseAnyOf1) SetIat(v float32) {
 	o.Iat = v
 }
-
 
 // GetSub returns the Sub field value
 func (o *V2SelfGet200ResponseAnyOf1) GetSub() string {
@@ -261,7 +255,6 @@ func (o *V2SelfGet200ResponseAnyOf1) SetSub(v string) {
 	o.Sub = v
 }
 
-
 // GetAud returns the Aud field value
 func (o *V2SelfGet200ResponseAnyOf1) GetAud() string {
 	if o == nil {
@@ -285,7 +278,6 @@ func (o *V2SelfGet200ResponseAnyOf1) GetAudOk() (*string, bool) {
 func (o *V2SelfGet200ResponseAnyOf1) SetAud(v string) {
 	o.Aud = v
 }
-
 
 // GetIss returns the Iss field value
 func (o *V2SelfGet200ResponseAnyOf1) GetIss() string {
@@ -311,33 +303,29 @@ func (o *V2SelfGet200ResponseAnyOf1) SetIss(v string) {
 	o.Iss = v
 }
 
-
 // GetAuthorizedByWorkspaceMemberId returns the AuthorizedByWorkspaceMemberId field value
-// If the value is explicit nil, the zero value for string will be returned
 func (o *V2SelfGet200ResponseAnyOf1) GetAuthorizedByWorkspaceMemberId() string {
-	if o == nil || o.AuthorizedByWorkspaceMemberId.Get() == nil {
+	if o == nil {
 		var ret string
 		return ret
 	}
 
-	return *o.AuthorizedByWorkspaceMemberId.Get()
+	return o.AuthorizedByWorkspaceMemberId
 }
 
 // GetAuthorizedByWorkspaceMemberIdOk returns a tuple with the AuthorizedByWorkspaceMemberId field value
 // and a boolean to check if the value has been set.
-// NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *V2SelfGet200ResponseAnyOf1) GetAuthorizedByWorkspaceMemberIdOk() (*string, bool) {
 	if o == nil {
 		return nil, false
 	}
-	return o.AuthorizedByWorkspaceMemberId.Get(), o.AuthorizedByWorkspaceMemberId.IsSet()
+	return &o.AuthorizedByWorkspaceMemberId, true
 }
 
 // SetAuthorizedByWorkspaceMemberId sets field value
 func (o *V2SelfGet200ResponseAnyOf1) SetAuthorizedByWorkspaceMemberId(v string) {
-	o.AuthorizedByWorkspaceMemberId.Set(&v)
+	o.AuthorizedByWorkspaceMemberId = v
 }
-
 
 // GetWorkspaceId returns the WorkspaceId field value
 func (o *V2SelfGet200ResponseAnyOf1) GetWorkspaceId() string {
@@ -363,7 +351,6 @@ func (o *V2SelfGet200ResponseAnyOf1) SetWorkspaceId(v string) {
 	o.WorkspaceId = v
 }
 
-
 // GetWorkspaceName returns the WorkspaceName field value
 func (o *V2SelfGet200ResponseAnyOf1) GetWorkspaceName() string {
 	if o == nil {
@@ -388,7 +375,6 @@ func (o *V2SelfGet200ResponseAnyOf1) SetWorkspaceName(v string) {
 	o.WorkspaceName = v
 }
 
-
 // GetWorkspaceSlug returns the WorkspaceSlug field value
 func (o *V2SelfGet200ResponseAnyOf1) GetWorkspaceSlug() string {
 	if o == nil {
@@ -412,7 +398,6 @@ func (o *V2SelfGet200ResponseAnyOf1) GetWorkspaceSlugOk() (*string, bool) {
 func (o *V2SelfGet200ResponseAnyOf1) SetWorkspaceSlug(v string) {
 	o.WorkspaceSlug = v
 }
-
 
 // GetWorkspaceLogoUrl returns the WorkspaceLogoUrl field value
 // If the value is explicit nil, the zero value for string will be returned
@@ -440,9 +425,8 @@ func (o *V2SelfGet200ResponseAnyOf1) SetWorkspaceLogoUrl(v string) {
 	o.WorkspaceLogoUrl.Set(&v)
 }
 
-
 func (o V2SelfGet200ResponseAnyOf1) MarshalJSON() ([]byte, error) {
-	toSerialize,err := o.ToMap()
+	toSerialize, err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
 	}
@@ -460,7 +444,7 @@ func (o V2SelfGet200ResponseAnyOf1) ToMap() (map[string]interface{}, error) {
 	toSerialize["sub"] = o.Sub
 	toSerialize["aud"] = o.Aud
 	toSerialize["iss"] = o.Iss
-	toSerialize["authorized_by_workspace_member_id"] = o.AuthorizedByWorkspaceMemberId.Get()
+	toSerialize["authorized_by_workspace_member_id"] = o.AuthorizedByWorkspaceMemberId
 	toSerialize["workspace_id"] = o.WorkspaceId
 	toSerialize["workspace_name"] = o.WorkspaceName
 	toSerialize["workspace_slug"] = o.WorkspaceSlug
@@ -491,32 +475,31 @@ func (o *V2SelfGet200ResponseAnyOf1) UnmarshalJSON(data []byte) (err error) {
 
 	// defaultValueFuncMap captures the default values for required properties.
 	// These values are used when required properties are missing from the payload.
-	defaultValueFuncMap := map[string]func() interface{} {
-	}
+	defaultValueFuncMap := map[string]func() interface{}{}
 	var defaultValueApplied bool
 	allProperties := make(map[string]interface{})
 
 	err = json.Unmarshal(data, &allProperties)
 
 	if err != nil {
-		return err;
+		return err
 	}
 
-	for _, requiredProperty := range(requiredProperties) {
+	for _, requiredProperty := range requiredProperties {
 		if value, exists := allProperties[requiredProperty]; !exists || value == "" {
 			if _, ok := defaultValueFuncMap[requiredProperty]; ok {
 				allProperties[requiredProperty] = defaultValueFuncMap[requiredProperty]()
 				defaultValueApplied = true
 			}
 		}
-		if value, exists := allProperties[requiredProperty]; !exists || value == ""{
+		if value, exists := allProperties[requiredProperty]; !exists || value == "" {
 			return fmt.Errorf("no value given for required property %v", requiredProperty)
 		}
 	}
 
 	if defaultValueApplied {
 		data, err = json.Marshal(allProperties)
-		if err != nil{
+		if err != nil {
 			return err
 		}
 	}
@@ -570,5 +553,3 @@ func (v *NullableV2SelfGet200ResponseAnyOf1) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
-
-

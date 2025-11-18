@@ -147,6 +147,7 @@ func (o *V2TargetIdentifierAttributesAttributeStatusesStatusPatchRequestData) Ha
 func (o *V2TargetIdentifierAttributesAttributeStatusesStatusPatchRequestData) SetTargetTimeInStatus(v string) {
 	o.TargetTimeInStatus.Set(&v)
 }
+
 // SetTargetTimeInStatusNil sets the value for TargetTimeInStatus to be an explicit nil
 func (o *V2TargetIdentifierAttributesAttributeStatusesStatusPatchRequestData) SetTargetTimeInStatusNil() {
 	o.TargetTimeInStatus.Set(nil)
@@ -190,7 +191,7 @@ func (o *V2TargetIdentifierAttributesAttributeStatusesStatusPatchRequestData) Se
 }
 
 func (o V2TargetIdentifierAttributesAttributeStatusesStatusPatchRequestData) MarshalJSON() ([]byte, error) {
-	toSerialize,err := o.ToMap()
+	toSerialize, err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
 	}
@@ -249,5 +250,3 @@ func (v *NullableV2TargetIdentifierAttributesAttributeStatusesStatusPatchRequest
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
-
-
