@@ -19,7 +19,7 @@ import (
 // AttributeDefaultValue The default value for this attribute. Static values are used to directly populate values using their contents. Dynamic values are used to lookup data at the point of creation. For example, you could use a dynamic value to insert a value for the currently logged in user. Which default values are available is dependent on the type of the attribute.
 type AttributeDefaultValue struct {
 	AttributeDefaultValueAnyOf                                   *AttributeDefaultValueAnyOf
-	V2TargetIdentifierAttributesPostRequestDataDefaultValueOneOf *V2TargetIdentifierAttributesPostRequestDataDefaultValueOneOf
+	V2TargetIdentifierAttributesPostRequestDataDefaultValueAnyOf *V2TargetIdentifierAttributesPostRequestDataDefaultValueAnyOf
 }
 
 // Unmarshal JSON data into any of the pointers in the struct
@@ -43,17 +43,17 @@ func (dst *AttributeDefaultValue) UnmarshalJSON(data []byte) error {
 		dst.AttributeDefaultValueAnyOf = nil
 	}
 
-	// try to unmarshal JSON data into V2TargetIdentifierAttributesPostRequestDataDefaultValueOneOf
-	err = json.Unmarshal(data, &dst.V2TargetIdentifierAttributesPostRequestDataDefaultValueOneOf)
+	// try to unmarshal JSON data into V2TargetIdentifierAttributesPostRequestDataDefaultValueAnyOf
+	err = json.Unmarshal(data, &dst.V2TargetIdentifierAttributesPostRequestDataDefaultValueAnyOf)
 	if err == nil {
-		jsonV2TargetIdentifierAttributesPostRequestDataDefaultValueOneOf, _ := json.Marshal(dst.V2TargetIdentifierAttributesPostRequestDataDefaultValueOneOf)
-		if string(jsonV2TargetIdentifierAttributesPostRequestDataDefaultValueOneOf) == "{}" { // empty struct
-			dst.V2TargetIdentifierAttributesPostRequestDataDefaultValueOneOf = nil
+		jsonV2TargetIdentifierAttributesPostRequestDataDefaultValueAnyOf, _ := json.Marshal(dst.V2TargetIdentifierAttributesPostRequestDataDefaultValueAnyOf)
+		if string(jsonV2TargetIdentifierAttributesPostRequestDataDefaultValueAnyOf) == "{}" { // empty struct
+			dst.V2TargetIdentifierAttributesPostRequestDataDefaultValueAnyOf = nil
 		} else {
-			return nil // data stored in dst.V2TargetIdentifierAttributesPostRequestDataDefaultValueOneOf, return on the first match
+			return nil // data stored in dst.V2TargetIdentifierAttributesPostRequestDataDefaultValueAnyOf, return on the first match
 		}
 	} else {
-		dst.V2TargetIdentifierAttributesPostRequestDataDefaultValueOneOf = nil
+		dst.V2TargetIdentifierAttributesPostRequestDataDefaultValueAnyOf = nil
 	}
 
 	return fmt.Errorf("data failed to match schemas in anyOf(AttributeDefaultValue)")
@@ -65,8 +65,8 @@ func (src AttributeDefaultValue) MarshalJSON() ([]byte, error) {
 		return json.Marshal(&src.AttributeDefaultValueAnyOf)
 	}
 
-	if src.V2TargetIdentifierAttributesPostRequestDataDefaultValueOneOf != nil {
-		return json.Marshal(&src.V2TargetIdentifierAttributesPostRequestDataDefaultValueOneOf)
+	if src.V2TargetIdentifierAttributesPostRequestDataDefaultValueAnyOf != nil {
+		return json.Marshal(&src.V2TargetIdentifierAttributesPostRequestDataDefaultValueAnyOf)
 	}
 
 	return nil, nil // no data in anyOf schemas

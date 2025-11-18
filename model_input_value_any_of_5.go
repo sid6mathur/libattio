@@ -27,7 +27,7 @@ type InputValueAnyOf5 struct {
 	InteractionType string `json:"interaction_type"`
 	// When the interaction occurred.
 	InteractedAt time.Time                                                                              `json:"interacted_at"`
-	OwnerActor   V2ObjectsObjectRecordsQueryPost200ResponseDataInnerValuesValueInnerOneOfCreatedByActor `json:"owner_actor"`
+	OwnerActor   V2ObjectsObjectRecordsQueryPost200ResponseDataInnerValuesValueInnerAnyOfCreatedByActor `json:"owner_actor"`
 }
 
 type _InputValueAnyOf5 InputValueAnyOf5
@@ -36,7 +36,7 @@ type _InputValueAnyOf5 InputValueAnyOf5
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewInputValueAnyOf5(interactionType string, interactedAt time.Time, ownerActor V2ObjectsObjectRecordsQueryPost200ResponseDataInnerValuesValueInnerOneOfCreatedByActor) *InputValueAnyOf5 {
+func NewInputValueAnyOf5(interactionType string, interactedAt time.Time, ownerActor V2ObjectsObjectRecordsQueryPost200ResponseDataInnerValuesValueInnerAnyOfCreatedByActor) *InputValueAnyOf5 {
 	this := InputValueAnyOf5{}
 	this.InteractionType = interactionType
 	this.InteractedAt = interactedAt
@@ -101,9 +101,9 @@ func (o *InputValueAnyOf5) SetInteractedAt(v time.Time) {
 }
 
 // GetOwnerActor returns the OwnerActor field value
-func (o *InputValueAnyOf5) GetOwnerActor() V2ObjectsObjectRecordsQueryPost200ResponseDataInnerValuesValueInnerOneOfCreatedByActor {
+func (o *InputValueAnyOf5) GetOwnerActor() V2ObjectsObjectRecordsQueryPost200ResponseDataInnerValuesValueInnerAnyOfCreatedByActor {
 	if o == nil {
-		var ret V2ObjectsObjectRecordsQueryPost200ResponseDataInnerValuesValueInnerOneOfCreatedByActor
+		var ret V2ObjectsObjectRecordsQueryPost200ResponseDataInnerValuesValueInnerAnyOfCreatedByActor
 		return ret
 	}
 
@@ -112,7 +112,7 @@ func (o *InputValueAnyOf5) GetOwnerActor() V2ObjectsObjectRecordsQueryPost200Res
 
 // GetOwnerActorOk returns a tuple with the OwnerActor field value
 // and a boolean to check if the value has been set.
-func (o *InputValueAnyOf5) GetOwnerActorOk() (*V2ObjectsObjectRecordsQueryPost200ResponseDataInnerValuesValueInnerOneOfCreatedByActor, bool) {
+func (o *InputValueAnyOf5) GetOwnerActorOk() (*V2ObjectsObjectRecordsQueryPost200ResponseDataInnerValuesValueInnerAnyOfCreatedByActor, bool) {
 	if o == nil {
 		return nil, false
 	}
@@ -120,7 +120,7 @@ func (o *InputValueAnyOf5) GetOwnerActorOk() (*V2ObjectsObjectRecordsQueryPost20
 }
 
 // SetOwnerActor sets field value
-func (o *InputValueAnyOf5) SetOwnerActor(v V2ObjectsObjectRecordsQueryPost200ResponseDataInnerValuesValueInnerOneOfCreatedByActor) {
+func (o *InputValueAnyOf5) SetOwnerActor(v V2ObjectsObjectRecordsQueryPost200ResponseDataInnerValuesValueInnerAnyOfCreatedByActor) {
 	o.OwnerActor = v
 }
 

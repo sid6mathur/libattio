@@ -4597,7 +4597,7 @@ components:
           type: array
       required:
       - data
-    _v2__target___identifier__attributes_post_request_data_default_value_oneOf_template:
+    _v2__target___identifier__attributes_post_request_data_default_value_anyOf_template:
       anyOf:
       - description: "For actor reference attributes, you may pass a dynamic value\
           \ of `\"current-user\"`. When creating new records or entries, this will\
@@ -4617,7 +4617,7 @@ components:
           \ month."
         example: P1M
         type: string
-    _v2__target___identifier__attributes_post_request_data_default_value_oneOf:
+    _v2__target___identifier__attributes_post_request_data_default_value_anyOf:
       properties:
         type:
           enum:
@@ -4625,11 +4625,11 @@ components:
           example: dynamic
           type: string
         template:
-          $ref: "#/components/schemas/_v2__target___identifier__attributes_post_request_data_default_value_oneOf_template"
+          $ref: "#/components/schemas/_v2__target___identifier__attributes_post_request_data_default_value_anyOf_template"
       required:
       - template
       - type
-    _v2__target___identifier__attributes_post_request_data_default_value_oneOf_1:
+    _v2__target___identifier__attributes_post_request_data_default_value_anyOf_1:
       properties:
         type:
           enum:
@@ -4646,6 +4646,9 @@ components:
       - template
       - type
     _v2__target___identifier__attributes_post_request_data_default_value:
+      anyOf:
+      - $ref: "#/components/schemas/_v2__target___identifier__attributes_post_request_data_default_value_anyOf"
+      - $ref: "#/components/schemas/_v2__target___identifier__attributes_post_request_data_default_value_anyOf_1"
       description: "The default value for this attribute. Static values are used to\
         \ directly populate values using their contents. Dynamic values are used to\
         \ lookup data at the point of creation. For example, you could use a dynamic\
@@ -4657,9 +4660,6 @@ components:
         template:
         - value: 5
       nullable: true
-      oneOf:
-      - $ref: "#/components/schemas/_v2__target___identifier__attributes_post_request_data_default_value_oneOf"
-      - $ref: "#/components/schemas/_v2__target___identifier__attributes_post_request_data_default_value_oneOf_1"
     _v2__target___identifier__attributes_post_request_data_config_currency:
       description: Configuration available for attributes of type "currency".
       properties:
@@ -5509,7 +5509,7 @@ components:
       - object_id
       - record_id
       - workspace_id
-    _v2_objects__object__records_query_post_200_response_data_inner_values_value_inner_oneOf_created_by_actor:
+    _v2_objects__object__records_query_post_200_response_data_inner_values_value_inner_anyOf_created_by_actor:
       description: The actor that created this value.
       example:
         type: workspace-member
@@ -5528,7 +5528,7 @@ components:
           - app
           type: string
           nullable: true
-    _v2_objects__object__records_query_post_200_response_data_inner_values_value_inner_oneOf:
+    _v2_objects__object__records_query_post_200_response_data_inner_values_value_inner_anyOf:
       additionalProperties: {}
       example:
         referenced_actor_type: workspace-member
@@ -5554,7 +5554,7 @@ components:
           nullable: true
           type: string
         created_by_actor:
-          $ref: "#/components/schemas/_v2_objects__object__records_query_post_200_response_data_inner_values_value_inner_oneOf_created_by_actor"
+          $ref: "#/components/schemas/_v2_objects__object__records_query_post_200_response_data_inner_values_value_inner_anyOf_created_by_actor"
         referenced_actor_type:
           description: "The type of the referenced actor. [Read more information on\
             \ actor types here](/docs/actors)."
@@ -5584,7 +5584,7 @@ components:
       - created_by_actor
       - referenced_actor_id
       - referenced_actor_type
-    _v2_objects__object__records_query_post_200_response_data_inner_values_value_inner_oneOf_1:
+    _v2_objects__object__records_query_post_200_response_data_inner_values_value_inner_anyOf_1:
       additionalProperties: {}
       properties:
         active_from:
@@ -5601,7 +5601,7 @@ components:
           nullable: true
           type: string
         created_by_actor:
-          $ref: "#/components/schemas/_v2_objects__object__records_query_post_200_response_data_inner_values_value_inner_oneOf_created_by_actor"
+          $ref: "#/components/schemas/_v2_objects__object__records_query_post_200_response_data_inner_values_value_inner_anyOf_created_by_actor"
         value:
           description: A boolean representing whether the checkbox is checked or not.
             The string values 'true' and 'false' are also accepted.
@@ -5619,7 +5619,7 @@ components:
       - attribute_type
       - created_by_actor
       - value
-    _v2_objects__object__records_query_post_200_response_data_inner_values_value_inner_oneOf_2:
+    _v2_objects__object__records_query_post_200_response_data_inner_values_value_inner_anyOf_2:
       additionalProperties: {}
       properties:
         active_from:
@@ -5636,7 +5636,7 @@ components:
           nullable: true
           type: string
         created_by_actor:
-          $ref: "#/components/schemas/_v2_objects__object__records_query_post_200_response_data_inner_values_value_inner_oneOf_created_by_actor"
+          $ref: "#/components/schemas/_v2_objects__object__records_query_post_200_response_data_inner_values_value_inner_anyOf_created_by_actor"
         currency_value:
           description: A numerical representation of the currency value. A decimal
             with a max of 4 decimal places.
@@ -5698,7 +5698,7 @@ components:
       - attribute_type
       - created_by_actor
       - currency_value
-    _v2_objects__object__records_query_post_200_response_data_inner_values_value_inner_oneOf_3:
+    _v2_objects__object__records_query_post_200_response_data_inner_values_value_inner_anyOf_3:
       additionalProperties: {}
       properties:
         active_from:
@@ -5715,7 +5715,7 @@ components:
           nullable: true
           type: string
         created_by_actor:
-          $ref: "#/components/schemas/_v2_objects__object__records_query_post_200_response_data_inner_values_value_inner_oneOf_created_by_actor"
+          $ref: "#/components/schemas/_v2_objects__object__records_query_post_200_response_data_inner_values_value_inner_anyOf_created_by_actor"
         attribute_type:
           description: The attribute type of the value.
           enum:
@@ -5741,7 +5741,7 @@ components:
       - attribute_type
       - created_by_actor
       - value
-    _v2_objects__object__records_query_post_200_response_data_inner_values_value_inner_oneOf_4:
+    _v2_objects__object__records_query_post_200_response_data_inner_values_value_inner_anyOf_4:
       additionalProperties: {}
       properties:
         active_from:
@@ -5758,7 +5758,7 @@ components:
           nullable: true
           type: string
         created_by_actor:
-          $ref: "#/components/schemas/_v2_objects__object__records_query_post_200_response_data_inner_values_value_inner_oneOf_created_by_actor"
+          $ref: "#/components/schemas/_v2_objects__object__records_query_post_200_response_data_inner_values_value_inner_anyOf_created_by_actor"
         domain:
           example: app.attio.com
           type: string
@@ -5778,7 +5778,7 @@ components:
       - created_by_actor
       - domain
       - root_domain
-    _v2_objects__object__records_query_post_200_response_data_inner_values_value_inner_oneOf_5:
+    _v2_objects__object__records_query_post_200_response_data_inner_values_value_inner_anyOf_5:
       properties:
         active_from:
           description: The point in time at which this value was made "active". `active_from`
@@ -5794,7 +5794,7 @@ components:
           nullable: true
           type: string
         created_by_actor:
-          $ref: "#/components/schemas/_v2_objects__object__records_query_post_200_response_data_inner_values_value_inner_oneOf_created_by_actor"
+          $ref: "#/components/schemas/_v2_objects__object__records_query_post_200_response_data_inner_values_value_inner_anyOf_created_by_actor"
         original_email_address:
           example: alice@app.attio.com
           type: string
@@ -5826,7 +5826,7 @@ components:
       - email_local_specifier
       - email_root_domain
       - original_email_address
-    _v2_objects__object__records_query_post_200_response_data_inner_values_value_inner_oneOf_6:
+    _v2_objects__object__records_query_post_200_response_data_inner_values_value_inner_anyOf_6:
       additionalProperties: {}
       properties:
         active_from:
@@ -5843,7 +5843,7 @@ components:
           nullable: true
           type: string
         created_by_actor:
-          $ref: "#/components/schemas/_v2_objects__object__records_query_post_200_response_data_inner_values_value_inner_oneOf_created_by_actor"
+          $ref: "#/components/schemas/_v2_objects__object__records_query_post_200_response_data_inner_values_value_inner_anyOf_created_by_actor"
         target_object:
           description: A slug identifying the object that the referenced record belongs
             to.
@@ -5867,7 +5867,7 @@ components:
       - created_by_actor
       - target_object
       - target_record_id
-    _v2_objects__object__records_query_post_200_response_data_inner_values_value_inner_oneOf_7:
+    _v2_objects__object__records_query_post_200_response_data_inner_values_value_inner_anyOf_7:
       additionalProperties: {}
       properties:
         active_from:
@@ -5884,7 +5884,7 @@ components:
           nullable: true
           type: string
         created_by_actor:
-          $ref: "#/components/schemas/_v2_objects__object__records_query_post_200_response_data_inner_values_value_inner_oneOf_created_by_actor"
+          $ref: "#/components/schemas/_v2_objects__object__records_query_post_200_response_data_inner_values_value_inner_anyOf_created_by_actor"
         interaction_type:
           description: The type of interaction e.g. calendar or email.
           enum:
@@ -5902,7 +5902,7 @@ components:
           format: date-time
           type: string
         owner_actor:
-          $ref: "#/components/schemas/_v2_objects__object__records_query_post_200_response_data_inner_values_value_inner_oneOf_created_by_actor"
+          $ref: "#/components/schemas/_v2_objects__object__records_query_post_200_response_data_inner_values_value_inner_anyOf_created_by_actor"
         attribute_type:
           description: The attribute type of the value.
           enum:
@@ -5917,7 +5917,7 @@ components:
       - interacted_at
       - interaction_type
       - owner_actor
-    _v2_objects__object__records_query_post_200_response_data_inner_values_value_inner_oneOf_8:
+    _v2_objects__object__records_query_post_200_response_data_inner_values_value_inner_anyOf_8:
       additionalProperties: {}
       properties:
         active_from:
@@ -5934,7 +5934,7 @@ components:
           nullable: true
           type: string
         created_by_actor:
-          $ref: "#/components/schemas/_v2_objects__object__records_query_post_200_response_data_inner_values_value_inner_oneOf_created_by_actor"
+          $ref: "#/components/schemas/_v2_objects__object__records_query_post_200_response_data_inner_values_value_inner_anyOf_created_by_actor"
         line_1:
           description: The first line of the address. Note that this value is not
             currently represented in the UI but will be persisted and readable through
@@ -6281,7 +6281,7 @@ components:
       - longitude
       - postcode
       - region
-    _v2_objects__object__records_query_post_200_response_data_inner_values_value_inner_oneOf_9:
+    _v2_objects__object__records_query_post_200_response_data_inner_values_value_inner_anyOf_9:
       properties:
         active_from:
           description: The point in time at which this value was made "active". `active_from`
@@ -6297,7 +6297,7 @@ components:
           nullable: true
           type: string
         created_by_actor:
-          $ref: "#/components/schemas/_v2_objects__object__records_query_post_200_response_data_inner_values_value_inner_oneOf_created_by_actor"
+          $ref: "#/components/schemas/_v2_objects__object__records_query_post_200_response_data_inner_values_value_inner_anyOf_created_by_actor"
         value:
           description: Numbers are persisted as 64 bit floats.
           example: 42
@@ -6314,7 +6314,7 @@ components:
       - attribute_type
       - created_by_actor
       - value
-    _v2_objects__object__records_query_post_200_response_data_inner_values_value_inner_oneOf_10:
+    _v2_objects__object__records_query_post_200_response_data_inner_values_value_inner_anyOf_10:
       additionalProperties: {}
       properties:
         active_from:
@@ -6331,7 +6331,7 @@ components:
           nullable: true
           type: string
         created_by_actor:
-          $ref: "#/components/schemas/_v2_objects__object__records_query_post_200_response_data_inner_values_value_inner_oneOf_created_by_actor"
+          $ref: "#/components/schemas/_v2_objects__object__records_query_post_200_response_data_inner_values_value_inner_anyOf_created_by_actor"
         first_name:
           description: The first name.
           example: Ada
@@ -6358,7 +6358,7 @@ components:
       - first_name
       - full_name
       - last_name
-    _v2_objects__object__records_query_post_200_response_data_inner_values_value_inner_oneOf_11:
+    _v2_objects__object__records_query_post_200_response_data_inner_values_value_inner_anyOf_11:
       properties:
         active_from:
           description: The point in time at which this value was made "active". `active_from`
@@ -6374,7 +6374,7 @@ components:
           nullable: true
           type: string
         created_by_actor:
-          $ref: "#/components/schemas/_v2_objects__object__records_query_post_200_response_data_inner_values_value_inner_oneOf_created_by_actor"
+          $ref: "#/components/schemas/_v2_objects__object__records_query_post_200_response_data_inner_values_value_inner_anyOf_created_by_actor"
         original_phone_number:
           description: "The raw, original phone number, as inputted."
           example: "5558675309"
@@ -6654,7 +6654,7 @@ components:
       - created_by_actor
       - original_phone_number
       - phone_number
-    _v2_objects__object__records_query_post_200_response_data_inner_values_value_inner_oneOf_12:
+    _v2_objects__object__records_query_post_200_response_data_inner_values_value_inner_anyOf_12:
       additionalProperties: {}
       properties:
         active_from:
@@ -6671,7 +6671,7 @@ components:
           nullable: true
           type: string
         created_by_actor:
-          $ref: "#/components/schemas/_v2_objects__object__records_query_post_200_response_data_inner_values_value_inner_oneOf_created_by_actor"
+          $ref: "#/components/schemas/_v2_objects__object__records_query_post_200_response_data_inner_values_value_inner_anyOf_created_by_actor"
         status:
           $ref: "#/components/schemas/status"
         attribute_type:
@@ -6686,7 +6686,7 @@ components:
       - attribute_type
       - created_by_actor
       - status
-    _v2_objects__object__records_query_post_200_response_data_inner_values_value_inner_oneOf_13:
+    _v2_objects__object__records_query_post_200_response_data_inner_values_value_inner_anyOf_13:
       additionalProperties: {}
       properties:
         active_from:
@@ -6703,7 +6703,7 @@ components:
           nullable: true
           type: string
         created_by_actor:
-          $ref: "#/components/schemas/_v2_objects__object__records_query_post_200_response_data_inner_values_value_inner_oneOf_created_by_actor"
+          $ref: "#/components/schemas/_v2_objects__object__records_query_post_200_response_data_inner_values_value_inner_anyOf_created_by_actor"
         value:
           description: A number between 0 and 5 (inclusive) to represent a star rating.
           example: 3
@@ -6720,7 +6720,7 @@ components:
       - attribute_type
       - created_by_actor
       - value
-    _v2_objects__object__records_query_post_200_response_data_inner_values_value_inner_oneOf_14:
+    _v2_objects__object__records_query_post_200_response_data_inner_values_value_inner_anyOf_14:
       additionalProperties: {}
       properties:
         active_from:
@@ -6737,7 +6737,7 @@ components:
           nullable: true
           type: string
         created_by_actor:
-          $ref: "#/components/schemas/_v2_objects__object__records_query_post_200_response_data_inner_values_value_inner_oneOf_created_by_actor"
+          $ref: "#/components/schemas/_v2_objects__object__records_query_post_200_response_data_inner_values_value_inner_anyOf_created_by_actor"
         option:
           $ref: "#/components/schemas/select-option"
         attribute_type:
@@ -6752,7 +6752,7 @@ components:
       - attribute_type
       - created_by_actor
       - option
-    _v2_objects__object__records_query_post_200_response_data_inner_values_value_inner_oneOf_15:
+    _v2_objects__object__records_query_post_200_response_data_inner_values_value_inner_anyOf_15:
       additionalProperties: {}
       properties:
         active_from:
@@ -6769,7 +6769,7 @@ components:
           nullable: true
           type: string
         created_by_actor:
-          $ref: "#/components/schemas/_v2_objects__object__records_query_post_200_response_data_inner_values_value_inner_oneOf_created_by_actor"
+          $ref: "#/components/schemas/_v2_objects__object__records_query_post_200_response_data_inner_values_value_inner_anyOf_created_by_actor"
         value:
           description: A raw text field. Values are limited to 10MB.
           example: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do\
@@ -6787,7 +6787,7 @@ components:
       - attribute_type
       - created_by_actor
       - value
-    _v2_objects__object__records_query_post_200_response_data_inner_values_value_inner_oneOf_16:
+    _v2_objects__object__records_query_post_200_response_data_inner_values_value_inner_anyOf_16:
       additionalProperties: {}
       properties:
         active_from:
@@ -6804,7 +6804,7 @@ components:
           nullable: true
           type: string
         created_by_actor:
-          $ref: "#/components/schemas/_v2_objects__object__records_query_post_200_response_data_inner_values_value_inner_oneOf_created_by_actor"
+          $ref: "#/components/schemas/_v2_objects__object__records_query_post_200_response_data_inner_values_value_inner_anyOf_created_by_actor"
         attribute_type:
           description: The attribute type of the value.
           enum:
@@ -6833,24 +6833,24 @@ components:
       - created_by_actor
       - value
     _v2_objects__object__records_query_post_200_response_data_inner_values_value_inner:
-      oneOf:
-      - $ref: "#/components/schemas/_v2_objects__object__records_query_post_200_response_data_inner_values_value_inner_oneOf"
-      - $ref: "#/components/schemas/_v2_objects__object__records_query_post_200_response_data_inner_values_value_inner_oneOf_1"
-      - $ref: "#/components/schemas/_v2_objects__object__records_query_post_200_response_data_inner_values_value_inner_oneOf_2"
-      - $ref: "#/components/schemas/_v2_objects__object__records_query_post_200_response_data_inner_values_value_inner_oneOf_3"
-      - $ref: "#/components/schemas/_v2_objects__object__records_query_post_200_response_data_inner_values_value_inner_oneOf_4"
-      - $ref: "#/components/schemas/_v2_objects__object__records_query_post_200_response_data_inner_values_value_inner_oneOf_5"
-      - $ref: "#/components/schemas/_v2_objects__object__records_query_post_200_response_data_inner_values_value_inner_oneOf_6"
-      - $ref: "#/components/schemas/_v2_objects__object__records_query_post_200_response_data_inner_values_value_inner_oneOf_7"
-      - $ref: "#/components/schemas/_v2_objects__object__records_query_post_200_response_data_inner_values_value_inner_oneOf_8"
-      - $ref: "#/components/schemas/_v2_objects__object__records_query_post_200_response_data_inner_values_value_inner_oneOf_9"
-      - $ref: "#/components/schemas/_v2_objects__object__records_query_post_200_response_data_inner_values_value_inner_oneOf_10"
-      - $ref: "#/components/schemas/_v2_objects__object__records_query_post_200_response_data_inner_values_value_inner_oneOf_11"
-      - $ref: "#/components/schemas/_v2_objects__object__records_query_post_200_response_data_inner_values_value_inner_oneOf_12"
-      - $ref: "#/components/schemas/_v2_objects__object__records_query_post_200_response_data_inner_values_value_inner_oneOf_13"
-      - $ref: "#/components/schemas/_v2_objects__object__records_query_post_200_response_data_inner_values_value_inner_oneOf_14"
-      - $ref: "#/components/schemas/_v2_objects__object__records_query_post_200_response_data_inner_values_value_inner_oneOf_15"
-      - $ref: "#/components/schemas/_v2_objects__object__records_query_post_200_response_data_inner_values_value_inner_oneOf_16"
+      anyOf:
+      - $ref: "#/components/schemas/_v2_objects__object__records_query_post_200_response_data_inner_values_value_inner_anyOf"
+      - $ref: "#/components/schemas/_v2_objects__object__records_query_post_200_response_data_inner_values_value_inner_anyOf_1"
+      - $ref: "#/components/schemas/_v2_objects__object__records_query_post_200_response_data_inner_values_value_inner_anyOf_2"
+      - $ref: "#/components/schemas/_v2_objects__object__records_query_post_200_response_data_inner_values_value_inner_anyOf_3"
+      - $ref: "#/components/schemas/_v2_objects__object__records_query_post_200_response_data_inner_values_value_inner_anyOf_4"
+      - $ref: "#/components/schemas/_v2_objects__object__records_query_post_200_response_data_inner_values_value_inner_anyOf_5"
+      - $ref: "#/components/schemas/_v2_objects__object__records_query_post_200_response_data_inner_values_value_inner_anyOf_6"
+      - $ref: "#/components/schemas/_v2_objects__object__records_query_post_200_response_data_inner_values_value_inner_anyOf_7"
+      - $ref: "#/components/schemas/_v2_objects__object__records_query_post_200_response_data_inner_values_value_inner_anyOf_8"
+      - $ref: "#/components/schemas/_v2_objects__object__records_query_post_200_response_data_inner_values_value_inner_anyOf_9"
+      - $ref: "#/components/schemas/_v2_objects__object__records_query_post_200_response_data_inner_values_value_inner_anyOf_10"
+      - $ref: "#/components/schemas/_v2_objects__object__records_query_post_200_response_data_inner_values_value_inner_anyOf_11"
+      - $ref: "#/components/schemas/_v2_objects__object__records_query_post_200_response_data_inner_values_value_inner_anyOf_12"
+      - $ref: "#/components/schemas/_v2_objects__object__records_query_post_200_response_data_inner_values_value_inner_anyOf_13"
+      - $ref: "#/components/schemas/_v2_objects__object__records_query_post_200_response_data_inner_values_value_inner_anyOf_14"
+      - $ref: "#/components/schemas/_v2_objects__object__records_query_post_200_response_data_inner_values_value_inner_anyOf_15"
+      - $ref: "#/components/schemas/_v2_objects__object__records_query_post_200_response_data_inner_values_value_inner_anyOf_16"
     _v2_objects__object__records_query_post_200_response_data_inner:
       example:
         web_url: https://app.attio.com/salarya/person/bf071e1f-6035-429d-b874-d83ea64ea13b
@@ -7040,7 +7040,7 @@ components:
           $ref: "#/components/schemas/_v2_objects__object__records_put_request_data"
       required:
       - data
-    _v2_objects__object__records_put_200_response_data_values_value_inner_oneOf:
+    _v2_objects__object__records_put_200_response_data_values_value_inner_anyOf:
       additionalProperties: false
       example:
         referenced_actor_type: workspace-member
@@ -7066,7 +7066,7 @@ components:
           nullable: true
           type: string
         created_by_actor:
-          $ref: "#/components/schemas/_v2_objects__object__records_query_post_200_response_data_inner_values_value_inner_oneOf_created_by_actor"
+          $ref: "#/components/schemas/_v2_objects__object__records_query_post_200_response_data_inner_values_value_inner_anyOf_created_by_actor"
         referenced_actor_type:
           description: "The type of the referenced actor. [Read more information on\
             \ actor types here](/docs/actors)."
@@ -7096,7 +7096,7 @@ components:
       - created_by_actor
       - referenced_actor_id
       - referenced_actor_type
-    _v2_objects__object__records_put_200_response_data_values_value_inner_oneOf_1:
+    _v2_objects__object__records_put_200_response_data_values_value_inner_anyOf_1:
       additionalProperties: false
       properties:
         active_from:
@@ -7113,7 +7113,7 @@ components:
           nullable: true
           type: string
         created_by_actor:
-          $ref: "#/components/schemas/_v2_objects__object__records_query_post_200_response_data_inner_values_value_inner_oneOf_created_by_actor"
+          $ref: "#/components/schemas/_v2_objects__object__records_query_post_200_response_data_inner_values_value_inner_anyOf_created_by_actor"
         value:
           description: A boolean representing whether the checkbox is checked or not.
             The string values 'true' and 'false' are also accepted.
@@ -7131,7 +7131,7 @@ components:
       - attribute_type
       - created_by_actor
       - value
-    _v2_objects__object__records_put_200_response_data_values_value_inner_oneOf_2:
+    _v2_objects__object__records_put_200_response_data_values_value_inner_anyOf_2:
       additionalProperties: false
       properties:
         active_from:
@@ -7148,7 +7148,7 @@ components:
           nullable: true
           type: string
         created_by_actor:
-          $ref: "#/components/schemas/_v2_objects__object__records_query_post_200_response_data_inner_values_value_inner_oneOf_created_by_actor"
+          $ref: "#/components/schemas/_v2_objects__object__records_query_post_200_response_data_inner_values_value_inner_anyOf_created_by_actor"
         currency_value:
           description: A numerical representation of the currency value. A decimal
             with a max of 4 decimal places.
@@ -7210,7 +7210,7 @@ components:
       - attribute_type
       - created_by_actor
       - currency_value
-    _v2_objects__object__records_put_200_response_data_values_value_inner_oneOf_3:
+    _v2_objects__object__records_put_200_response_data_values_value_inner_anyOf_3:
       additionalProperties: false
       properties:
         active_from:
@@ -7227,7 +7227,7 @@ components:
           nullable: true
           type: string
         created_by_actor:
-          $ref: "#/components/schemas/_v2_objects__object__records_query_post_200_response_data_inner_values_value_inner_oneOf_created_by_actor"
+          $ref: "#/components/schemas/_v2_objects__object__records_query_post_200_response_data_inner_values_value_inner_anyOf_created_by_actor"
         attribute_type:
           description: The attribute type of the value.
           enum:
@@ -7253,7 +7253,7 @@ components:
       - attribute_type
       - created_by_actor
       - value
-    _v2_objects__object__records_put_200_response_data_values_value_inner_oneOf_4:
+    _v2_objects__object__records_put_200_response_data_values_value_inner_anyOf_4:
       additionalProperties: false
       properties:
         active_from:
@@ -7270,7 +7270,7 @@ components:
           nullable: true
           type: string
         created_by_actor:
-          $ref: "#/components/schemas/_v2_objects__object__records_query_post_200_response_data_inner_values_value_inner_oneOf_created_by_actor"
+          $ref: "#/components/schemas/_v2_objects__object__records_query_post_200_response_data_inner_values_value_inner_anyOf_created_by_actor"
         domain:
           example: app.attio.com
           type: string
@@ -7290,7 +7290,7 @@ components:
       - created_by_actor
       - domain
       - root_domain
-    _v2_objects__object__records_put_200_response_data_values_value_inner_oneOf_5:
+    _v2_objects__object__records_put_200_response_data_values_value_inner_anyOf_5:
       additionalProperties: false
       properties:
         active_from:
@@ -7307,7 +7307,7 @@ components:
           nullable: true
           type: string
         created_by_actor:
-          $ref: "#/components/schemas/_v2_objects__object__records_query_post_200_response_data_inner_values_value_inner_oneOf_created_by_actor"
+          $ref: "#/components/schemas/_v2_objects__object__records_query_post_200_response_data_inner_values_value_inner_anyOf_created_by_actor"
         target_object:
           description: A slug identifying the object that the referenced record belongs
             to.
@@ -7331,7 +7331,7 @@ components:
       - created_by_actor
       - target_object
       - target_record_id
-    _v2_objects__object__records_put_200_response_data_values_value_inner_oneOf_6:
+    _v2_objects__object__records_put_200_response_data_values_value_inner_anyOf_6:
       additionalProperties: false
       properties:
         active_from:
@@ -7348,7 +7348,7 @@ components:
           nullable: true
           type: string
         created_by_actor:
-          $ref: "#/components/schemas/_v2_objects__object__records_query_post_200_response_data_inner_values_value_inner_oneOf_created_by_actor"
+          $ref: "#/components/schemas/_v2_objects__object__records_query_post_200_response_data_inner_values_value_inner_anyOf_created_by_actor"
         interaction_type:
           description: The type of interaction e.g. calendar or email.
           enum:
@@ -7366,7 +7366,7 @@ components:
           format: date-time
           type: string
         owner_actor:
-          $ref: "#/components/schemas/_v2_objects__object__records_query_post_200_response_data_inner_values_value_inner_oneOf_created_by_actor"
+          $ref: "#/components/schemas/_v2_objects__object__records_query_post_200_response_data_inner_values_value_inner_anyOf_created_by_actor"
         attribute_type:
           description: The attribute type of the value.
           enum:
@@ -7381,7 +7381,7 @@ components:
       - interacted_at
       - interaction_type
       - owner_actor
-    _v2_objects__object__records_put_200_response_data_values_value_inner_oneOf_7:
+    _v2_objects__object__records_put_200_response_data_values_value_inner_anyOf_7:
       additionalProperties: false
       properties:
         active_from:
@@ -7398,7 +7398,7 @@ components:
           nullable: true
           type: string
         created_by_actor:
-          $ref: "#/components/schemas/_v2_objects__object__records_query_post_200_response_data_inner_values_value_inner_oneOf_created_by_actor"
+          $ref: "#/components/schemas/_v2_objects__object__records_query_post_200_response_data_inner_values_value_inner_anyOf_created_by_actor"
         line_1:
           description: The first line of the address. Note that this value is not
             currently represented in the UI but will be persisted and readable through
@@ -7745,7 +7745,7 @@ components:
       - longitude
       - postcode
       - region
-    _v2_objects__object__records_put_200_response_data_values_value_inner_oneOf_8:
+    _v2_objects__object__records_put_200_response_data_values_value_inner_anyOf_8:
       additionalProperties: false
       properties:
         active_from:
@@ -7762,7 +7762,7 @@ components:
           nullable: true
           type: string
         created_by_actor:
-          $ref: "#/components/schemas/_v2_objects__object__records_query_post_200_response_data_inner_values_value_inner_oneOf_created_by_actor"
+          $ref: "#/components/schemas/_v2_objects__object__records_query_post_200_response_data_inner_values_value_inner_anyOf_created_by_actor"
         first_name:
           description: The first name.
           example: Ada
@@ -7789,7 +7789,7 @@ components:
       - first_name
       - full_name
       - last_name
-    _v2_objects__object__records_put_200_response_data_values_value_inner_oneOf_9:
+    _v2_objects__object__records_put_200_response_data_values_value_inner_anyOf_9:
       additionalProperties: false
       properties:
         active_from:
@@ -7806,7 +7806,7 @@ components:
           nullable: true
           type: string
         created_by_actor:
-          $ref: "#/components/schemas/_v2_objects__object__records_query_post_200_response_data_inner_values_value_inner_oneOf_created_by_actor"
+          $ref: "#/components/schemas/_v2_objects__object__records_query_post_200_response_data_inner_values_value_inner_anyOf_created_by_actor"
         status:
           $ref: "#/components/schemas/status"
         attribute_type:
@@ -7821,7 +7821,7 @@ components:
       - attribute_type
       - created_by_actor
       - status
-    _v2_objects__object__records_put_200_response_data_values_value_inner_oneOf_10:
+    _v2_objects__object__records_put_200_response_data_values_value_inner_anyOf_10:
       additionalProperties: false
       properties:
         active_from:
@@ -7838,7 +7838,7 @@ components:
           nullable: true
           type: string
         created_by_actor:
-          $ref: "#/components/schemas/_v2_objects__object__records_query_post_200_response_data_inner_values_value_inner_oneOf_created_by_actor"
+          $ref: "#/components/schemas/_v2_objects__object__records_query_post_200_response_data_inner_values_value_inner_anyOf_created_by_actor"
         value:
           description: A number between 0 and 5 (inclusive) to represent a star rating.
           example: 3
@@ -7855,7 +7855,7 @@ components:
       - attribute_type
       - created_by_actor
       - value
-    _v2_objects__object__records_put_200_response_data_values_value_inner_oneOf_11:
+    _v2_objects__object__records_put_200_response_data_values_value_inner_anyOf_11:
       additionalProperties: false
       properties:
         active_from:
@@ -7872,7 +7872,7 @@ components:
           nullable: true
           type: string
         created_by_actor:
-          $ref: "#/components/schemas/_v2_objects__object__records_query_post_200_response_data_inner_values_value_inner_oneOf_created_by_actor"
+          $ref: "#/components/schemas/_v2_objects__object__records_query_post_200_response_data_inner_values_value_inner_anyOf_created_by_actor"
         option:
           $ref: "#/components/schemas/select-option"
         attribute_type:
@@ -7887,7 +7887,7 @@ components:
       - attribute_type
       - created_by_actor
       - option
-    _v2_objects__object__records_put_200_response_data_values_value_inner_oneOf_12:
+    _v2_objects__object__records_put_200_response_data_values_value_inner_anyOf_12:
       additionalProperties: false
       properties:
         active_from:
@@ -7904,7 +7904,7 @@ components:
           nullable: true
           type: string
         created_by_actor:
-          $ref: "#/components/schemas/_v2_objects__object__records_query_post_200_response_data_inner_values_value_inner_oneOf_created_by_actor"
+          $ref: "#/components/schemas/_v2_objects__object__records_query_post_200_response_data_inner_values_value_inner_anyOf_created_by_actor"
         value:
           description: A raw text field. Values are limited to 10MB.
           example: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do\
@@ -7922,7 +7922,7 @@ components:
       - attribute_type
       - created_by_actor
       - value
-    _v2_objects__object__records_put_200_response_data_values_value_inner_oneOf_13:
+    _v2_objects__object__records_put_200_response_data_values_value_inner_anyOf_13:
       additionalProperties: false
       properties:
         active_from:
@@ -7939,7 +7939,7 @@ components:
           nullable: true
           type: string
         created_by_actor:
-          $ref: "#/components/schemas/_v2_objects__object__records_query_post_200_response_data_inner_values_value_inner_oneOf_created_by_actor"
+          $ref: "#/components/schemas/_v2_objects__object__records_query_post_200_response_data_inner_values_value_inner_anyOf_created_by_actor"
         attribute_type:
           description: The attribute type of the value.
           enum:
@@ -7968,24 +7968,24 @@ components:
       - created_by_actor
       - value
     _v2_objects__object__records_put_200_response_data_values_value_inner:
-      oneOf:
-      - $ref: "#/components/schemas/_v2_objects__object__records_put_200_response_data_values_value_inner_oneOf"
-      - $ref: "#/components/schemas/_v2_objects__object__records_put_200_response_data_values_value_inner_oneOf_1"
-      - $ref: "#/components/schemas/_v2_objects__object__records_put_200_response_data_values_value_inner_oneOf_2"
-      - $ref: "#/components/schemas/_v2_objects__object__records_put_200_response_data_values_value_inner_oneOf_3"
-      - $ref: "#/components/schemas/_v2_objects__object__records_put_200_response_data_values_value_inner_oneOf_4"
-      - $ref: "#/components/schemas/_v2_objects__object__records_query_post_200_response_data_inner_values_value_inner_oneOf_5"
-      - $ref: "#/components/schemas/_v2_objects__object__records_put_200_response_data_values_value_inner_oneOf_5"
-      - $ref: "#/components/schemas/_v2_objects__object__records_put_200_response_data_values_value_inner_oneOf_6"
-      - $ref: "#/components/schemas/_v2_objects__object__records_put_200_response_data_values_value_inner_oneOf_7"
-      - $ref: "#/components/schemas/_v2_objects__object__records_query_post_200_response_data_inner_values_value_inner_oneOf_9"
-      - $ref: "#/components/schemas/_v2_objects__object__records_put_200_response_data_values_value_inner_oneOf_8"
-      - $ref: "#/components/schemas/_v2_objects__object__records_query_post_200_response_data_inner_values_value_inner_oneOf_11"
-      - $ref: "#/components/schemas/_v2_objects__object__records_put_200_response_data_values_value_inner_oneOf_9"
-      - $ref: "#/components/schemas/_v2_objects__object__records_put_200_response_data_values_value_inner_oneOf_10"
-      - $ref: "#/components/schemas/_v2_objects__object__records_put_200_response_data_values_value_inner_oneOf_11"
-      - $ref: "#/components/schemas/_v2_objects__object__records_put_200_response_data_values_value_inner_oneOf_12"
-      - $ref: "#/components/schemas/_v2_objects__object__records_put_200_response_data_values_value_inner_oneOf_13"
+      anyOf:
+      - $ref: "#/components/schemas/_v2_objects__object__records_put_200_response_data_values_value_inner_anyOf"
+      - $ref: "#/components/schemas/_v2_objects__object__records_put_200_response_data_values_value_inner_anyOf_1"
+      - $ref: "#/components/schemas/_v2_objects__object__records_put_200_response_data_values_value_inner_anyOf_2"
+      - $ref: "#/components/schemas/_v2_objects__object__records_put_200_response_data_values_value_inner_anyOf_3"
+      - $ref: "#/components/schemas/_v2_objects__object__records_put_200_response_data_values_value_inner_anyOf_4"
+      - $ref: "#/components/schemas/_v2_objects__object__records_query_post_200_response_data_inner_values_value_inner_anyOf_5"
+      - $ref: "#/components/schemas/_v2_objects__object__records_put_200_response_data_values_value_inner_anyOf_5"
+      - $ref: "#/components/schemas/_v2_objects__object__records_put_200_response_data_values_value_inner_anyOf_6"
+      - $ref: "#/components/schemas/_v2_objects__object__records_put_200_response_data_values_value_inner_anyOf_7"
+      - $ref: "#/components/schemas/_v2_objects__object__records_query_post_200_response_data_inner_values_value_inner_anyOf_9"
+      - $ref: "#/components/schemas/_v2_objects__object__records_put_200_response_data_values_value_inner_anyOf_8"
+      - $ref: "#/components/schemas/_v2_objects__object__records_query_post_200_response_data_inner_values_value_inner_anyOf_11"
+      - $ref: "#/components/schemas/_v2_objects__object__records_put_200_response_data_values_value_inner_anyOf_9"
+      - $ref: "#/components/schemas/_v2_objects__object__records_put_200_response_data_values_value_inner_anyOf_10"
+      - $ref: "#/components/schemas/_v2_objects__object__records_put_200_response_data_values_value_inner_anyOf_11"
+      - $ref: "#/components/schemas/_v2_objects__object__records_put_200_response_data_values_value_inner_anyOf_12"
+      - $ref: "#/components/schemas/_v2_objects__object__records_put_200_response_data_values_value_inner_anyOf_13"
     _v2_objects__object__records_put_200_response_data:
       example:
         web_url: https://app.attio.com/salarya/person/bf071e1f-6035-429d-b874-d83ea64ea13b
@@ -12521,7 +12521,7 @@ components:
           format: date-time
           type: string
         owner_actor:
-          $ref: "#/components/schemas/_v2_objects__object__records_query_post_200_response_data_inner_values_value_inner_oneOf_created_by_actor"
+          $ref: "#/components/schemas/_v2_objects__object__records_query_post_200_response_data_inner_values_value_inner_anyOf_created_by_actor"
       required:
       - interacted_at
       - interaction_type
@@ -13442,7 +13442,7 @@ components:
           format: date-time
           type: string
         owner_actor:
-          $ref: "#/components/schemas/_v2_objects__object__records_query_post_200_response_data_inner_values_value_inner_oneOf_created_by_actor"
+          $ref: "#/components/schemas/_v2_objects__object__records_query_post_200_response_data_inner_values_value_inner_anyOf_created_by_actor"
         attribute_type:
           description: The attribute type of the value.
           enum:
@@ -14282,7 +14282,7 @@ components:
       - type
     attribute_default_value:
       anyOf:
-      - $ref: "#/components/schemas/_v2__target___identifier__attributes_post_request_data_default_value_oneOf"
+      - $ref: "#/components/schemas/_v2__target___identifier__attributes_post_request_data_default_value_anyOf"
       - $ref: "#/components/schemas/attribute_default_value_anyOf"
       description: "The default value for this attribute. Static values are used to\
         \ directly populate values using their contents. Dynamic values are used to\
@@ -14733,7 +14733,7 @@ components:
       required:
       - note_id
       - workspace_id
-    note_tags_inner_oneOf:
+    note_tags_inner_anyOf:
       properties:
         type:
           description: The type of entity tagged in the note. Can be either 'workspace-member'
@@ -14749,7 +14749,7 @@ components:
       required:
       - type
       - workspace_member_id
-    note_tags_inner_oneOf_1:
+    note_tags_inner_anyOf_1:
       properties:
         type:
           description: The type of entity tagged in the note. Can be either 'workspace-member'
@@ -14772,9 +14772,9 @@ components:
       - record_id
       - type
     note_tags_inner:
-      oneOf:
-      - $ref: "#/components/schemas/note_tags_inner_oneOf"
-      - $ref: "#/components/schemas/note_tags_inner_oneOf_1"
+      anyOf:
+      - $ref: "#/components/schemas/note_tags_inner_anyOf"
+      - $ref: "#/components/schemas/note_tags_inner_anyOf_1"
     note_created_by_actor:
       description: The actor that created this note.
       example:

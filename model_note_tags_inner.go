@@ -14,122 +14,57 @@ package libattio
 import (
 	"encoding/json"
 	"fmt"
-	"gopkg.in/validator.v2"
 )
 
-// NoteTagsInner - struct for NoteTagsInner
+// NoteTagsInner struct for NoteTagsInner
 type NoteTagsInner struct {
-	NoteTagsInnerOneOf  *NoteTagsInnerOneOf
-	NoteTagsInnerOneOf1 *NoteTagsInnerOneOf1
+	NoteTagsInnerAnyOf  *NoteTagsInnerAnyOf
+	NoteTagsInnerAnyOf1 *NoteTagsInnerAnyOf1
 }
 
-// NoteTagsInnerOneOfAsNoteTagsInner is a convenience function that returns NoteTagsInnerOneOf wrapped in NoteTagsInner
-func NoteTagsInnerOneOfAsNoteTagsInner(v *NoteTagsInnerOneOf) NoteTagsInner {
-	return NoteTagsInner{
-		NoteTagsInnerOneOf: v,
-	}
-}
-
-// NoteTagsInnerOneOf1AsNoteTagsInner is a convenience function that returns NoteTagsInnerOneOf1 wrapped in NoteTagsInner
-func NoteTagsInnerOneOf1AsNoteTagsInner(v *NoteTagsInnerOneOf1) NoteTagsInner {
-	return NoteTagsInner{
-		NoteTagsInnerOneOf1: v,
-	}
-}
-
-// Unmarshal JSON data into one of the pointers in the struct
+// Unmarshal JSON data into any of the pointers in the struct
 func (dst *NoteTagsInner) UnmarshalJSON(data []byte) error {
 	var err error
-	match := 0
-	// try to unmarshal data into NoteTagsInnerOneOf
-	err = newStrictDecoder(data).Decode(&dst.NoteTagsInnerOneOf)
+	// try to unmarshal JSON data into NoteTagsInnerAnyOf
+	err = json.Unmarshal(data, &dst.NoteTagsInnerAnyOf)
 	if err == nil {
-		jsonNoteTagsInnerOneOf, _ := json.Marshal(dst.NoteTagsInnerOneOf)
-		if string(jsonNoteTagsInnerOneOf) == "{}" { // empty struct
-			dst.NoteTagsInnerOneOf = nil
+		jsonNoteTagsInnerAnyOf, _ := json.Marshal(dst.NoteTagsInnerAnyOf)
+		if string(jsonNoteTagsInnerAnyOf) == "{}" { // empty struct
+			dst.NoteTagsInnerAnyOf = nil
 		} else {
-			if err = validator.Validate(dst.NoteTagsInnerOneOf); err != nil {
-				dst.NoteTagsInnerOneOf = nil
-			} else {
-				match++
-			}
+			return nil // data stored in dst.NoteTagsInnerAnyOf, return on the first match
 		}
 	} else {
-		dst.NoteTagsInnerOneOf = nil
+		dst.NoteTagsInnerAnyOf = nil
 	}
 
-	// try to unmarshal data into NoteTagsInnerOneOf1
-	err = newStrictDecoder(data).Decode(&dst.NoteTagsInnerOneOf1)
+	// try to unmarshal JSON data into NoteTagsInnerAnyOf1
+	err = json.Unmarshal(data, &dst.NoteTagsInnerAnyOf1)
 	if err == nil {
-		jsonNoteTagsInnerOneOf1, _ := json.Marshal(dst.NoteTagsInnerOneOf1)
-		if string(jsonNoteTagsInnerOneOf1) == "{}" { // empty struct
-			dst.NoteTagsInnerOneOf1 = nil
+		jsonNoteTagsInnerAnyOf1, _ := json.Marshal(dst.NoteTagsInnerAnyOf1)
+		if string(jsonNoteTagsInnerAnyOf1) == "{}" { // empty struct
+			dst.NoteTagsInnerAnyOf1 = nil
 		} else {
-			if err = validator.Validate(dst.NoteTagsInnerOneOf1); err != nil {
-				dst.NoteTagsInnerOneOf1 = nil
-			} else {
-				match++
-			}
+			return nil // data stored in dst.NoteTagsInnerAnyOf1, return on the first match
 		}
 	} else {
-		dst.NoteTagsInnerOneOf1 = nil
+		dst.NoteTagsInnerAnyOf1 = nil
 	}
 
-	if match > 1 { // more than 1 match
-		// reset to nil
-		dst.NoteTagsInnerOneOf = nil
-		dst.NoteTagsInnerOneOf1 = nil
-
-		return fmt.Errorf("data matches more than one schema in oneOf(NoteTagsInner)")
-	} else if match == 1 {
-		return nil // exactly one match
-	} else { // no match
-		return fmt.Errorf("data failed to match schemas in oneOf(NoteTagsInner)")
-	}
+	return fmt.Errorf("data failed to match schemas in anyOf(NoteTagsInner)")
 }
 
 // Marshal data from the first non-nil pointers in the struct to JSON
 func (src NoteTagsInner) MarshalJSON() ([]byte, error) {
-	if src.NoteTagsInnerOneOf != nil {
-		return json.Marshal(&src.NoteTagsInnerOneOf)
+	if src.NoteTagsInnerAnyOf != nil {
+		return json.Marshal(&src.NoteTagsInnerAnyOf)
 	}
 
-	if src.NoteTagsInnerOneOf1 != nil {
-		return json.Marshal(&src.NoteTagsInnerOneOf1)
+	if src.NoteTagsInnerAnyOf1 != nil {
+		return json.Marshal(&src.NoteTagsInnerAnyOf1)
 	}
 
-	return nil, nil // no data in oneOf schemas
-}
-
-// Get the actual instance
-func (obj *NoteTagsInner) GetActualInstance() interface{} {
-	if obj == nil {
-		return nil
-	}
-	if obj.NoteTagsInnerOneOf != nil {
-		return obj.NoteTagsInnerOneOf
-	}
-
-	if obj.NoteTagsInnerOneOf1 != nil {
-		return obj.NoteTagsInnerOneOf1
-	}
-
-	// all schemas are nil
-	return nil
-}
-
-// Get the actual instance value
-func (obj NoteTagsInner) GetActualInstanceValue() interface{} {
-	if obj.NoteTagsInnerOneOf != nil {
-		return *obj.NoteTagsInnerOneOf
-	}
-
-	if obj.NoteTagsInnerOneOf1 != nil {
-		return *obj.NoteTagsInnerOneOf1
-	}
-
-	// all schemas are nil
-	return nil
+	return nil, nil // no data in anyOf schemas
 }
 
 type NullableNoteTagsInner struct {

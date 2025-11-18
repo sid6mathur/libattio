@@ -14,30 +14,15 @@ package libattio
 import (
 	"encoding/json"
 	"fmt"
-	"gopkg.in/validator.v2"
 )
 
-// V2TargetIdentifierAttributesPostRequestDataDefaultValue - The default value for this attribute. Static values are used to directly populate values using their contents. Dynamic values are used to lookup data at the point of creation. For example, you could use a dynamic value to insert a value for the currently logged in user. Which default values are available is dependent on the type of the attribute. Default values are not currently supported on people or company objects.
+// V2TargetIdentifierAttributesPostRequestDataDefaultValue The default value for this attribute. Static values are used to directly populate values using their contents. Dynamic values are used to lookup data at the point of creation. For example, you could use a dynamic value to insert a value for the currently logged in user. Which default values are available is dependent on the type of the attribute. Default values are not currently supported on people or company objects.
 type V2TargetIdentifierAttributesPostRequestDataDefaultValue struct {
-	V2TargetIdentifierAttributesPostRequestDataDefaultValueOneOf  *V2TargetIdentifierAttributesPostRequestDataDefaultValueOneOf
-	V2TargetIdentifierAttributesPostRequestDataDefaultValueOneOf1 *V2TargetIdentifierAttributesPostRequestDataDefaultValueOneOf1
+	V2TargetIdentifierAttributesPostRequestDataDefaultValueAnyOf  *V2TargetIdentifierAttributesPostRequestDataDefaultValueAnyOf
+	V2TargetIdentifierAttributesPostRequestDataDefaultValueAnyOf1 *V2TargetIdentifierAttributesPostRequestDataDefaultValueAnyOf1
 }
 
-// V2TargetIdentifierAttributesPostRequestDataDefaultValueOneOfAsV2TargetIdentifierAttributesPostRequestDataDefaultValue is a convenience function that returns V2TargetIdentifierAttributesPostRequestDataDefaultValueOneOf wrapped in V2TargetIdentifierAttributesPostRequestDataDefaultValue
-func V2TargetIdentifierAttributesPostRequestDataDefaultValueOneOfAsV2TargetIdentifierAttributesPostRequestDataDefaultValue(v *V2TargetIdentifierAttributesPostRequestDataDefaultValueOneOf) V2TargetIdentifierAttributesPostRequestDataDefaultValue {
-	return V2TargetIdentifierAttributesPostRequestDataDefaultValue{
-		V2TargetIdentifierAttributesPostRequestDataDefaultValueOneOf: v,
-	}
-}
-
-// V2TargetIdentifierAttributesPostRequestDataDefaultValueOneOf1AsV2TargetIdentifierAttributesPostRequestDataDefaultValue is a convenience function that returns V2TargetIdentifierAttributesPostRequestDataDefaultValueOneOf1 wrapped in V2TargetIdentifierAttributesPostRequestDataDefaultValue
-func V2TargetIdentifierAttributesPostRequestDataDefaultValueOneOf1AsV2TargetIdentifierAttributesPostRequestDataDefaultValue(v *V2TargetIdentifierAttributesPostRequestDataDefaultValueOneOf1) V2TargetIdentifierAttributesPostRequestDataDefaultValue {
-	return V2TargetIdentifierAttributesPostRequestDataDefaultValue{
-		V2TargetIdentifierAttributesPostRequestDataDefaultValueOneOf1: v,
-	}
-}
-
-// Unmarshal JSON data into one of the pointers in the struct
+// Unmarshal JSON data into any of the pointers in the struct
 func (dst *V2TargetIdentifierAttributesPostRequestDataDefaultValue) UnmarshalJSON(data []byte) error {
 	var err error
 	// this object is nullable so check if the payload is null or empty string
@@ -45,96 +30,46 @@ func (dst *V2TargetIdentifierAttributesPostRequestDataDefaultValue) UnmarshalJSO
 		return nil
 	}
 
-	match := 0
-	// try to unmarshal data into V2TargetIdentifierAttributesPostRequestDataDefaultValueOneOf
-	err = newStrictDecoder(data).Decode(&dst.V2TargetIdentifierAttributesPostRequestDataDefaultValueOneOf)
+	// try to unmarshal JSON data into V2TargetIdentifierAttributesPostRequestDataDefaultValueAnyOf
+	err = json.Unmarshal(data, &dst.V2TargetIdentifierAttributesPostRequestDataDefaultValueAnyOf)
 	if err == nil {
-		jsonV2TargetIdentifierAttributesPostRequestDataDefaultValueOneOf, _ := json.Marshal(dst.V2TargetIdentifierAttributesPostRequestDataDefaultValueOneOf)
-		if string(jsonV2TargetIdentifierAttributesPostRequestDataDefaultValueOneOf) == "{}" { // empty struct
-			dst.V2TargetIdentifierAttributesPostRequestDataDefaultValueOneOf = nil
+		jsonV2TargetIdentifierAttributesPostRequestDataDefaultValueAnyOf, _ := json.Marshal(dst.V2TargetIdentifierAttributesPostRequestDataDefaultValueAnyOf)
+		if string(jsonV2TargetIdentifierAttributesPostRequestDataDefaultValueAnyOf) == "{}" { // empty struct
+			dst.V2TargetIdentifierAttributesPostRequestDataDefaultValueAnyOf = nil
 		} else {
-			if err = validator.Validate(dst.V2TargetIdentifierAttributesPostRequestDataDefaultValueOneOf); err != nil {
-				dst.V2TargetIdentifierAttributesPostRequestDataDefaultValueOneOf = nil
-			} else {
-				match++
-			}
+			return nil // data stored in dst.V2TargetIdentifierAttributesPostRequestDataDefaultValueAnyOf, return on the first match
 		}
 	} else {
-		dst.V2TargetIdentifierAttributesPostRequestDataDefaultValueOneOf = nil
+		dst.V2TargetIdentifierAttributesPostRequestDataDefaultValueAnyOf = nil
 	}
 
-	// try to unmarshal data into V2TargetIdentifierAttributesPostRequestDataDefaultValueOneOf1
-	err = newStrictDecoder(data).Decode(&dst.V2TargetIdentifierAttributesPostRequestDataDefaultValueOneOf1)
+	// try to unmarshal JSON data into V2TargetIdentifierAttributesPostRequestDataDefaultValueAnyOf1
+	err = json.Unmarshal(data, &dst.V2TargetIdentifierAttributesPostRequestDataDefaultValueAnyOf1)
 	if err == nil {
-		jsonV2TargetIdentifierAttributesPostRequestDataDefaultValueOneOf1, _ := json.Marshal(dst.V2TargetIdentifierAttributesPostRequestDataDefaultValueOneOf1)
-		if string(jsonV2TargetIdentifierAttributesPostRequestDataDefaultValueOneOf1) == "{}" { // empty struct
-			dst.V2TargetIdentifierAttributesPostRequestDataDefaultValueOneOf1 = nil
+		jsonV2TargetIdentifierAttributesPostRequestDataDefaultValueAnyOf1, _ := json.Marshal(dst.V2TargetIdentifierAttributesPostRequestDataDefaultValueAnyOf1)
+		if string(jsonV2TargetIdentifierAttributesPostRequestDataDefaultValueAnyOf1) == "{}" { // empty struct
+			dst.V2TargetIdentifierAttributesPostRequestDataDefaultValueAnyOf1 = nil
 		} else {
-			if err = validator.Validate(dst.V2TargetIdentifierAttributesPostRequestDataDefaultValueOneOf1); err != nil {
-				dst.V2TargetIdentifierAttributesPostRequestDataDefaultValueOneOf1 = nil
-			} else {
-				match++
-			}
+			return nil // data stored in dst.V2TargetIdentifierAttributesPostRequestDataDefaultValueAnyOf1, return on the first match
 		}
 	} else {
-		dst.V2TargetIdentifierAttributesPostRequestDataDefaultValueOneOf1 = nil
+		dst.V2TargetIdentifierAttributesPostRequestDataDefaultValueAnyOf1 = nil
 	}
 
-	if match > 1 { // more than 1 match
-		// reset to nil
-		dst.V2TargetIdentifierAttributesPostRequestDataDefaultValueOneOf = nil
-		dst.V2TargetIdentifierAttributesPostRequestDataDefaultValueOneOf1 = nil
-
-		return fmt.Errorf("data matches more than one schema in oneOf(V2TargetIdentifierAttributesPostRequestDataDefaultValue)")
-	} else if match == 1 {
-		return nil // exactly one match
-	} else { // no match
-		return fmt.Errorf("data failed to match schemas in oneOf(V2TargetIdentifierAttributesPostRequestDataDefaultValue)")
-	}
+	return fmt.Errorf("data failed to match schemas in anyOf(V2TargetIdentifierAttributesPostRequestDataDefaultValue)")
 }
 
 // Marshal data from the first non-nil pointers in the struct to JSON
 func (src V2TargetIdentifierAttributesPostRequestDataDefaultValue) MarshalJSON() ([]byte, error) {
-	if src.V2TargetIdentifierAttributesPostRequestDataDefaultValueOneOf != nil {
-		return json.Marshal(&src.V2TargetIdentifierAttributesPostRequestDataDefaultValueOneOf)
+	if src.V2TargetIdentifierAttributesPostRequestDataDefaultValueAnyOf != nil {
+		return json.Marshal(&src.V2TargetIdentifierAttributesPostRequestDataDefaultValueAnyOf)
 	}
 
-	if src.V2TargetIdentifierAttributesPostRequestDataDefaultValueOneOf1 != nil {
-		return json.Marshal(&src.V2TargetIdentifierAttributesPostRequestDataDefaultValueOneOf1)
+	if src.V2TargetIdentifierAttributesPostRequestDataDefaultValueAnyOf1 != nil {
+		return json.Marshal(&src.V2TargetIdentifierAttributesPostRequestDataDefaultValueAnyOf1)
 	}
 
-	return nil, nil // no data in oneOf schemas
-}
-
-// Get the actual instance
-func (obj *V2TargetIdentifierAttributesPostRequestDataDefaultValue) GetActualInstance() interface{} {
-	if obj == nil {
-		return nil
-	}
-	if obj.V2TargetIdentifierAttributesPostRequestDataDefaultValueOneOf != nil {
-		return obj.V2TargetIdentifierAttributesPostRequestDataDefaultValueOneOf
-	}
-
-	if obj.V2TargetIdentifierAttributesPostRequestDataDefaultValueOneOf1 != nil {
-		return obj.V2TargetIdentifierAttributesPostRequestDataDefaultValueOneOf1
-	}
-
-	// all schemas are nil
-	return nil
-}
-
-// Get the actual instance value
-func (obj V2TargetIdentifierAttributesPostRequestDataDefaultValue) GetActualInstanceValue() interface{} {
-	if obj.V2TargetIdentifierAttributesPostRequestDataDefaultValueOneOf != nil {
-		return *obj.V2TargetIdentifierAttributesPostRequestDataDefaultValueOneOf
-	}
-
-	if obj.V2TargetIdentifierAttributesPostRequestDataDefaultValueOneOf1 != nil {
-		return *obj.V2TargetIdentifierAttributesPostRequestDataDefaultValueOneOf1
-	}
-
-	// all schemas are nil
-	return nil
+	return nil, nil // no data in anyOf schemas
 }
 
 type NullableV2TargetIdentifierAttributesPostRequestDataDefaultValue struct {

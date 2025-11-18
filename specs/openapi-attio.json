@@ -3815,7 +3815,7 @@
                     "tags": {
                         "type": "array",
                         "items": {
-                            "oneOf": [
+                            "anyOf": [
                                 {
                                     "type": "object",
                                     "properties": {
@@ -4766,7 +4766,7 @@
                                                 "example": true
                                             },
                                             "default_value": {
-                                                "oneOf": [
+                                                "anyOf": [
                                                     {
                                                         "type": "object",
                                                         "properties": {
@@ -5302,7 +5302,7 @@
                                                 "example": true
                                             },
                                             "default_value": {
-                                                "oneOf": [
+                                                "anyOf": [
                                                     {
                                                         "type": "object",
                                                         "properties": {
@@ -6995,7 +6995,7 @@
                                                         "additionalProperties": {
                                                             "type": "array",
                                                             "items": {
-                                                                "oneOf": [
+                                                                "anyOf": [
                                                                     {
                                                                         "type": "object",
                                                                         "properties": {
@@ -9108,7 +9108,7 @@
                                                     "additionalProperties": {
                                                         "type": "array",
                                                         "items": {
-                                                            "oneOf": [
+                                                            "anyOf": [
                                                                 {
                                                                     "type": "object",
                                                                     "properties": {
@@ -11229,7 +11229,7 @@
                                                     "additionalProperties": {
                                                         "type": "array",
                                                         "items": {
-                                                            "oneOf": [
+                                                            "anyOf": [
                                                                 {
                                                                     "type": "object",
                                                                     "properties": {
@@ -13315,7 +13315,7 @@
                                                     "additionalProperties": {
                                                         "type": "array",
                                                         "items": {
-                                                            "oneOf": [
+                                                            "anyOf": [
                                                                 {
                                                                     "type": "object",
                                                                     "properties": {
@@ -15395,7 +15395,7 @@
                                                     "additionalProperties": {
                                                         "type": "array",
                                                         "items": {
-                                                            "oneOf": [
+                                                            "anyOf": [
                                                                 {
                                                                     "type": "object",
                                                                     "properties": {
@@ -17516,7 +17516,7 @@
                                                     "additionalProperties": {
                                                         "type": "array",
                                                         "items": {
-                                                            "oneOf": [
+                                                            "anyOf": [
                                                                 {
                                                                     "type": "object",
                                                                     "properties": {
@@ -19691,7 +19691,7 @@
                                         "data": {
                                             "type": "array",
                                             "items": {
-                                                "oneOf": [
+                                                "anyOf": [
                                                     {
                                                         "type": "object",
                                                         "properties": {
@@ -23003,7 +23003,7 @@
                                                         "additionalProperties": {
                                                             "type": "array",
                                                             "items": {
-                                                                "oneOf": [
+                                                                "anyOf": [
                                                                     {
                                                                         "type": "object",
                                                                         "properties": {
@@ -25144,7 +25144,7 @@
                                                     "additionalProperties": {
                                                         "type": "array",
                                                         "items": {
-                                                            "oneOf": [
+                                                            "anyOf": [
                                                                 {
                                                                     "type": "object",
                                                                     "properties": {
@@ -27323,7 +27323,7 @@
                                                     "additionalProperties": {
                                                         "type": "array",
                                                         "items": {
-                                                            "oneOf": [
+                                                            "anyOf": [
                                                                 {
                                                                     "type": "object",
                                                                     "properties": {
@@ -29465,7 +29465,7 @@
                                                     "additionalProperties": {
                                                         "type": "array",
                                                         "items": {
-                                                            "oneOf": [
+                                                            "anyOf": [
                                                                 {
                                                                     "type": "object",
                                                                     "properties": {
@@ -31601,7 +31601,7 @@
                                                     "additionalProperties": {
                                                         "type": "array",
                                                         "items": {
-                                                            "oneOf": [
+                                                            "anyOf": [
                                                                 {
                                                                     "type": "object",
                                                                     "properties": {
@@ -33778,7 +33778,7 @@
                                                     "additionalProperties": {
                                                         "type": "array",
                                                         "items": {
-                                                            "oneOf": [
+                                                            "anyOf": [
                                                                 {
                                                                     "type": "object",
                                                                     "properties": {
@@ -36005,7 +36005,7 @@
                                         "data": {
                                             "type": "array",
                                             "items": {
-                                                "oneOf": [
+                                                "anyOf": [
                                                     {
                                                         "type": "object",
                                                         "properties": {
