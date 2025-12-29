@@ -1640,6 +1640,7 @@
                                     "ZAR",
                                     "SEK",
                                     "CHF",
+                                    "THB",
                                     "AED",
                                     "UYU",
                                     "USD"
@@ -2752,7 +2753,7 @@
                     "title": {
                         "type": "string",
                         "description": "A title for the attribute, to be displayed across the app.",
-                        "example": "Rating"
+                        "example": "Company"
                     },
                     "description": {
                         "type": [
@@ -2760,12 +2761,12 @@
                             "null"
                         ],
                         "description": "A text description of the attribute.",
-                        "example": "A rating attribute"
+                        "example": "A company attribute"
                     },
                     "api_slug": {
                         "type": "string",
                         "description": "A unique slug for the attribute for use in API responses and URLs. Formatted in snake case.",
-                        "example": "my-rating"
+                        "example": "company"
                     },
                     "type": {
                         "type": "string",
@@ -2933,10 +2934,34 @@
                                     "object_id",
                                     "attribute_id"
                                 ]
+                            },
+                            "object_slug": {
+                                "type": "string",
+                                "description": "The slug of the object that the related attribute belongs to.",
+                                "example": "companies"
+                            },
+                            "title": {
+                                "type": "string",
+                                "description": "The title of the related attribute.",
+                                "example": "Team members"
+                            },
+                            "api_slug": {
+                                "type": "string",
+                                "description": "The API slug identifying the related attribute.",
+                                "example": "team_members"
+                            },
+                            "is_multiselect": {
+                                "type": "boolean",
+                                "description": "Whether the related attribute supports selecting multiple values. Combined with the parent attribute's `is_multiselect`, this determines the relationship type: both `false` = one-to-one, parent `true` + related `false` = many-to-one, parent `false` + related `true` = one-to-many, both `true` = many-to-many.",
+                                "example": true
                             }
                         },
                         "required": [
-                            "id"
+                            "id",
+                            "object_slug",
+                            "title",
+                            "api_slug",
+                            "is_multiselect"
                         ],
                         "description": "If this attribute is related to another attribute, this is an object that includes an `id` property that identifies the other attribute. `null` means no relationship exists. See [the help center](https://attio.com/help/reference/managing-your-data/attributes#relationship-attributes) for more details about relationship attributes."
                     },
@@ -2991,6 +3016,7 @@
                                             "ZAR",
                                             "SEK",
                                             "CHF",
+                                            "THB",
                                             "AED",
                                             "UYU",
                                             "USD"
@@ -3072,10 +3098,10 @@
                         "object_id": "97052eb9-e65e-443f-a297-f2d9a4a7f795",
                         "attribute_id": "41252299-f8c7-4b5e-99c9-4ff8321d2f96"
                     },
-                    "title": "Rating",
-                    "description": "Rating of the record out of 5",
-                    "api_slug": "Rating",
-                    "type": "rating",
+                    "title": "Company",
+                    "description": "A company attribute",
+                    "api_slug": "company",
+                    "type": "record-reference",
                     "is_system_attribute": false,
                     "is_writable": true,
                     "is_required": false,
@@ -3084,7 +3110,17 @@
                     "is_default_value_enabled": false,
                     "is_archived": false,
                     "default_value": null,
-                    "relationship": null,
+                    "relationship": {
+                        "id": {
+                            "workspace_id": "14beef7a-99f7-4534-a87e-70b564330a4c",
+                            "object_id": "97052eb9-e65e-443f-a297-f2d9a4a7f795",
+                            "attribute_id": "41252299-f8c7-4b5e-99c9-4ff8321d2f96"
+                        },
+                        "object_slug": "companies",
+                        "title": "Team members",
+                        "api_slug": "team_members",
+                        "is_multiselect": true
+                    },
                     "created_at": "2021-11-21T13:22:49.061Z",
                     "config": {
                         "currency": {
@@ -3092,7 +3128,9 @@
                             "display_type": null
                         },
                         "record_reference": {
-                            "allowed_object_ids": null
+                            "allowed_object_ids": [
+                                "companies"
+                            ]
                         }
                     }
                 }
@@ -4665,7 +4703,7 @@
             },
             "post": {
                 "summary": "Create an attribute",
-                "description": "Creates a new attribute on either an object or a list.\n\nTo create an attribute on an object, you must also have the `object_configuration:read-write` scope.\n\nTo create an attribute on a list, you must also have the `list_configuration:read-write` scope.",
+                "description": "Creates a new attribute on either an object or a list.\n\nFor record-reference attributes, you can optionally create a bidirectional relationship by providing a `relationship` object. This will create two entangled attributes: one on the specified object and a reverse attribute on the related object.\n\nTo create an attribute on an object, you must also have the `object_configuration:read-write` scope.\n\nTo create an attribute on a list, you must also have the `list_configuration:read-write` scope.",
                 "tags": [
                     "Attributes"
                 ],
@@ -4846,6 +4884,42 @@
                                                     ]
                                                 }
                                             },
+                                            "relationship": {
+                                                "type": [
+                                                    "object",
+                                                    "null"
+                                                ],
+                                                "properties": {
+                                                    "object": {
+                                                        "type": "string",
+                                                        "description": "The slug or UUID of the object to create the reverse relationship attribute on.",
+                                                        "example": "companies"
+                                                    },
+                                                    "title": {
+                                                        "type": "string",
+                                                        "description": "The title for the reverse relationship attribute.",
+                                                        "example": "Team members"
+                                                    },
+                                                    "api_slug": {
+                                                        "type": "string",
+                                                        "description": "The API slug for the reverse relationship attribute.",
+                                                        "example": "team_members"
+                                                    },
+                                                    "is_multiselect": {
+                                                        "type": "boolean",
+                                                        "description": "Whether the related attribute supports selecting multiple values. Combined with the parent attribute's `is_multiselect`, this determines the relationship type: both `false` = one-to-one, parent `true` + related `false` = many-to-one, parent `false` + related `true` = one-to-many, both `true` = many-to-many.",
+                                                        "example": false
+                                                    }
+                                                },
+                                                "required": [
+                                                    "object",
+                                                    "title",
+                                                    "api_slug",
+                                                    "is_multiselect"
+                                                ],
+                                                "additionalProperties": false,
+                                                "description": "Optional relationship configuration. When provided, creates a bidirectional relationship between two objects. Can only be used with attributes of type \"record-reference\". If `config.record_reference.allowed_objects` is also provided, it must contain only the relationship object."
+                                            },
                                             "config": {
                                                 "type": "object",
                                                 "properties": {
@@ -4889,6 +4963,7 @@
                                                                     "ZAR",
                                                                     "SEK",
                                                                     "CHF",
+                                                                    "THB",
                                                                     "AED",
                                                                     "UYU",
                                                                     "USD"
@@ -4924,7 +4999,7 @@
                                                                     "example": "people"
                                                                 },
                                                                 "minItems": 1,
-                                                                "description": "A list of slugs or UUIDs to indicate which objects records are allowed to belong to. Leave empty to to allow records from all object types."
+                                                                "description": "A list of slugs or UUIDs to indicate which objects records are allowed to belong to. If `relationship` is also provided, this must contain only the relationship object."
                                                             }
                                                         },
                                                         "required": [
@@ -5425,6 +5500,7 @@
                                                                     "ZAR",
                                                                     "SEK",
                                                                     "CHF",
+                                                                    "THB",
                                                                     "AED",
                                                                     "UYU",
                                                                     "USD"
@@ -5460,7 +5536,7 @@
                                                                     "example": "people"
                                                                 },
                                                                 "minItems": 1,
-                                                                "description": "A list of slugs or UUIDs to indicate which objects records are allowed to belong to. Leave empty to to allow records from all object types."
+                                                                "description": "A list of slugs or UUIDs to indicate which objects records are allowed to belong to. If `relationship` is also provided, this must contain only the relationship object."
                                                             }
                                                         },
                                                         "required": [
@@ -7235,6 +7311,7 @@
                                                                                     "ZAR",
                                                                                     "SEK",
                                                                                     "CHF",
+                                                                                    "THB",
                                                                                     "AED",
                                                                                     "UYU",
                                                                                     "USD"
@@ -9348,6 +9425,7 @@
                                                                                 "ZAR",
                                                                                 "SEK",
                                                                                 "CHF",
+                                                                                "THB",
                                                                                 "AED",
                                                                                 "UYU",
                                                                                 "USD"
@@ -11469,6 +11547,7 @@
                                                                                 "ZAR",
                                                                                 "SEK",
                                                                                 "CHF",
+                                                                                "THB",
                                                                                 "AED",
                                                                                 "UYU",
                                                                                 "USD"
@@ -13555,6 +13634,7 @@
                                                                                 "ZAR",
                                                                                 "SEK",
                                                                                 "CHF",
+                                                                                "THB",
                                                                                 "AED",
                                                                                 "UYU",
                                                                                 "USD"
@@ -15635,6 +15715,7 @@
                                                                                 "ZAR",
                                                                                 "SEK",
                                                                                 "CHF",
+                                                                                "THB",
                                                                                 "AED",
                                                                                 "UYU",
                                                                                 "USD"
@@ -17756,6 +17837,7 @@
                                                                                 "ZAR",
                                                                                 "SEK",
                                                                                 "CHF",
+                                                                                "THB",
                                                                                 "AED",
                                                                                 "UYU",
                                                                                 "USD"
@@ -19931,6 +20013,7 @@
                                                                     "ZAR",
                                                                     "SEK",
                                                                     "CHF",
+                                                                    "THB",
                                                                     "AED",
                                                                     "UYU",
                                                                     "USD"
@@ -23243,6 +23326,7 @@
                                                                                     "ZAR",
                                                                                     "SEK",
                                                                                     "CHF",
+                                                                                    "THB",
                                                                                     "AED",
                                                                                     "UYU",
                                                                                     "USD"
@@ -25384,6 +25468,7 @@
                                                                                 "ZAR",
                                                                                 "SEK",
                                                                                 "CHF",
+                                                                                "THB",
                                                                                 "AED",
                                                                                 "UYU",
                                                                                 "USD"
@@ -27563,6 +27648,7 @@
                                                                                 "ZAR",
                                                                                 "SEK",
                                                                                 "CHF",
+                                                                                "THB",
                                                                                 "AED",
                                                                                 "UYU",
                                                                                 "USD"
@@ -29705,6 +29791,7 @@
                                                                                 "ZAR",
                                                                                 "SEK",
                                                                                 "CHF",
+                                                                                "THB",
                                                                                 "AED",
                                                                                 "UYU",
                                                                                 "USD"
@@ -31841,6 +31928,7 @@
                                                                                 "ZAR",
                                                                                 "SEK",
                                                                                 "CHF",
+                                                                                "THB",
                                                                                 "AED",
                                                                                 "UYU",
                                                                                 "USD"
@@ -34018,6 +34106,7 @@
                                                                                 "ZAR",
                                                                                 "SEK",
                                                                                 "CHF",
+                                                                                "THB",
                                                                                 "AED",
                                                                                 "UYU",
                                                                                 "USD"
@@ -36245,6 +36334,7 @@
                                                                     "ZAR",
                                                                     "SEK",
                                                                     "CHF",
+                                                                    "THB",
                                                                     "AED",
                                                                     "UYU",
                                                                     "USD"
@@ -41482,7 +41572,7 @@
                                             "video_url": {
                                                 "type": "string",
                                                 "format": "uri",
-                                                "description": "A publicly accessible URL to a video file of the call recording. Attio will download the video from this URL asynchronously.\n\n**Requirements:**\n- **Protocol:** The URL must use the `https` protocol.\n- **File type:** The file must be a `.mp4` file.\n- **File size:** The file must not exceed 30MB in size.\n- **Accessibility:** For the request to be accepted, the URL must be publicly accessible. Attio will make a `HEAD` request to the URL to verify its accessibility and retrieve file metadata. The response to this request must include a `Content-Length` header.",
+                                                "description": "A publicly accessible URL to a video file of the call recording. Attio will download the video from this URL asynchronously.\n\n**Requirements:**\n- **Protocol:** The URL must use the `https` protocol.\n- **File type:** The file must be a `.mp4` file.\n- **File size:** The file must not exceed 500MB in size.\n- **Accessibility:** For the request to be accepted, the URL must be publicly accessible. Attio will make a `HEAD` request to the URL to verify its accessibility and retrieve file metadata. The response to this request must include a `Content-Length` header.",
                                                 "example": "https://example.com/recording.mp4"
                                             }
                                         },

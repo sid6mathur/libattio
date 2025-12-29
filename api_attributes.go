@@ -1358,6 +1358,8 @@ V2TargetIdentifierAttributesPost Create an attribute
 
 Creates a new attribute on either an object or a list.
 
+For record-reference attributes, you can optionally create a bidirectional relationship by providing a `relationship` object. This will create two entangled attributes: one on the specified object and a reverse attribute on the related object.
+
 To create an attribute on an object, you must also have the `object_configuration:read-write` scope.
 
 To create an attribute on a list, you must also have the `list_configuration:read-write` scope.

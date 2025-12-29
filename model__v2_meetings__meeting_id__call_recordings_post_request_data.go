@@ -22,7 +22,7 @@ var _ MappedNullable = &V2MeetingsMeetingIdCallRecordingsPostRequestData{}
 
 // V2MeetingsMeetingIdCallRecordingsPostRequestData struct for V2MeetingsMeetingIdCallRecordingsPostRequestData
 type V2MeetingsMeetingIdCallRecordingsPostRequestData struct {
-	// A publicly accessible URL to a video file of the call recording. Attio will download the video from this URL asynchronously.  **Requirements:** - **Protocol:** The URL must use the `https` protocol. - **File type:** The file must be a `.mp4` file. - **File size:** The file must not exceed 30MB in size. - **Accessibility:** For the request to be accepted, the URL must be publicly accessible. Attio will make a `HEAD` request to the URL to verify its accessibility and retrieve file metadata. The response to this request must include a `Content-Length` header.
+	// A publicly accessible URL to a video file of the call recording. Attio will download the video from this URL asynchronously.  **Requirements:** - **Protocol:** The URL must use the `https` protocol. - **File type:** The file must be a `.mp4` file. - **File size:** The file must not exceed 500MB in size. - **Accessibility:** For the request to be accepted, the URL must be publicly accessible. Attio will make a `HEAD` request to the URL to verify its accessibility and retrieve file metadata. The response to this request must include a `Content-Length` header.
 	VideoUrl string `json:"video_url"`
 }
 

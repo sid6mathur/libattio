@@ -295,6 +295,8 @@ paths:
       description: |-
         Creates a new attribute on either an object or a list.
 
+        For record-reference attributes, you can optionally create a bidirectional relationship by providing a `relationship` object. This will create two entangled attributes: one on the specified object and a reverse attribute on the related object.
+
         To create an attribute on an object, you must also have the `object_configuration:read-write` scope.
 
         To create an attribute on a list, you must also have the `list_configuration:read-write` scope.
@@ -3639,10 +3641,10 @@ components:
           workspace_id: 14beef7a-99f7-4534-a87e-70b564330a4c
           object_id: 97052eb9-e65e-443f-a297-f2d9a4a7f795
           attribute_id: 41252299-f8c7-4b5e-99c9-4ff8321d2f96
-        title: Rating
-        description: Rating of the record out of 5
-        api_slug: Rating
-        type: rating
+        title: Company
+        description: A company attribute
+        api_slug: company
+        type: record-reference
         is_system_attribute: false
         is_writable: true
         is_required: false
@@ -3651,30 +3653,39 @@ components:
         is_default_value_enabled: false
         is_archived: false
         default_value: null
-        relationship: null
+        relationship:
+          id:
+            workspace_id: 14beef7a-99f7-4534-a87e-70b564330a4c
+            object_id: 97052eb9-e65e-443f-a297-f2d9a4a7f795
+            attribute_id: 41252299-f8c7-4b5e-99c9-4ff8321d2f96
+          object_slug: companies
+          title: Team members
+          api_slug: team_members
+          is_multiselect: true
         created_at: 2021-11-21T13:22:49.061Z
         config:
           currency:
             default_currency_code: null
             display_type: null
           record_reference:
-            allowed_object_ids: null
+            allowed_object_ids:
+            - companies
       properties:
         id:
           $ref: "#/components/schemas/attribute_id"
         title:
           description: "A title for the attribute, to be displayed across the app."
-          example: Rating
+          example: Company
           type: string
         description:
           description: A text description of the attribute.
-          example: A rating attribute
+          example: A company attribute
           nullable: true
           type: string
         api_slug:
           description: A unique slug for the attribute for use in API responses and
             URLs. Formatted in snake case.
-          example: my-rating
+          example: company
           type: string
         type:
           description: The type of the attribute.
@@ -4546,10 +4557,10 @@ components:
             workspace_id: 14beef7a-99f7-4534-a87e-70b564330a4c
             object_id: 97052eb9-e65e-443f-a297-f2d9a4a7f795
             attribute_id: 41252299-f8c7-4b5e-99c9-4ff8321d2f96
-          title: Rating
-          description: Rating of the record out of 5
-          api_slug: Rating
-          type: rating
+          title: Company
+          description: A company attribute
+          api_slug: company
+          type: record-reference
           is_system_attribute: false
           is_writable: true
           is_required: false
@@ -4558,22 +4569,31 @@ components:
           is_default_value_enabled: false
           is_archived: false
           default_value: null
-          relationship: null
+          relationship:
+            id:
+              workspace_id: 14beef7a-99f7-4534-a87e-70b564330a4c
+              object_id: 97052eb9-e65e-443f-a297-f2d9a4a7f795
+              attribute_id: 41252299-f8c7-4b5e-99c9-4ff8321d2f96
+            object_slug: companies
+            title: Team members
+            api_slug: team_members
+            is_multiselect: true
           created_at: 2021-11-21T13:22:49.061Z
           config:
             currency:
               default_currency_code: null
               display_type: null
             record_reference:
-              allowed_object_ids: null
+              allowed_object_ids:
+              - companies
         - id:
             workspace_id: 14beef7a-99f7-4534-a87e-70b564330a4c
             object_id: 97052eb9-e65e-443f-a297-f2d9a4a7f795
             attribute_id: 41252299-f8c7-4b5e-99c9-4ff8321d2f96
-          title: Rating
-          description: Rating of the record out of 5
-          api_slug: Rating
-          type: rating
+          title: Company
+          description: A company attribute
+          api_slug: company
+          type: record-reference
           is_system_attribute: false
           is_writable: true
           is_required: false
@@ -4582,14 +4602,23 @@ components:
           is_default_value_enabled: false
           is_archived: false
           default_value: null
-          relationship: null
+          relationship:
+            id:
+              workspace_id: 14beef7a-99f7-4534-a87e-70b564330a4c
+              object_id: 97052eb9-e65e-443f-a297-f2d9a4a7f795
+              attribute_id: 41252299-f8c7-4b5e-99c9-4ff8321d2f96
+            object_slug: companies
+            title: Team members
+            api_slug: team_members
+            is_multiselect: true
           created_at: 2021-11-21T13:22:49.061Z
           config:
             currency:
               default_currency_code: null
               display_type: null
             record_reference:
-              allowed_object_ids: null
+              allowed_object_ids:
+              - companies
       properties:
         data:
           items:
@@ -4660,6 +4689,39 @@ components:
         template:
         - value: 5
       nullable: true
+    _v2__target___identifier__attributes_post_request_data_relationship:
+      additionalProperties: {}
+      description: "Optional relationship configuration. When provided, creates a\
+        \ bidirectional relationship between two objects. Can only be used with attributes\
+        \ of type \"record-reference\". If `config.record_reference.allowed_objects`\
+        \ is also provided, it must contain only the relationship object."
+      properties:
+        object:
+          description: The slug or UUID of the object to create the reverse relationship
+            attribute on.
+          example: companies
+          type: string
+        title:
+          description: The title for the reverse relationship attribute.
+          example: Team members
+          type: string
+        api_slug:
+          description: The API slug for the reverse relationship attribute.
+          example: team_members
+          type: string
+        is_multiselect:
+          description: "Whether the related attribute supports selecting multiple\
+            \ values. Combined with the parent attribute's `is_multiselect`, this\
+            \ determines the relationship type: both `false` = one-to-one, parent\
+            \ `true` + related `false` = many-to-one, parent `false` + related `true`\
+            \ = one-to-many, both `true` = many-to-many."
+          example: false
+          type: boolean
+      required:
+      - api_slug
+      - is_multiselect
+      - object
+      - title
     _v2__target___identifier__attributes_post_request_data_config_currency:
       description: Configuration available for attributes of type "currency".
       properties:
@@ -4701,6 +4763,7 @@ components:
           - ZAR
           - SEK
           - CHF
+          - THB
           - AED
           - UYU
           - USD
@@ -4726,9 +4789,9 @@ components:
       description: Configuration available for attributes of type "record-reference".
       properties:
         allowed_objects:
-          description: A list of slugs or UUIDs to indicate which objects records
-            are allowed to belong to. Leave empty to to allow records from all object
-            types.
+          description: "A list of slugs or UUIDs to indicate which objects records\
+            \ are allowed to belong to. If `relationship` is also provided, this must\
+            \ contain only the relationship object."
           items:
             example: people
             type: string
@@ -4801,6 +4864,8 @@ components:
           type: boolean
         default_value:
           $ref: "#/components/schemas/_v2__target___identifier__attributes_post_request_data_default_value"
+        relationship:
+          $ref: "#/components/schemas/_v2__target___identifier__attributes_post_request_data_relationship"
         config:
           $ref: "#/components/schemas/_v2__target___identifier__attributes_post_request_data_config"
       required:
@@ -4826,10 +4891,10 @@ components:
             workspace_id: 14beef7a-99f7-4534-a87e-70b564330a4c
             object_id: 97052eb9-e65e-443f-a297-f2d9a4a7f795
             attribute_id: 41252299-f8c7-4b5e-99c9-4ff8321d2f96
-          title: Rating
-          description: Rating of the record out of 5
-          api_slug: Rating
-          type: rating
+          title: Company
+          description: A company attribute
+          api_slug: company
+          type: record-reference
           is_system_attribute: false
           is_writable: true
           is_required: false
@@ -4838,14 +4903,23 @@ components:
           is_default_value_enabled: false
           is_archived: false
           default_value: null
-          relationship: null
+          relationship:
+            id:
+              workspace_id: 14beef7a-99f7-4534-a87e-70b564330a4c
+              object_id: 97052eb9-e65e-443f-a297-f2d9a4a7f795
+              attribute_id: 41252299-f8c7-4b5e-99c9-4ff8321d2f96
+            object_slug: companies
+            title: Team members
+            api_slug: team_members
+            is_multiselect: true
           created_at: 2021-11-21T13:22:49.061Z
           config:
             currency:
               default_currency_code: null
               display_type: null
             record_reference:
-              allowed_object_ids: null
+              allowed_object_ids:
+              - companies
       properties:
         data:
           $ref: "#/components/schemas/attribute"
@@ -5680,6 +5754,7 @@ components:
           - ZAR
           - SEK
           - CHF
+          - THB
           - AED
           - UYU
           - USD
@@ -7192,6 +7267,7 @@ components:
           - ZAR
           - SEK
           - CHF
+          - THB
           - AED
           - UYU
           - USD
@@ -11348,7 +11424,7 @@ components:
             **Requirements:**
             - **Protocol:** The URL must use the `https` protocol.
             - **File type:** The file must be a `.mp4` file.
-            - **File size:** The file must not exceed 30MB in size.
+            - **File size:** The file must not exceed 500MB in size.
             - **Accessibility:** For the request to be accepted, the URL must be publicly accessible. Attio will make a `HEAD` request to the URL to verify its accessibility and retrieve file metadata. The response to this request must include a `Content-Length` header.
           example: https://example.com/recording.mp4
           format: uri
@@ -13310,6 +13386,7 @@ components:
           - ZAR
           - SEK
           - CHF
+          - THB
           - AED
           - UYU
           - USD
@@ -14298,8 +14375,32 @@ components:
       properties:
         id:
           $ref: "#/components/schemas/attribute_id"
+        object_slug:
+          description: The slug of the object that the related attribute belongs to.
+          example: companies
+          type: string
+        title:
+          description: The title of the related attribute.
+          example: Team members
+          type: string
+        api_slug:
+          description: The API slug identifying the related attribute.
+          example: team_members
+          type: string
+        is_multiselect:
+          description: "Whether the related attribute supports selecting multiple\
+            \ values. Combined with the parent attribute's `is_multiselect`, this\
+            \ determines the relationship type: both `false` = one-to-one, parent\
+            \ `true` + related `false` = many-to-one, parent `false` + related `true`\
+            \ = one-to-many, both `true` = many-to-many."
+          example: true
+          type: boolean
       required:
+      - api_slug
       - id
+      - is_multiselect
+      - object_slug
+      - title
     attribute_config_currency:
       description: Configuration available for attributes of type "currency".
       properties:
@@ -14341,6 +14442,7 @@ components:
           - ZAR
           - SEK
           - CHF
+          - THB
           - AED
           - UYU
           - USD

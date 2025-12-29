@@ -36,6 +36,7 @@ type V2TargetIdentifierAttributesPostRequestData struct {
 	// Whether or not this attribute can have multiple values. Multiselect is only available on some value types.
 	IsMultiselect        bool                                                            `json:"is_multiselect"`
 	DefaultValue         NullableV2TargetIdentifierAttributesPostRequestDataDefaultValue `json:"default_value,omitempty"`
+	Relationship         *V2TargetIdentifierAttributesPostRequestDataRelationship        `json:"relationship,omitempty"`
 	Config               V2TargetIdentifierAttributesPostRequestDataConfig               `json:"config"`
 	AdditionalProperties map[string]interface{}
 }
@@ -280,6 +281,38 @@ func (o *V2TargetIdentifierAttributesPostRequestData) UnsetDefaultValue() {
 	o.DefaultValue.Unset()
 }
 
+// GetRelationship returns the Relationship field value if set, zero value otherwise.
+func (o *V2TargetIdentifierAttributesPostRequestData) GetRelationship() V2TargetIdentifierAttributesPostRequestDataRelationship {
+	if o == nil || IsNil(o.Relationship) {
+		var ret V2TargetIdentifierAttributesPostRequestDataRelationship
+		return ret
+	}
+	return *o.Relationship
+}
+
+// GetRelationshipOk returns a tuple with the Relationship field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *V2TargetIdentifierAttributesPostRequestData) GetRelationshipOk() (*V2TargetIdentifierAttributesPostRequestDataRelationship, bool) {
+	if o == nil || IsNil(o.Relationship) {
+		return nil, false
+	}
+	return o.Relationship, true
+}
+
+// HasRelationship returns a boolean if a field has been set.
+func (o *V2TargetIdentifierAttributesPostRequestData) HasRelationship() bool {
+	if o != nil && !IsNil(o.Relationship) {
+		return true
+	}
+
+	return false
+}
+
+// SetRelationship gets a reference to the given V2TargetIdentifierAttributesPostRequestDataRelationship and assigns it to the Relationship field.
+func (o *V2TargetIdentifierAttributesPostRequestData) SetRelationship(v V2TargetIdentifierAttributesPostRequestDataRelationship) {
+	o.Relationship = &v
+}
+
 // GetConfig returns the Config field value
 func (o *V2TargetIdentifierAttributesPostRequestData) GetConfig() V2TargetIdentifierAttributesPostRequestDataConfig {
 	if o == nil {
@@ -323,6 +356,9 @@ func (o V2TargetIdentifierAttributesPostRequestData) ToMap() (map[string]interfa
 	toSerialize["is_multiselect"] = o.IsMultiselect
 	if o.DefaultValue.IsSet() {
 		toSerialize["default_value"] = o.DefaultValue.Get()
+	}
+	if !IsNil(o.Relationship) {
+		toSerialize["relationship"] = o.Relationship
 	}
 	toSerialize["config"] = o.Config
 
@@ -399,6 +435,7 @@ func (o *V2TargetIdentifierAttributesPostRequestData) UnmarshalJSON(data []byte)
 		delete(additionalProperties, "is_unique")
 		delete(additionalProperties, "is_multiselect")
 		delete(additionalProperties, "default_value")
+		delete(additionalProperties, "relationship")
 		delete(additionalProperties, "config")
 		o.AdditionalProperties = additionalProperties
 	}

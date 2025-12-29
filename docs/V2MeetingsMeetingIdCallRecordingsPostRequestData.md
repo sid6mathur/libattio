@@ -4,7 +4,7 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**VideoUrl** | **string** | A publicly accessible URL to a video file of the call recording. Attio will download the video from this URL asynchronously.  **Requirements:** - **Protocol:** The URL must use the &#x60;https&#x60; protocol. - **File type:** The file must be a &#x60;.mp4&#x60; file. - **File size:** The file must not exceed 30MB in size. - **Accessibility:** For the request to be accepted, the URL must be publicly accessible. Attio will make a &#x60;HEAD&#x60; request to the URL to verify its accessibility and retrieve file metadata. The response to this request must include a &#x60;Content-Length&#x60; header. | 
+**VideoUrl** | **string** | A publicly accessible URL to a video file of the call recording. Attio will download the video from this URL asynchronously.  **Requirements:** - **Protocol:** The URL must use the &#x60;https&#x60; protocol. - **File type:** The file must be a &#x60;.mp4&#x60; file. - **File size:** The file must not exceed 500MB in size. - **Accessibility:** For the request to be accepted, the URL must be publicly accessible. Attio will make a &#x60;HEAD&#x60; request to the URL to verify its accessibility and retrieve file metadata. The response to this request must include a &#x60;Content-Length&#x60; header. | 
 
 ## Methods
 

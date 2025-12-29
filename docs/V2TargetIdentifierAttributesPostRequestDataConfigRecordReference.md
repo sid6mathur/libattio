@@ -4,7 +4,7 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**AllowedObjects** | **[]string** | A list of slugs or UUIDs to indicate which objects records are allowed to belong to. Leave empty to to allow records from all object types. | 
+**AllowedObjects** | **[]string** | A list of slugs or UUIDs to indicate which objects records are allowed to belong to. If &#x60;relationship&#x60; is also provided, this must contain only the relationship object. | 
 
 ## Methods
 

@@ -12,6 +12,7 @@ Name | Type | Description | Notes
 **IsUnique** | **bool** | Whether or not new values for this attribute must be unique. Uniqueness restrictions are only applied to new data and do not apply retroactively to previously created data. | 
 **IsMultiselect** | **bool** | Whether or not this attribute can have multiple values. Multiselect is only available on some value types. | 
 **DefaultValue** | Pointer to [**NullableV2TargetIdentifierAttributesPostRequestDataDefaultValue**](V2TargetIdentifierAttributesPostRequestDataDefaultValue.md) |  | [optional] 
+**Relationship** | Pointer to [**V2TargetIdentifierAttributesPostRequestDataRelationship**](V2TargetIdentifierAttributesPostRequestDataRelationship.md) |  | [optional] 
 **Config** | [**V2TargetIdentifierAttributesPostRequestDataConfig**](V2TargetIdentifierAttributesPostRequestDataConfig.md) |  | 
 
 ## Methods
@@ -218,6 +219,31 @@ HasDefaultValue returns a boolean if a field has been set.
 `func (o *V2TargetIdentifierAttributesPostRequestData) UnsetDefaultValue()`
 
 UnsetDefaultValue ensures that no value is present for DefaultValue, not even an explicit nil
+### GetRelationship
+
+`func (o *V2TargetIdentifierAttributesPostRequestData) GetRelationship() V2TargetIdentifierAttributesPostRequestDataRelationship`
+
+GetRelationship returns the Relationship field if non-nil, zero value otherwise.
+
+### GetRelationshipOk
+
+`func (o *V2TargetIdentifierAttributesPostRequestData) GetRelationshipOk() (*V2TargetIdentifierAttributesPostRequestDataRelationship, bool)`
+
+GetRelationshipOk returns a tuple with the Relationship field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetRelationship
+
+`func (o *V2TargetIdentifierAttributesPostRequestData) SetRelationship(v V2TargetIdentifierAttributesPostRequestDataRelationship)`
+
+SetRelationship sets Relationship field to given value.
+
+### HasRelationship
+
+`func (o *V2TargetIdentifierAttributesPostRequestData) HasRelationship() bool`
+
+HasRelationship returns a boolean if a field has been set.
+
 ### GetConfig
 
 `func (o *V2TargetIdentifierAttributesPostRequestData) GetConfig() V2TargetIdentifierAttributesPostRequestDataConfig`
