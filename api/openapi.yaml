@@ -8890,7 +8890,7 @@ components:
     _v2_lists__list__entries_query_post_request:
       properties:
         filter:
-          additionalProperties: false
+          additionalProperties: true
           description: "An object used to filter results to a subset of results. See\
             \ the [full guide to filtering and sorting here](/rest-api/guides/filtering-and-sorting)."
           example:

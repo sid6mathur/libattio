@@ -11,7 +11,7 @@ package libattio
 
 import (
 	"context"
-	libattio "github.com/fastah/libattio"
+	libattio "github.com/sid6mathur/libattio"
 	"github.com/stretchr/testify/assert"
 	"github.com/stretchr/testify/require"
 	"testing"

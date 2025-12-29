@@ -28,7 +28,7 @@ import (
 	"context"
 	"fmt"
 	"os"
-	libattio "github.com/fastah/libattio"
+	libattio "github.com/sid6mathur/libattio"
 )
 
 func main() {
@@ -101,7 +101,7 @@ import (
 	"context"
 	"fmt"
 	"os"
-	libattio "github.com/fastah/libattio"
+	libattio "github.com/sid6mathur/libattio"
 )
 
 func main() {
@@ -174,7 +174,7 @@ import (
 	"context"
 	"fmt"
 	"os"
-	libattio "github.com/fastah/libattio"
+	libattio "github.com/sid6mathur/libattio"
 )
 
 func main() {
@@ -248,7 +248,7 @@ import (
 	"context"
 	"fmt"
 	"os"
-	libattio "github.com/fastah/libattio"
+	libattio "github.com/sid6mathur/libattio"
 )
 
 func main() {
