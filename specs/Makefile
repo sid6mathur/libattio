@@ -8,7 +8,7 @@ codegen:
 	GO_POST_PROCESS_FILE="/usr/local/go/bin/gofmt -w" openapi-generator generate -i $(OAS3_API_SPEC) -g go -o $(GEN_DIR) -p packageName="libattio" -p useDefaultValuesForRequiredVars=true --enable-post-process-file
 	find $(GEN_DIR) -type f \( -name '*.go' -o -name '*.mod'  -o -name '*.md'  -o -name 'go.*' \) -exec sed -i '' \
 		-e 's|openapiclient|libattio|g' \
-		-e 's|github\.com/GIT_USER_ID/GIT_REPO_ID|github.com/fastah/libattio|g' {} +
+		-e 's|github\.com/GIT_USER_ID/GIT_REPO_ID|github.com/sid6mathur/libattio|g' {} +
 	cd $(GEN_DIR) && go mod tidy && go list -m -u all && go get -u -t ./... && go mod tidy 
 
 deps: 
