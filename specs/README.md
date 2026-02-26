@@ -1,4 +1,4 @@
-# Fastah's unofficial Go SDK for the Attio CRM
+# Unofficial Go SDK for the Attio CRM
 
 [![Go Reference](https://pkg.go.dev/badge/github.com/sid6mathur/libattio.svg)](https://pkg.go.dev/github.com/sid6mathur/libattio)
 
