@@ -4,12 +4,13 @@ GEN_DIR=../
 # This make file task produces the go code from the openapi specificaton code. 
 # Tool reference: https://openapi-generator.tech/docs/configuration/
 # Tool reference (Go specific): https://openapi-generator.tech/docs/generators/go
-codegen: 
+codegen: deps
 	GO_POST_PROCESS_FILE="/usr/local/go/bin/gofmt -w" openapi-generator generate -i $(OAS3_API_SPEC) -g go -o $(GEN_DIR) -p packageName="libattio" -p useDefaultValuesForRequiredVars=true --enable-post-process-file
 	find $(GEN_DIR) -type f \( -name '*.go' -o -name '*.mod'  -o -name '*.md'  -o -name 'go.*' \) -exec sed -i '' \
 		-e 's|openapiclient|libattio|g' \
 		-e 's|github\.com/GIT_USER_ID/GIT_REPO_ID|github.com/sid6mathur/libattio|g' {} +
-	cd $(GEN_DIR) && go mod tidy && go list -m -u all && go get -u -t ./... && go mod tidy 
+	cd $(GEN_DIR) && go mod tidy && go list -m -u all && goimports -w $(GEN_DIR) && go get -u -t ./... && go mod tidy
 
-deps: 
+deps:
+	go install golang.org/x/tools/cmd/goimports@latest
 	brew install openapi-generator

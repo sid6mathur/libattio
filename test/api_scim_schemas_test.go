@@ -11,10 +11,11 @@ package libattio
 
 import (
 	"context"
+	"testing"
+
 	libattio "github.com/sid6mathur/libattio"
 	"github.com/stretchr/testify/assert"
 	"github.com/stretchr/testify/require"
-	"testing"
 )
 
 func Test_libattio_SCIMSchemasAPIService(t *testing.T) {

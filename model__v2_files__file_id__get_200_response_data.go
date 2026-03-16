@@ -14,7 +14,6 @@ package libattio
 import (
 	"encoding/json"
 	"fmt"
-	"os"
 )
 
 // V2FilesFileIdGet200ResponseData struct for V2FilesFileIdGet200ResponseData

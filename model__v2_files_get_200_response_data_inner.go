@@ -14,7 +14,6 @@ package libattio
 import (
 	"encoding/json"
 	"fmt"
-	"os"
 )
 
 // checks if the V2FilesGet200ResponseDataInner type satisfies the MappedNullable interface at compile time
