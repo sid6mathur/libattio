@@ -29,6 +29,15 @@ tags:
     \ or [company](/rest-api/endpoint-reference/standard-objects/companies/list-company-records).\
     \ See our [objects and lists guide](/docs/objects-and-lists) for more information."
   name: Records
+- description: SCIM groups represent Attio teams managed through the SCIM provisioning
+    protocol.
+  name: SCIM groups
+- description: SCIM schemas describe the resource types supported by the SCIM service
+    provider.
+  name: SCIM schemas
+- description: SCIM users represent workspace members managed through the SCIM provisioning
+    protocol.
+  name: SCIM users
 - description: "Lists are used to model a particular process. A list contains many\
     \ records of a single object type, where each record is represented by an entry.\
     \ Entries contain their own data from attributes defined on the list and also\
@@ -42,6 +51,9 @@ tags:
     \ data from their parent record. See our [objects and lists guide](/docs/objects-and-lists)\
     \ for more information."
   name: Entries
+- description: "Files are documents and folders linked to records, stored either in\
+    \ Attio or connected via external storage providers."
+  name: Files
 - description: Workspace members represent a user with access to a workspace. Workspace
     members are assigned roles that determine what they can do within the workspace.
   name: Workspace members
@@ -2240,6 +2252,12 @@ paths:
               schema:
                 $ref: "#/components/schemas/_v2_objects__object__get_404_response"
           description: Not Found
+        "413":
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/_v2_notes_post_413_response"
+          description: Content Too Large
       security:
       - oauth2:
         - note:read-write
@@ -3325,6 +3343,384 @@ paths:
       x-mint:
         metadata:
           tag: BETA
+  /v2/files:
+    get:
+      description: |-
+        Lists internal files, externally connected files and folders across the workspace. Optional query parameters may be provided to filter results by object, record, storage provider or parent folder.
+
+        This endpoint is in beta. We will aim to avoid breaking changes, but small updates may be made as we roll out to more users.
+
+        Required scopes: `object_configuration:read`, `record_permission:read`, `file:read`.
+      parameters:
+      - explode: true
+        in: query
+        name: object
+        required: true
+        schema:
+          description: The object slug or ID.
+          minLength: 1
+          type: string
+        style: form
+      - explode: true
+        in: query
+        name: record_id
+        required: true
+        schema:
+          description: Used to filter files to only those on a specific record.
+          format: uuid
+          type: string
+        style: form
+      - explode: true
+        in: query
+        name: storage_provider
+        required: false
+        schema:
+          description: Filter results by storage provider.
+          enum:
+          - attio
+          - dropbox
+          - box
+          - google-drive
+          - microsoft-onedrive
+          type: string
+        style: form
+      - explode: true
+        in: query
+        name: parent_folder_id
+        required: false
+        schema:
+          description: "Filter by parent folder ID. Each file entry has provided optioanl\
+            \ parent_folder_id that can be used to filter results by folder. When\
+            \ omitted, entries at all nesting levels are returned."
+          format: uuid
+          type: string
+        style: form
+      - explode: true
+        in: query
+        name: limit
+        required: false
+        schema:
+          default: 50
+          description: The maximum number of files to return. Must be between 1 and
+            200. Defaults to 50.
+          example: 50
+          maximum: 200
+          minimum: 1
+          type: integer
+        style: form
+      - explode: true
+        in: query
+        name: cursor
+        required: false
+        schema:
+          description: "A pagination cursor used to fetch the next page of files.\
+            \ Responses with more files will include a cursor for you to use here.\
+            \ If not provided, the first page will be returned."
+          type: string
+        style: form
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/_v2_files_get_200_response"
+          description: Success
+      security:
+      - oauth2:
+        - object_configuration:read
+        - record_permission:read
+        - file:read
+      summary: List files
+      tags:
+      - Files
+      x-mint:
+        metadata:
+          tag: BETA
+    post:
+      description: |-
+        Creates a native folder entry or a connected file/folder entry on an object record.
+
+        This endpoint is in beta. We will aim to avoid breaking changes, but small updates may be made as we roll out to more users.
+
+        Required scopes: `file:read-write`, `object_configuration:read`, `record_permission:read`.
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/_v2_files_post_request"
+        required: true
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/_v2_files_post_200_response"
+          description: Success
+      security:
+      - oauth2:
+        - file:read-write
+        - object_configuration:read
+        - record_permission:read
+      summary: Create a folder
+      tags:
+      - Files
+      x-mint:
+        metadata:
+          tag: BETA
+  /v2/files/upload:
+    post:
+      description: |-
+        Uploads a file to native Attio storage for a record. Send multipart/form-data with a single binary field named `file` together with the body fields `object`, `record_id`, and optional `parent_folder_id`. Maximum file size is 50 MB.
+
+        This endpoint is in beta. We will aim to avoid breaking changes, but small updates may be made as we roll out to more users.
+
+        Required scopes: `file:read-write`, `object_configuration:read`, `record_permission:read`.
+      requestBody:
+        content:
+          multipart/form-data:
+            schema:
+              $ref: "#/components/schemas/_v2_files_upload_post_request"
+        required: true
+      responses:
+        "201":
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/_v2_files_upload_post_201_response"
+          description: Created
+      security:
+      - oauth2:
+        - file:read-write
+        - object_configuration:read
+        - record_permission:read
+      summary: Upload a file
+      tags:
+      - Files
+      x-mint:
+        metadata:
+          tag: BETA
+  /v2/files/{file_id}:
+    delete:
+      description: |-
+        Delete a single file by ID. Deleting a folder will delete all of its descendants.
+
+        This endpoint is in beta. We will aim to avoid breaking changes, but small updates may be made as we roll out to more users.
+
+        Required scopes: `file:read-write`, `object_configuration:read`, `record_permission:read`.
+      parameters:
+      - explode: false
+        in: path
+        name: file_id
+        required: true
+        schema:
+          description: A UUID which identifies the file to delete.
+          example: a1b2c3d4-e5f6-7890-abcd-ef1234567890
+          format: uuid
+          type: string
+        style: simple
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                description: Success
+                properties: {}
+                type: object
+          description: Success
+        "404":
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/_v2_files__file_id__get_404_response"
+          description: Not Found
+      security:
+      - oauth2:
+        - file:read-write
+        - object_configuration:read
+        - record_permission:read
+      summary: Delete a file
+      tags:
+      - Files
+      x-mint:
+        metadata:
+          tag: BETA
+    get:
+      description: |-
+        Get a single file entry by ID.
+
+        This endpoint is in beta. We will aim to avoid breaking changes, but small updates may be made as we roll out to more users.
+
+        Required scopes: `file:read`, `object_configuration:read`, `record_permission:read`.
+      parameters:
+      - explode: false
+        in: path
+        name: file_id
+        required: true
+        schema:
+          description: A UUID which identifies the file entry.
+          example: a1b2c3d4-e5f6-7890-abcd-ef1234567890
+          format: uuid
+          type: string
+        style: simple
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/_v2_files__file_id__get_200_response"
+          description: Success
+        "404":
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/_v2_files__file_id__get_404_response"
+          description: Not Found
+      security:
+      - oauth2:
+        - file:read
+        - object_configuration:read
+        - record_permission:read
+      summary: Get a file
+      tags:
+      - Files
+      x-mint:
+        metadata:
+          tag: BETA
+  /v2/files/{file_id}/download:
+    get:
+      description: |-
+        Downloads a file by redirecting to a signed URL.
+
+        This endpoint is in beta. We will aim to avoid breaking changes, but small updates may be made as we roll out to more users.
+
+        Required scopes: `object_configuration:read`, `record_permission:read`, `file:read`.
+      parameters:
+      - explode: false
+        in: path
+        name: file_id
+        required: true
+        schema:
+          format: uuid
+          type: string
+        style: simple
+      responses:
+        "302":
+          content:
+            application/json:
+              schema:
+                description: Redirect
+                properties: {}
+                type: object
+          description: Redirect
+      security:
+      - oauth2:
+        - object_configuration:read
+        - record_permission:read
+        - file:read
+      summary: Download a file
+      tags:
+      - Files
+      x-mint:
+        metadata:
+          tag: BETA
+  /scim/v2/Schemas:
+    get:
+      description: |-
+        Lists the SCIM schemas supported by this service provider.
+
+        Required scopes: `scim_management:read`.
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/_scim_v2_Schemas_get_200_response"
+          description: Success
+      security:
+      - oauth2:
+        - scim_management:read
+      summary: List SCIM schemas
+      tags:
+      - SCIM schemas
+      x-hidden: true
+  /scim/v2/Users:
+    get:
+      description: |-
+        Lists SCIM users for the workspace.
+
+        Required scopes: `scim_management:read`.
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/_scim_v2_Schemas_get_200_response"
+          description: Success
+      security:
+      - oauth2:
+        - scim_management:read
+      summary: List SCIM users
+      tags:
+      - SCIM users
+      x-hidden: true
+    post:
+      description: |-
+        Creates a SCIM user in the workspace.
+
+        Required scopes: `scim_management:read-write`.
+      responses:
+        "201":
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/_scim_v2_Users_post_201_response"
+          description: Created
+      security:
+      - oauth2:
+        - scim_management:read-write
+      summary: Create SCIM user
+      tags:
+      - SCIM users
+      x-hidden: true
+  /scim/v2/Groups:
+    get:
+      description: |-
+        Lists SCIM groups for the workspace.
+
+        Required scopes: `scim_management:read`.
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/_scim_v2_Schemas_get_200_response"
+          description: Success
+      security:
+      - oauth2:
+        - scim_management:read
+      summary: List SCIM groups
+      tags:
+      - SCIM groups
+      x-hidden: true
+    post:
+      description: |-
+        Creates a SCIM group for the workspace.
+
+        Required scopes: `scim_management:read-write`.
+      responses:
+        "201":
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/_scim_v2_Groups_post_201_response"
+          description: Created
+      security:
+      - oauth2:
+        - scim_management:read-write
+      summary: Create SCIM group
+      tags:
+      - SCIM groups
+      x-hidden: true
   /v2/webhooks:
     get:
       description: |-
@@ -4008,6 +4404,294 @@ components:
       - resolved_at
       - resolved_by
       - thread_id
+    file:
+      example:
+        record_id: bf071e1f-6035-429d-b874-d83ea64ea13b
+        content_size: 1024
+        object_slug: people
+        content_type: application/pdf
+        file_type: file
+        parent_folder_id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+        name: document.pdf
+        storage_provider: attio
+        created_at: 2023-01-01T15:00:00.000000000Z
+        id:
+          workspace_id: 14beef7a-99f7-4534-a87e-70b564330a4c
+          file_id: a1b2c3d4-e5f6-7890-abcd-ef1234567890
+        object_id: 97052eb9-e65e-443f-a297-f2d9a4a7f795
+        created_by_actor:
+          type: workspace-member
+          id: 50cf242c-7fa3-4cad-87d0-75b1af71c57b
+      properties:
+        id:
+          $ref: "#/components/schemas/file_id"
+        object_id:
+          description: The ID of the object the record belongs to.
+          example: 97052eb9-e65e-443f-a297-f2d9a4a7f795
+          format: uuid
+          type: string
+        object_slug:
+          description: The slug of the object the record belongs to.
+          example: people
+          type: string
+        record_id:
+          description: The ID of the record the file is linked to.
+          example: bf071e1f-6035-429d-b874-d83ea64ea13b
+          format: uuid
+          type: string
+        storage_provider:
+          description: The storage provider for this file entry.
+          enum:
+          - attio
+          - dropbox
+          - box
+          - google-drive
+          - microsoft-onedrive
+          example: attio
+          type: string
+        created_by_actor:
+          $ref: "#/components/schemas/file_created_by_actor"
+        created_at:
+          description: Timestamp representing when the file entry was created.
+          example: 2023-01-01T15:00:00.000000000Z
+          type: string
+        file_type:
+          description: The type of file entry.
+          enum:
+          - file
+          type: string
+        name:
+          description: The name of the file.
+          example: document.pdf
+          type: string
+        content_type:
+          description: The content type of the file.
+          example: application/pdf
+          nullable: true
+          type: string
+        content_size:
+          description: The size of the file in bytes.
+          example: 1024
+          nullable: true
+          type: number
+        parent_folder_id:
+          description: "The ID of the parent folder, or null if this is a top-level\
+            \ file."
+          format: uuid
+          nullable: true
+          type: string
+      required:
+      - content_size
+      - content_type
+      - created_at
+      - created_by_actor
+      - file_type
+      - id
+      - name
+      - object_id
+      - object_slug
+      - parent_folder_id
+      - record_id
+      - storage_provider
+      title: File
+    folder:
+      example:
+        record_id: bf071e1f-6035-429d-b874-d83ea64ea13b
+        object_slug: people
+        file_type: folder
+        parent_folder_id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+        name: Documents
+        storage_provider: attio
+        created_at: 2023-01-01T15:00:00.000000000Z
+        id:
+          workspace_id: 14beef7a-99f7-4534-a87e-70b564330a4c
+          file_id: a1b2c3d4-e5f6-7890-abcd-ef1234567890
+        object_id: 97052eb9-e65e-443f-a297-f2d9a4a7f795
+        created_by_actor:
+          type: workspace-member
+          id: 50cf242c-7fa3-4cad-87d0-75b1af71c57b
+      properties:
+        id:
+          $ref: "#/components/schemas/file_id"
+        object_id:
+          description: The ID of the object the record belongs to.
+          example: 97052eb9-e65e-443f-a297-f2d9a4a7f795
+          format: uuid
+          type: string
+        object_slug:
+          description: The slug of the object the record belongs to.
+          example: people
+          type: string
+        record_id:
+          description: The ID of the record the file is linked to.
+          example: bf071e1f-6035-429d-b874-d83ea64ea13b
+          format: uuid
+          type: string
+        storage_provider:
+          description: The storage provider for this file entry.
+          enum:
+          - attio
+          - dropbox
+          - box
+          - google-drive
+          - microsoft-onedrive
+          example: attio
+          type: string
+        created_by_actor:
+          $ref: "#/components/schemas/file_created_by_actor"
+        created_at:
+          description: Timestamp representing when the file entry was created.
+          example: 2023-01-01T15:00:00.000000000Z
+          type: string
+        file_type:
+          description: The type of file entry.
+          enum:
+          - folder
+          type: string
+        name:
+          description: The name of the folder.
+          example: Documents
+          type: string
+        parent_folder_id:
+          description: "The ID of the parent folder, or null if this is a top-level\
+            \ folder."
+          format: uuid
+          nullable: true
+          type: string
+      required:
+      - created_at
+      - created_by_actor
+      - file_type
+      - id
+      - name
+      - object_id
+      - object_slug
+      - parent_folder_id
+      - record_id
+      - storage_provider
+      title: Folder
+    connected-file:
+      properties:
+        id:
+          $ref: "#/components/schemas/file_id"
+        object_id:
+          description: The ID of the object the record belongs to.
+          example: 97052eb9-e65e-443f-a297-f2d9a4a7f795
+          format: uuid
+          type: string
+        object_slug:
+          description: The slug of the object the record belongs to.
+          example: people
+          type: string
+        record_id:
+          description: The ID of the record the file is linked to.
+          example: bf071e1f-6035-429d-b874-d83ea64ea13b
+          format: uuid
+          type: string
+        storage_provider:
+          description: The storage provider for this file entry.
+          enum:
+          - attio
+          - dropbox
+          - box
+          - google-drive
+          - microsoft-onedrive
+          example: attio
+          type: string
+        created_by_actor:
+          $ref: "#/components/schemas/file_created_by_actor"
+        created_at:
+          description: Timestamp representing when the file entry was created.
+          example: 2023-01-01T15:00:00.000000000Z
+          type: string
+        file_type:
+          description: The type of file entry.
+          enum:
+          - connected-file
+          type: string
+        external_provider_file_id:
+          description: The file ID in the external storage provider.
+          example: 01ISGXZ5BRAMVD7SEPXNCYS4XGKT3YTOKQ
+          type: string
+        microsoft_drive_id:
+          description: Microsoft drive ID. This field is only populated for `microsoft-onedrive`
+            entries.
+          example: b!-RIj2DuyvEyV1T4NlOaMHk8XkS_I8MdFlUCq1BlcjgmhRfAj3-Z8RY2VpuvV_tpd
+          nullable: true
+          type: string
+      required:
+      - created_at
+      - created_by_actor
+      - external_provider_file_id
+      - file_type
+      - id
+      - microsoft_drive_id
+      - object_id
+      - object_slug
+      - record_id
+      - storage_provider
+      title: Connected File
+    connected-folder:
+      properties:
+        id:
+          $ref: "#/components/schemas/file_id"
+        object_id:
+          description: The ID of the object the record belongs to.
+          example: 97052eb9-e65e-443f-a297-f2d9a4a7f795
+          format: uuid
+          type: string
+        object_slug:
+          description: The slug of the object the record belongs to.
+          example: people
+          type: string
+        record_id:
+          description: The ID of the record the file is linked to.
+          example: bf071e1f-6035-429d-b874-d83ea64ea13b
+          format: uuid
+          type: string
+        storage_provider:
+          description: The storage provider for this file entry.
+          enum:
+          - attio
+          - dropbox
+          - box
+          - google-drive
+          - microsoft-onedrive
+          example: attio
+          type: string
+        created_by_actor:
+          $ref: "#/components/schemas/file_created_by_actor"
+        created_at:
+          description: Timestamp representing when the file entry was created.
+          example: 2023-01-01T15:00:00.000000000Z
+          type: string
+        file_type:
+          description: The type of file entry.
+          enum:
+          - connected-folder
+          type: string
+        external_provider_file_id:
+          description: The file ID in the external storage provider.
+          example: 01ISGXZ5BRAMVD7SEPXNCYS4XGKT3YTOKQ
+          type: string
+        microsoft_drive_id:
+          description: Microsoft drive ID. This field is only populated for `microsoft-onedrive`
+            entries.
+          example: b!-RIj2DuyvEyV1T4NlOaMHk8XkS_I8MdFlUCq1BlcjgmhRfAj3-Z8RY2VpuvV_tpd
+          nullable: true
+          type: string
+      required:
+      - created_at
+      - created_by_actor
+      - external_provider_file_id
+      - file_type
+      - id
+      - microsoft_drive_id
+      - object_id
+      - object_slug
+      - record_id
+      - storage_provider
+      title: Connected Folder
     meeting:
       example:
         start:
@@ -4741,10 +5425,12 @@ components:
           - DKK
           - EUR
           - HKD
+          - HUF
           - ISK
           - INR
           - ILS
           - JPY
+          - KES
           - KRW
           - MYR
           - MXN
@@ -5732,10 +6418,12 @@ components:
           - DKK
           - EUR
           - HKD
+          - HUF
           - ISK
           - INR
           - ILS
           - JPY
+          - KES
           - KRW
           - MYR
           - MXN
@@ -7245,10 +7933,12 @@ components:
           - DKK
           - EUR
           - HKD
+          - HUF
           - ISK
           - INR
           - ILS
           - JPY
+          - KES
           - KRW
           - MYR
           - MXN
@@ -9787,6 +10477,33 @@ components:
           $ref: "#/components/schemas/note"
       required:
       - data
+    _v2_notes_post_413_response:
+      description: Content Too Large
+      example:
+        status_code: 0.8008281904610115
+        code: validation_type
+        type: invalid_request_error
+        message: message
+      properties:
+        status_code:
+          enum:
+          - 413
+          type: number
+        type:
+          enum:
+          - invalid_request_error
+          type: string
+        code:
+          enum:
+          - validation_type
+          type: string
+        message:
+          type: string
+      required:
+      - code
+      - message
+      - status_code
+      - type
     _v2_notes__note_id__get_404_response:
       description: Not Found
       example:
@@ -11017,7 +11734,7 @@ components:
             \ ends. Note that this value is exclusive, meaning that the meeting ends\
             \ before the specified time, not at it. For example, a one hour meeting\
             \ starting at 14:00 would end at 15:00, not 15:59:59."
-          example: 2027-11-27T15:00:00.000000000
+          example: 2027-11-27T15:00:00Z
           format: date-time
           type: string
         timezone:
@@ -11879,6 +12596,552 @@ components:
       required:
       - data
       - pagination
+    _v2_files_get_200_response_data_inner:
+      anyOf:
+      - $ref: "#/components/schemas/file"
+      - $ref: "#/components/schemas/folder"
+      - $ref: "#/components/schemas/connected-file"
+      - $ref: "#/components/schemas/connected-folder"
+      discriminator:
+        mapping:
+          file: "#/components/schemas/file"
+          folder: "#/components/schemas/folder"
+          connected-file: "#/components/schemas/connected-file"
+          connected-folder: "#/components/schemas/connected-folder"
+        propertyName: file_type
+    _v2_files_get_200_response:
+      description: Success
+      example:
+        pagination:
+          next_cursor: next_cursor
+        data:
+        - record_id: bf071e1f-6035-429d-b874-d83ea64ea13b
+          content_size: 1024
+          object_slug: people
+          content_type: application/pdf
+          file_type: file
+          parent_folder_id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+          name: document.pdf
+          storage_provider: attio
+          created_at: 2023-01-01T15:00:00.000000000Z
+          id:
+            workspace_id: 14beef7a-99f7-4534-a87e-70b564330a4c
+            file_id: a1b2c3d4-e5f6-7890-abcd-ef1234567890
+          object_id: 97052eb9-e65e-443f-a297-f2d9a4a7f795
+          created_by_actor:
+            type: workspace-member
+            id: 50cf242c-7fa3-4cad-87d0-75b1af71c57b
+        - record_id: bf071e1f-6035-429d-b874-d83ea64ea13b
+          content_size: 1024
+          object_slug: people
+          content_type: application/pdf
+          file_type: file
+          parent_folder_id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+          name: document.pdf
+          storage_provider: attio
+          created_at: 2023-01-01T15:00:00.000000000Z
+          id:
+            workspace_id: 14beef7a-99f7-4534-a87e-70b564330a4c
+            file_id: a1b2c3d4-e5f6-7890-abcd-ef1234567890
+          object_id: 97052eb9-e65e-443f-a297-f2d9a4a7f795
+          created_by_actor:
+            type: workspace-member
+            id: 50cf242c-7fa3-4cad-87d0-75b1af71c57b
+      properties:
+        data:
+          items:
+            $ref: "#/components/schemas/_v2_files_get_200_response_data_inner"
+          type: array
+        pagination:
+          $ref: "#/components/schemas/_v2_meetings_get_200_response_pagination"
+      required:
+      - data
+      - pagination
+    Folder:
+      additionalProperties: {}
+      properties:
+        object:
+          description: The object slug or ID.
+          example: people
+          minLength: 1
+          type: string
+        record_id:
+          description: The ID of the record to create the file entry on.
+          example: bf071e1f-6035-429d-b874-d83ea64ea13b
+          format: uuid
+          type: string
+        file_type:
+          description: Creates a native Attio folder entry.
+          enum:
+          - folder
+          type: string
+        name:
+          description: The folder name.
+          example: Documents
+          minLength: 1
+          type: string
+        parent_folder_id:
+          description: Optional parent folder ID. Omit to create a top-level folder.
+          example: a1b2c3d4-e5f6-7890-abcd-ef1234567890
+          format: uuid
+          type: string
+      required:
+      - file_type
+      - name
+      - object
+      - record_id
+      title: Folder
+    Connected_Folder:
+      additionalProperties: {}
+      properties:
+        object:
+          description: The object slug or ID.
+          example: people
+          minLength: 1
+          type: string
+        record_id:
+          description: The ID of the record to create the file entry on.
+          example: bf071e1f-6035-429d-b874-d83ea64ea13b
+          format: uuid
+          type: string
+        storage_provider:
+          description: The external storage provider.
+          enum:
+          - dropbox
+          - box
+          - google-drive
+          - microsoft-onedrive
+          example: google-drive
+          type: string
+        external_provider_file_id:
+          description: The ID of the file or folder in the external storage provider.
+          example: 01ISGXZ5BRAMVD7SEPXNCYS4XGKT3YTOKQ
+          type: string
+        microsoft_drive_id:
+          description: Microsoft drive ID. Only used when `storage_provider` is `microsoft-onedrive`.
+          example: b!-RIj2DuyvEyV1T4NlOaMHk8XkS_I8MdFlUCq1BlcjgmhRfAj3-Z8RY2VpuvV_tpd
+          nullable: true
+          type: string
+        file_type:
+          description: Creates a connected folder entry.
+          enum:
+          - connected-folder
+          type: string
+      required:
+      - external_provider_file_id
+      - file_type
+      - object
+      - record_id
+      - storage_provider
+      title: Connected Folder
+    Connected_File:
+      additionalProperties: {}
+      properties:
+        object:
+          description: The object slug or ID.
+          example: people
+          minLength: 1
+          type: string
+        record_id:
+          description: The ID of the record to create the file entry on.
+          example: bf071e1f-6035-429d-b874-d83ea64ea13b
+          format: uuid
+          type: string
+        storage_provider:
+          description: The external storage provider.
+          enum:
+          - dropbox
+          - box
+          - google-drive
+          - microsoft-onedrive
+          example: google-drive
+          type: string
+        external_provider_file_id:
+          description: The ID of the file or folder in the external storage provider.
+          example: 01ISGXZ5BRAMVD7SEPXNCYS4XGKT3YTOKQ
+          type: string
+        microsoft_drive_id:
+          description: Microsoft drive ID. Only used when `storage_provider` is `microsoft-onedrive`.
+          example: b!-RIj2DuyvEyV1T4NlOaMHk8XkS_I8MdFlUCq1BlcjgmhRfAj3-Z8RY2VpuvV_tpd
+          nullable: true
+          type: string
+        file_type:
+          description: Creates a connected file entry.
+          enum:
+          - connected-file
+          type: string
+      required:
+      - external_provider_file_id
+      - file_type
+      - object
+      - record_id
+      - storage_provider
+      title: Connected File
+    _v2_files_post_request:
+      anyOf:
+      - $ref: "#/components/schemas/Folder"
+      - $ref: "#/components/schemas/Connected_Folder"
+      - $ref: "#/components/schemas/Connected_File"
+    _v2_files_post_200_response_data:
+      anyOf:
+      - $ref: "#/components/schemas/folder"
+      - $ref: "#/components/schemas/connected-file"
+      - $ref: "#/components/schemas/connected-folder"
+      discriminator:
+        mapping:
+          folder: "#/components/schemas/folder"
+          connected-file: "#/components/schemas/connected-file"
+          connected-folder: "#/components/schemas/connected-folder"
+        propertyName: file_type
+    _v2_files_post_200_response:
+      description: Success
+      example:
+        data:
+          record_id: bf071e1f-6035-429d-b874-d83ea64ea13b
+          object_slug: people
+          file_type: folder
+          parent_folder_id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+          name: Documents
+          storage_provider: attio
+          created_at: 2023-01-01T15:00:00.000000000Z
+          id:
+            workspace_id: 14beef7a-99f7-4534-a87e-70b564330a4c
+            file_id: a1b2c3d4-e5f6-7890-abcd-ef1234567890
+          object_id: 97052eb9-e65e-443f-a297-f2d9a4a7f795
+          created_by_actor:
+            type: workspace-member
+            id: 50cf242c-7fa3-4cad-87d0-75b1af71c57b
+      properties:
+        data:
+          $ref: "#/components/schemas/_v2_files_post_200_response_data"
+      required:
+      - data
+    _v2_files_upload_post_request:
+      additionalProperties: {}
+      properties:
+        file:
+          description: The file to upload.
+          format: binary
+          type: string
+        object:
+          description: The object slug or ID.
+          example: people
+          minLength: 1
+          type: string
+        record_id:
+          description: The ID of the record to upload the file to.
+          example: bf071e1f-6035-429d-b874-d83ea64ea13b
+          format: uuid
+          type: string
+        parent_folder_id:
+          description: Optional parent folder ID. Omit to upload to the root folder.
+          example: a1b2c3d4-e5f6-7890-abcd-ef1234567890
+          format: uuid
+          type: string
+      required:
+      - file
+      - object
+      - record_id
+    _v2_files_upload_post_201_response:
+      description: Created
+      example:
+        data:
+          record_id: bf071e1f-6035-429d-b874-d83ea64ea13b
+          content_size: 1024
+          object_slug: people
+          content_type: application/pdf
+          file_type: file
+          parent_folder_id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+          name: document.pdf
+          storage_provider: attio
+          created_at: 2023-01-01T15:00:00.000000000Z
+          id:
+            workspace_id: 14beef7a-99f7-4534-a87e-70b564330a4c
+            file_id: a1b2c3d4-e5f6-7890-abcd-ef1234567890
+          object_id: 97052eb9-e65e-443f-a297-f2d9a4a7f795
+          created_by_actor:
+            type: workspace-member
+            id: 50cf242c-7fa3-4cad-87d0-75b1af71c57b
+      properties:
+        data:
+          $ref: "#/components/schemas/file"
+      required:
+      - data
+    Folder_1:
+      allOf:
+      - $ref: "#/components/schemas/folder"
+      - properties:
+          has_children:
+            description: Whether the folder contains any child entries.
+            example: true
+            type: boolean
+        required:
+        - has_children
+      title: Folder
+    _v2_files__file_id__get_200_response_data:
+      anyOf:
+      - $ref: "#/components/schemas/file"
+      - $ref: "#/components/schemas/Folder_1"
+      - $ref: "#/components/schemas/connected-file"
+      - $ref: "#/components/schemas/connected-folder"
+    _v2_files__file_id__get_200_response:
+      description: Success
+      example:
+        data:
+          record_id: bf071e1f-6035-429d-b874-d83ea64ea13b
+          content_size: 1024
+          object_slug: people
+          content_type: application/pdf
+          file_type: file
+          parent_folder_id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+          name: document.pdf
+          storage_provider: attio
+          created_at: 2023-01-01T15:00:00.000000000Z
+          id:
+            workspace_id: 14beef7a-99f7-4534-a87e-70b564330a4c
+            file_id: a1b2c3d4-e5f6-7890-abcd-ef1234567890
+          object_id: 97052eb9-e65e-443f-a297-f2d9a4a7f795
+          created_by_actor:
+            type: workspace-member
+            id: 50cf242c-7fa3-4cad-87d0-75b1af71c57b
+      properties:
+        data:
+          $ref: "#/components/schemas/_v2_files__file_id__get_200_response_data"
+      required:
+      - data
+    _v2_files__file_id__get_404_response:
+      description: Not Found
+      example:
+        status_code: 0.8008281904610115
+        code: not_found
+        type: invalid_request_error
+        message: File with ID "a1b2c3d4-e5f6-7890-abcd-ef1234567890" was not found.
+      properties:
+        status_code:
+          enum:
+          - 404
+          type: number
+        type:
+          enum:
+          - invalid_request_error
+          type: string
+        code:
+          enum:
+          - not_found
+          type: string
+        message:
+          example: File with ID "a1b2c3d4-e5f6-7890-abcd-ef1234567890" was not found.
+          type: string
+      required:
+      - code
+      - message
+      - status_code
+      - type
+    _scim_v2_Schemas_get_200_response:
+      description: Success
+      example:
+        totalResults: 0.8008281904610115
+        startIndex: 6.027456183070403
+        itemsPerPage: 1.4658129805029452
+        schemas:
+        - schemas
+        - schemas
+        Resources:
+        - ""
+        - ""
+      properties:
+        schemas:
+          items:
+            type: string
+          type: array
+        totalResults:
+          type: number
+        startIndex:
+          type: number
+        itemsPerPage:
+          type: number
+        Resources:
+          items: {}
+          type: array
+      required:
+      - Resources
+      - itemsPerPage
+      - schemas
+      - startIndex
+      - totalResults
+    _scim_v2_Users_post_201_response_name:
+      example:
+        givenName: givenName
+        familyName: familyName
+      properties:
+        givenName:
+          type: string
+        familyName:
+          type: string
+      required:
+      - familyName
+      - givenName
+    _scim_v2_Users_post_201_response_emails_inner:
+      example:
+        type: type
+        value: value
+        primary: true
+      properties:
+        value:
+          type: string
+        primary:
+          type: boolean
+        type:
+          type: string
+      required:
+      - primary
+      - value
+    _scim_v2_Users_post_201_response_roles_inner:
+      example:
+        value: value
+        primary: true
+      properties:
+        value:
+          type: string
+        primary:
+          type: boolean
+      required:
+      - primary
+      - value
+    _scim_v2_Users_post_201_response_meta:
+      example:
+        created: created
+        lastModified: lastModified
+        resourceType: resourceType
+      properties:
+        resourceType:
+          type: string
+        created:
+          type: string
+        lastModified:
+          type: string
+      required:
+      - created
+      - lastModified
+      - resourceType
+    _scim_v2_Users_post_201_response:
+      description: Created
+      example:
+        emails:
+        - type: type
+          value: value
+          primary: true
+        - type: type
+          value: value
+          primary: true
+        profileUrl: profileUrl
+        meta:
+          created: created
+          lastModified: lastModified
+          resourceType: resourceType
+        schemas:
+        - schemas
+        - schemas
+        roles:
+        - value: value
+          primary: true
+        - value: value
+          primary: true
+        name:
+          givenName: givenName
+          familyName: familyName
+        active: true
+        id: id
+        userName: userName
+      properties:
+        schemas:
+          items:
+            type: string
+          type: array
+        id:
+          type: string
+        userName:
+          type: string
+        name:
+          $ref: "#/components/schemas/_scim_v2_Users_post_201_response_name"
+        emails:
+          items:
+            $ref: "#/components/schemas/_scim_v2_Users_post_201_response_emails_inner"
+          type: array
+        roles:
+          items:
+            $ref: "#/components/schemas/_scim_v2_Users_post_201_response_roles_inner"
+          type: array
+        profileUrl:
+          type: string
+        active:
+          type: boolean
+        meta:
+          $ref: "#/components/schemas/_scim_v2_Users_post_201_response_meta"
+      required:
+      - active
+      - emails
+      - id
+      - meta
+      - name
+      - roles
+      - schemas
+      - userName
+    _scim_v2_Groups_post_201_response_members_inner:
+      example:
+        display: display
+        value: value
+        $ref: $ref
+      properties:
+        value:
+          type: string
+        $ref:
+          type: string
+        display:
+          type: string
+      required:
+      - $ref
+      - value
+    _scim_v2_Groups_post_201_response:
+      description: Created
+      example:
+        displayName: displayName
+        meta:
+          created: created
+          lastModified: lastModified
+          resourceType: resourceType
+        schemas:
+        - schemas
+        - schemas
+        members:
+        - display: display
+          value: value
+          $ref: $ref
+        - display: display
+          value: value
+          $ref: $ref
+        id: id
+      properties:
+        schemas:
+          items:
+            type: string
+          type: array
+        id:
+          type: string
+        displayName:
+          type: string
+        members:
+          items:
+            $ref: "#/components/schemas/_scim_v2_Groups_post_201_response_members_inner"
+          type: array
+        meta:
+          $ref: "#/components/schemas/_scim_v2_Users_post_201_response_meta"
+      required:
+      - displayName
+      - id
+      - members
+      - meta
+      - schemas
     _v2_webhooks_get_200_response_data_inner_subscriptions_inner_filter_anyOf__or_inner_anyOf:
       properties:
         field:
@@ -13364,10 +14627,12 @@ components:
           - DKK
           - EUR
           - HKD
+          - HUF
           - ISK
           - INR
           - ILS
           - JPY
+          - KES
           - KRW
           - MYR
           - MXN
@@ -14420,10 +15685,12 @@ components:
           - DKK
           - EUR
           - HKD
+          - HUF
           - ISK
           - INR
           - ILS
           - JPY
+          - KES
           - KRW
           - MYR
           - MXN
@@ -14641,6 +15908,43 @@ components:
     comment_author:
       description: Who wrote this comment. Note that the API provides the ability
         for API tokens to write comments on behalf of other actors.
+      example:
+        type: workspace-member
+        id: 50cf242c-7fa3-4cad-87d0-75b1af71c57b
+      properties:
+        id:
+          description: An ID to identify the actor.
+          type: string
+          nullable: true
+        type:
+          description: "The type of actor. [Read more information on actor types here](/docs/actors)."
+          enum:
+          - api-token
+          - workspace-member
+          - system
+          - app
+          type: string
+          nullable: true
+    file_id:
+      example:
+        workspace_id: 14beef7a-99f7-4534-a87e-70b564330a4c
+        file_id: a1b2c3d4-e5f6-7890-abcd-ef1234567890
+      properties:
+        workspace_id:
+          description: The ID of the workspace the file belongs to.
+          example: 14beef7a-99f7-4534-a87e-70b564330a4c
+          format: uuid
+          type: string
+        file_id:
+          description: The ID of the file entry.
+          example: a1b2c3d4-e5f6-7890-abcd-ef1234567890
+          format: uuid
+          type: string
+      required:
+      - file_id
+      - workspace_id
+    file_created_by_actor:
+      description: The actor that created this file entry.
       example:
         type: workspace-member
         id: 50cf242c-7fa3-4cad-87d0-75b1af71c57b
@@ -15037,5 +16341,9 @@ components:
               \ transcripts and speakers for meetings."
             webhook:read: "View, and optionally manage, webhooks."
             webhook:read-write: "View, and optionally manage, webhooks."
+            file:read: "View, and upload files."
+            file:read-write: "View, and upload files."
+            scim_management:read: View and manage users via SCIM.
+            scim_management:read-write: View and manage users via SCIM.
           tokenUrl: https://app.attio.com/oauth/token
       type: oauth2

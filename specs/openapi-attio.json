@@ -23,6 +23,18 @@
             "description": "Records are individual instances of objects e.g. a specific [person](/rest-api/endpoint-reference/standard-objects/people/list-person-records) or [company](/rest-api/endpoint-reference/standard-objects/companies/list-company-records). See our [objects and lists guide](/docs/objects-and-lists) for more information."
         },
         {
+            "name": "SCIM groups",
+            "description": "SCIM groups represent Attio teams managed through the SCIM provisioning protocol."
+        },
+        {
+            "name": "SCIM schemas",
+            "description": "SCIM schemas describe the resource types supported by the SCIM service provider."
+        },
+        {
+            "name": "SCIM users",
+            "description": "SCIM users represent workspace members managed through the SCIM provisioning protocol."
+        },
+        {
             "name": "Lists",
             "description": "Lists are used to model a particular process. A list contains many records of a single object type, where each record is represented by an entry. Entries contain their own data from attributes defined on the list and also data from their parent record. See our [objects and lists guide](/docs/objects-and-lists) for more information."
         },
@@ -33,6 +45,10 @@
         {
             "name": "Entries",
             "description": "Entries are elements in a list that reference a single parent record. Entries contain their own data from attributes defined on the list and also data from their parent record. See our [objects and lists guide](/docs/objects-and-lists) for more information."
+        },
+        {
+            "name": "Files",
+            "description": "Files are documents and folders linked to records, stored either in Attio or connected via external storage providers."
         },
         {
             "name": "Workspace members",
@@ -137,7 +153,11 @@
                             "call_recording:read": "View, and optionally write, call recordings, transcripts and speakers for meetings.",
                             "call_recording:read-write": "View, and optionally write, call recordings, transcripts and speakers for meetings.",
                             "webhook:read": "View, and optionally manage, webhooks.",
-                            "webhook:read-write": "View, and optionally manage, webhooks."
+                            "webhook:read-write": "View, and optionally manage, webhooks.",
+                            "file:read": "View, and upload files.",
+                            "file:read-write": "View, and upload files.",
+                            "scim_management:read": "View and manage users via SCIM.",
+                            "scim_management:read-write": "View and manage users via SCIM."
                         }
                     }
                 }
@@ -1618,10 +1638,12 @@
                                     "DKK",
                                     "EUR",
                                     "HKD",
+                                    "HUF",
                                     "ISK",
                                     "INR",
                                     "ILS",
                                     "JPY",
+                                    "KES",
                                     "KRW",
                                     "MYR",
                                     "MXN",
@@ -2994,10 +3016,12 @@
                                             "DKK",
                                             "EUR",
                                             "HKD",
+                                            "HUF",
                                             "ISK",
                                             "INR",
                                             "ILS",
                                             "JPY",
+                                            "KES",
                                             "KRW",
                                             "MYR",
                                             "MXN",
@@ -3560,6 +3584,500 @@
                     "created_at",
                     "author"
                 ]
+            },
+            "file": {
+                "type": "object",
+                "properties": {
+                    "id": {
+                        "type": "object",
+                        "properties": {
+                            "workspace_id": {
+                                "type": "string",
+                                "format": "uuid",
+                                "description": "The ID of the workspace the file belongs to.",
+                                "example": "14beef7a-99f7-4534-a87e-70b564330a4c"
+                            },
+                            "file_id": {
+                                "type": "string",
+                                "format": "uuid",
+                                "description": "The ID of the file entry.",
+                                "example": "a1b2c3d4-e5f6-7890-abcd-ef1234567890"
+                            }
+                        },
+                        "required": [
+                            "workspace_id",
+                            "file_id"
+                        ]
+                    },
+                    "object_id": {
+                        "type": "string",
+                        "format": "uuid",
+                        "description": "The ID of the object the record belongs to.",
+                        "example": "97052eb9-e65e-443f-a297-f2d9a4a7f795"
+                    },
+                    "object_slug": {
+                        "type": "string",
+                        "description": "The slug of the object the record belongs to.",
+                        "example": "people"
+                    },
+                    "record_id": {
+                        "type": "string",
+                        "format": "uuid",
+                        "description": "The ID of the record the file is linked to.",
+                        "example": "bf071e1f-6035-429d-b874-d83ea64ea13b"
+                    },
+                    "storage_provider": {
+                        "type": "string",
+                        "enum": [
+                            "attio",
+                            "dropbox",
+                            "box",
+                            "google-drive",
+                            "microsoft-onedrive"
+                        ],
+                        "description": "The storage provider for this file entry.",
+                        "example": "attio"
+                    },
+                    "created_by_actor": {
+                        "type": "object",
+                        "description": "The actor that created this file entry.",
+                        "properties": {
+                            "id": {
+                                "type": "string",
+                                "description": "An ID to identify the actor.",
+                                "nullable": true
+                            },
+                            "type": {
+                                "type": "string",
+                                "enum": [
+                                    "api-token",
+                                    "workspace-member",
+                                    "system",
+                                    "app"
+                                ],
+                                "nullable": true,
+                                "description": "The type of actor. [Read more information on actor types here](/docs/actors)."
+                            }
+                        },
+                        "example": {
+                            "type": "workspace-member",
+                            "id": "50cf242c-7fa3-4cad-87d0-75b1af71c57b"
+                        }
+                    },
+                    "created_at": {
+                        "type": "string",
+                        "description": "Timestamp representing when the file entry was created.",
+                        "example": "2023-01-01T15:00:00.000000000Z"
+                    },
+                    "file_type": {
+                        "type": "string",
+                        "enum": [
+                            "file"
+                        ],
+                        "description": "The type of file entry."
+                    },
+                    "name": {
+                        "type": "string",
+                        "description": "The name of the file.",
+                        "example": "document.pdf"
+                    },
+                    "content_type": {
+                        "type": [
+                            "string",
+                            "null"
+                        ],
+                        "description": "The content type of the file.",
+                        "example": "application/pdf"
+                    },
+                    "content_size": {
+                        "type": [
+                            "number",
+                            "null"
+                        ],
+                        "description": "The size of the file in bytes.",
+                        "example": 1024
+                    },
+                    "parent_folder_id": {
+                        "type": [
+                            "string",
+                            "null"
+                        ],
+                        "format": "uuid",
+                        "description": "The ID of the parent folder, or null if this is a top-level file."
+                    }
+                },
+                "required": [
+                    "id",
+                    "object_id",
+                    "object_slug",
+                    "record_id",
+                    "storage_provider",
+                    "created_by_actor",
+                    "created_at",
+                    "file_type",
+                    "name",
+                    "content_type",
+                    "content_size",
+                    "parent_folder_id"
+                ],
+                "title": "File"
+            },
+            "folder": {
+                "type": "object",
+                "properties": {
+                    "id": {
+                        "type": "object",
+                        "properties": {
+                            "workspace_id": {
+                                "type": "string",
+                                "format": "uuid",
+                                "description": "The ID of the workspace the file belongs to.",
+                                "example": "14beef7a-99f7-4534-a87e-70b564330a4c"
+                            },
+                            "file_id": {
+                                "type": "string",
+                                "format": "uuid",
+                                "description": "The ID of the file entry.",
+                                "example": "a1b2c3d4-e5f6-7890-abcd-ef1234567890"
+                            }
+                        },
+                        "required": [
+                            "workspace_id",
+                            "file_id"
+                        ]
+                    },
+                    "object_id": {
+                        "type": "string",
+                        "format": "uuid",
+                        "description": "The ID of the object the record belongs to.",
+                        "example": "97052eb9-e65e-443f-a297-f2d9a4a7f795"
+                    },
+                    "object_slug": {
+                        "type": "string",
+                        "description": "The slug of the object the record belongs to.",
+                        "example": "people"
+                    },
+                    "record_id": {
+                        "type": "string",
+                        "format": "uuid",
+                        "description": "The ID of the record the file is linked to.",
+                        "example": "bf071e1f-6035-429d-b874-d83ea64ea13b"
+                    },
+                    "storage_provider": {
+                        "type": "string",
+                        "enum": [
+                            "attio",
+                            "dropbox",
+                            "box",
+                            "google-drive",
+                            "microsoft-onedrive"
+                        ],
+                        "description": "The storage provider for this file entry.",
+                        "example": "attio"
+                    },
+                    "created_by_actor": {
+                        "type": "object",
+                        "description": "The actor that created this file entry.",
+                        "properties": {
+                            "id": {
+                                "type": "string",
+                                "description": "An ID to identify the actor.",
+                                "nullable": true
+                            },
+                            "type": {
+                                "type": "string",
+                                "enum": [
+                                    "api-token",
+                                    "workspace-member",
+                                    "system",
+                                    "app"
+                                ],
+                                "nullable": true,
+                                "description": "The type of actor. [Read more information on actor types here](/docs/actors)."
+                            }
+                        },
+                        "example": {
+                            "type": "workspace-member",
+                            "id": "50cf242c-7fa3-4cad-87d0-75b1af71c57b"
+                        }
+                    },
+                    "created_at": {
+                        "type": "string",
+                        "description": "Timestamp representing when the file entry was created.",
+                        "example": "2023-01-01T15:00:00.000000000Z"
+                    },
+                    "file_type": {
+                        "type": "string",
+                        "enum": [
+                            "folder"
+                        ],
+                        "description": "The type of file entry."
+                    },
+                    "name": {
+                        "type": "string",
+                        "description": "The name of the folder.",
+                        "example": "Documents"
+                    },
+                    "parent_folder_id": {
+                        "type": [
+                            "string",
+                            "null"
+                        ],
+                        "format": "uuid",
+                        "description": "The ID of the parent folder, or null if this is a top-level folder."
+                    }
+                },
+                "required": [
+                    "id",
+                    "object_id",
+                    "object_slug",
+                    "record_id",
+                    "storage_provider",
+                    "created_by_actor",
+                    "created_at",
+                    "file_type",
+                    "name",
+                    "parent_folder_id"
+                ],
+                "title": "Folder"
+            },
+            "connected-file": {
+                "type": "object",
+                "properties": {
+                    "id": {
+                        "type": "object",
+                        "properties": {
+                            "workspace_id": {
+                                "type": "string",
+                                "format": "uuid",
+                                "description": "The ID of the workspace the file belongs to.",
+                                "example": "14beef7a-99f7-4534-a87e-70b564330a4c"
+                            },
+                            "file_id": {
+                                "type": "string",
+                                "format": "uuid",
+                                "description": "The ID of the file entry.",
+                                "example": "a1b2c3d4-e5f6-7890-abcd-ef1234567890"
+                            }
+                        },
+                        "required": [
+                            "workspace_id",
+                            "file_id"
+                        ]
+                    },
+                    "object_id": {
+                        "type": "string",
+                        "format": "uuid",
+                        "description": "The ID of the object the record belongs to.",
+                        "example": "97052eb9-e65e-443f-a297-f2d9a4a7f795"
+                    },
+                    "object_slug": {
+                        "type": "string",
+                        "description": "The slug of the object the record belongs to.",
+                        "example": "people"
+                    },
+                    "record_id": {
+                        "type": "string",
+                        "format": "uuid",
+                        "description": "The ID of the record the file is linked to.",
+                        "example": "bf071e1f-6035-429d-b874-d83ea64ea13b"
+                    },
+                    "storage_provider": {
+                        "type": "string",
+                        "enum": [
+                            "attio",
+                            "dropbox",
+                            "box",
+                            "google-drive",
+                            "microsoft-onedrive"
+                        ],
+                        "description": "The storage provider for this file entry.",
+                        "example": "attio"
+                    },
+                    "created_by_actor": {
+                        "type": "object",
+                        "description": "The actor that created this file entry.",
+                        "properties": {
+                            "id": {
+                                "type": "string",
+                                "description": "An ID to identify the actor.",
+                                "nullable": true
+                            },
+                            "type": {
+                                "type": "string",
+                                "enum": [
+                                    "api-token",
+                                    "workspace-member",
+                                    "system",
+                                    "app"
+                                ],
+                                "nullable": true,
+                                "description": "The type of actor. [Read more information on actor types here](/docs/actors)."
+                            }
+                        },
+                        "example": {
+                            "type": "workspace-member",
+                            "id": "50cf242c-7fa3-4cad-87d0-75b1af71c57b"
+                        }
+                    },
+                    "created_at": {
+                        "type": "string",
+                        "description": "Timestamp representing when the file entry was created.",
+                        "example": "2023-01-01T15:00:00.000000000Z"
+                    },
+                    "file_type": {
+                        "type": "string",
+                        "enum": [
+                            "connected-file"
+                        ],
+                        "description": "The type of file entry."
+                    },
+                    "external_provider_file_id": {
+                        "type": "string",
+                        "description": "The file ID in the external storage provider.",
+                        "example": "01ISGXZ5BRAMVD7SEPXNCYS4XGKT3YTOKQ"
+                    },
+                    "microsoft_drive_id": {
+                        "type": [
+                            "string",
+                            "null"
+                        ],
+                        "description": "Microsoft drive ID. This field is only populated for `microsoft-onedrive` entries.",
+                        "example": "b!-RIj2DuyvEyV1T4NlOaMHk8XkS_I8MdFlUCq1BlcjgmhRfAj3-Z8RY2VpuvV_tpd"
+                    }
+                },
+                "required": [
+                    "id",
+                    "object_id",
+                    "object_slug",
+                    "record_id",
+                    "storage_provider",
+                    "created_by_actor",
+                    "created_at",
+                    "file_type",
+                    "external_provider_file_id",
+                    "microsoft_drive_id"
+                ],
+                "title": "Connected File"
+            },
+            "connected-folder": {
+                "type": "object",
+                "properties": {
+                    "id": {
+                        "type": "object",
+                        "properties": {
+                            "workspace_id": {
+                                "type": "string",
+                                "format": "uuid",
+                                "description": "The ID of the workspace the file belongs to.",
+                                "example": "14beef7a-99f7-4534-a87e-70b564330a4c"
+                            },
+                            "file_id": {
+                                "type": "string",
+                                "format": "uuid",
+                                "description": "The ID of the file entry.",
+                                "example": "a1b2c3d4-e5f6-7890-abcd-ef1234567890"
+                            }
+                        },
+                        "required": [
+                            "workspace_id",
+                            "file_id"
+                        ]
+                    },
+                    "object_id": {
+                        "type": "string",
+                        "format": "uuid",
+                        "description": "The ID of the object the record belongs to.",
+                        "example": "97052eb9-e65e-443f-a297-f2d9a4a7f795"
+                    },
+                    "object_slug": {
+                        "type": "string",
+                        "description": "The slug of the object the record belongs to.",
+                        "example": "people"
+                    },
+                    "record_id": {
+                        "type": "string",
+                        "format": "uuid",
+                        "description": "The ID of the record the file is linked to.",
+                        "example": "bf071e1f-6035-429d-b874-d83ea64ea13b"
+                    },
+                    "storage_provider": {
+                        "type": "string",
+                        "enum": [
+                            "attio",
+                            "dropbox",
+                            "box",
+                            "google-drive",
+                            "microsoft-onedrive"
+                        ],
+                        "description": "The storage provider for this file entry.",
+                        "example": "attio"
+                    },
+                    "created_by_actor": {
+                        "type": "object",
+                        "description": "The actor that created this file entry.",
+                        "properties": {
+                            "id": {
+                                "type": "string",
+                                "description": "An ID to identify the actor.",
+                                "nullable": true
+                            },
+                            "type": {
+                                "type": "string",
+                                "enum": [
+                                    "api-token",
+                                    "workspace-member",
+                                    "system",
+                                    "app"
+                                ],
+                                "nullable": true,
+                                "description": "The type of actor. [Read more information on actor types here](/docs/actors)."
+                            }
+                        },
+                        "example": {
+                            "type": "workspace-member",
+                            "id": "50cf242c-7fa3-4cad-87d0-75b1af71c57b"
+                        }
+                    },
+                    "created_at": {
+                        "type": "string",
+                        "description": "Timestamp representing when the file entry was created.",
+                        "example": "2023-01-01T15:00:00.000000000Z"
+                    },
+                    "file_type": {
+                        "type": "string",
+                        "enum": [
+                            "connected-folder"
+                        ],
+                        "description": "The type of file entry."
+                    },
+                    "external_provider_file_id": {
+                        "type": "string",
+                        "description": "The file ID in the external storage provider.",
+                        "example": "01ISGXZ5BRAMVD7SEPXNCYS4XGKT3YTOKQ"
+                    },
+                    "microsoft_drive_id": {
+                        "type": [
+                            "string",
+                            "null"
+                        ],
+                        "description": "Microsoft drive ID. This field is only populated for `microsoft-onedrive` entries.",
+                        "example": "b!-RIj2DuyvEyV1T4NlOaMHk8XkS_I8MdFlUCq1BlcjgmhRfAj3-Z8RY2VpuvV_tpd"
+                    }
+                },
+                "required": [
+                    "id",
+                    "object_id",
+                    "object_slug",
+                    "record_id",
+                    "storage_provider",
+                    "created_by_actor",
+                    "created_at",
+                    "file_type",
+                    "external_provider_file_id",
+                    "microsoft_drive_id"
+                ],
+                "title": "Connected Folder"
             },
             "meeting": {
                 "type": "object",
@@ -4941,10 +5459,12 @@
                                                                     "DKK",
                                                                     "EUR",
                                                                     "HKD",
+                                                                    "HUF",
                                                                     "ISK",
                                                                     "INR",
                                                                     "ILS",
                                                                     "JPY",
+                                                                    "KES",
                                                                     "KRW",
                                                                     "MYR",
                                                                     "MXN",
@@ -5478,10 +5998,12 @@
                                                                     "DKK",
                                                                     "EUR",
                                                                     "HKD",
+                                                                    "HUF",
                                                                     "ISK",
                                                                     "INR",
                                                                     "ILS",
                                                                     "JPY",
+                                                                    "KES",
                                                                     "KRW",
                                                                     "MYR",
                                                                     "MXN",
@@ -7289,10 +7811,12 @@
                                                                                     "DKK",
                                                                                     "EUR",
                                                                                     "HKD",
+                                                                                    "HUF",
                                                                                     "ISK",
                                                                                     "INR",
                                                                                     "ILS",
                                                                                     "JPY",
+                                                                                    "KES",
                                                                                     "KRW",
                                                                                     "MYR",
                                                                                     "MXN",
@@ -9403,10 +9927,12 @@
                                                                                 "DKK",
                                                                                 "EUR",
                                                                                 "HKD",
+                                                                                "HUF",
                                                                                 "ISK",
                                                                                 "INR",
                                                                                 "ILS",
                                                                                 "JPY",
+                                                                                "KES",
                                                                                 "KRW",
                                                                                 "MYR",
                                                                                 "MXN",
@@ -11525,10 +12051,12 @@
                                                                                 "DKK",
                                                                                 "EUR",
                                                                                 "HKD",
+                                                                                "HUF",
                                                                                 "ISK",
                                                                                 "INR",
                                                                                 "ILS",
                                                                                 "JPY",
+                                                                                "KES",
                                                                                 "KRW",
                                                                                 "MYR",
                                                                                 "MXN",
@@ -13612,10 +14140,12 @@
                                                                                 "DKK",
                                                                                 "EUR",
                                                                                 "HKD",
+                                                                                "HUF",
                                                                                 "ISK",
                                                                                 "INR",
                                                                                 "ILS",
                                                                                 "JPY",
+                                                                                "KES",
                                                                                 "KRW",
                                                                                 "MYR",
                                                                                 "MXN",
@@ -15693,10 +16223,12 @@
                                                                                 "DKK",
                                                                                 "EUR",
                                                                                 "HKD",
+                                                                                "HUF",
                                                                                 "ISK",
                                                                                 "INR",
                                                                                 "ILS",
                                                                                 "JPY",
+                                                                                "KES",
                                                                                 "KRW",
                                                                                 "MYR",
                                                                                 "MXN",
@@ -17815,10 +18347,12 @@
                                                                                 "DKK",
                                                                                 "EUR",
                                                                                 "HKD",
+                                                                                "HUF",
                                                                                 "ISK",
                                                                                 "INR",
                                                                                 "ILS",
                                                                                 "JPY",
+                                                                                "KES",
                                                                                 "KRW",
                                                                                 "MYR",
                                                                                 "MXN",
@@ -19991,10 +20525,12 @@
                                                                     "DKK",
                                                                     "EUR",
                                                                     "HKD",
+                                                                    "HUF",
                                                                     "ISK",
                                                                     "INR",
                                                                     "ILS",
                                                                     "JPY",
+                                                                    "KES",
                                                                     "KRW",
                                                                     "MYR",
                                                                     "MXN",
@@ -23304,10 +23840,12 @@
                                                                                     "DKK",
                                                                                     "EUR",
                                                                                     "HKD",
+                                                                                    "HUF",
                                                                                     "ISK",
                                                                                     "INR",
                                                                                     "ILS",
                                                                                     "JPY",
+                                                                                    "KES",
                                                                                     "KRW",
                                                                                     "MYR",
                                                                                     "MXN",
@@ -25446,10 +25984,12 @@
                                                                                 "DKK",
                                                                                 "EUR",
                                                                                 "HKD",
+                                                                                "HUF",
                                                                                 "ISK",
                                                                                 "INR",
                                                                                 "ILS",
                                                                                 "JPY",
+                                                                                "KES",
                                                                                 "KRW",
                                                                                 "MYR",
                                                                                 "MXN",
@@ -27626,10 +28166,12 @@
                                                                                 "DKK",
                                                                                 "EUR",
                                                                                 "HKD",
+                                                                                "HUF",
                                                                                 "ISK",
                                                                                 "INR",
                                                                                 "ILS",
                                                                                 "JPY",
+                                                                                "KES",
                                                                                 "KRW",
                                                                                 "MYR",
                                                                                 "MXN",
@@ -29769,10 +30311,12 @@
                                                                                 "DKK",
                                                                                 "EUR",
                                                                                 "HKD",
+                                                                                "HUF",
                                                                                 "ISK",
                                                                                 "INR",
                                                                                 "ILS",
                                                                                 "JPY",
+                                                                                "KES",
                                                                                 "KRW",
                                                                                 "MYR",
                                                                                 "MXN",
@@ -31906,10 +32450,12 @@
                                                                                 "DKK",
                                                                                 "EUR",
                                                                                 "HKD",
+                                                                                "HUF",
                                                                                 "ISK",
                                                                                 "INR",
                                                                                 "ILS",
                                                                                 "JPY",
+                                                                                "KES",
                                                                                 "KRW",
                                                                                 "MYR",
                                                                                 "MXN",
@@ -34084,10 +34630,12 @@
                                                                                 "DKK",
                                                                                 "EUR",
                                                                                 "HKD",
+                                                                                "HUF",
                                                                                 "ISK",
                                                                                 "INR",
                                                                                 "ILS",
                                                                                 "JPY",
+                                                                                "KES",
                                                                                 "KRW",
                                                                                 "MYR",
                                                                                 "MXN",
@@ -36312,10 +36860,12 @@
                                                                     "DKK",
                                                                     "EUR",
                                                                     "HKD",
+                                                                    "HUF",
                                                                     "ISK",
                                                                     "INR",
                                                                     "ILS",
                                                                     "JPY",
+                                                                    "KES",
                                                                     "KRW",
                                                                     "MYR",
                                                                     "MXN",
@@ -38435,6 +38985,46 @@
                                         "message"
                                     ],
                                     "description": "Not Found"
+                                }
+                            }
+                        }
+                    },
+                    "413": {
+                        "description": "Content Too Large",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "type": "object",
+                                    "properties": {
+                                        "status_code": {
+                                            "type": "number",
+                                            "enum": [
+                                                413
+                                            ]
+                                        },
+                                        "type": {
+                                            "type": "string",
+                                            "enum": [
+                                                "invalid_request_error"
+                                            ]
+                                        },
+                                        "code": {
+                                            "type": "string",
+                                            "enum": [
+                                                "validation_type"
+                                            ]
+                                        },
+                                        "message": {
+                                            "type": "string"
+                                        }
+                                    },
+                                    "required": [
+                                        "status_code",
+                                        "type",
+                                        "code",
+                                        "message"
+                                    ],
+                                    "description": "Content Too Large"
                                 }
                             }
                         }
@@ -41010,7 +41600,7 @@
                                                                 "type": "string",
                                                                 "format": "date-time",
                                                                 "description": "An ISO 8601 datetime indicating when a non-all day meeting ends. Note that this value is exclusive, meaning that the meeting ends before the specified time, not at it. For example, a one hour meeting starting at 14:00 would end at 15:00, not 15:59:59.",
-                                                                "example": "2027-11-27T15:00:00.000000000"
+                                                                "example": "2027-11-27T15:00:00Z"
                                                             },
                                                             "timezone": {
                                                                 "type": [
@@ -42385,6 +42975,1134 @@
                                         "pagination"
                                     ],
                                     "description": "Success"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/v2/files": {
+            "get": {
+                "summary": "List files",
+                "description": "Lists internal files, externally connected files and folders across the workspace. Optional query parameters may be provided to filter results by object, record, storage provider or parent folder.\n\nThis endpoint is in beta. We will aim to avoid breaking changes, but small updates may be made as we roll out to more users.\n\nRequired scopes: `object_configuration:read`, `record_permission:read`, `file:read`.",
+                "tags": [
+                    "Files"
+                ],
+                "security": [
+                    {
+                        "oauth2": [
+                            "object_configuration:read",
+                            "record_permission:read",
+                            "file:read"
+                        ]
+                    }
+                ],
+                "x-mint": {
+                    "metadata": {
+                        "tag": "BETA"
+                    }
+                },
+                "parameters": [
+                    {
+                        "schema": {
+                            "type": "string",
+                            "minLength": 1,
+                            "description": "The object slug or ID."
+                        },
+                        "required": true,
+                        "name": "object",
+                        "in": "query"
+                    },
+                    {
+                        "schema": {
+                            "type": "string",
+                            "format": "uuid",
+                            "description": "Used to filter files to only those on a specific record."
+                        },
+                        "required": true,
+                        "name": "record_id",
+                        "in": "query"
+                    },
+                    {
+                        "schema": {
+                            "type": "string",
+                            "enum": [
+                                "attio",
+                                "dropbox",
+                                "box",
+                                "google-drive",
+                                "microsoft-onedrive"
+                            ],
+                            "description": "Filter results by storage provider."
+                        },
+                        "required": false,
+                        "name": "storage_provider",
+                        "in": "query"
+                    },
+                    {
+                        "schema": {
+                            "type": "string",
+                            "format": "uuid",
+                            "description": "Filter by parent folder ID. Each file entry has provided optioanl parent_folder_id that can be used to filter results by folder. When omitted, entries at all nesting levels are returned."
+                        },
+                        "required": false,
+                        "name": "parent_folder_id",
+                        "in": "query"
+                    },
+                    {
+                        "schema": {
+                            "type": "integer",
+                            "minimum": 1,
+                            "maximum": 200,
+                            "default": 50,
+                            "description": "The maximum number of files to return. Must be between 1 and 200. Defaults to 50.",
+                            "example": 50
+                        },
+                        "required": false,
+                        "name": "limit",
+                        "in": "query"
+                    },
+                    {
+                        "schema": {
+                            "type": "string",
+                            "description": "A pagination cursor used to fetch the next page of files. Responses with more files will include a cursor for you to use here. If not provided, the first page will be returned."
+                        },
+                        "required": false,
+                        "name": "cursor",
+                        "in": "query"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Success",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "type": "object",
+                                    "properties": {
+                                        "data": {
+                                            "type": "array",
+                                            "items": {
+                                                "anyOf": [
+                                                    {
+                                                        "$ref": "#/components/schemas/file"
+                                                    },
+                                                    {
+                                                        "$ref": "#/components/schemas/folder"
+                                                    },
+                                                    {
+                                                        "$ref": "#/components/schemas/connected-file"
+                                                    },
+                                                    {
+                                                        "$ref": "#/components/schemas/connected-folder"
+                                                    }
+                                                ],
+                                                "discriminator": {
+                                                    "propertyName": "file_type",
+                                                    "mapping": {
+                                                        "file": "#/components/schemas/file",
+                                                        "folder": "#/components/schemas/folder",
+                                                        "connected-file": "#/components/schemas/connected-file",
+                                                        "connected-folder": "#/components/schemas/connected-folder"
+                                                    }
+                                                }
+                                            }
+                                        },
+                                        "pagination": {
+                                            "type": "object",
+                                            "properties": {
+                                                "next_cursor": {
+                                                    "type": [
+                                                        "string",
+                                                        "null"
+                                                    ]
+                                                }
+                                            },
+                                            "required": [
+                                                "next_cursor"
+                                            ]
+                                        }
+                                    },
+                                    "required": [
+                                        "data",
+                                        "pagination"
+                                    ],
+                                    "description": "Success"
+                                }
+                            }
+                        }
+                    }
+                }
+            },
+            "post": {
+                "summary": "Create a folder",
+                "description": "Creates a native folder entry or a connected file/folder entry on an object record.\n\nThis endpoint is in beta. We will aim to avoid breaking changes, but small updates may be made as we roll out to more users.\n\nRequired scopes: `file:read-write`, `object_configuration:read`, `record_permission:read`.",
+                "tags": [
+                    "Files"
+                ],
+                "security": [
+                    {
+                        "oauth2": [
+                            "file:read-write",
+                            "object_configuration:read",
+                            "record_permission:read"
+                        ]
+                    }
+                ],
+                "x-mint": {
+                    "metadata": {
+                        "tag": "BETA"
+                    }
+                },
+                "requestBody": {
+                    "required": true,
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "anyOf": [
+                                    {
+                                        "type": "object",
+                                        "properties": {
+                                            "object": {
+                                                "type": "string",
+                                                "minLength": 1,
+                                                "description": "The object slug or ID.",
+                                                "example": "people"
+                                            },
+                                            "record_id": {
+                                                "type": "string",
+                                                "format": "uuid",
+                                                "description": "The ID of the record to create the file entry on.",
+                                                "example": "bf071e1f-6035-429d-b874-d83ea64ea13b"
+                                            },
+                                            "file_type": {
+                                                "type": "string",
+                                                "enum": [
+                                                    "folder"
+                                                ],
+                                                "description": "Creates a native Attio folder entry."
+                                            },
+                                            "name": {
+                                                "type": "string",
+                                                "minLength": 1,
+                                                "description": "The folder name.",
+                                                "example": "Documents"
+                                            },
+                                            "parent_folder_id": {
+                                                "type": "string",
+                                                "format": "uuid",
+                                                "description": "Optional parent folder ID. Omit to create a top-level folder.",
+                                                "example": "a1b2c3d4-e5f6-7890-abcd-ef1234567890"
+                                            }
+                                        },
+                                        "required": [
+                                            "object",
+                                            "record_id",
+                                            "file_type",
+                                            "name"
+                                        ],
+                                        "additionalProperties": false,
+                                        "title": "Folder"
+                                    },
+                                    {
+                                        "type": "object",
+                                        "properties": {
+                                            "object": {
+                                                "type": "string",
+                                                "minLength": 1,
+                                                "description": "The object slug or ID.",
+                                                "example": "people"
+                                            },
+                                            "record_id": {
+                                                "type": "string",
+                                                "format": "uuid",
+                                                "description": "The ID of the record to create the file entry on.",
+                                                "example": "bf071e1f-6035-429d-b874-d83ea64ea13b"
+                                            },
+                                            "storage_provider": {
+                                                "type": "string",
+                                                "enum": [
+                                                    "dropbox",
+                                                    "box",
+                                                    "google-drive",
+                                                    "microsoft-onedrive"
+                                                ],
+                                                "description": "The external storage provider.",
+                                                "example": "google-drive"
+                                            },
+                                            "external_provider_file_id": {
+                                                "type": "string",
+                                                "description": "The ID of the file or folder in the external storage provider.",
+                                                "example": "01ISGXZ5BRAMVD7SEPXNCYS4XGKT3YTOKQ"
+                                            },
+                                            "microsoft_drive_id": {
+                                                "type": [
+                                                    "string",
+                                                    "null"
+                                                ],
+                                                "description": "Microsoft drive ID. Only used when `storage_provider` is `microsoft-onedrive`.",
+                                                "example": "b!-RIj2DuyvEyV1T4NlOaMHk8XkS_I8MdFlUCq1BlcjgmhRfAj3-Z8RY2VpuvV_tpd"
+                                            },
+                                            "file_type": {
+                                                "type": "string",
+                                                "enum": [
+                                                    "connected-folder"
+                                                ],
+                                                "description": "Creates a connected folder entry."
+                                            }
+                                        },
+                                        "required": [
+                                            "object",
+                                            "record_id",
+                                            "storage_provider",
+                                            "external_provider_file_id",
+                                            "file_type"
+                                        ],
+                                        "additionalProperties": false,
+                                        "title": "Connected Folder"
+                                    },
+                                    {
+                                        "type": "object",
+                                        "properties": {
+                                            "object": {
+                                                "type": "string",
+                                                "minLength": 1,
+                                                "description": "The object slug or ID.",
+                                                "example": "people"
+                                            },
+                                            "record_id": {
+                                                "type": "string",
+                                                "format": "uuid",
+                                                "description": "The ID of the record to create the file entry on.",
+                                                "example": "bf071e1f-6035-429d-b874-d83ea64ea13b"
+                                            },
+                                            "storage_provider": {
+                                                "type": "string",
+                                                "enum": [
+                                                    "dropbox",
+                                                    "box",
+                                                    "google-drive",
+                                                    "microsoft-onedrive"
+                                                ],
+                                                "description": "The external storage provider.",
+                                                "example": "google-drive"
+                                            },
+                                            "external_provider_file_id": {
+                                                "type": "string",
+                                                "description": "The ID of the file or folder in the external storage provider.",
+                                                "example": "01ISGXZ5BRAMVD7SEPXNCYS4XGKT3YTOKQ"
+                                            },
+                                            "microsoft_drive_id": {
+                                                "type": [
+                                                    "string",
+                                                    "null"
+                                                ],
+                                                "description": "Microsoft drive ID. Only used when `storage_provider` is `microsoft-onedrive`.",
+                                                "example": "b!-RIj2DuyvEyV1T4NlOaMHk8XkS_I8MdFlUCq1BlcjgmhRfAj3-Z8RY2VpuvV_tpd"
+                                            },
+                                            "file_type": {
+                                                "type": "string",
+                                                "enum": [
+                                                    "connected-file"
+                                                ],
+                                                "description": "Creates a connected file entry."
+                                            }
+                                        },
+                                        "required": [
+                                            "object",
+                                            "record_id",
+                                            "storage_provider",
+                                            "external_provider_file_id",
+                                            "file_type"
+                                        ],
+                                        "additionalProperties": false,
+                                        "title": "Connected File"
+                                    }
+                                ]
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "200": {
+                        "description": "Success",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "type": "object",
+                                    "properties": {
+                                        "data": {
+                                            "anyOf": [
+                                                {
+                                                    "$ref": "#/components/schemas/folder"
+                                                },
+                                                {
+                                                    "$ref": "#/components/schemas/connected-file"
+                                                },
+                                                {
+                                                    "$ref": "#/components/schemas/connected-folder"
+                                                }
+                                            ],
+                                            "discriminator": {
+                                                "propertyName": "file_type",
+                                                "mapping": {
+                                                    "folder": "#/components/schemas/folder",
+                                                    "connected-file": "#/components/schemas/connected-file",
+                                                    "connected-folder": "#/components/schemas/connected-folder"
+                                                }
+                                            }
+                                        }
+                                    },
+                                    "required": [
+                                        "data"
+                                    ],
+                                    "description": "Success"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/v2/files/upload": {
+            "post": {
+                "summary": "Upload a file",
+                "description": "Uploads a file to native Attio storage for a record. Send multipart/form-data with a single binary field named `file` together with the body fields `object`, `record_id`, and optional `parent_folder_id`. Maximum file size is 50 MB.\n\nThis endpoint is in beta. We will aim to avoid breaking changes, but small updates may be made as we roll out to more users.\n\nRequired scopes: `file:read-write`, `object_configuration:read`, `record_permission:read`.",
+                "tags": [
+                    "Files"
+                ],
+                "security": [
+                    {
+                        "oauth2": [
+                            "file:read-write",
+                            "object_configuration:read",
+                            "record_permission:read"
+                        ]
+                    }
+                ],
+                "x-mint": {
+                    "metadata": {
+                        "tag": "BETA"
+                    }
+                },
+                "requestBody": {
+                    "required": true,
+                    "content": {
+                        "multipart/form-data": {
+                            "schema": {
+                                "type": "object",
+                                "properties": {
+                                    "file": {
+                                        "type": "string",
+                                        "description": "The file to upload.",
+                                        "format": "binary"
+                                    },
+                                    "object": {
+                                        "type": "string",
+                                        "minLength": 1,
+                                        "description": "The object slug or ID.",
+                                        "example": "people"
+                                    },
+                                    "record_id": {
+                                        "type": "string",
+                                        "format": "uuid",
+                                        "description": "The ID of the record to upload the file to.",
+                                        "example": "bf071e1f-6035-429d-b874-d83ea64ea13b"
+                                    },
+                                    "parent_folder_id": {
+                                        "type": "string",
+                                        "format": "uuid",
+                                        "description": "Optional parent folder ID. Omit to upload to the root folder.",
+                                        "example": "a1b2c3d4-e5f6-7890-abcd-ef1234567890"
+                                    }
+                                },
+                                "required": [
+                                    "file",
+                                    "object",
+                                    "record_id"
+                                ],
+                                "additionalProperties": false
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "201": {
+                        "description": "Created",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "type": "object",
+                                    "properties": {
+                                        "data": {
+                                            "$ref": "#/components/schemas/file"
+                                        }
+                                    },
+                                    "required": [
+                                        "data"
+                                    ],
+                                    "description": "Created"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/v2/files/{file_id}": {
+            "get": {
+                "summary": "Get a file",
+                "description": "Get a single file entry by ID.\n\nThis endpoint is in beta. We will aim to avoid breaking changes, but small updates may be made as we roll out to more users.\n\nRequired scopes: `file:read`, `object_configuration:read`, `record_permission:read`.",
+                "tags": [
+                    "Files"
+                ],
+                "security": [
+                    {
+                        "oauth2": [
+                            "file:read",
+                            "object_configuration:read",
+                            "record_permission:read"
+                        ]
+                    }
+                ],
+                "x-mint": {
+                    "metadata": {
+                        "tag": "BETA"
+                    }
+                },
+                "parameters": [
+                    {
+                        "schema": {
+                            "type": "string",
+                            "format": "uuid",
+                            "description": "A UUID which identifies the file entry.",
+                            "example": "a1b2c3d4-e5f6-7890-abcd-ef1234567890"
+                        },
+                        "required": true,
+                        "name": "file_id",
+                        "in": "path"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Success",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "type": "object",
+                                    "properties": {
+                                        "data": {
+                                            "anyOf": [
+                                                {
+                                                    "$ref": "#/components/schemas/file"
+                                                },
+                                                {
+                                                    "allOf": [
+                                                        {
+                                                            "$ref": "#/components/schemas/folder"
+                                                        },
+                                                        {
+                                                            "type": "object",
+                                                            "properties": {
+                                                                "has_children": {
+                                                                    "type": "boolean",
+                                                                    "description": "Whether the folder contains any child entries.",
+                                                                    "example": true
+                                                                }
+                                                            },
+                                                            "required": [
+                                                                "has_children"
+                                                            ]
+                                                        }
+                                                    ],
+                                                    "title": "Folder"
+                                                },
+                                                {
+                                                    "$ref": "#/components/schemas/connected-file"
+                                                },
+                                                {
+                                                    "$ref": "#/components/schemas/connected-folder"
+                                                }
+                                            ]
+                                        }
+                                    },
+                                    "required": [
+                                        "data"
+                                    ],
+                                    "description": "Success"
+                                }
+                            }
+                        }
+                    },
+                    "404": {
+                        "description": "Not Found",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "type": "object",
+                                    "properties": {
+                                        "status_code": {
+                                            "type": "number",
+                                            "enum": [
+                                                404
+                                            ]
+                                        },
+                                        "type": {
+                                            "type": "string",
+                                            "enum": [
+                                                "invalid_request_error"
+                                            ]
+                                        },
+                                        "code": {
+                                            "type": "string",
+                                            "enum": [
+                                                "not_found"
+                                            ]
+                                        },
+                                        "message": {
+                                            "type": "string",
+                                            "example": "File with ID \"a1b2c3d4-e5f6-7890-abcd-ef1234567890\" was not found."
+                                        }
+                                    },
+                                    "required": [
+                                        "status_code",
+                                        "type",
+                                        "code",
+                                        "message"
+                                    ],
+                                    "description": "Not Found"
+                                }
+                            }
+                        }
+                    }
+                }
+            },
+            "delete": {
+                "summary": "Delete a file",
+                "description": "Delete a single file by ID. Deleting a folder will delete all of its descendants.\n\nThis endpoint is in beta. We will aim to avoid breaking changes, but small updates may be made as we roll out to more users.\n\nRequired scopes: `file:read-write`, `object_configuration:read`, `record_permission:read`.",
+                "tags": [
+                    "Files"
+                ],
+                "security": [
+                    {
+                        "oauth2": [
+                            "file:read-write",
+                            "object_configuration:read",
+                            "record_permission:read"
+                        ]
+                    }
+                ],
+                "x-mint": {
+                    "metadata": {
+                        "tag": "BETA"
+                    }
+                },
+                "parameters": [
+                    {
+                        "schema": {
+                            "type": "string",
+                            "format": "uuid",
+                            "description": "A UUID which identifies the file to delete.",
+                            "example": "a1b2c3d4-e5f6-7890-abcd-ef1234567890"
+                        },
+                        "required": true,
+                        "name": "file_id",
+                        "in": "path"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Success",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "type": "object",
+                                    "properties": {},
+                                    "description": "Success"
+                                }
+                            }
+                        }
+                    },
+                    "404": {
+                        "description": "Not Found",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "type": "object",
+                                    "properties": {
+                                        "status_code": {
+                                            "type": "number",
+                                            "enum": [
+                                                404
+                                            ]
+                                        },
+                                        "type": {
+                                            "type": "string",
+                                            "enum": [
+                                                "invalid_request_error"
+                                            ]
+                                        },
+                                        "code": {
+                                            "type": "string",
+                                            "enum": [
+                                                "not_found"
+                                            ]
+                                        },
+                                        "message": {
+                                            "type": "string",
+                                            "example": "File with ID \"a1b2c3d4-e5f6-7890-abcd-ef1234567890\" was not found."
+                                        }
+                                    },
+                                    "required": [
+                                        "status_code",
+                                        "type",
+                                        "code",
+                                        "message"
+                                    ],
+                                    "description": "Not Found"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/v2/files/{file_id}/download": {
+            "get": {
+                "summary": "Download a file",
+                "description": "Downloads a file by redirecting to a signed URL.\n\nThis endpoint is in beta. We will aim to avoid breaking changes, but small updates may be made as we roll out to more users.\n\nRequired scopes: `object_configuration:read`, `record_permission:read`, `file:read`.",
+                "tags": [
+                    "Files"
+                ],
+                "security": [
+                    {
+                        "oauth2": [
+                            "object_configuration:read",
+                            "record_permission:read",
+                            "file:read"
+                        ]
+                    }
+                ],
+                "x-mint": {
+                    "metadata": {
+                        "tag": "BETA"
+                    }
+                },
+                "parameters": [
+                    {
+                        "schema": {
+                            "type": "string",
+                            "format": "uuid"
+                        },
+                        "required": true,
+                        "name": "file_id",
+                        "in": "path"
+                    }
+                ],
+                "responses": {
+                    "302": {
+                        "description": "Redirect",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "type": "object",
+                                    "properties": {},
+                                    "description": "Redirect"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/scim/v2/Schemas": {
+            "get": {
+                "summary": "List SCIM schemas",
+                "description": "Lists the SCIM schemas supported by this service provider.\n\nRequired scopes: `scim_management:read`.",
+                "tags": [
+                    "SCIM schemas"
+                ],
+                "security": [
+                    {
+                        "oauth2": [
+                            "scim_management:read"
+                        ]
+                    }
+                ],
+                "x-hidden": true,
+                "responses": {
+                    "200": {
+                        "description": "Success",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "type": "object",
+                                    "properties": {
+                                        "schemas": {
+                                            "type": "array",
+                                            "items": {
+                                                "type": "string"
+                                            }
+                                        },
+                                        "totalResults": {
+                                            "type": "number"
+                                        },
+                                        "startIndex": {
+                                            "type": "number"
+                                        },
+                                        "itemsPerPage": {
+                                            "type": "number"
+                                        },
+                                        "Resources": {
+                                            "type": "array",
+                                            "items": {}
+                                        }
+                                    },
+                                    "required": [
+                                        "schemas",
+                                        "totalResults",
+                                        "startIndex",
+                                        "itemsPerPage",
+                                        "Resources"
+                                    ],
+                                    "description": "Success"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/scim/v2/Users": {
+            "get": {
+                "summary": "List SCIM users",
+                "description": "Lists SCIM users for the workspace.\n\nRequired scopes: `scim_management:read`.",
+                "tags": [
+                    "SCIM users"
+                ],
+                "security": [
+                    {
+                        "oauth2": [
+                            "scim_management:read"
+                        ]
+                    }
+                ],
+                "x-hidden": true,
+                "responses": {
+                    "200": {
+                        "description": "Success",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "type": "object",
+                                    "properties": {
+                                        "schemas": {
+                                            "type": "array",
+                                            "items": {
+                                                "type": "string"
+                                            }
+                                        },
+                                        "totalResults": {
+                                            "type": "number"
+                                        },
+                                        "startIndex": {
+                                            "type": "number"
+                                        },
+                                        "itemsPerPage": {
+                                            "type": "number"
+                                        },
+                                        "Resources": {
+                                            "type": "array",
+                                            "items": {}
+                                        }
+                                    },
+                                    "required": [
+                                        "schemas",
+                                        "totalResults",
+                                        "startIndex",
+                                        "itemsPerPage",
+                                        "Resources"
+                                    ],
+                                    "description": "Success"
+                                }
+                            }
+                        }
+                    }
+                }
+            },
+            "post": {
+                "summary": "Create SCIM user",
+                "description": "Creates a SCIM user in the workspace.\n\nRequired scopes: `scim_management:read-write`.",
+                "tags": [
+                    "SCIM users"
+                ],
+                "security": [
+                    {
+                        "oauth2": [
+                            "scim_management:read-write"
+                        ]
+                    }
+                ],
+                "x-hidden": true,
+                "responses": {
+                    "201": {
+                        "description": "Created",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "type": "object",
+                                    "properties": {
+                                        "schemas": {
+                                            "type": "array",
+                                            "items": {
+                                                "type": "string"
+                                            }
+                                        },
+                                        "id": {
+                                            "type": "string"
+                                        },
+                                        "userName": {
+                                            "type": "string"
+                                        },
+                                        "name": {
+                                            "type": "object",
+                                            "properties": {
+                                                "givenName": {
+                                                    "type": "string"
+                                                },
+                                                "familyName": {
+                                                    "type": "string"
+                                                }
+                                            },
+                                            "required": [
+                                                "givenName",
+                                                "familyName"
+                                            ]
+                                        },
+                                        "emails": {
+                                            "type": "array",
+                                            "items": {
+                                                "type": "object",
+                                                "properties": {
+                                                    "value": {
+                                                        "type": "string"
+                                                    },
+                                                    "primary": {
+                                                        "type": "boolean"
+                                                    },
+                                                    "type": {
+                                                        "type": "string"
+                                                    }
+                                                },
+                                                "required": [
+                                                    "value",
+                                                    "primary"
+                                                ]
+                                            }
+                                        },
+                                        "roles": {
+                                            "type": "array",
+                                            "items": {
+                                                "type": "object",
+                                                "properties": {
+                                                    "value": {
+                                                        "type": "string"
+                                                    },
+                                                    "primary": {
+                                                        "type": "boolean"
+                                                    }
+                                                },
+                                                "required": [
+                                                    "value",
+                                                    "primary"
+                                                ]
+                                            }
+                                        },
+                                        "profileUrl": {
+                                            "type": "string"
+                                        },
+                                        "active": {
+                                            "type": "boolean"
+                                        },
+                                        "meta": {
+                                            "type": "object",
+                                            "properties": {
+                                                "resourceType": {
+                                                    "type": "string"
+                                                },
+                                                "created": {
+                                                    "type": "string"
+                                                },
+                                                "lastModified": {
+                                                    "type": "string"
+                                                }
+                                            },
+                                            "required": [
+                                                "resourceType",
+                                                "created",
+                                                "lastModified"
+                                            ]
+                                        }
+                                    },
+                                    "required": [
+                                        "schemas",
+                                        "id",
+                                        "userName",
+                                        "name",
+                                        "emails",
+                                        "roles",
+                                        "active",
+                                        "meta"
+                                    ],
+                                    "description": "Created"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/scim/v2/Groups": {
+            "get": {
+                "summary": "List SCIM groups",
+                "description": "Lists SCIM groups for the workspace.\n\nRequired scopes: `scim_management:read`.",
+                "tags": [
+                    "SCIM groups"
+                ],
+                "security": [
+                    {
+                        "oauth2": [
+                            "scim_management:read"
+                        ]
+                    }
+                ],
+                "x-hidden": true,
+                "responses": {
+                    "200": {
+                        "description": "Success",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "type": "object",
+                                    "properties": {
+                                        "schemas": {
+                                            "type": "array",
+                                            "items": {
+                                                "type": "string"
+                                            }
+                                        },
+                                        "totalResults": {
+                                            "type": "number"
+                                        },
+                                        "startIndex": {
+                                            "type": "number"
+                                        },
+                                        "itemsPerPage": {
+                                            "type": "number"
+                                        },
+                                        "Resources": {
+                                            "type": "array",
+                                            "items": {}
+                                        }
+                                    },
+                                    "required": [
+                                        "schemas",
+                                        "totalResults",
+                                        "startIndex",
+                                        "itemsPerPage",
+                                        "Resources"
+                                    ],
+                                    "description": "Success"
+                                }
+                            }
+                        }
+                    }
+                }
+            },
+            "post": {
+                "summary": "Create SCIM group",
+                "description": "Creates a SCIM group for the workspace.\n\nRequired scopes: `scim_management:read-write`.",
+                "tags": [
+                    "SCIM groups"
+                ],
+                "security": [
+                    {
+                        "oauth2": [
+                            "scim_management:read-write"
+                        ]
+                    }
+                ],
+                "x-hidden": true,
+                "responses": {
+                    "201": {
+                        "description": "Created",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "type": "object",
+                                    "properties": {
+                                        "schemas": {
+                                            "type": "array",
+                                            "items": {
+                                                "type": "string"
+                                            }
+                                        },
+                                        "id": {
+                                            "type": "string"
+                                        },
+                                        "displayName": {
+                                            "type": "string"
+                                        },
+                                        "members": {
+                                            "type": "array",
+                                            "items": {
+                                                "type": "object",
+                                                "properties": {
+                                                    "value": {
+                                                        "type": "string"
+                                                    },
+                                                    "$ref": {
+                                                        "type": "string"
+                                                    },
+                                                    "display": {
+                                                        "type": "string"
+                                                    }
+                                                },
+                                                "required": [
+                                                    "value",
+                                                    "$ref"
+                                                ]
+                                            }
+                                        },
+                                        "meta": {
+                                            "type": "object",
+                                            "properties": {
+                                                "resourceType": {
+                                                    "type": "string"
+                                                },
+                                                "created": {
+                                                    "type": "string"
+                                                },
+                                                "lastModified": {
+                                                    "type": "string"
+                                                }
+                                            },
+                                            "required": [
+                                                "resourceType",
+                                                "created",
+                                                "lastModified"
+                                            ]
+                                        }
+                                    },
+                                    "required": [
+                                        "schemas",
+                                        "id",
+                                        "displayName",
+                                        "members",
+                                        "meta"
+                                    ],
+                                    "description": "Created"
                                 }
                             }
                         }

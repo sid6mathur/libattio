@@ -244,24 +244,7 @@ import (
 )
 
 func main() {
-	v2NotesPostRequest := *libattio.NewV2NotesPostRequest(*libattio.NewV2NotesPostRequestData("people", "891dcbfc-9141-415d-9b2a-2238a6cc012d", "Initial Prospecting Call Summary", "Format_example", "# Meeting Recap: Q4 Planning
-
-**Date:** 2023-10-26
-**Attendees:** Alex, Jamie, Casey
-
-## Key Discussion Points
-
-- Reviewed Q3 performance metrics.
-- Brainstormed key initiatives for Q4.
-- Discussed budget allocation for ==Project Phoenix==.
-
-## Action Items
-
-1. Alex to finalize Q4 roadmap by EOD Friday.
-2. Jamie to schedule follow-up with [Marketing Team](https://app.attio.com/teams/marketing).
-3. Casey to draft initial budget for ~~Project Chimera~~ (now deferred).
-
-*Next steps: Review draft roadmap next week.*")) // V2NotesPostRequest | 
+	v2NotesPostRequest := *libattio.NewV2NotesPostRequest(*libattio.NewV2NotesPostRequestData("people", "891dcbfc-9141-415d-9b2a-2238a6cc012d", "Initial Prospecting Call Summary", "Format_example", "# Meeting Recap: Q4 Planning  **Date:** 2023-10-26 **Attendees:** Alex, Jamie, Casey  ## Key Discussion Points  - Reviewed Q3 performance metrics. - Brainstormed key initiatives for Q4. - Discussed budget allocation for ==Project Phoenix==.  ## Action Items  1. Alex to finalize Q4 roadmap by EOD Friday. 2. Jamie to schedule follow-up with [Marketing Team](https://app.attio.com/teams/marketing). 3. Casey to draft initial budget for ~~Project Chimera~~ (now deferred).  *Next steps: Review draft roadmap next week.*")) // V2NotesPostRequest | 
 
 	configuration := libattio.NewConfiguration()
 	apiClient := libattio.NewAPIClient(configuration)
