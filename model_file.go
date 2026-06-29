@@ -30,8 +30,8 @@ type File struct {
 	// The ID of the record the file is linked to.
 	RecordId string `json:"record_id"`
 	// The storage provider for this file entry.
-	StorageProvider string             `json:"storage_provider"`
-	CreatedByActor  FileCreatedByActor `json:"created_by_actor"`
+	StorageProvider string                                                                                 `json:"storage_provider"`
+	CreatedByActor  V2ObjectsObjectRecordsQueryPost200ResponseDataInnerValuesValueInnerAnyOfCreatedByActor `json:"created_by_actor"`
 	// Timestamp representing when the file entry was created.
 	CreatedAt string `json:"created_at"`
 	// The type of file entry.
@@ -52,7 +52,7 @@ type _File File
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewFile(id FileId, objectId string, objectSlug string, recordId string, storageProvider string, createdByActor FileCreatedByActor, createdAt string, fileType string, name string, contentType NullableString, contentSize NullableFloat32, parentFolderId NullableString) *File {
+func NewFile(id FileId, objectId string, objectSlug string, recordId string, storageProvider string, createdByActor V2ObjectsObjectRecordsQueryPost200ResponseDataInnerValuesValueInnerAnyOfCreatedByActor, createdAt string, fileType string, name string, contentType NullableString, contentSize NullableFloat32, parentFolderId NullableString) *File {
 	this := File{}
 	this.Id = id
 	this.ObjectId = objectId
@@ -198,9 +198,9 @@ func (o *File) SetStorageProvider(v string) {
 }
 
 // GetCreatedByActor returns the CreatedByActor field value
-func (o *File) GetCreatedByActor() FileCreatedByActor {
+func (o *File) GetCreatedByActor() V2ObjectsObjectRecordsQueryPost200ResponseDataInnerValuesValueInnerAnyOfCreatedByActor {
 	if o == nil {
-		var ret FileCreatedByActor
+		var ret V2ObjectsObjectRecordsQueryPost200ResponseDataInnerValuesValueInnerAnyOfCreatedByActor
 		return ret
 	}
 
@@ -209,7 +209,7 @@ func (o *File) GetCreatedByActor() FileCreatedByActor {
 
 // GetCreatedByActorOk returns a tuple with the CreatedByActor field value
 // and a boolean to check if the value has been set.
-func (o *File) GetCreatedByActorOk() (*FileCreatedByActor, bool) {
+func (o *File) GetCreatedByActorOk() (*V2ObjectsObjectRecordsQueryPost200ResponseDataInnerValuesValueInnerAnyOfCreatedByActor, bool) {
 	if o == nil {
 		return nil, false
 	}
@@ -217,7 +217,7 @@ func (o *File) GetCreatedByActorOk() (*FileCreatedByActor, bool) {
 }
 
 // SetCreatedByActor sets field value
-func (o *File) SetCreatedByActor(v FileCreatedByActor) {
+func (o *File) SetCreatedByActor(v V2ObjectsObjectRecordsQueryPost200ResponseDataInnerValuesValueInnerAnyOfCreatedByActor) {
 	o.CreatedByActor = v
 }
 

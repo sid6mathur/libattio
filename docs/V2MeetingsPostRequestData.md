@@ -7,17 +7,17 @@ Name | Type | Description | Notes
 **Title** | **string** | The title of the meeting. | 
 **Description** | **string** | The description of the meeting. | 
 **Start** | [**V2MeetingsPostRequestDataStart**](V2MeetingsPostRequestDataStart.md) |  | 
-**End** | [**V2MeetingsPostRequestDataEnd**](V2MeetingsPostRequestDataEnd.md) |  | 
+**End** | [**V2MeetingsPostRequestDataStart**](V2MeetingsPostRequestDataStart.md) |  | 
 **IsAllDay** | **bool** | Whether or not the meeting is an all day event. All day events may span multiple days. When true, start and end must use date format. When false, start and end must use datetime with timezone format. | 
 **Participants** | [**[]V2MeetingsPostRequestDataParticipantsInner**](V2MeetingsPostRequestDataParticipantsInner.md) |  | 
-**LinkedRecords** | Pointer to [**[]V2MeetingsPostRequestDataLinkedRecordsInner**](V2MeetingsPostRequestDataLinkedRecordsInner.md) | A list of records to link to the meeting. Each record is specified by its object (slug or UUID) and record ID (UUID). Attio will automatically link the meeting participants&#39; companies to the meeting; this behavior is asynchronous. | [optional] 
+**LinkedRecords** | Pointer to [**[]V2CommentsPostRequestDataAnyOf1Record**](V2CommentsPostRequestDataAnyOf1Record.md) | A list of records to link to the meeting. Each record is specified by its object (slug or UUID) and record ID (UUID). Attio will automatically link the meeting participants&#39; companies to the meeting; this behavior is asynchronous. | [optional] 
 **ExternalRef** | [**V2MeetingsPostRequestDataExternalRef**](V2MeetingsPostRequestDataExternalRef.md) |  | 
 
 ## Methods
 
 ### NewV2MeetingsPostRequestData
 
-`func NewV2MeetingsPostRequestData(title string, description string, start V2MeetingsPostRequestDataStart, end V2MeetingsPostRequestDataEnd, isAllDay bool, participants []V2MeetingsPostRequestDataParticipantsInner, externalRef V2MeetingsPostRequestDataExternalRef, ) *V2MeetingsPostRequestData`
+`func NewV2MeetingsPostRequestData(title string, description string, start V2MeetingsPostRequestDataStart, end V2MeetingsPostRequestDataStart, isAllDay bool, participants []V2MeetingsPostRequestDataParticipantsInner, externalRef V2MeetingsPostRequestDataExternalRef, ) *V2MeetingsPostRequestData`
 
 NewV2MeetingsPostRequestData instantiates a new V2MeetingsPostRequestData object
 This constructor will assign default values to properties that have it defined,
@@ -94,20 +94,20 @@ SetStart sets Start field to given value.
 
 ### GetEnd
 
-`func (o *V2MeetingsPostRequestData) GetEnd() V2MeetingsPostRequestDataEnd`
+`func (o *V2MeetingsPostRequestData) GetEnd() V2MeetingsPostRequestDataStart`
 
 GetEnd returns the End field if non-nil, zero value otherwise.
 
 ### GetEndOk
 
-`func (o *V2MeetingsPostRequestData) GetEndOk() (*V2MeetingsPostRequestDataEnd, bool)`
+`func (o *V2MeetingsPostRequestData) GetEndOk() (*V2MeetingsPostRequestDataStart, bool)`
 
 GetEndOk returns a tuple with the End field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetEnd
 
-`func (o *V2MeetingsPostRequestData) SetEnd(v V2MeetingsPostRequestDataEnd)`
+`func (o *V2MeetingsPostRequestData) SetEnd(v V2MeetingsPostRequestDataStart)`
 
 SetEnd sets End field to given value.
 
@@ -154,20 +154,20 @@ SetParticipants sets Participants field to given value.
 
 ### GetLinkedRecords
 
-`func (o *V2MeetingsPostRequestData) GetLinkedRecords() []V2MeetingsPostRequestDataLinkedRecordsInner`
+`func (o *V2MeetingsPostRequestData) GetLinkedRecords() []V2CommentsPostRequestDataAnyOf1Record`
 
 GetLinkedRecords returns the LinkedRecords field if non-nil, zero value otherwise.
 
 ### GetLinkedRecordsOk
 
-`func (o *V2MeetingsPostRequestData) GetLinkedRecordsOk() (*[]V2MeetingsPostRequestDataLinkedRecordsInner, bool)`
+`func (o *V2MeetingsPostRequestData) GetLinkedRecordsOk() (*[]V2CommentsPostRequestDataAnyOf1Record, bool)`
 
 GetLinkedRecordsOk returns a tuple with the LinkedRecords field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetLinkedRecords
 
-`func (o *V2MeetingsPostRequestData) SetLinkedRecords(v []V2MeetingsPostRequestDataLinkedRecordsInner)`
+`func (o *V2MeetingsPostRequestData) SetLinkedRecords(v []V2CommentsPostRequestDataAnyOf1Record)`
 
 SetLinkedRecords sets LinkedRecords field to given value.
 

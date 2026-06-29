@@ -10,14 +10,14 @@ Name | Type | Description | Notes
 **IsCompleted** | **bool** | Whether the task has been completed. | 
 **LinkedRecords** | [**[]TaskLinkedRecordsInner**](TaskLinkedRecordsInner.md) | Records linked to the task. Creating record links within task content text is not possible via the API at present. | 
 **Assignees** | [**[]TaskAssigneesInner**](TaskAssigneesInner.md) | Workspace members assigned to this task. | 
-**CreatedByActor** | [**TaskCreatedByActor**](TaskCreatedByActor.md) |  | 
+**CreatedByActor** | [**V2ObjectsObjectRecordsQueryPost200ResponseDataInnerValuesValueInnerAnyOfCreatedByActor**](V2ObjectsObjectRecordsQueryPost200ResponseDataInnerValuesValueInnerAnyOfCreatedByActor.md) |  | 
 **CreatedAt** | **string** | When the task was created. | 
 
 ## Methods
 
 ### NewTask
 
-`func NewTask(id TaskId, contentPlaintext string, deadlineAt NullableString, isCompleted bool, linkedRecords []TaskLinkedRecordsInner, assignees []TaskAssigneesInner, createdByActor TaskCreatedByActor, createdAt string, ) *Task`
+`func NewTask(id TaskId, contentPlaintext string, deadlineAt NullableString, isCompleted bool, linkedRecords []TaskLinkedRecordsInner, assignees []TaskAssigneesInner, createdByActor V2ObjectsObjectRecordsQueryPost200ResponseDataInnerValuesValueInnerAnyOfCreatedByActor, createdAt string, ) *Task`
 
 NewTask instantiates a new Task object
 This constructor will assign default values to properties that have it defined,
@@ -164,20 +164,20 @@ SetAssignees sets Assignees field to given value.
 
 ### GetCreatedByActor
 
-`func (o *Task) GetCreatedByActor() TaskCreatedByActor`
+`func (o *Task) GetCreatedByActor() V2ObjectsObjectRecordsQueryPost200ResponseDataInnerValuesValueInnerAnyOfCreatedByActor`
 
 GetCreatedByActor returns the CreatedByActor field if non-nil, zero value otherwise.
 
 ### GetCreatedByActorOk
 
-`func (o *Task) GetCreatedByActorOk() (*TaskCreatedByActor, bool)`
+`func (o *Task) GetCreatedByActorOk() (*V2ObjectsObjectRecordsQueryPost200ResponseDataInnerValuesValueInnerAnyOfCreatedByActor, bool)`
 
 GetCreatedByActorOk returns a tuple with the CreatedByActor field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetCreatedByActor
 
-`func (o *Task) SetCreatedByActor(v TaskCreatedByActor)`
+`func (o *Task) SetCreatedByActor(v V2ObjectsObjectRecordsQueryPost200ResponseDataInnerValuesValueInnerAnyOfCreatedByActor)`
 
 SetCreatedByActor sets CreatedByActor field to given value.
 

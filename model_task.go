@@ -32,8 +32,8 @@ type Task struct {
 	// Records linked to the task. Creating record links within task content text is not possible via the API at present.
 	LinkedRecords []TaskLinkedRecordsInner `json:"linked_records"`
 	// Workspace members assigned to this task.
-	Assignees      []TaskAssigneesInner `json:"assignees"`
-	CreatedByActor TaskCreatedByActor   `json:"created_by_actor"`
+	Assignees      []TaskAssigneesInner                                                                   `json:"assignees"`
+	CreatedByActor V2ObjectsObjectRecordsQueryPost200ResponseDataInnerValuesValueInnerAnyOfCreatedByActor `json:"created_by_actor"`
 	// When the task was created.
 	CreatedAt string `json:"created_at"`
 }
@@ -44,7 +44,7 @@ type _Task Task
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewTask(id TaskId, contentPlaintext string, deadlineAt NullableString, isCompleted bool, linkedRecords []TaskLinkedRecordsInner, assignees []TaskAssigneesInner, createdByActor TaskCreatedByActor, createdAt string) *Task {
+func NewTask(id TaskId, contentPlaintext string, deadlineAt NullableString, isCompleted bool, linkedRecords []TaskLinkedRecordsInner, assignees []TaskAssigneesInner, createdByActor V2ObjectsObjectRecordsQueryPost200ResponseDataInnerValuesValueInnerAnyOfCreatedByActor, createdAt string) *Task {
 	this := Task{}
 	this.Id = id
 	this.ContentPlaintext = contentPlaintext
@@ -212,9 +212,9 @@ func (o *Task) SetAssignees(v []TaskAssigneesInner) {
 }
 
 // GetCreatedByActor returns the CreatedByActor field value
-func (o *Task) GetCreatedByActor() TaskCreatedByActor {
+func (o *Task) GetCreatedByActor() V2ObjectsObjectRecordsQueryPost200ResponseDataInnerValuesValueInnerAnyOfCreatedByActor {
 	if o == nil {
-		var ret TaskCreatedByActor
+		var ret V2ObjectsObjectRecordsQueryPost200ResponseDataInnerValuesValueInnerAnyOfCreatedByActor
 		return ret
 	}
 
@@ -223,7 +223,7 @@ func (o *Task) GetCreatedByActor() TaskCreatedByActor {
 
 // GetCreatedByActorOk returns a tuple with the CreatedByActor field value
 // and a boolean to check if the value has been set.
-func (o *Task) GetCreatedByActorOk() (*TaskCreatedByActor, bool) {
+func (o *Task) GetCreatedByActorOk() (*V2ObjectsObjectRecordsQueryPost200ResponseDataInnerValuesValueInnerAnyOfCreatedByActor, bool) {
 	if o == nil {
 		return nil, false
 	}
@@ -231,7 +231,7 @@ func (o *Task) GetCreatedByActorOk() (*TaskCreatedByActor, bool) {
 }
 
 // SetCreatedByActor sets field value
-func (o *Task) SetCreatedByActor(v TaskCreatedByActor) {
+func (o *Task) SetCreatedByActor(v V2ObjectsObjectRecordsQueryPost200ResponseDataInnerValuesValueInnerAnyOfCreatedByActor) {
 	o.CreatedByActor = v
 }
 

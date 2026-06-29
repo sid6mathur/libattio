@@ -121,7 +121,7 @@ func (a *CallRecordingsAPIService) V2MeetingsMeetingIdCallRecordingsCallRecordin
 			error: localVarHTTPResponse.Status,
 		}
 		if localVarHTTPResponse.StatusCode == 404 {
-			var v V2MeetingsMeetingIdCallRecordingsCallRecordingIdDelete404Response
+			var v V2ObjectsObjectGet404Response
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -243,7 +243,7 @@ func (a *CallRecordingsAPIService) V2MeetingsMeetingIdCallRecordingsCallRecordin
 			error: localVarHTTPResponse.Status,
 		}
 		if localVarHTTPResponse.StatusCode == 404 {
-			var v V2MeetingsMeetingIdCallRecordingsCallRecordingIdGet404Response
+			var v V2ObjectsObjectGet404Response
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -498,7 +498,7 @@ func (a *CallRecordingsAPIService) V2MeetingsMeetingIdCallRecordingsPostExecute(
 			error: localVarHTTPResponse.Status,
 		}
 		if localVarHTTPResponse.StatusCode == 400 {
-			var v V2MeetingsMeetingIdCallRecordingsPost400Response
+			var v V2ObjectsObjectPatch400Response
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -520,7 +520,7 @@ func (a *CallRecordingsAPIService) V2MeetingsMeetingIdCallRecordingsPostExecute(
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 404 {
-			var v V2MeetingsMeetingIdCallRecordingsPost404Response
+			var v V2ObjectsObjectGet404Response
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()

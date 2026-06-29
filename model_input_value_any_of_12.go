@@ -22,8 +22,8 @@ var _ MappedNullable = &InputValueAnyOf12{}
 
 // InputValueAnyOf12 struct for InputValueAnyOf12
 type InputValueAnyOf12 struct {
-	// The UUID or select option title identifying the selected select option.
-	Option string `json:"option"`
+	// A timestamp value represents a single, universal moment in time using an ISO 8601 formatted string. This means that a timestamp consists of a date, a time (with nanosecond precision), and a time zone. Attio will coerce timestamps which do not provide full nanosecond precision and UTC is assumed if no time zone is provided. For example, \"2023\", \"2023-01\", \"2023-01-02\", \"2023-01-02T13:00\", \"2023-01-02T13:00:00\", and \"2023-01-02T13:00:00.000000000\" will all be coerced to \"2023-01-02T13:00:00.000000000Z\". Timestamps are always returned in UTC. For example, writing a timestamp value using the string \"2023-01-02T13:00:00.000000000+02:00\" will result in the value \"2023-01-02T11:00:00.000000000Z\" being returned. The maximum date is \"9999-12-31T23:59:59.999999999Z\".
+	Value string `json:"value"`
 }
 
 type _InputValueAnyOf12 InputValueAnyOf12
@@ -32,9 +32,9 @@ type _InputValueAnyOf12 InputValueAnyOf12
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewInputValueAnyOf12(option string) *InputValueAnyOf12 {
+func NewInputValueAnyOf12(value string) *InputValueAnyOf12 {
 	this := InputValueAnyOf12{}
-	this.Option = option
+	this.Value = value
 	return &this
 }
 
@@ -46,28 +46,28 @@ func NewInputValueAnyOf12WithDefaults() *InputValueAnyOf12 {
 	return &this
 }
 
-// GetOption returns the Option field value
-func (o *InputValueAnyOf12) GetOption() string {
+// GetValue returns the Value field value
+func (o *InputValueAnyOf12) GetValue() string {
 	if o == nil {
 		var ret string
 		return ret
 	}
 
-	return o.Option
+	return o.Value
 }
 
-// GetOptionOk returns a tuple with the Option field value
+// GetValueOk returns a tuple with the Value field value
 // and a boolean to check if the value has been set.
-func (o *InputValueAnyOf12) GetOptionOk() (*string, bool) {
+func (o *InputValueAnyOf12) GetValueOk() (*string, bool) {
 	if o == nil {
 		return nil, false
 	}
-	return &o.Option, true
+	return &o.Value, true
 }
 
-// SetOption sets field value
-func (o *InputValueAnyOf12) SetOption(v string) {
-	o.Option = v
+// SetValue sets field value
+func (o *InputValueAnyOf12) SetValue(v string) {
+	o.Value = v
 }
 
 func (o InputValueAnyOf12) MarshalJSON() ([]byte, error) {
@@ -80,7 +80,7 @@ func (o InputValueAnyOf12) MarshalJSON() ([]byte, error) {
 
 func (o InputValueAnyOf12) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
-	toSerialize["option"] = o.Option
+	toSerialize["value"] = o.Value
 	return toSerialize, nil
 }
 
@@ -89,7 +89,7 @@ func (o *InputValueAnyOf12) UnmarshalJSON(data []byte) (err error) {
 	// by unmarshalling the object into a generic map with string keys and checking
 	// that every required field exists as a key in the generic map.
 	requiredProperties := []string{
-		"option",
+		"value",
 	}
 
 	// defaultValueFuncMap captures the default values for required properties.

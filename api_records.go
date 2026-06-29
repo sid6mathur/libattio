@@ -126,7 +126,7 @@ func (a *RecordsAPIService) V2ObjectsObjectRecordsPostExecute(r ApiV2ObjectsObje
 			error: localVarHTTPResponse.Status,
 		}
 		if localVarHTTPResponse.StatusCode == 400 {
-			var v V2ObjectsObjectRecordsPost400Response
+			var v V2TargetIdentifierAttributesAttributeOptionsOptionPatch400Response
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -276,7 +276,7 @@ func (a *RecordsAPIService) V2ObjectsObjectRecordsPutExecute(r ApiV2ObjectsObjec
 			error: localVarHTTPResponse.Status,
 		}
 		if localVarHTTPResponse.StatusCode == 400 {
-			var v V2ObjectsObjectRecordsPut400Response
+			var v V2TargetIdentifierAttributesAttributeOptionsOptionPatch400Response
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -425,7 +425,7 @@ func (a *RecordsAPIService) V2ObjectsObjectRecordsQueryPostExecute(r ApiV2Object
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 404 {
-			var v V2ObjectsObjectRecordsQueryPost404Response
+			var v V2ObjectsObjectGet404Response
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -580,7 +580,7 @@ func (a *RecordsAPIService) V2ObjectsObjectRecordsRecordIdAttributesAttributeVal
 			error: localVarHTTPResponse.Status,
 		}
 		if localVarHTTPResponse.StatusCode == 400 {
-			var v V2ObjectsObjectRecordsRecordIdAttributesAttributeValuesGet400Response
+			var v V2ObjectsObjectPatch400Response
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -591,7 +591,7 @@ func (a *RecordsAPIService) V2ObjectsObjectRecordsRecordIdAttributesAttributeVal
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 404 {
-			var v V2TargetIdentifierAttributesAttributeGet404Response
+			var v V2ObjectsObjectGet404Response
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -711,7 +711,7 @@ func (a *RecordsAPIService) V2ObjectsObjectRecordsRecordIdDeleteExecute(r ApiV2O
 			error: localVarHTTPResponse.Status,
 		}
 		if localVarHTTPResponse.StatusCode == 404 {
-			var v V2ObjectsObjectRecordsRecordIdGet404Response
+			var v V2ObjectsObjectGet404Response
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -959,7 +959,7 @@ func (a *RecordsAPIService) V2ObjectsObjectRecordsRecordIdGetExecute(r ApiV2Obje
 			error: localVarHTTPResponse.Status,
 		}
 		if localVarHTTPResponse.StatusCode == 404 {
-			var v V2ObjectsObjectRecordsRecordIdGet404Response
+			var v V2ObjectsObjectGet404Response
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -1370,7 +1370,7 @@ func (a *RecordsAPIService) V2ObjectsRecordsSearchPostExecute(r ApiV2ObjectsReco
 			error: localVarHTTPResponse.Status,
 		}
 		if localVarHTTPResponse.StatusCode == 400 {
-			var v V2ObjectsRecordsSearchPost400Response
+			var v V2TargetIdentifierAttributesAttributeOptionsOptionPatch400Response
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()

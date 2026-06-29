@@ -10,7 +10,7 @@ Name | Type | Description | Notes
 **IsRequired** | Pointer to **bool** | When &#x60;is_required&#x60; is &#x60;true&#x60;, new records/entries must have a value for this attribute. If &#x60;false&#x60;, values may be &#x60;null&#x60;. This value does not affect existing data and you do not need to backfill &#x60;null&#x60; values if changing &#x60;is_required&#x60; from &#x60;false&#x60; to &#x60;true&#x60;. | [optional] 
 **IsUnique** | Pointer to **bool** | Whether or not new values for this attribute must be unique. Uniqueness restrictions are only applied to new data and do not apply retroactively to previously created data. | [optional] 
 **DefaultValue** | Pointer to [**NullableV2TargetIdentifierAttributesPostRequestDataDefaultValue**](V2TargetIdentifierAttributesPostRequestDataDefaultValue.md) |  | [optional] 
-**Config** | Pointer to [**V2TargetIdentifierAttributesAttributePatchRequestDataConfig**](V2TargetIdentifierAttributesAttributePatchRequestDataConfig.md) |  | [optional] 
+**Config** | Pointer to [**V2TargetIdentifierAttributesPostRequestDataConfig**](V2TargetIdentifierAttributesPostRequestDataConfig.md) |  | [optional] 
 **IsArchived** | Pointer to **bool** | Whether the attribute has been archived or not. See our [archiving guide](/docs/archiving-vs-deleting) for more information on archiving. | [optional] 
 
 ## Methods
@@ -204,20 +204,20 @@ HasDefaultValue returns a boolean if a field has been set.
 UnsetDefaultValue ensures that no value is present for DefaultValue, not even an explicit nil
 ### GetConfig
 
-`func (o *V2TargetIdentifierAttributesAttributePatchRequestData) GetConfig() V2TargetIdentifierAttributesAttributePatchRequestDataConfig`
+`func (o *V2TargetIdentifierAttributesAttributePatchRequestData) GetConfig() V2TargetIdentifierAttributesPostRequestDataConfig`
 
 GetConfig returns the Config field if non-nil, zero value otherwise.
 
 ### GetConfigOk
 
-`func (o *V2TargetIdentifierAttributesAttributePatchRequestData) GetConfigOk() (*V2TargetIdentifierAttributesAttributePatchRequestDataConfig, bool)`
+`func (o *V2TargetIdentifierAttributesAttributePatchRequestData) GetConfigOk() (*V2TargetIdentifierAttributesPostRequestDataConfig, bool)`
 
 GetConfigOk returns a tuple with the Config field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetConfig
 
-`func (o *V2TargetIdentifierAttributesAttributePatchRequestData) SetConfig(v V2TargetIdentifierAttributesAttributePatchRequestDataConfig)`
+`func (o *V2TargetIdentifierAttributesAttributePatchRequestData) SetConfig(v V2TargetIdentifierAttributesPostRequestDataConfig)`
 
 SetConfig sets Config field to given value.
 

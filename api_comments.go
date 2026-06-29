@@ -115,7 +115,7 @@ func (a *CommentsAPIService) V2CommentsCommentIdDeleteExecute(r ApiV2CommentsCom
 			error: localVarHTTPResponse.Status,
 		}
 		if localVarHTTPResponse.StatusCode == 404 {
-			var v V2CommentsCommentIdDelete404Response
+			var v V2ObjectsObjectGet404Response
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -235,7 +235,7 @@ func (a *CommentsAPIService) V2CommentsCommentIdGetExecute(r ApiV2CommentsCommen
 			error: localVarHTTPResponse.Status,
 		}
 		if localVarHTTPResponse.StatusCode == 404 {
-			var v V2CommentsCommentIdGet404Response
+			var v V2ObjectsObjectGet404Response
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()

@@ -23,8 +23,6 @@ type InputValue struct {
 	InputValueAnyOf10                                                                    *InputValueAnyOf10
 	InputValueAnyOf11                                                                    *InputValueAnyOf11
 	InputValueAnyOf12                                                                    *InputValueAnyOf12
-	InputValueAnyOf13                                                                    *InputValueAnyOf13
-	InputValueAnyOf14                                                                    *InputValueAnyOf14
 	InputValueAnyOf2                                                                     *InputValueAnyOf2
 	InputValueAnyOf3                                                                     *InputValueAnyOf3
 	InputValueAnyOf4                                                                     *InputValueAnyOf4
@@ -105,32 +103,6 @@ func (dst *InputValue) UnmarshalJSON(data []byte) error {
 		}
 	} else {
 		dst.InputValueAnyOf12 = nil
-	}
-
-	// try to unmarshal JSON data into InputValueAnyOf13
-	err = json.Unmarshal(data, &dst.InputValueAnyOf13)
-	if err == nil {
-		jsonInputValueAnyOf13, _ := json.Marshal(dst.InputValueAnyOf13)
-		if string(jsonInputValueAnyOf13) == "{}" { // empty struct
-			dst.InputValueAnyOf13 = nil
-		} else {
-			return nil // data stored in dst.InputValueAnyOf13, return on the first match
-		}
-	} else {
-		dst.InputValueAnyOf13 = nil
-	}
-
-	// try to unmarshal JSON data into InputValueAnyOf14
-	err = json.Unmarshal(data, &dst.InputValueAnyOf14)
-	if err == nil {
-		jsonInputValueAnyOf14, _ := json.Marshal(dst.InputValueAnyOf14)
-		if string(jsonInputValueAnyOf14) == "{}" { // empty struct
-			dst.InputValueAnyOf14 = nil
-		} else {
-			return nil // data stored in dst.InputValueAnyOf14, return on the first match
-		}
-	} else {
-		dst.InputValueAnyOf14 = nil
 	}
 
 	// try to unmarshal JSON data into InputValueAnyOf2
@@ -312,14 +284,6 @@ func (src InputValue) MarshalJSON() ([]byte, error) {
 
 	if src.InputValueAnyOf12 != nil {
 		return json.Marshal(&src.InputValueAnyOf12)
-	}
-
-	if src.InputValueAnyOf13 != nil {
-		return json.Marshal(&src.InputValueAnyOf13)
-	}
-
-	if src.InputValueAnyOf14 != nil {
-		return json.Marshal(&src.InputValueAnyOf14)
 	}
 
 	if src.InputValueAnyOf2 != nil {

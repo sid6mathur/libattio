@@ -30,11 +30,11 @@ type Comment struct {
 	Entry            CommentEntry  `json:"entry"`
 	Record           CommentRecord `json:"record"`
 	// Whether the comment is resolved.
-	ResolvedAt NullableString    `json:"resolved_at"`
-	ResolvedBy CommentResolvedBy `json:"resolved_by"`
+	ResolvedAt NullableString                                                                         `json:"resolved_at"`
+	ResolvedBy V2ObjectsObjectRecordsQueryPost200ResponseDataInnerValuesValueInnerAnyOfCreatedByActor `json:"resolved_by"`
 	// When the note was created.
-	CreatedAt string        `json:"created_at"`
-	Author    CommentAuthor `json:"author"`
+	CreatedAt string                                                                                 `json:"created_at"`
+	Author    V2ObjectsObjectRecordsQueryPost200ResponseDataInnerValuesValueInnerAnyOfCreatedByActor `json:"author"`
 }
 
 type _Comment Comment
@@ -43,7 +43,7 @@ type _Comment Comment
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewComment(id CommentId, threadId string, contentPlaintext string, entry CommentEntry, record CommentRecord, resolvedAt NullableString, resolvedBy CommentResolvedBy, createdAt string, author CommentAuthor) *Comment {
+func NewComment(id CommentId, threadId string, contentPlaintext string, entry CommentEntry, record CommentRecord, resolvedAt NullableString, resolvedBy V2ObjectsObjectRecordsQueryPost200ResponseDataInnerValuesValueInnerAnyOfCreatedByActor, createdAt string, author V2ObjectsObjectRecordsQueryPost200ResponseDataInnerValuesValueInnerAnyOfCreatedByActor) *Comment {
 	this := Comment{}
 	this.Id = id
 	this.ThreadId = threadId
@@ -212,9 +212,9 @@ func (o *Comment) SetResolvedAt(v string) {
 }
 
 // GetResolvedBy returns the ResolvedBy field value
-func (o *Comment) GetResolvedBy() CommentResolvedBy {
+func (o *Comment) GetResolvedBy() V2ObjectsObjectRecordsQueryPost200ResponseDataInnerValuesValueInnerAnyOfCreatedByActor {
 	if o == nil {
-		var ret CommentResolvedBy
+		var ret V2ObjectsObjectRecordsQueryPost200ResponseDataInnerValuesValueInnerAnyOfCreatedByActor
 		return ret
 	}
 
@@ -223,7 +223,7 @@ func (o *Comment) GetResolvedBy() CommentResolvedBy {
 
 // GetResolvedByOk returns a tuple with the ResolvedBy field value
 // and a boolean to check if the value has been set.
-func (o *Comment) GetResolvedByOk() (*CommentResolvedBy, bool) {
+func (o *Comment) GetResolvedByOk() (*V2ObjectsObjectRecordsQueryPost200ResponseDataInnerValuesValueInnerAnyOfCreatedByActor, bool) {
 	if o == nil {
 		return nil, false
 	}
@@ -231,7 +231,7 @@ func (o *Comment) GetResolvedByOk() (*CommentResolvedBy, bool) {
 }
 
 // SetResolvedBy sets field value
-func (o *Comment) SetResolvedBy(v CommentResolvedBy) {
+func (o *Comment) SetResolvedBy(v V2ObjectsObjectRecordsQueryPost200ResponseDataInnerValuesValueInnerAnyOfCreatedByActor) {
 	o.ResolvedBy = v
 }
 
@@ -260,9 +260,9 @@ func (o *Comment) SetCreatedAt(v string) {
 }
 
 // GetAuthor returns the Author field value
-func (o *Comment) GetAuthor() CommentAuthor {
+func (o *Comment) GetAuthor() V2ObjectsObjectRecordsQueryPost200ResponseDataInnerValuesValueInnerAnyOfCreatedByActor {
 	if o == nil {
-		var ret CommentAuthor
+		var ret V2ObjectsObjectRecordsQueryPost200ResponseDataInnerValuesValueInnerAnyOfCreatedByActor
 		return ret
 	}
 
@@ -271,7 +271,7 @@ func (o *Comment) GetAuthor() CommentAuthor {
 
 // GetAuthorOk returns a tuple with the Author field value
 // and a boolean to check if the value has been set.
-func (o *Comment) GetAuthorOk() (*CommentAuthor, bool) {
+func (o *Comment) GetAuthorOk() (*V2ObjectsObjectRecordsQueryPost200ResponseDataInnerValuesValueInnerAnyOfCreatedByActor, bool) {
 	if o == nil {
 		return nil, false
 	}
@@ -279,7 +279,7 @@ func (o *Comment) GetAuthorOk() (*CommentAuthor, bool) {
 }
 
 // SetAuthor sets field value
-func (o *Comment) SetAuthor(v CommentAuthor) {
+func (o *Comment) SetAuthor(v V2ObjectsObjectRecordsQueryPost200ResponseDataInnerValuesValueInnerAnyOfCreatedByActor) {
 	o.Author = v
 }
 

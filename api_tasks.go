@@ -289,7 +289,7 @@ func (a *TasksAPIService) V2TasksPostExecute(r ApiV2TasksPostRequest) (*V2TasksP
 			error: localVarHTTPResponse.Status,
 		}
 		if localVarHTTPResponse.StatusCode == 400 {
-			var v V2TasksPost400Response
+			var v V2ObjectsObjectPatch400Response
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -416,7 +416,7 @@ func (a *TasksAPIService) V2TasksTaskIdDeleteExecute(r ApiV2TasksTaskIdDeleteReq
 			error: localVarHTTPResponse.Status,
 		}
 		if localVarHTTPResponse.StatusCode == 404 {
-			var v V2TasksTaskIdGet404Response
+			var v V2ObjectsObjectGet404Response
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -532,7 +532,7 @@ func (a *TasksAPIService) V2TasksTaskIdGetExecute(r ApiV2TasksTaskIdGetRequest) 
 			error: localVarHTTPResponse.Status,
 		}
 		if localVarHTTPResponse.StatusCode == 404 {
-			var v V2TasksTaskIdGet404Response
+			var v V2ObjectsObjectGet404Response
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -659,7 +659,7 @@ func (a *TasksAPIService) V2TasksTaskIdPatchExecute(r ApiV2TasksTaskIdPatchReque
 			error: localVarHTTPResponse.Status,
 		}
 		if localVarHTTPResponse.StatusCode == 400 {
-			var v V2TasksPost400Response
+			var v V2ObjectsObjectPatch400Response
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -670,7 +670,7 @@ func (a *TasksAPIService) V2TasksTaskIdPatchExecute(r ApiV2TasksTaskIdPatchReque
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 404 {
-			var v V2TasksTaskIdPatch404Response
+			var v V2ObjectsObjectGet404Response
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()

@@ -10,15 +10,15 @@ Name | Type | Description | Notes
 **Entry** | [**CommentEntry**](CommentEntry.md) |  | 
 **Record** | [**CommentRecord**](CommentRecord.md) |  | 
 **ResolvedAt** | **NullableString** | Whether the comment is resolved. | 
-**ResolvedBy** | [**CommentResolvedBy**](CommentResolvedBy.md) |  | 
+**ResolvedBy** | [**V2ObjectsObjectRecordsQueryPost200ResponseDataInnerValuesValueInnerAnyOfCreatedByActor**](V2ObjectsObjectRecordsQueryPost200ResponseDataInnerValuesValueInnerAnyOfCreatedByActor.md) |  | 
 **CreatedAt** | **string** | When the note was created. | 
-**Author** | [**CommentAuthor**](CommentAuthor.md) |  | 
+**Author** | [**V2ObjectsObjectRecordsQueryPost200ResponseDataInnerValuesValueInnerAnyOfCreatedByActor**](V2ObjectsObjectRecordsQueryPost200ResponseDataInnerValuesValueInnerAnyOfCreatedByActor.md) |  | 
 
 ## Methods
 
 ### NewComment
 
-`func NewComment(id CommentId, threadId string, contentPlaintext string, entry CommentEntry, record CommentRecord, resolvedAt NullableString, resolvedBy CommentResolvedBy, createdAt string, author CommentAuthor, ) *Comment`
+`func NewComment(id CommentId, threadId string, contentPlaintext string, entry CommentEntry, record CommentRecord, resolvedAt NullableString, resolvedBy V2ObjectsObjectRecordsQueryPost200ResponseDataInnerValuesValueInnerAnyOfCreatedByActor, createdAt string, author V2ObjectsObjectRecordsQueryPost200ResponseDataInnerValuesValueInnerAnyOfCreatedByActor, ) *Comment`
 
 NewComment instantiates a new Comment object
 This constructor will assign default values to properties that have it defined,
@@ -165,20 +165,20 @@ SetResolvedAt sets ResolvedAt field to given value.
 UnsetResolvedAt ensures that no value is present for ResolvedAt, not even an explicit nil
 ### GetResolvedBy
 
-`func (o *Comment) GetResolvedBy() CommentResolvedBy`
+`func (o *Comment) GetResolvedBy() V2ObjectsObjectRecordsQueryPost200ResponseDataInnerValuesValueInnerAnyOfCreatedByActor`
 
 GetResolvedBy returns the ResolvedBy field if non-nil, zero value otherwise.
 
 ### GetResolvedByOk
 
-`func (o *Comment) GetResolvedByOk() (*CommentResolvedBy, bool)`
+`func (o *Comment) GetResolvedByOk() (*V2ObjectsObjectRecordsQueryPost200ResponseDataInnerValuesValueInnerAnyOfCreatedByActor, bool)`
 
 GetResolvedByOk returns a tuple with the ResolvedBy field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetResolvedBy
 
-`func (o *Comment) SetResolvedBy(v CommentResolvedBy)`
+`func (o *Comment) SetResolvedBy(v V2ObjectsObjectRecordsQueryPost200ResponseDataInnerValuesValueInnerAnyOfCreatedByActor)`
 
 SetResolvedBy sets ResolvedBy field to given value.
 
@@ -205,20 +205,20 @@ SetCreatedAt sets CreatedAt field to given value.
 
 ### GetAuthor
 
-`func (o *Comment) GetAuthor() CommentAuthor`
+`func (o *Comment) GetAuthor() V2ObjectsObjectRecordsQueryPost200ResponseDataInnerValuesValueInnerAnyOfCreatedByActor`
 
 GetAuthor returns the Author field if non-nil, zero value otherwise.
 
 ### GetAuthorOk
 
-`func (o *Comment) GetAuthorOk() (*CommentAuthor, bool)`
+`func (o *Comment) GetAuthorOk() (*V2ObjectsObjectRecordsQueryPost200ResponseDataInnerValuesValueInnerAnyOfCreatedByActor, bool)`
 
 GetAuthorOk returns a tuple with the Author field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetAuthor
 
-`func (o *Comment) SetAuthor(v CommentAuthor)`
+`func (o *Comment) SetAuthor(v V2ObjectsObjectRecordsQueryPost200ResponseDataInnerValuesValueInnerAnyOfCreatedByActor)`
 
 SetAuthor sets Author field to given value.
 

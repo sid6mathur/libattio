@@ -5,13 +5,14 @@
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **Type** | **string** | The type of entity tagged in the note. Can be either &#39;workspace-member&#39; or &#39;record&#39; | 
-**WorkspaceMemberId** | **string** | The ID of the workspace member that is tagged in the note. | 
+**Object** | **string** | The slug or ID of the object that the tagged record belongs to. | 
+**RecordId** | **string** | The ID of the record that is tagged in the note. | 
 
 ## Methods
 
 ### NewNoteTagsInnerAnyOf
 
-`func NewNoteTagsInnerAnyOf(type_ string, workspaceMemberId string, ) *NoteTagsInnerAnyOf`
+`func NewNoteTagsInnerAnyOf(type_ string, object string, recordId string, ) *NoteTagsInnerAnyOf`
 
 NewNoteTagsInnerAnyOf instantiates a new NoteTagsInnerAnyOf object
 This constructor will assign default values to properties that have it defined,
@@ -46,24 +47,44 @@ and a boolean to check if the value has been set.
 SetType sets Type field to given value.
 
 
-### GetWorkspaceMemberId
+### GetObject
 
-`func (o *NoteTagsInnerAnyOf) GetWorkspaceMemberId() string`
+`func (o *NoteTagsInnerAnyOf) GetObject() string`
 
-GetWorkspaceMemberId returns the WorkspaceMemberId field if non-nil, zero value otherwise.
+GetObject returns the Object field if non-nil, zero value otherwise.
 
-### GetWorkspaceMemberIdOk
+### GetObjectOk
 
-`func (o *NoteTagsInnerAnyOf) GetWorkspaceMemberIdOk() (*string, bool)`
+`func (o *NoteTagsInnerAnyOf) GetObjectOk() (*string, bool)`
 
-GetWorkspaceMemberIdOk returns a tuple with the WorkspaceMemberId field if it's non-nil, zero value otherwise
+GetObjectOk returns a tuple with the Object field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
-### SetWorkspaceMemberId
+### SetObject
 
-`func (o *NoteTagsInnerAnyOf) SetWorkspaceMemberId(v string)`
+`func (o *NoteTagsInnerAnyOf) SetObject(v string)`
 
-SetWorkspaceMemberId sets WorkspaceMemberId field to given value.
+SetObject sets Object field to given value.
+
+
+### GetRecordId
+
+`func (o *NoteTagsInnerAnyOf) GetRecordId() string`
+
+GetRecordId returns the RecordId field if non-nil, zero value otherwise.
+
+### GetRecordIdOk
+
+`func (o *NoteTagsInnerAnyOf) GetRecordIdOk() (*string, bool)`
+
+GetRecordIdOk returns a tuple with the RecordId field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetRecordId
+
+`func (o *NoteTagsInnerAnyOf) SetRecordId(v string)`
+
+SetRecordId sets RecordId field to given value.
 
 
 

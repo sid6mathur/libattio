@@ -279,7 +279,7 @@ func (a *ThreadsAPIService) V2ThreadsThreadIdGetExecute(r ApiV2ThreadsThreadIdGe
 			error: localVarHTTPResponse.Status,
 		}
 		if localVarHTTPResponse.StatusCode == 404 {
-			var v V2ThreadsThreadIdGet404Response
+			var v V2ObjectsObjectGet404Response
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()

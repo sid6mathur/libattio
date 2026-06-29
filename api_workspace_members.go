@@ -217,7 +217,7 @@ func (a *WorkspaceMembersAPIService) V2WorkspaceMembersWorkspaceMemberIdGetExecu
 			error: localVarHTTPResponse.Status,
 		}
 		if localVarHTTPResponse.StatusCode == 404 {
-			var v V2WorkspaceMembersWorkspaceMemberIdGet404Response
+			var v V2ObjectsObjectGet404Response
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()

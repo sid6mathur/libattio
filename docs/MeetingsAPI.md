@@ -184,7 +184,7 @@ import (
 )
 
 func main() {
-	v2MeetingsPostRequest := *libattio.NewV2MeetingsPostRequest(*libattio.NewV2MeetingsPostRequestData("Onboarding Session", "Getting you up to speed with the platform and answering any questions you have.", *libattio.NewV2MeetingsPostRequestDataStart(time.Now(), "2027-11-27"), *libattio.NewV2MeetingsPostRequestDataEnd(time.Now(), "2027-11-28"), false, []libattio.V2MeetingsPostRequestDataParticipantsInner{*libattio.NewV2MeetingsPostRequestDataParticipantsInner("person@company.com", *libattio.NewV2MeetingsPostRequestDataParticipantsInnerIsOrganizer(), "accepted")}, *libattio.NewV2MeetingsPostRequestDataExternalRef("1234567890", "google", false))) // V2MeetingsPostRequest | 
+	v2MeetingsPostRequest := *libattio.NewV2MeetingsPostRequest(*libattio.NewV2MeetingsPostRequestData("Onboarding Session", "Getting you up to speed with the platform and answering any questions you have.", *libattio.NewV2MeetingsPostRequestDataStart(time.Now(), "2027-11-27"), *libattio.NewV2MeetingsPostRequestDataStart(time.Now(), "2027-11-27"), false, []libattio.V2MeetingsPostRequestDataParticipantsInner{*libattio.NewV2MeetingsPostRequestDataParticipantsInner("person@company.com", *libattio.NewV2MeetingsPostRequestDataParticipantsInnerIsOrganizer(), "accepted")}, *libattio.NewV2MeetingsPostRequestDataExternalRef("1234567890", "google", false))) // V2MeetingsPostRequest | 
 
 	configuration := libattio.NewConfiguration()
 	apiClient := libattio.NewAPIClient(configuration)

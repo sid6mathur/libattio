@@ -242,7 +242,7 @@ func (a *WebhooksAPIService) V2WebhooksPostExecute(r ApiV2WebhooksPostRequest) (
 			error: localVarHTTPResponse.Status,
 		}
 		if localVarHTTPResponse.StatusCode == 400 {
-			var v V2WebhooksPost400Response
+			var v V2ObjectsObjectPatch400Response
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -358,7 +358,7 @@ func (a *WebhooksAPIService) V2WebhooksWebhookIdDeleteExecute(r ApiV2WebhooksWeb
 			error: localVarHTTPResponse.Status,
 		}
 		if localVarHTTPResponse.StatusCode == 404 {
-			var v V2WebhooksWebhookIdDelete404Response
+			var v V2ObjectsObjectGet404Response
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -474,7 +474,7 @@ func (a *WebhooksAPIService) V2WebhooksWebhookIdGetExecute(r ApiV2WebhooksWebhoo
 			error: localVarHTTPResponse.Status,
 		}
 		if localVarHTTPResponse.StatusCode == 404 {
-			var v V2WebhooksWebhookIdGet404Response
+			var v V2ObjectsObjectGet404Response
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -601,7 +601,7 @@ func (a *WebhooksAPIService) V2WebhooksWebhookIdPatchExecute(r ApiV2WebhooksWebh
 			error: localVarHTTPResponse.Status,
 		}
 		if localVarHTTPResponse.StatusCode == 404 {
-			var v V2WebhooksWebhookIdGet404Response
+			var v V2ObjectsObjectGet404Response
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()

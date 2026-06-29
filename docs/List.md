@@ -10,14 +10,14 @@ Name | Type | Description | Notes
 **ParentObject** | **[]string** | A UUID or slug to identify the allowed object type for records added to this list. All new Lists are expected to have exactly one parent object. However, some legacy lists may have multiple allowed parents so the return type of this field is an array. | 
 **WorkspaceAccess** | **NullableString** | The level of access granted to all members of the workspace for this list. &#x60;null&#x60; values represent a private list that only grants access to specific workspace members via the &#x60;workspace_member_access&#x60; property. | 
 **WorkspaceMemberAccess** | [**[]V2ListsPostRequestDataWorkspaceMemberAccessInner**](V2ListsPostRequestDataWorkspaceMemberAccessInner.md) | The level of access granted to specific workspace members for this list. An empty array represents a list that has granted access to no workspace members. | 
-**CreatedByActor** | [**ListCreatedByActor**](ListCreatedByActor.md) |  | 
+**CreatedByActor** | [**V2ObjectsObjectRecordsQueryPost200ResponseDataInnerValuesValueInnerAnyOfCreatedByActor**](V2ObjectsObjectRecordsQueryPost200ResponseDataInnerValuesValueInnerAnyOfCreatedByActor.md) |  | 
 **CreatedAt** | **string** | When the list was created. | 
 
 ## Methods
 
 ### NewList
 
-`func NewList(id ListId, apiSlug string, name string, parentObject []string, workspaceAccess NullableString, workspaceMemberAccess []V2ListsPostRequestDataWorkspaceMemberAccessInner, createdByActor ListCreatedByActor, createdAt string, ) *List`
+`func NewList(id ListId, apiSlug string, name string, parentObject []string, workspaceAccess NullableString, workspaceMemberAccess []V2ListsPostRequestDataWorkspaceMemberAccessInner, createdByActor V2ObjectsObjectRecordsQueryPost200ResponseDataInnerValuesValueInnerAnyOfCreatedByActor, createdAt string, ) *List`
 
 NewList instantiates a new List object
 This constructor will assign default values to properties that have it defined,
@@ -164,20 +164,20 @@ SetWorkspaceMemberAccess sets WorkspaceMemberAccess field to given value.
 
 ### GetCreatedByActor
 
-`func (o *List) GetCreatedByActor() ListCreatedByActor`
+`func (o *List) GetCreatedByActor() V2ObjectsObjectRecordsQueryPost200ResponseDataInnerValuesValueInnerAnyOfCreatedByActor`
 
 GetCreatedByActor returns the CreatedByActor field if non-nil, zero value otherwise.
 
 ### GetCreatedByActorOk
 
-`func (o *List) GetCreatedByActorOk() (*ListCreatedByActor, bool)`
+`func (o *List) GetCreatedByActorOk() (*V2ObjectsObjectRecordsQueryPost200ResponseDataInnerValuesValueInnerAnyOfCreatedByActor, bool)`
 
 GetCreatedByActorOk returns a tuple with the CreatedByActor field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetCreatedByActor
 
-`func (o *List) SetCreatedByActor(v ListCreatedByActor)`
+`func (o *List) SetCreatedByActor(v V2ObjectsObjectRecordsQueryPost200ResponseDataInnerValuesValueInnerAnyOfCreatedByActor)`
 
 SetCreatedByActor sets CreatedByActor field to given value.
 

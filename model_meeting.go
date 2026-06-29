@@ -30,13 +30,13 @@ type Meeting struct {
 	// Whether or not the meeting is an all day event. All day events may span multiple days.
 	IsAllDay     bool                       `json:"is_all_day"`
 	Start        MeetingStart               `json:"start"`
-	End          MeetingEnd                 `json:"end"`
+	End          MeetingStart               `json:"end"`
 	Participants []MeetingParticipantsInner `json:"participants"`
 	// A list of records that are linked to the meeting. Participants with matching person records are automatically linked to the meeting but other records may also be linked explicitly.
 	LinkedRecords []MeetingLinkedRecordsInner `json:"linked_records"`
 	// Timestamp representing when the meeting was created.
-	CreatedAt      string                `json:"created_at"`
-	CreatedByActor MeetingCreatedByActor `json:"created_by_actor"`
+	CreatedAt      string                                                                                 `json:"created_at"`
+	CreatedByActor V2ObjectsObjectRecordsQueryPost200ResponseDataInnerValuesValueInnerAnyOfCreatedByActor `json:"created_by_actor"`
 }
 
 type _Meeting Meeting
@@ -45,7 +45,7 @@ type _Meeting Meeting
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewMeeting(id MeetingId, title string, description string, isAllDay bool, start MeetingStart, end MeetingEnd, participants []MeetingParticipantsInner, linkedRecords []MeetingLinkedRecordsInner, createdAt string, createdByActor MeetingCreatedByActor) *Meeting {
+func NewMeeting(id MeetingId, title string, description string, isAllDay bool, start MeetingStart, end MeetingStart, participants []MeetingParticipantsInner, linkedRecords []MeetingLinkedRecordsInner, createdAt string, createdByActor V2ObjectsObjectRecordsQueryPost200ResponseDataInnerValuesValueInnerAnyOfCreatedByActor) *Meeting {
 	this := Meeting{}
 	this.Id = id
 	this.Title = title
@@ -189,9 +189,9 @@ func (o *Meeting) SetStart(v MeetingStart) {
 }
 
 // GetEnd returns the End field value
-func (o *Meeting) GetEnd() MeetingEnd {
+func (o *Meeting) GetEnd() MeetingStart {
 	if o == nil {
-		var ret MeetingEnd
+		var ret MeetingStart
 		return ret
 	}
 
@@ -200,7 +200,7 @@ func (o *Meeting) GetEnd() MeetingEnd {
 
 // GetEndOk returns a tuple with the End field value
 // and a boolean to check if the value has been set.
-func (o *Meeting) GetEndOk() (*MeetingEnd, bool) {
+func (o *Meeting) GetEndOk() (*MeetingStart, bool) {
 	if o == nil {
 		return nil, false
 	}
@@ -208,7 +208,7 @@ func (o *Meeting) GetEndOk() (*MeetingEnd, bool) {
 }
 
 // SetEnd sets field value
-func (o *Meeting) SetEnd(v MeetingEnd) {
+func (o *Meeting) SetEnd(v MeetingStart) {
 	o.End = v
 }
 
@@ -285,9 +285,9 @@ func (o *Meeting) SetCreatedAt(v string) {
 }
 
 // GetCreatedByActor returns the CreatedByActor field value
-func (o *Meeting) GetCreatedByActor() MeetingCreatedByActor {
+func (o *Meeting) GetCreatedByActor() V2ObjectsObjectRecordsQueryPost200ResponseDataInnerValuesValueInnerAnyOfCreatedByActor {
 	if o == nil {
-		var ret MeetingCreatedByActor
+		var ret V2ObjectsObjectRecordsQueryPost200ResponseDataInnerValuesValueInnerAnyOfCreatedByActor
 		return ret
 	}
 
@@ -296,7 +296,7 @@ func (o *Meeting) GetCreatedByActor() MeetingCreatedByActor {
 
 // GetCreatedByActorOk returns a tuple with the CreatedByActor field value
 // and a boolean to check if the value has been set.
-func (o *Meeting) GetCreatedByActorOk() (*MeetingCreatedByActor, bool) {
+func (o *Meeting) GetCreatedByActorOk() (*V2ObjectsObjectRecordsQueryPost200ResponseDataInnerValuesValueInnerAnyOfCreatedByActor, bool) {
 	if o == nil {
 		return nil, false
 	}
@@ -304,7 +304,7 @@ func (o *Meeting) GetCreatedByActorOk() (*MeetingCreatedByActor, bool) {
 }
 
 // SetCreatedByActor sets field value
-func (o *Meeting) SetCreatedByActor(v MeetingCreatedByActor) {
+func (o *Meeting) SetCreatedByActor(v V2ObjectsObjectRecordsQueryPost200ResponseDataInnerValuesValueInnerAnyOfCreatedByActor) {
 	o.CreatedByActor = v
 }
 

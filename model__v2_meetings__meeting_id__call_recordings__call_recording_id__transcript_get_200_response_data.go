@@ -22,7 +22,7 @@ var _ MappedNullable = &V2MeetingsMeetingIdCallRecordingsCallRecordingIdTranscri
 
 // V2MeetingsMeetingIdCallRecordingsCallRecordingIdTranscriptGet200ResponseData struct for V2MeetingsMeetingIdCallRecordingsCallRecordingIdTranscriptGet200ResponseData
 type V2MeetingsMeetingIdCallRecordingsCallRecordingIdTranscriptGet200ResponseData struct {
-	Id V2MeetingsMeetingIdCallRecordingsCallRecordingIdTranscriptGet200ResponseDataId `json:"id"`
+	Id V2MeetingsMeetingIdCallRecordingsGet200ResponseDataInnerId `json:"id"`
 	// The transcript segments with speech, timing, and speaker information.
 	Transcript []V2MeetingsMeetingIdCallRecordingsCallRecordingIdTranscriptGet200ResponseDataTranscriptInner `json:"transcript"`
 	// The raw transcript of the call recording.
@@ -37,7 +37,7 @@ type _V2MeetingsMeetingIdCallRecordingsCallRecordingIdTranscriptGet200ResponseDa
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewV2MeetingsMeetingIdCallRecordingsCallRecordingIdTranscriptGet200ResponseData(id V2MeetingsMeetingIdCallRecordingsCallRecordingIdTranscriptGet200ResponseDataId, transcript []V2MeetingsMeetingIdCallRecordingsCallRecordingIdTranscriptGet200ResponseDataTranscriptInner, rawTranscript string, webUrl string) *V2MeetingsMeetingIdCallRecordingsCallRecordingIdTranscriptGet200ResponseData {
+func NewV2MeetingsMeetingIdCallRecordingsCallRecordingIdTranscriptGet200ResponseData(id V2MeetingsMeetingIdCallRecordingsGet200ResponseDataInnerId, transcript []V2MeetingsMeetingIdCallRecordingsCallRecordingIdTranscriptGet200ResponseDataTranscriptInner, rawTranscript string, webUrl string) *V2MeetingsMeetingIdCallRecordingsCallRecordingIdTranscriptGet200ResponseData {
 	this := V2MeetingsMeetingIdCallRecordingsCallRecordingIdTranscriptGet200ResponseData{}
 	this.Id = id
 	this.Transcript = transcript
@@ -55,9 +55,9 @@ func NewV2MeetingsMeetingIdCallRecordingsCallRecordingIdTranscriptGet200Response
 }
 
 // GetId returns the Id field value
-func (o *V2MeetingsMeetingIdCallRecordingsCallRecordingIdTranscriptGet200ResponseData) GetId() V2MeetingsMeetingIdCallRecordingsCallRecordingIdTranscriptGet200ResponseDataId {
+func (o *V2MeetingsMeetingIdCallRecordingsCallRecordingIdTranscriptGet200ResponseData) GetId() V2MeetingsMeetingIdCallRecordingsGet200ResponseDataInnerId {
 	if o == nil {
-		var ret V2MeetingsMeetingIdCallRecordingsCallRecordingIdTranscriptGet200ResponseDataId
+		var ret V2MeetingsMeetingIdCallRecordingsGet200ResponseDataInnerId
 		return ret
 	}
 
@@ -66,7 +66,7 @@ func (o *V2MeetingsMeetingIdCallRecordingsCallRecordingIdTranscriptGet200Respons
 
 // GetIdOk returns a tuple with the Id field value
 // and a boolean to check if the value has been set.
-func (o *V2MeetingsMeetingIdCallRecordingsCallRecordingIdTranscriptGet200ResponseData) GetIdOk() (*V2MeetingsMeetingIdCallRecordingsCallRecordingIdTranscriptGet200ResponseDataId, bool) {
+func (o *V2MeetingsMeetingIdCallRecordingsCallRecordingIdTranscriptGet200ResponseData) GetIdOk() (*V2MeetingsMeetingIdCallRecordingsGet200ResponseDataInnerId, bool) {
 	if o == nil {
 		return nil, false
 	}
@@ -74,7 +74,7 @@ func (o *V2MeetingsMeetingIdCallRecordingsCallRecordingIdTranscriptGet200Respons
 }
 
 // SetId sets field value
-func (o *V2MeetingsMeetingIdCallRecordingsCallRecordingIdTranscriptGet200ResponseData) SetId(v V2MeetingsMeetingIdCallRecordingsCallRecordingIdTranscriptGet200ResponseDataId) {
+func (o *V2MeetingsMeetingIdCallRecordingsCallRecordingIdTranscriptGet200ResponseData) SetId(v V2MeetingsMeetingIdCallRecordingsGet200ResponseDataInnerId) {
 	o.Id = v
 }
 

@@ -31,7 +31,7 @@ type V2TargetIdentifierAttributesAttributePatchRequestData struct {
 	// Whether or not new values for this attribute must be unique. Uniqueness restrictions are only applied to new data and do not apply retroactively to previously created data.
 	IsUnique     *bool                                                           `json:"is_unique,omitempty"`
 	DefaultValue NullableV2TargetIdentifierAttributesPostRequestDataDefaultValue `json:"default_value,omitempty"`
-	Config       *V2TargetIdentifierAttributesAttributePatchRequestDataConfig    `json:"config,omitempty"`
+	Config       *V2TargetIdentifierAttributesPostRequestDataConfig              `json:"config,omitempty"`
 	// Whether the attribute has been archived or not. See our [archiving guide](/docs/archiving-vs-deleting) for more information on archiving.
 	IsArchived           *bool `json:"is_archived,omitempty"`
 	AdditionalProperties map[string]interface{}
@@ -271,9 +271,9 @@ func (o *V2TargetIdentifierAttributesAttributePatchRequestData) UnsetDefaultValu
 }
 
 // GetConfig returns the Config field value if set, zero value otherwise.
-func (o *V2TargetIdentifierAttributesAttributePatchRequestData) GetConfig() V2TargetIdentifierAttributesAttributePatchRequestDataConfig {
+func (o *V2TargetIdentifierAttributesAttributePatchRequestData) GetConfig() V2TargetIdentifierAttributesPostRequestDataConfig {
 	if o == nil || IsNil(o.Config) {
-		var ret V2TargetIdentifierAttributesAttributePatchRequestDataConfig
+		var ret V2TargetIdentifierAttributesPostRequestDataConfig
 		return ret
 	}
 	return *o.Config
@@ -281,7 +281,7 @@ func (o *V2TargetIdentifierAttributesAttributePatchRequestData) GetConfig() V2Ta
 
 // GetConfigOk returns a tuple with the Config field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *V2TargetIdentifierAttributesAttributePatchRequestData) GetConfigOk() (*V2TargetIdentifierAttributesAttributePatchRequestDataConfig, bool) {
+func (o *V2TargetIdentifierAttributesAttributePatchRequestData) GetConfigOk() (*V2TargetIdentifierAttributesPostRequestDataConfig, bool) {
 	if o == nil || IsNil(o.Config) {
 		return nil, false
 	}
@@ -297,8 +297,8 @@ func (o *V2TargetIdentifierAttributesAttributePatchRequestData) HasConfig() bool
 	return false
 }
 
-// SetConfig gets a reference to the given V2TargetIdentifierAttributesAttributePatchRequestDataConfig and assigns it to the Config field.
-func (o *V2TargetIdentifierAttributesAttributePatchRequestData) SetConfig(v V2TargetIdentifierAttributesAttributePatchRequestDataConfig) {
+// SetConfig gets a reference to the given V2TargetIdentifierAttributesPostRequestDataConfig and assigns it to the Config field.
+func (o *V2TargetIdentifierAttributesAttributePatchRequestData) SetConfig(v V2TargetIdentifierAttributesPostRequestDataConfig) {
 	o.Config = &v
 }
 

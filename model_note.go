@@ -36,8 +36,8 @@ type Note struct {
 	// The markdown representation of the note content. Supports a subset of markdown features including: - Headings (levels 1-3 only with `#`, `##`, `###`) - Unordered lists (`-`, `*`, `+`) - Ordered lists (`1.`, `2.`, etc.) - Text styling: `**bold**`, `*italic*`, `~~strikethrough~~`, `==highlighted==` - Links: `[link text](https://example.com)`  Note that note images are not returned as part of the markdown API representation.
 	ContentMarkdown string `json:"content_markdown"`
 	// An array of records or workspace members that are @-tagged in the note content.
-	Tags           []NoteTagsInner    `json:"tags"`
-	CreatedByActor NoteCreatedByActor `json:"created_by_actor"`
+	Tags           []NoteTagsInner                                                                        `json:"tags"`
+	CreatedByActor V2ObjectsObjectRecordsQueryPost200ResponseDataInnerValuesValueInnerAnyOfCreatedByActor `json:"created_by_actor"`
 	// When the note was created.
 	CreatedAt string `json:"created_at"`
 }
@@ -48,7 +48,7 @@ type _Note Note
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewNote(id NoteId, parentObject string, parentRecordId string, title string, meetingId NullableString, contentPlaintext string, contentMarkdown string, tags []NoteTagsInner, createdByActor NoteCreatedByActor, createdAt string) *Note {
+func NewNote(id NoteId, parentObject string, parentRecordId string, title string, meetingId NullableString, contentPlaintext string, contentMarkdown string, tags []NoteTagsInner, createdByActor V2ObjectsObjectRecordsQueryPost200ResponseDataInnerValuesValueInnerAnyOfCreatedByActor, createdAt string) *Note {
 	this := Note{}
 	this.Id = id
 	this.ParentObject = parentObject
@@ -266,9 +266,9 @@ func (o *Note) SetTags(v []NoteTagsInner) {
 }
 
 // GetCreatedByActor returns the CreatedByActor field value
-func (o *Note) GetCreatedByActor() NoteCreatedByActor {
+func (o *Note) GetCreatedByActor() V2ObjectsObjectRecordsQueryPost200ResponseDataInnerValuesValueInnerAnyOfCreatedByActor {
 	if o == nil {
-		var ret NoteCreatedByActor
+		var ret V2ObjectsObjectRecordsQueryPost200ResponseDataInnerValuesValueInnerAnyOfCreatedByActor
 		return ret
 	}
 
@@ -277,7 +277,7 @@ func (o *Note) GetCreatedByActor() NoteCreatedByActor {
 
 // GetCreatedByActorOk returns a tuple with the CreatedByActor field value
 // and a boolean to check if the value has been set.
-func (o *Note) GetCreatedByActorOk() (*NoteCreatedByActor, bool) {
+func (o *Note) GetCreatedByActorOk() (*V2ObjectsObjectRecordsQueryPost200ResponseDataInnerValuesValueInnerAnyOfCreatedByActor, bool) {
 	if o == nil {
 		return nil, false
 	}
@@ -285,7 +285,7 @@ func (o *Note) GetCreatedByActorOk() (*NoteCreatedByActor, bool) {
 }
 
 // SetCreatedByActor sets field value
-func (o *Note) SetCreatedByActor(v NoteCreatedByActor) {
+func (o *Note) SetCreatedByActor(v V2ObjectsObjectRecordsQueryPost200ResponseDataInnerValuesValueInnerAnyOfCreatedByActor) {
 	o.CreatedByActor = v
 }
 

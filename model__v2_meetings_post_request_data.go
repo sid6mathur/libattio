@@ -27,13 +27,13 @@ type V2MeetingsPostRequestData struct {
 	// The description of the meeting.
 	Description string                         `json:"description"`
 	Start       V2MeetingsPostRequestDataStart `json:"start"`
-	End         V2MeetingsPostRequestDataEnd   `json:"end"`
+	End         V2MeetingsPostRequestDataStart `json:"end"`
 	// Whether or not the meeting is an all day event. All day events may span multiple days. When true, start and end must use date format. When false, start and end must use datetime with timezone format.
 	IsAllDay     bool                                         `json:"is_all_day"`
 	Participants []V2MeetingsPostRequestDataParticipantsInner `json:"participants"`
 	// A list of records to link to the meeting. Each record is specified by its object (slug or UUID) and record ID (UUID). Attio will automatically link the meeting participants' companies to the meeting; this behavior is asynchronous.
-	LinkedRecords []V2MeetingsPostRequestDataLinkedRecordsInner `json:"linked_records,omitempty"`
-	ExternalRef   V2MeetingsPostRequestDataExternalRef          `json:"external_ref"`
+	LinkedRecords []V2CommentsPostRequestDataAnyOf1Record `json:"linked_records,omitempty"`
+	ExternalRef   V2MeetingsPostRequestDataExternalRef    `json:"external_ref"`
 }
 
 type _V2MeetingsPostRequestData V2MeetingsPostRequestData
@@ -42,7 +42,7 @@ type _V2MeetingsPostRequestData V2MeetingsPostRequestData
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewV2MeetingsPostRequestData(title string, description string, start V2MeetingsPostRequestDataStart, end V2MeetingsPostRequestDataEnd, isAllDay bool, participants []V2MeetingsPostRequestDataParticipantsInner, externalRef V2MeetingsPostRequestDataExternalRef) *V2MeetingsPostRequestData {
+func NewV2MeetingsPostRequestData(title string, description string, start V2MeetingsPostRequestDataStart, end V2MeetingsPostRequestDataStart, isAllDay bool, participants []V2MeetingsPostRequestDataParticipantsInner, externalRef V2MeetingsPostRequestDataExternalRef) *V2MeetingsPostRequestData {
 	this := V2MeetingsPostRequestData{}
 	this.Title = title
 	this.Description = description
@@ -135,9 +135,9 @@ func (o *V2MeetingsPostRequestData) SetStart(v V2MeetingsPostRequestDataStart) {
 }
 
 // GetEnd returns the End field value
-func (o *V2MeetingsPostRequestData) GetEnd() V2MeetingsPostRequestDataEnd {
+func (o *V2MeetingsPostRequestData) GetEnd() V2MeetingsPostRequestDataStart {
 	if o == nil {
-		var ret V2MeetingsPostRequestDataEnd
+		var ret V2MeetingsPostRequestDataStart
 		return ret
 	}
 
@@ -146,7 +146,7 @@ func (o *V2MeetingsPostRequestData) GetEnd() V2MeetingsPostRequestDataEnd {
 
 // GetEndOk returns a tuple with the End field value
 // and a boolean to check if the value has been set.
-func (o *V2MeetingsPostRequestData) GetEndOk() (*V2MeetingsPostRequestDataEnd, bool) {
+func (o *V2MeetingsPostRequestData) GetEndOk() (*V2MeetingsPostRequestDataStart, bool) {
 	if o == nil {
 		return nil, false
 	}
@@ -154,7 +154,7 @@ func (o *V2MeetingsPostRequestData) GetEndOk() (*V2MeetingsPostRequestDataEnd, b
 }
 
 // SetEnd sets field value
-func (o *V2MeetingsPostRequestData) SetEnd(v V2MeetingsPostRequestDataEnd) {
+func (o *V2MeetingsPostRequestData) SetEnd(v V2MeetingsPostRequestDataStart) {
 	o.End = v
 }
 
@@ -207,9 +207,9 @@ func (o *V2MeetingsPostRequestData) SetParticipants(v []V2MeetingsPostRequestDat
 }
 
 // GetLinkedRecords returns the LinkedRecords field value if set, zero value otherwise.
-func (o *V2MeetingsPostRequestData) GetLinkedRecords() []V2MeetingsPostRequestDataLinkedRecordsInner {
+func (o *V2MeetingsPostRequestData) GetLinkedRecords() []V2CommentsPostRequestDataAnyOf1Record {
 	if o == nil || IsNil(o.LinkedRecords) {
-		var ret []V2MeetingsPostRequestDataLinkedRecordsInner
+		var ret []V2CommentsPostRequestDataAnyOf1Record
 		return ret
 	}
 	return o.LinkedRecords
@@ -217,7 +217,7 @@ func (o *V2MeetingsPostRequestData) GetLinkedRecords() []V2MeetingsPostRequestDa
 
 // GetLinkedRecordsOk returns a tuple with the LinkedRecords field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *V2MeetingsPostRequestData) GetLinkedRecordsOk() ([]V2MeetingsPostRequestDataLinkedRecordsInner, bool) {
+func (o *V2MeetingsPostRequestData) GetLinkedRecordsOk() ([]V2CommentsPostRequestDataAnyOf1Record, bool) {
 	if o == nil || IsNil(o.LinkedRecords) {
 		return nil, false
 	}
@@ -233,8 +233,8 @@ func (o *V2MeetingsPostRequestData) HasLinkedRecords() bool {
 	return false
 }
 
-// SetLinkedRecords gets a reference to the given []V2MeetingsPostRequestDataLinkedRecordsInner and assigns it to the LinkedRecords field.
-func (o *V2MeetingsPostRequestData) SetLinkedRecords(v []V2MeetingsPostRequestDataLinkedRecordsInner) {
+// SetLinkedRecords gets a reference to the given []V2CommentsPostRequestDataAnyOf1Record and assigns it to the LinkedRecords field.
+func (o *V2MeetingsPostRequestData) SetLinkedRecords(v []V2CommentsPostRequestDataAnyOf1Record) {
 	o.LinkedRecords = v
 }
 

@@ -4,7 +4,7 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**Id** | [**V2MeetingsMeetingIdCallRecordingsCallRecordingIdTranscriptGet200ResponseDataId**](V2MeetingsMeetingIdCallRecordingsCallRecordingIdTranscriptGet200ResponseDataId.md) |  | 
+**Id** | [**V2MeetingsMeetingIdCallRecordingsGet200ResponseDataInnerId**](V2MeetingsMeetingIdCallRecordingsGet200ResponseDataInnerId.md) |  | 
 **Transcript** | [**[]V2MeetingsMeetingIdCallRecordingsCallRecordingIdTranscriptGet200ResponseDataTranscriptInner**](V2MeetingsMeetingIdCallRecordingsCallRecordingIdTranscriptGet200ResponseDataTranscriptInner.md) | The transcript segments with speech, timing, and speaker information. | 
 **RawTranscript** | **string** | The raw transcript of the call recording. | 
 **WebUrl** | **string** | A URL that links directly to the call recording transcript in the Attio web application. | 
@@ -13,7 +13,7 @@ Name | Type | Description | Notes
 
 ### NewV2MeetingsMeetingIdCallRecordingsCallRecordingIdTranscriptGet200ResponseData
 
-`func NewV2MeetingsMeetingIdCallRecordingsCallRecordingIdTranscriptGet200ResponseData(id V2MeetingsMeetingIdCallRecordingsCallRecordingIdTranscriptGet200ResponseDataId, transcript []V2MeetingsMeetingIdCallRecordingsCallRecordingIdTranscriptGet200ResponseDataTranscriptInner, rawTranscript string, webUrl string, ) *V2MeetingsMeetingIdCallRecordingsCallRecordingIdTranscriptGet200ResponseData`
+`func NewV2MeetingsMeetingIdCallRecordingsCallRecordingIdTranscriptGet200ResponseData(id V2MeetingsMeetingIdCallRecordingsGet200ResponseDataInnerId, transcript []V2MeetingsMeetingIdCallRecordingsCallRecordingIdTranscriptGet200ResponseDataTranscriptInner, rawTranscript string, webUrl string, ) *V2MeetingsMeetingIdCallRecordingsCallRecordingIdTranscriptGet200ResponseData`
 
 NewV2MeetingsMeetingIdCallRecordingsCallRecordingIdTranscriptGet200ResponseData instantiates a new V2MeetingsMeetingIdCallRecordingsCallRecordingIdTranscriptGet200ResponseData object
 This constructor will assign default values to properties that have it defined,
@@ -30,20 +30,20 @@ but it doesn't guarantee that properties required by API are set
 
 ### GetId
 
-`func (o *V2MeetingsMeetingIdCallRecordingsCallRecordingIdTranscriptGet200ResponseData) GetId() V2MeetingsMeetingIdCallRecordingsCallRecordingIdTranscriptGet200ResponseDataId`
+`func (o *V2MeetingsMeetingIdCallRecordingsCallRecordingIdTranscriptGet200ResponseData) GetId() V2MeetingsMeetingIdCallRecordingsGet200ResponseDataInnerId`
 
 GetId returns the Id field if non-nil, zero value otherwise.
 
 ### GetIdOk
 
-`func (o *V2MeetingsMeetingIdCallRecordingsCallRecordingIdTranscriptGet200ResponseData) GetIdOk() (*V2MeetingsMeetingIdCallRecordingsCallRecordingIdTranscriptGet200ResponseDataId, bool)`
+`func (o *V2MeetingsMeetingIdCallRecordingsCallRecordingIdTranscriptGet200ResponseData) GetIdOk() (*V2MeetingsMeetingIdCallRecordingsGet200ResponseDataInnerId, bool)`
 
 GetIdOk returns a tuple with the Id field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetId
 
-`func (o *V2MeetingsMeetingIdCallRecordingsCallRecordingIdTranscriptGet200ResponseData) SetId(v V2MeetingsMeetingIdCallRecordingsCallRecordingIdTranscriptGet200ResponseDataId)`
+`func (o *V2MeetingsMeetingIdCallRecordingsCallRecordingIdTranscriptGet200ResponseData) SetId(v V2MeetingsMeetingIdCallRecordingsGet200ResponseDataInnerId)`
 
 SetId sets Id field to given value.
 

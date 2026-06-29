@@ -123,7 +123,7 @@ func (a *AttributesAPIService) V2TargetIdentifierAttributesAttributeGetExecute(r
 			error: localVarHTTPResponse.Status,
 		}
 		if localVarHTTPResponse.StatusCode == 404 {
-			var v V2TargetIdentifierAttributesAttributeGet404Response
+			var v V2ObjectsObjectGet404Response
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -256,7 +256,7 @@ func (a *AttributesAPIService) V2TargetIdentifierAttributesAttributeOptionsGetEx
 			error: localVarHTTPResponse.Status,
 		}
 		if localVarHTTPResponse.StatusCode == 404 {
-			var v V2TargetIdentifierAttributesAttributeGet404Response
+			var v V2ObjectsObjectGet404Response
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -406,7 +406,7 @@ func (a *AttributesAPIService) V2TargetIdentifierAttributesAttributeOptionsOptio
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 404 {
-			var v V2TargetIdentifierAttributesAttributeGet404Response
+			var v V2ObjectsObjectGet404Response
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -417,7 +417,7 @@ func (a *AttributesAPIService) V2TargetIdentifierAttributesAttributeOptionsOptio
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 409 {
-			var v V2TargetIdentifierAttributesAttributeOptionsPost409Response
+			var v V2ObjectsPost409Response
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -552,7 +552,7 @@ func (a *AttributesAPIService) V2TargetIdentifierAttributesAttributeOptionsPostE
 			error: localVarHTTPResponse.Status,
 		}
 		if localVarHTTPResponse.StatusCode == 400 {
-			var v V2TargetIdentifierAttributesAttributeOptionsPost400Response
+			var v V2ObjectsObjectPatch400Response
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -563,7 +563,7 @@ func (a *AttributesAPIService) V2TargetIdentifierAttributesAttributeOptionsPostE
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 404 {
-			var v V2TargetIdentifierAttributesAttributeGet404Response
+			var v V2ObjectsObjectGet404Response
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -574,7 +574,7 @@ func (a *AttributesAPIService) V2TargetIdentifierAttributesAttributeOptionsPostE
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 409 {
-			var v V2TargetIdentifierAttributesAttributeOptionsPost409Response
+			var v V2ObjectsPost409Response
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -720,7 +720,7 @@ func (a *AttributesAPIService) V2TargetIdentifierAttributesAttributePatchExecute
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 404 {
-			var v V2TargetIdentifierAttributesAttributeGet404Response
+			var v V2ObjectsObjectGet404Response
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -857,7 +857,7 @@ func (a *AttributesAPIService) V2TargetIdentifierAttributesAttributeStatusesGetE
 			error: localVarHTTPResponse.Status,
 		}
 		if localVarHTTPResponse.StatusCode == 404 {
-			var v V2TargetIdentifierAttributesAttributeGet404Response
+			var v V2ObjectsObjectGet404Response
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -992,7 +992,7 @@ func (a *AttributesAPIService) V2TargetIdentifierAttributesAttributeStatusesPost
 			error: localVarHTTPResponse.Status,
 		}
 		if localVarHTTPResponse.StatusCode == 400 {
-			var v V2TargetIdentifierAttributesAttributeStatusesPost400Response
+			var v V2ObjectsObjectPatch400Response
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -1003,7 +1003,7 @@ func (a *AttributesAPIService) V2TargetIdentifierAttributesAttributeStatusesPost
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 404 {
-			var v V2TargetIdentifierAttributesAttributeGet404Response
+			var v V2ObjectsObjectGet404Response
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -1014,7 +1014,7 @@ func (a *AttributesAPIService) V2TargetIdentifierAttributesAttributeStatusesPost
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 409 {
-			var v V2TargetIdentifierAttributesAttributeStatusesPost409Response
+			var v V2ObjectsPost409Response
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -1153,7 +1153,7 @@ func (a *AttributesAPIService) V2TargetIdentifierAttributesAttributeStatusesStat
 			error: localVarHTTPResponse.Status,
 		}
 		if localVarHTTPResponse.StatusCode == 400 {
-			var v V2TargetIdentifierAttributesAttributeStatusesStatusPatch400Response
+			var v V2TargetIdentifierAttributesAttributeOptionsOptionPatch400Response
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -1164,7 +1164,7 @@ func (a *AttributesAPIService) V2TargetIdentifierAttributesAttributeStatusesStat
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 404 {
-			var v V2TargetIdentifierAttributesAttributeGet404Response
+			var v V2ObjectsObjectGet404Response
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -1175,7 +1175,7 @@ func (a *AttributesAPIService) V2TargetIdentifierAttributesAttributeStatusesStat
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 409 {
-			var v V2TargetIdentifierAttributesAttributeStatusesPost409Response
+			var v V2ObjectsPost409Response
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -1447,7 +1447,7 @@ func (a *AttributesAPIService) V2TargetIdentifierAttributesPostExecute(r ApiV2Ta
 			error: localVarHTTPResponse.Status,
 		}
 		if localVarHTTPResponse.StatusCode == 400 {
-			var v V2TargetIdentifierAttributesPost400Response
+			var v V2ObjectsObjectPatch400Response
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -1458,7 +1458,7 @@ func (a *AttributesAPIService) V2TargetIdentifierAttributesPostExecute(r ApiV2Ta
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 404 {
-			var v V2TargetIdentifierAttributesPost404Response
+			var v V2ObjectsObjectGet404Response
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -1469,7 +1469,7 @@ func (a *AttributesAPIService) V2TargetIdentifierAttributesPostExecute(r ApiV2Ta
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 409 {
-			var v V2TargetIdentifierAttributesPost409Response
+			var v V2ObjectsPost409Response
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()

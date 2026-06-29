@@ -12,14 +12,14 @@ Name | Type | Description | Notes
 **ContentPlaintext** | **string** | The plaintext representation of the note content. The line feed character &#x60;\\n&#x60; represents new lines within the note content. | 
 **ContentMarkdown** | **string** | The markdown representation of the note content. Supports a subset of markdown features including: - Headings (levels 1-3 only with &#x60;#&#x60;, &#x60;##&#x60;, &#x60;###&#x60;) - Unordered lists (&#x60;-&#x60;, &#x60;*&#x60;, &#x60;+&#x60;) - Ordered lists (&#x60;1.&#x60;, &#x60;2.&#x60;, etc.) - Text styling: &#x60;**bold**&#x60;, &#x60;*italic*&#x60;, &#x60;~~strikethrough~~&#x60;, &#x60;&#x3D;&#x3D;highlighted&#x3D;&#x3D;&#x60; - Links: &#x60;[link text](https://example.com)&#x60;  Note that note images are not returned as part of the markdown API representation. | 
 **Tags** | [**[]NoteTagsInner**](NoteTagsInner.md) | An array of records or workspace members that are @-tagged in the note content. | 
-**CreatedByActor** | [**NoteCreatedByActor**](NoteCreatedByActor.md) |  | 
+**CreatedByActor** | [**V2ObjectsObjectRecordsQueryPost200ResponseDataInnerValuesValueInnerAnyOfCreatedByActor**](V2ObjectsObjectRecordsQueryPost200ResponseDataInnerValuesValueInnerAnyOfCreatedByActor.md) |  | 
 **CreatedAt** | **string** | When the note was created. | 
 
 ## Methods
 
 ### NewNote
 
-`func NewNote(id NoteId, parentObject string, parentRecordId string, title string, meetingId NullableString, contentPlaintext string, contentMarkdown string, tags []NoteTagsInner, createdByActor NoteCreatedByActor, createdAt string, ) *Note`
+`func NewNote(id NoteId, parentObject string, parentRecordId string, title string, meetingId NullableString, contentPlaintext string, contentMarkdown string, tags []NoteTagsInner, createdByActor V2ObjectsObjectRecordsQueryPost200ResponseDataInnerValuesValueInnerAnyOfCreatedByActor, createdAt string, ) *Note`
 
 NewNote instantiates a new Note object
 This constructor will assign default values to properties that have it defined,
@@ -206,20 +206,20 @@ SetTags sets Tags field to given value.
 
 ### GetCreatedByActor
 
-`func (o *Note) GetCreatedByActor() NoteCreatedByActor`
+`func (o *Note) GetCreatedByActor() V2ObjectsObjectRecordsQueryPost200ResponseDataInnerValuesValueInnerAnyOfCreatedByActor`
 
 GetCreatedByActor returns the CreatedByActor field if non-nil, zero value otherwise.
 
 ### GetCreatedByActorOk
 
-`func (o *Note) GetCreatedByActorOk() (*NoteCreatedByActor, bool)`
+`func (o *Note) GetCreatedByActorOk() (*V2ObjectsObjectRecordsQueryPost200ResponseDataInnerValuesValueInnerAnyOfCreatedByActor, bool)`
 
 GetCreatedByActorOk returns a tuple with the CreatedByActor field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetCreatedByActor
 
-`func (o *Note) SetCreatedByActor(v NoteCreatedByActor)`
+`func (o *Note) SetCreatedByActor(v V2ObjectsObjectRecordsQueryPost200ResponseDataInnerValuesValueInnerAnyOfCreatedByActor)`
 
 SetCreatedByActor sets CreatedByActor field to given value.
 

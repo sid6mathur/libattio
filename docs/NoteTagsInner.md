@@ -4,8 +4,8 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**Type** | **string** | The type of entity tagged in the note. Can be either &#39;workspace-member&#39; or &#39;record&#39; | 
-**WorkspaceMemberId** | **string** | The ID of the workspace member that is tagged in the note. | 
+**Type** | **string** |  | 
+**WorkspaceMemberId** | **string** |  | 
 **Object** | **string** | The slug or ID of the object that the tagged record belongs to. | 
 **RecordId** | **string** | The ID of the record that is tagged in the note. | 
 

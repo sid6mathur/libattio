@@ -26,8 +26,8 @@ type V2MeetingsMeetingIdCallRecordingsGet200ResponseDataInner struct {
 	// The status of the call recording. When a call recording is first created, it will have a status of `PROCESSING`. Once the recording is ready, it will transition to `COMPLETED`. If the recording fails for any reason, the status will be `FAILED`.
 	Status string `json:"status"`
 	// A URL that links directly to the call recording in the Attio web application.
-	WebUrl         string                                                                 `json:"web_url"`
-	CreatedByActor V2MeetingsMeetingIdCallRecordingsGet200ResponseDataInnerCreatedByActor `json:"created_by_actor"`
+	WebUrl         string                                                                                 `json:"web_url"`
+	CreatedByActor V2ObjectsObjectRecordsQueryPost200ResponseDataInnerValuesValueInnerAnyOfCreatedByActor `json:"created_by_actor"`
 	// The timestamp of when the call recording was created.
 	CreatedAt string `json:"created_at"`
 }
@@ -38,7 +38,7 @@ type _V2MeetingsMeetingIdCallRecordingsGet200ResponseDataInner V2MeetingsMeeting
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewV2MeetingsMeetingIdCallRecordingsGet200ResponseDataInner(id V2MeetingsMeetingIdCallRecordingsGet200ResponseDataInnerId, status string, webUrl string, createdByActor V2MeetingsMeetingIdCallRecordingsGet200ResponseDataInnerCreatedByActor, createdAt string) *V2MeetingsMeetingIdCallRecordingsGet200ResponseDataInner {
+func NewV2MeetingsMeetingIdCallRecordingsGet200ResponseDataInner(id V2MeetingsMeetingIdCallRecordingsGet200ResponseDataInnerId, status string, webUrl string, createdByActor V2ObjectsObjectRecordsQueryPost200ResponseDataInnerValuesValueInnerAnyOfCreatedByActor, createdAt string) *V2MeetingsMeetingIdCallRecordingsGet200ResponseDataInner {
 	this := V2MeetingsMeetingIdCallRecordingsGet200ResponseDataInner{}
 	this.Id = id
 	this.Status = status
@@ -129,9 +129,9 @@ func (o *V2MeetingsMeetingIdCallRecordingsGet200ResponseDataInner) SetWebUrl(v s
 }
 
 // GetCreatedByActor returns the CreatedByActor field value
-func (o *V2MeetingsMeetingIdCallRecordingsGet200ResponseDataInner) GetCreatedByActor() V2MeetingsMeetingIdCallRecordingsGet200ResponseDataInnerCreatedByActor {
+func (o *V2MeetingsMeetingIdCallRecordingsGet200ResponseDataInner) GetCreatedByActor() V2ObjectsObjectRecordsQueryPost200ResponseDataInnerValuesValueInnerAnyOfCreatedByActor {
 	if o == nil {
-		var ret V2MeetingsMeetingIdCallRecordingsGet200ResponseDataInnerCreatedByActor
+		var ret V2ObjectsObjectRecordsQueryPost200ResponseDataInnerValuesValueInnerAnyOfCreatedByActor
 		return ret
 	}
 
@@ -140,7 +140,7 @@ func (o *V2MeetingsMeetingIdCallRecordingsGet200ResponseDataInner) GetCreatedByA
 
 // GetCreatedByActorOk returns a tuple with the CreatedByActor field value
 // and a boolean to check if the value has been set.
-func (o *V2MeetingsMeetingIdCallRecordingsGet200ResponseDataInner) GetCreatedByActorOk() (*V2MeetingsMeetingIdCallRecordingsGet200ResponseDataInnerCreatedByActor, bool) {
+func (o *V2MeetingsMeetingIdCallRecordingsGet200ResponseDataInner) GetCreatedByActorOk() (*V2ObjectsObjectRecordsQueryPost200ResponseDataInnerValuesValueInnerAnyOfCreatedByActor, bool) {
 	if o == nil {
 		return nil, false
 	}
@@ -148,7 +148,7 @@ func (o *V2MeetingsMeetingIdCallRecordingsGet200ResponseDataInner) GetCreatedByA
 }
 
 // SetCreatedByActor sets field value
-func (o *V2MeetingsMeetingIdCallRecordingsGet200ResponseDataInner) SetCreatedByActor(v V2MeetingsMeetingIdCallRecordingsGet200ResponseDataInnerCreatedByActor) {
+func (o *V2MeetingsMeetingIdCallRecordingsGet200ResponseDataInner) SetCreatedByActor(v V2ObjectsObjectRecordsQueryPost200ResponseDataInnerValuesValueInnerAnyOfCreatedByActor) {
 	o.CreatedByActor = v
 }
 

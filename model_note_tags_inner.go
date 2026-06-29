@@ -18,8 +18,8 @@ import (
 
 // NoteTagsInner struct for NoteTagsInner
 type NoteTagsInner struct {
-	NoteTagsInnerAnyOf  *NoteTagsInnerAnyOf
-	NoteTagsInnerAnyOf1 *NoteTagsInnerAnyOf1
+	NoteTagsInnerAnyOf                               *NoteTagsInnerAnyOf
+	V2ObjectsRecordsSearchPostRequestRequestAsAnyOf1 *V2ObjectsRecordsSearchPostRequestRequestAsAnyOf1
 }
 
 // Unmarshal JSON data into any of the pointers in the struct
@@ -38,17 +38,17 @@ func (dst *NoteTagsInner) UnmarshalJSON(data []byte) error {
 		dst.NoteTagsInnerAnyOf = nil
 	}
 
-	// try to unmarshal JSON data into NoteTagsInnerAnyOf1
-	err = json.Unmarshal(data, &dst.NoteTagsInnerAnyOf1)
+	// try to unmarshal JSON data into V2ObjectsRecordsSearchPostRequestRequestAsAnyOf1
+	err = json.Unmarshal(data, &dst.V2ObjectsRecordsSearchPostRequestRequestAsAnyOf1)
 	if err == nil {
-		jsonNoteTagsInnerAnyOf1, _ := json.Marshal(dst.NoteTagsInnerAnyOf1)
-		if string(jsonNoteTagsInnerAnyOf1) == "{}" { // empty struct
-			dst.NoteTagsInnerAnyOf1 = nil
+		jsonV2ObjectsRecordsSearchPostRequestRequestAsAnyOf1, _ := json.Marshal(dst.V2ObjectsRecordsSearchPostRequestRequestAsAnyOf1)
+		if string(jsonV2ObjectsRecordsSearchPostRequestRequestAsAnyOf1) == "{}" { // empty struct
+			dst.V2ObjectsRecordsSearchPostRequestRequestAsAnyOf1 = nil
 		} else {
-			return nil // data stored in dst.NoteTagsInnerAnyOf1, return on the first match
+			return nil // data stored in dst.V2ObjectsRecordsSearchPostRequestRequestAsAnyOf1, return on the first match
 		}
 	} else {
-		dst.NoteTagsInnerAnyOf1 = nil
+		dst.V2ObjectsRecordsSearchPostRequestRequestAsAnyOf1 = nil
 	}
 
 	return fmt.Errorf("data failed to match schemas in anyOf(NoteTagsInner)")
@@ -60,8 +60,8 @@ func (src NoteTagsInner) MarshalJSON() ([]byte, error) {
 		return json.Marshal(&src.NoteTagsInnerAnyOf)
 	}
 
-	if src.NoteTagsInnerAnyOf1 != nil {
-		return json.Marshal(&src.NoteTagsInnerAnyOf1)
+	if src.V2ObjectsRecordsSearchPostRequestRequestAsAnyOf1 != nil {
+		return json.Marshal(&src.V2ObjectsRecordsSearchPostRequestRequestAsAnyOf1)
 	}
 
 	return nil, nil // no data in anyOf schemas

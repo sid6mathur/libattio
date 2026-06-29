@@ -9,7 +9,7 @@ Name | Type | Description | Notes
 **ObjectSlug** | **string** | The slug of the object the record belongs to. | 
 **RecordId** | **string** | The ID of the record the file is linked to. | 
 **StorageProvider** | **string** | The storage provider for this file entry. | 
-**CreatedByActor** | [**FileCreatedByActor**](FileCreatedByActor.md) |  | 
+**CreatedByActor** | [**V2ObjectsObjectRecordsQueryPost200ResponseDataInnerValuesValueInnerAnyOfCreatedByActor**](V2ObjectsObjectRecordsQueryPost200ResponseDataInnerValuesValueInnerAnyOfCreatedByActor.md) |  | 
 **CreatedAt** | **string** | Timestamp representing when the file entry was created. | 
 **FileType** | **string** | The type of file entry. | 
 **Name** | **string** | The name of the folder. | 
@@ -20,7 +20,7 @@ Name | Type | Description | Notes
 
 ### NewFolder1
 
-`func NewFolder1(id FileId, objectId string, objectSlug string, recordId string, storageProvider string, createdByActor FileCreatedByActor, createdAt string, fileType string, name string, parentFolderId string, hasChildren bool, ) *Folder1`
+`func NewFolder1(id FileId, objectId string, objectSlug string, recordId string, storageProvider string, createdByActor V2ObjectsObjectRecordsQueryPost200ResponseDataInnerValuesValueInnerAnyOfCreatedByActor, createdAt string, fileType string, name string, parentFolderId string, hasChildren bool, ) *Folder1`
 
 NewFolder1 instantiates a new Folder1 object
 This constructor will assign default values to properties that have it defined,
@@ -137,20 +137,20 @@ SetStorageProvider sets StorageProvider field to given value.
 
 ### GetCreatedByActor
 
-`func (o *Folder1) GetCreatedByActor() FileCreatedByActor`
+`func (o *Folder1) GetCreatedByActor() V2ObjectsObjectRecordsQueryPost200ResponseDataInnerValuesValueInnerAnyOfCreatedByActor`
 
 GetCreatedByActor returns the CreatedByActor field if non-nil, zero value otherwise.
 
 ### GetCreatedByActorOk
 
-`func (o *Folder1) GetCreatedByActorOk() (*FileCreatedByActor, bool)`
+`func (o *Folder1) GetCreatedByActorOk() (*V2ObjectsObjectRecordsQueryPost200ResponseDataInnerValuesValueInnerAnyOfCreatedByActor, bool)`
 
 GetCreatedByActorOk returns a tuple with the CreatedByActor field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetCreatedByActor
 
-`func (o *Folder1) SetCreatedByActor(v FileCreatedByActor)`
+`func (o *Folder1) SetCreatedByActor(v V2ObjectsObjectRecordsQueryPost200ResponseDataInnerValuesValueInnerAnyOfCreatedByActor)`
 
 SetCreatedByActor sets CreatedByActor field to given value.
 

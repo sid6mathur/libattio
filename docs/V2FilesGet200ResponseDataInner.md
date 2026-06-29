@@ -9,7 +9,7 @@ Name | Type | Description | Notes
 **ObjectSlug** | **string** | The slug of the object the record belongs to. | 
 **RecordId** | **string** | The ID of the record the file is linked to. | 
 **StorageProvider** | **string** | The storage provider for this file entry. | 
-**CreatedByActor** | [**FileCreatedByActor**](FileCreatedByActor.md) |  | 
+**CreatedByActor** | [**V2ObjectsObjectRecordsQueryPost200ResponseDataInnerValuesValueInnerAnyOfCreatedByActor**](V2ObjectsObjectRecordsQueryPost200ResponseDataInnerValuesValueInnerAnyOfCreatedByActor.md) |  | 
 **CreatedAt** | **string** | Timestamp representing when the file entry was created. | 
 **FileType** | **string** | The type of file entry. | 
 **Name** | **string** | The name of the folder. | 
@@ -23,7 +23,7 @@ Name | Type | Description | Notes
 
 ### NewV2FilesGet200ResponseDataInner
 
-`func NewV2FilesGet200ResponseDataInner(id FileId, objectId string, objectSlug string, recordId string, storageProvider string, createdByActor FileCreatedByActor, createdAt string, fileType string, name string, contentType string, contentSize float32, parentFolderId string, externalProviderFileId string, microsoftDriveId string, ) *V2FilesGet200ResponseDataInner`
+`func NewV2FilesGet200ResponseDataInner(id FileId, objectId string, objectSlug string, recordId string, storageProvider string, createdByActor V2ObjectsObjectRecordsQueryPost200ResponseDataInnerValuesValueInnerAnyOfCreatedByActor, createdAt string, fileType string, name string, contentType string, contentSize float32, parentFolderId string, externalProviderFileId string, microsoftDriveId string, ) *V2FilesGet200ResponseDataInner`
 
 NewV2FilesGet200ResponseDataInner instantiates a new V2FilesGet200ResponseDataInner object
 This constructor will assign default values to properties that have it defined,
@@ -140,20 +140,20 @@ SetStorageProvider sets StorageProvider field to given value.
 
 ### GetCreatedByActor
 
-`func (o *V2FilesGet200ResponseDataInner) GetCreatedByActor() FileCreatedByActor`
+`func (o *V2FilesGet200ResponseDataInner) GetCreatedByActor() V2ObjectsObjectRecordsQueryPost200ResponseDataInnerValuesValueInnerAnyOfCreatedByActor`
 
 GetCreatedByActor returns the CreatedByActor field if non-nil, zero value otherwise.
 
 ### GetCreatedByActorOk
 
-`func (o *V2FilesGet200ResponseDataInner) GetCreatedByActorOk() (*FileCreatedByActor, bool)`
+`func (o *V2FilesGet200ResponseDataInner) GetCreatedByActorOk() (*V2ObjectsObjectRecordsQueryPost200ResponseDataInnerValuesValueInnerAnyOfCreatedByActor, bool)`
 
 GetCreatedByActorOk returns a tuple with the CreatedByActor field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetCreatedByActor
 
-`func (o *V2FilesGet200ResponseDataInner) SetCreatedByActor(v FileCreatedByActor)`
+`func (o *V2FilesGet200ResponseDataInner) SetCreatedByActor(v V2ObjectsObjectRecordsQueryPost200ResponseDataInnerValuesValueInnerAnyOfCreatedByActor)`
 
 SetCreatedByActor sets CreatedByActor field to given value.
 

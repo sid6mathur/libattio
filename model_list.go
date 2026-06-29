@@ -32,8 +32,8 @@ type List struct {
 	// The level of access granted to all members of the workspace for this list. `null` values represent a private list that only grants access to specific workspace members via the `workspace_member_access` property.
 	WorkspaceAccess NullableString `json:"workspace_access"`
 	// The level of access granted to specific workspace members for this list. An empty array represents a list that has granted access to no workspace members.
-	WorkspaceMemberAccess []V2ListsPostRequestDataWorkspaceMemberAccessInner `json:"workspace_member_access"`
-	CreatedByActor        ListCreatedByActor                                 `json:"created_by_actor"`
+	WorkspaceMemberAccess []V2ListsPostRequestDataWorkspaceMemberAccessInner                                     `json:"workspace_member_access"`
+	CreatedByActor        V2ObjectsObjectRecordsQueryPost200ResponseDataInnerValuesValueInnerAnyOfCreatedByActor `json:"created_by_actor"`
 	// When the list was created.
 	CreatedAt string `json:"created_at"`
 }
@@ -44,7 +44,7 @@ type _List List
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewList(id ListId, apiSlug string, name string, parentObject []string, workspaceAccess NullableString, workspaceMemberAccess []V2ListsPostRequestDataWorkspaceMemberAccessInner, createdByActor ListCreatedByActor, createdAt string) *List {
+func NewList(id ListId, apiSlug string, name string, parentObject []string, workspaceAccess NullableString, workspaceMemberAccess []V2ListsPostRequestDataWorkspaceMemberAccessInner, createdByActor V2ObjectsObjectRecordsQueryPost200ResponseDataInnerValuesValueInnerAnyOfCreatedByActor, createdAt string) *List {
 	this := List{}
 	this.Id = id
 	this.ApiSlug = apiSlug
@@ -212,9 +212,9 @@ func (o *List) SetWorkspaceMemberAccess(v []V2ListsPostRequestDataWorkspaceMembe
 }
 
 // GetCreatedByActor returns the CreatedByActor field value
-func (o *List) GetCreatedByActor() ListCreatedByActor {
+func (o *List) GetCreatedByActor() V2ObjectsObjectRecordsQueryPost200ResponseDataInnerValuesValueInnerAnyOfCreatedByActor {
 	if o == nil {
-		var ret ListCreatedByActor
+		var ret V2ObjectsObjectRecordsQueryPost200ResponseDataInnerValuesValueInnerAnyOfCreatedByActor
 		return ret
 	}
 
@@ -223,7 +223,7 @@ func (o *List) GetCreatedByActor() ListCreatedByActor {
 
 // GetCreatedByActorOk returns a tuple with the CreatedByActor field value
 // and a boolean to check if the value has been set.
-func (o *List) GetCreatedByActorOk() (*ListCreatedByActor, bool) {
+func (o *List) GetCreatedByActorOk() (*V2ObjectsObjectRecordsQueryPost200ResponseDataInnerValuesValueInnerAnyOfCreatedByActor, bool) {
 	if o == nil {
 		return nil, false
 	}
@@ -231,7 +231,7 @@ func (o *List) GetCreatedByActorOk() (*ListCreatedByActor, bool) {
 }
 
 // SetCreatedByActor sets field value
-func (o *List) SetCreatedByActor(v ListCreatedByActor) {
+func (o *List) SetCreatedByActor(v V2ObjectsObjectRecordsQueryPost200ResponseDataInnerValuesValueInnerAnyOfCreatedByActor) {
 	o.CreatedByActor = v
 }
 

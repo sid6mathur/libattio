@@ -9,17 +9,17 @@ Name | Type | Description | Notes
 **Description** | **string** | The description of the meeting. | 
 **IsAllDay** | **bool** | Whether or not the meeting is an all day event. All day events may span multiple days. | 
 **Start** | [**MeetingStart**](MeetingStart.md) |  | 
-**End** | [**MeetingEnd**](MeetingEnd.md) |  | 
+**End** | [**MeetingStart**](MeetingStart.md) |  | 
 **Participants** | [**[]MeetingParticipantsInner**](MeetingParticipantsInner.md) |  | 
 **LinkedRecords** | [**[]MeetingLinkedRecordsInner**](MeetingLinkedRecordsInner.md) | A list of records that are linked to the meeting. Participants with matching person records are automatically linked to the meeting but other records may also be linked explicitly. | 
 **CreatedAt** | **string** | Timestamp representing when the meeting was created. | 
-**CreatedByActor** | [**MeetingCreatedByActor**](MeetingCreatedByActor.md) |  | 
+**CreatedByActor** | [**V2ObjectsObjectRecordsQueryPost200ResponseDataInnerValuesValueInnerAnyOfCreatedByActor**](V2ObjectsObjectRecordsQueryPost200ResponseDataInnerValuesValueInnerAnyOfCreatedByActor.md) |  | 
 
 ## Methods
 
 ### NewMeeting
 
-`func NewMeeting(id MeetingId, title string, description string, isAllDay bool, start MeetingStart, end MeetingEnd, participants []MeetingParticipantsInner, linkedRecords []MeetingLinkedRecordsInner, createdAt string, createdByActor MeetingCreatedByActor, ) *Meeting`
+`func NewMeeting(id MeetingId, title string, description string, isAllDay bool, start MeetingStart, end MeetingStart, participants []MeetingParticipantsInner, linkedRecords []MeetingLinkedRecordsInner, createdAt string, createdByActor V2ObjectsObjectRecordsQueryPost200ResponseDataInnerValuesValueInnerAnyOfCreatedByActor, ) *Meeting`
 
 NewMeeting instantiates a new Meeting object
 This constructor will assign default values to properties that have it defined,
@@ -136,20 +136,20 @@ SetStart sets Start field to given value.
 
 ### GetEnd
 
-`func (o *Meeting) GetEnd() MeetingEnd`
+`func (o *Meeting) GetEnd() MeetingStart`
 
 GetEnd returns the End field if non-nil, zero value otherwise.
 
 ### GetEndOk
 
-`func (o *Meeting) GetEndOk() (*MeetingEnd, bool)`
+`func (o *Meeting) GetEndOk() (*MeetingStart, bool)`
 
 GetEndOk returns a tuple with the End field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetEnd
 
-`func (o *Meeting) SetEnd(v MeetingEnd)`
+`func (o *Meeting) SetEnd(v MeetingStart)`
 
 SetEnd sets End field to given value.
 
@@ -216,20 +216,20 @@ SetCreatedAt sets CreatedAt field to given value.
 
 ### GetCreatedByActor
 
-`func (o *Meeting) GetCreatedByActor() MeetingCreatedByActor`
+`func (o *Meeting) GetCreatedByActor() V2ObjectsObjectRecordsQueryPost200ResponseDataInnerValuesValueInnerAnyOfCreatedByActor`
 
 GetCreatedByActor returns the CreatedByActor field if non-nil, zero value otherwise.
 
 ### GetCreatedByActorOk
 
-`func (o *Meeting) GetCreatedByActorOk() (*MeetingCreatedByActor, bool)`
+`func (o *Meeting) GetCreatedByActorOk() (*V2ObjectsObjectRecordsQueryPost200ResponseDataInnerValuesValueInnerAnyOfCreatedByActor, bool)`
 
 GetCreatedByActorOk returns a tuple with the CreatedByActor field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetCreatedByActor
 
-`func (o *Meeting) SetCreatedByActor(v MeetingCreatedByActor)`
+`func (o *Meeting) SetCreatedByActor(v V2ObjectsObjectRecordsQueryPost200ResponseDataInnerValuesValueInnerAnyOfCreatedByActor)`
 
 SetCreatedByActor sets CreatedByActor field to given value.
 

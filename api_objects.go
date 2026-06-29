@@ -366,7 +366,7 @@ func (a *ObjectsAPIService) V2ObjectsObjectPatchExecute(r ApiV2ObjectsObjectPatc
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 409 {
-			var v V2ObjectsObjectPatch409Response
+			var v V2ObjectsPost409Response
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()

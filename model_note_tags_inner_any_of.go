@@ -24,8 +24,10 @@ var _ MappedNullable = &NoteTagsInnerAnyOf{}
 type NoteTagsInnerAnyOf struct {
 	// The type of entity tagged in the note. Can be either 'workspace-member' or 'record'
 	Type string `json:"type"`
-	// The ID of the workspace member that is tagged in the note.
-	WorkspaceMemberId string `json:"workspace_member_id"`
+	// The slug or ID of the object that the tagged record belongs to.
+	Object string `json:"object"`
+	// The ID of the record that is tagged in the note.
+	RecordId string `json:"record_id"`
 }
 
 type _NoteTagsInnerAnyOf NoteTagsInnerAnyOf
@@ -34,10 +36,11 @@ type _NoteTagsInnerAnyOf NoteTagsInnerAnyOf
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewNoteTagsInnerAnyOf(type_ string, workspaceMemberId string) *NoteTagsInnerAnyOf {
+func NewNoteTagsInnerAnyOf(type_ string, object string, recordId string) *NoteTagsInnerAnyOf {
 	this := NoteTagsInnerAnyOf{}
 	this.Type = type_
-	this.WorkspaceMemberId = workspaceMemberId
+	this.Object = object
+	this.RecordId = recordId
 	return &this
 }
 
@@ -73,28 +76,52 @@ func (o *NoteTagsInnerAnyOf) SetType(v string) {
 	o.Type = v
 }
 
-// GetWorkspaceMemberId returns the WorkspaceMemberId field value
-func (o *NoteTagsInnerAnyOf) GetWorkspaceMemberId() string {
+// GetObject returns the Object field value
+func (o *NoteTagsInnerAnyOf) GetObject() string {
 	if o == nil {
 		var ret string
 		return ret
 	}
 
-	return o.WorkspaceMemberId
+	return o.Object
 }
 
-// GetWorkspaceMemberIdOk returns a tuple with the WorkspaceMemberId field value
+// GetObjectOk returns a tuple with the Object field value
 // and a boolean to check if the value has been set.
-func (o *NoteTagsInnerAnyOf) GetWorkspaceMemberIdOk() (*string, bool) {
+func (o *NoteTagsInnerAnyOf) GetObjectOk() (*string, bool) {
 	if o == nil {
 		return nil, false
 	}
-	return &o.WorkspaceMemberId, true
+	return &o.Object, true
 }
 
-// SetWorkspaceMemberId sets field value
-func (o *NoteTagsInnerAnyOf) SetWorkspaceMemberId(v string) {
-	o.WorkspaceMemberId = v
+// SetObject sets field value
+func (o *NoteTagsInnerAnyOf) SetObject(v string) {
+	o.Object = v
+}
+
+// GetRecordId returns the RecordId field value
+func (o *NoteTagsInnerAnyOf) GetRecordId() string {
+	if o == nil {
+		var ret string
+		return ret
+	}
+
+	return o.RecordId
+}
+
+// GetRecordIdOk returns a tuple with the RecordId field value
+// and a boolean to check if the value has been set.
+func (o *NoteTagsInnerAnyOf) GetRecordIdOk() (*string, bool) {
+	if o == nil {
+		return nil, false
+	}
+	return &o.RecordId, true
+}
+
+// SetRecordId sets field value
+func (o *NoteTagsInnerAnyOf) SetRecordId(v string) {
+	o.RecordId = v
 }
 
 func (o NoteTagsInnerAnyOf) MarshalJSON() ([]byte, error) {
@@ -108,7 +135,8 @@ func (o NoteTagsInnerAnyOf) MarshalJSON() ([]byte, error) {
 func (o NoteTagsInnerAnyOf) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
 	toSerialize["type"] = o.Type
-	toSerialize["workspace_member_id"] = o.WorkspaceMemberId
+	toSerialize["object"] = o.Object
+	toSerialize["record_id"] = o.RecordId
 	return toSerialize, nil
 }
 
@@ -118,7 +146,8 @@ func (o *NoteTagsInnerAnyOf) UnmarshalJSON(data []byte) (err error) {
 	// that every required field exists as a key in the generic map.
 	requiredProperties := []string{
 		"type",
-		"workspace_member_id",
+		"object",
+		"record_id",
 	}
 
 	// defaultValueFuncMap captures the default values for required properties.

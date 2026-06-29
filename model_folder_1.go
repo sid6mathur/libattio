@@ -30,8 +30,8 @@ type Folder1 struct {
 	// The ID of the record the file is linked to.
 	RecordId string `json:"record_id"`
 	// The storage provider for this file entry.
-	StorageProvider string             `json:"storage_provider"`
-	CreatedByActor  FileCreatedByActor `json:"created_by_actor"`
+	StorageProvider string                                                                                 `json:"storage_provider"`
+	CreatedByActor  V2ObjectsObjectRecordsQueryPost200ResponseDataInnerValuesValueInnerAnyOfCreatedByActor `json:"created_by_actor"`
 	// Timestamp representing when the file entry was created.
 	CreatedAt string `json:"created_at"`
 	// The type of file entry.
@@ -50,7 +50,7 @@ type _Folder1 Folder1
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewFolder1(id FileId, objectId string, objectSlug string, recordId string, storageProvider string, createdByActor FileCreatedByActor, createdAt string, fileType string, name string, parentFolderId string, hasChildren bool) *Folder1 {
+func NewFolder1(id FileId, objectId string, objectSlug string, recordId string, storageProvider string, createdByActor V2ObjectsObjectRecordsQueryPost200ResponseDataInnerValuesValueInnerAnyOfCreatedByActor, createdAt string, fileType string, name string, parentFolderId string, hasChildren bool) *Folder1 {
 	this := Folder1{}
 	this.Id = id
 	this.ObjectId = objectId
@@ -195,9 +195,9 @@ func (o *Folder1) SetStorageProvider(v string) {
 }
 
 // GetCreatedByActor returns the CreatedByActor field value
-func (o *Folder1) GetCreatedByActor() FileCreatedByActor {
+func (o *Folder1) GetCreatedByActor() V2ObjectsObjectRecordsQueryPost200ResponseDataInnerValuesValueInnerAnyOfCreatedByActor {
 	if o == nil {
-		var ret FileCreatedByActor
+		var ret V2ObjectsObjectRecordsQueryPost200ResponseDataInnerValuesValueInnerAnyOfCreatedByActor
 		return ret
 	}
 
@@ -206,7 +206,7 @@ func (o *Folder1) GetCreatedByActor() FileCreatedByActor {
 
 // GetCreatedByActorOk returns a tuple with the CreatedByActor field value
 // and a boolean to check if the value has been set.
-func (o *Folder1) GetCreatedByActorOk() (*FileCreatedByActor, bool) {
+func (o *Folder1) GetCreatedByActorOk() (*V2ObjectsObjectRecordsQueryPost200ResponseDataInnerValuesValueInnerAnyOfCreatedByActor, bool) {
 	if o == nil {
 		return nil, false
 	}
@@ -214,7 +214,7 @@ func (o *Folder1) GetCreatedByActorOk() (*FileCreatedByActor, bool) {
 }
 
 // SetCreatedByActor sets field value
-func (o *Folder1) SetCreatedByActor(v FileCreatedByActor) {
+func (o *Folder1) SetCreatedByActor(v V2ObjectsObjectRecordsQueryPost200ResponseDataInnerValuesValueInnerAnyOfCreatedByActor) {
 	o.CreatedByActor = v
 }
 
