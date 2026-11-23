@@ -39,4 +39,4 @@ when Attio reorders it; for write values, prefer plain maps or your own structs.
 
 ## License
 
-[BSD 2-Clause](LICENSE).
+[BSD 3-Clause](LICENSE).
