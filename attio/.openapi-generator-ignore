@@ -1,0 +1,6 @@
+# Files openapi-generator must not write into this package.
+.gitignore
+.travis.yml
+README.md
+git_push.sh
+api/
