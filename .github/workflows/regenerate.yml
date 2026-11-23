@@ -1,0 +1,55 @@
+# Daily: regenerate the SDK from Attio's latest spec with the latest openapi-generator.
+# When the package changed since the last tag, commit to main and tag the next minor version.
+name: Regenerate
+
+on:
+  schedule:
+    - cron: "23 4 * * *"
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+concurrency: regenerate
+
+jobs:
+  regenerate:
+    runs-on: ubuntu-slim
+    timeout-minutes: 15
+    steps:
+      - uses: actions/checkout@v7
+        with:
+          fetch-depth: 0
+      - uses: actions/setup-java@v6
+        with:
+          distribution: temurin
+          java-version: "21"
+      - uses: actions/setup-go@v7
+        with:
+          go-version: stable
+          cache: false
+
+      - run: make
+
+      - name: Commit and tag
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898+github-actions[bot]@users.noreply.github.com"
+          git add -A
+          if ! git diff --cached --quiet; then
+            git commit -m "Regenerate from Attio spec with openapi-generator $(cat attio/.openapi-generator/VERSION)"
+            git push origin HEAD:main
+          fi
+
+          last=$(git describe --tags --abbrev=0 --match 'v*' 2>/dev/null || echo v0.0.0)
+          if git diff --quiet "$last" HEAD -- attio go.mod go.sum; then
+            echo "No package changes since $last"
+            exit 0
+          fi
+          IFS=. read -r major minor _ <<< "${last#v}"
+          next="v${major}.$((minor + 1)).0"
+          git tag -a "$next" -m "$next"
+          git push origin "$next"
+          # Ask the Go module proxy to fetch the new version so pkg.go.dev picks it up.
+          GOPROXY=https://proxy.golang.org go list -m "github.com/sid6mathur/libattio@$next"
+          echo "Tagged $next" >> "$GITHUB_STEP_SUMMARY"
