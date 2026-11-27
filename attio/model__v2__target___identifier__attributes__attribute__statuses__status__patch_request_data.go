@@ -25,7 +25,7 @@ type V2TargetIdentifierAttributesAttributeStatusesStatusPatchRequestData struct 
 	// Whether arriving at this status triggers a celebration effect
 	CelebrationEnabled *bool `json:"celebration_enabled,omitempty"`
 	// Target time for a record to spend in given status expressed as a ISO-8601 duration string
-	TargetTimeInStatus NullableString `json:"target_time_in_status,omitempty" validate:"regexp=P(?:(\\d+Y)?(\\d+M)?(\\d+W)?(\\d+D)?(?:T(\\d+(?:[\\.\\,]\\d+)?H)?(\\d+(?:[\\.\\,]\\d+)?M)?(\\d+(?:[\\.\\,]\\d+)?S)?)?)"`
+	TargetTimeInStatus NullableString `json:"target_time_in_status,omitempty" validate:"nullableRegexp=P(?:(\\d+Y)?(\\d+M)?(\\d+W)?(\\d+D)?(?:T(\\d+(?:[\\.\\,]\\d+)?H)?(\\d+(?:[\\.\\,]\\d+)?M)?(\\d+(?:[\\.\\,]\\d+)?S)?)?)"`
 	// Whether or not to archive the status. See our [archiving guide](/docs/archiving-vs-deleting) for more information on archiving.
 	IsArchived           *bool `json:"is_archived,omitempty"`
 	AdditionalProperties map[string]interface{}

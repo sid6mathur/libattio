@@ -26,11 +26,17 @@ type SQLAPI interface {
 
 			Query records and lists with SQL. Your workspace must be on the Enterprise plan in order to access this endpoint.
 
+		To query records, you will need the `object_configuration:read` and `record_permission:read` scopes.
+
+		To query list entries, you will need the `list_configuration:read` and `list_entry:read` scopes.
+
+		To query activities, you will need the `activity_configuration:read` and `activity_record:read` scopes.
+
+		To query workspace members, you will need the `user_management:read` scope.
+
 		This endpoint is rate limited to 2 requests per second.
 
 		This endpoint is in beta. We will aim to avoid breaking changes, but small updates may be made as we roll out to more users.
-
-		Required scopes: `record_permission:read`, `object_configuration:read`.
 
 		Supported token levels: `workspace`, `user`.
 
@@ -67,11 +73,17 @@ V2SqlPost Query SQL
 
 Query records and lists with SQL. Your workspace must be on the Enterprise plan in order to access this endpoint.
 
+To query records, you will need the `object_configuration:read` and `record_permission:read` scopes.
+
+To query list entries, you will need the `list_configuration:read` and `list_entry:read` scopes.
+
+To query activities, you will need the `activity_configuration:read` and `activity_record:read` scopes.
+
+To query workspace members, you will need the `user_management:read` scope.
+
 This endpoint is rate limited to 2 requests per second.
 
 This endpoint is in beta. We will aim to avoid breaking changes, but small updates may be made as we roll out to more users.
-
-Required scopes: `record_permission:read`, `object_configuration:read`.
 
 Supported token levels: `workspace`, `user`.
 

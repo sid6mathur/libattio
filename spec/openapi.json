@@ -43263,16 +43263,13 @@
     "/v2/sql": {
       "post": {
         "summary": "Query SQL",
-        "description": "Query records and lists with SQL. Your workspace must be on the Enterprise plan in order to access this endpoint.\n\nThis endpoint is rate limited to 2 requests per second.\n\nThis endpoint is in beta. We will aim to avoid breaking changes, but small updates may be made as we roll out to more users.\n\nRequired scopes: `record_permission:read`, `object_configuration:read`.\n\nSupported token levels: `workspace`, `user`.",
+        "description": "Query records and lists with SQL. Your workspace must be on the Enterprise plan in order to access this endpoint.\n\nTo query records, you will need the `object_configuration:read` and `record_permission:read` scopes.\n\nTo query list entries, you will need the `list_configuration:read` and `list_entry:read` scopes.\n\nTo query activities, you will need the `activity_configuration:read` and `activity_record:read` scopes.\n\nTo query workspace members, you will need the `user_management:read` scope.\n\nThis endpoint is rate limited to 2 requests per second.\n\nThis endpoint is in beta. We will aim to avoid breaking changes, but small updates may be made as we roll out to more users.\n\nSupported token levels: `workspace`, `user`.",
         "tags": [
           "SQL"
         ],
         "security": [
           {
-            "oauth2": [
-              "record_permission:read",
-              "object_configuration:read"
-            ]
+            "oauth2": []
           }
         ],
         "x-mint": {
